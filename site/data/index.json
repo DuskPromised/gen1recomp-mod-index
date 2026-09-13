@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-13T19:48:10.119721+00:00",
+  "generated_at": "2026-09-13T19:49:33.144637+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -11856,7 +11856,7 @@
         }
       },
       "update_check": "ok",
-      "thumbnail": "https://raw.githubusercontent.com/DuskPromised/gen1recomp-mod-index/main/site/data/carts/DuskPromised%40red_earth/thumbnail.png"
+      "thumbnail": "data/carts/DuskPromised@red_earth/thumbnail.jpg"
     }
   ],
   "index_notes": {
