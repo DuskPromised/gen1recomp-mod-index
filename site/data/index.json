@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-13T23:39:53.706549+00:00",
+  "generated_at": "2026-09-13T23:52:52.788330+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -9728,6 +9728,48 @@
       "optional_integrations": [],
       "dependencies": [],
       "conflicts": []
+    },
+    {
+      "folder": "DuskPromised@take_last_starter",
+      "id": "take_last_starter",
+      "title": "Take the Last Starter",
+      "author": "Adam M. Aguilera",
+      "version": "1.0.0",
+      "categories": [
+        "QOL",
+        "GAMEPLAY"
+      ],
+      "tags": [
+        "starter",
+        "oak",
+        "gift",
+        "second starter",
+        "shiny compatibility"
+      ],
+      "api": 2,
+      "profile": "content",
+      "game_version": ">=0.2.24 <2.0.0",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "shiny_starters_gifts@>=1.2.0 <2.0.0"
+      ],
+      "optional_integrations": [
+        "SHINY_POKEMON"
+      ],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+      "github": "DuskPromised/gen1recomp-mod-index",
+      "license": "MIT",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@take_last_starter/take_last_starter-1.0.0.zip",
+      "source_zip": "take_last_starter-1.0.0.zip",
+      "summary": "Lets Red/Blue players claim Oak's remaining starter once after the rival pick. Uses give_pokemon, so Shiny Gifts & Starters can make the second starter shiny.",
+      "source_scope": "DuskPromised original mod",
+      "update_check": "off"
     },
     {
       "folder": "FAFF0x@team_rocket_returns",
