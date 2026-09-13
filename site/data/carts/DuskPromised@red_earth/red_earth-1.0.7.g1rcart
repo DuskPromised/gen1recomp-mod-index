@@ -163,10 +163,10 @@ return {
       },
       [17] = {
         id = "MULTI_SAVE_SLOTS",
-        repo = "masterwebx/gen1recomp-multi-save-slots",
-        sha256 = "9f364b0618041cb7abe8bda6f7c3e3d1170282d8dbf3acd20eddadbde053cdcb",
+        repo = "DuskPromised/gen1recomp-mod-index",
+        sha256 = "ba71fc0e46e90812b254921bfa1a8a0763e65d9a34bb252e21c1247a6d61044b",
         source = "github",
-        version = "1.0.0",
+        version = "1.0.1",
       },
       [18] = {
         id = "leaf_avatar",
@@ -307,7 +307,7 @@ return {
     shell = "#b3202a",
     summary = "Modern Kanto with voxels, all 151, avatar choice, shiny starters, Mew quest, story quests, refined menus, and QOL.",
     title = "Pokémon Red Earth",
-    version = "1.0.7",
+    version = "1.0.8",
   },
   format = "g1rcart",
   formatVersion = 1,
