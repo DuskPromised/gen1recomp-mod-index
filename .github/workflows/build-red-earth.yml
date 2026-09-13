@@ -23,6 +23,64 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Audit Red Earth dependencies and overlaps
+        run: |
+          python - <<'PY'
+          import json, re
+          from pathlib import Path
+
+          cart = json.loads(Path("cart_source/red_earth/cart.json").read_text())
+          index = json.loads(Path("site/data/index.json").read_text())
+          by_id = {m["id"]: m for m in index.get("mods", [])}
+          pins = cart["mods"]
+          ids = [m["id"] for m in pins]
+          active = set(ids)
+
+          assert len(ids) == len(set(ids)), "duplicate mod ids"
+          assert cart.get("load_order") == ids, "load_order must exactly match pinned mod order"
+
+          def dep_id(spec):
+              return spec.split("@", 1)[0]
+
+          missing = []
+          conflicts = []
+          for pin in pins:
+              assert pin["id"] in by_id, f"{pin['id']} missing from live index"
+              meta = by_id[pin["id"]]
+              for dep in meta.get("dependencies", []):
+                  if dep_id(dep) not in active:
+                      missing.append((pin["id"], dep))
+              for con in meta.get("conflicts", []):
+                  if dep_id(con) in active:
+                      conflicts.append((pin["id"], con))
+
+          assert not missing, f"missing required dependencies: {missing}"
+          assert not conflicts, f"declared conflicts: {conflicts}"
+
+          # Red Earth functional ownership rules.
+          assert "quest_system" in active, "Quest System is required by Red Earth story quests"
+          assert "gen1_modern_ui" not in active
+          assert "modern_ui_icon_fix" not in active
+          assert "overworld_wild_spawns" not in active
+          assert "mew_mirage" in active, "The Mirage of Mew must be present"
+
+          gen151 = next(m for m in pins if m["id"] == "gen151")
+          assert gen151.get("options", {}).get("mew") is False,               "Gen151 MEW EVENT must be OFF when The Mirage of Mew is installed"
+
+          menus = next(m for m in pins if m["id"] == "gen1-better-menus")
+          opts = menus.get("options", {})
+          assert opts.get("modern_pc_ui") is False
+          assert opts.get("modern_bag_ui") is False
+          assert opts.get("modern_party_ui") is True
+          assert opts.get("modern_battle_ui") == "mod"
+
+          assert "advanced_box_system" in active
+          assert "modern_bag" in active
+          assert "BATTLE_ART_VOXEL_FORK" in active
+
+          print(f"AUDIT PASS: {len(ids)} mods, 0 missing dependencies, 0 declared conflicts")
+          PY
+
       - name: Build clean 256px Red Earth label
         run: |
           python -m pip install --quiet pillow
@@ -43,33 +101,37 @@ jobs:
             https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py \
             -o /tmp/cartkit.py
 
-      - name: Pack Red Earth v1.0.5
+      - name: Pack Red Earth v1.0.6
         run: |
           python /tmp/cartkit.py pack cart_source/red_earth \
-            -o /tmp/red_earth-1.0.5.g1rcart
+            -o /tmp/red_earth-1.0.6.g1rcart
 
       - name: Publish cart and update index metadata
         run: |
           mkdir -p "site/data/carts/DuskPromised@red_earth"
-          cp /tmp/red_earth-1.0.5.g1rcart \
-            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.5.g1rcart"
+          cp /tmp/red_earth-1.0.6.g1rcart \
+            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart"
           python - <<'PY'
           import hashlib, json
           from pathlib import Path
 
-          cart = Path("site/data/carts/DuskPromised@red_earth/red_earth-1.0.5.g1rcart")
+          cart = Path("site/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart")
           meta_path = Path("carts/red_earth.index.json")
           meta = json.loads(meta_path.read_text(encoding="utf-8"))
+          source = json.loads(Path("cart_source/red_earth/cart.json").read_text(encoding="utf-8"))
           body = cart.read_bytes()
 
-          meta["version"] = "1.0.5"
+          meta["summary"] = source["summary"]
+          meta["mods"] = source["mods"]
+          meta["load_order"] = source["load_order"]
+          meta["version"] = "1.0.6"
           meta["latest"] = {
-              "version": "1.0.5",
-              "name": "1.0.5",
+              "version": "1.0.6",
+              "name": "1.0.6",
               "prerelease": False,
               "zip": {
                   "name": cart.name,
-                  "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.5.g1rcart",
+                  "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart",
                   "size": len(body),
                   "sha256": hashlib.sha256(body).hexdigest()
               }
@@ -84,20 +146,20 @@ jobs:
           print("cart sha256:", hashlib.sha256(body).hexdigest())
           PY
 
-      - name: Commit Red Earth v1.0.5
+      - name: Commit Red Earth v1.0.6
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             "cart_source/red_earth/label.png" \
             "site/data/carts/DuskPromised@red_earth/thumbnail.jpg" \
-            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.5.g1rcart" \
+            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart" \
             "carts/red_earth.index.json"
           if git diff --cached --quiet; then
-            echo "Red Earth v1.0.5 is already published."
+            echo "Red Earth v1.0.6 is already published."
             exit 0
           fi
-          git commit -m "Publish Red Earth v1.0.5 HD cart label"
+          git commit -m "Publish Red Earth v1.0.6 HD cart label"
           git pull --rebase origin main
           git push
 

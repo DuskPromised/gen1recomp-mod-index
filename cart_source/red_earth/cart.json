@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth",
   "title": "Pokémon Red Earth",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "A modernized Kanto with voxels, all 151, avatar choice, quests, refined menus, and quality-of-life upgrades.",
+  "summary": "A modernized Kanto with voxels, all 151, boy/girl avatar choice, Mew quest, refined menus, story quests, and quality-of-life upgrades.",
   "shell": "#b3202a",
   "finish": "holo",
   "label": "label.png",
@@ -149,7 +149,17 @@
       "source": "github",
       "repo": "wild1walker/Gen151",
       "version": "1.7.0",
-      "sha256": "034d59cba14543c04bceab63d8f85821c0780bb7b47456e159a9e94e513dfd0f"
+      "sha256": "034d59cba14543c04bceab63d8f85821c0780bb7b47456e159a9e94e513dfd0f",
+      "options": {
+        "mew": false
+      }
+    },
+    {
+      "id": "mew_mirage",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.1",
+      "sha256": "472a0517e51c4fb7a8a40a5e30edbc39fb8e24d93c4624670cf8abbc37fa1ec1"
     },
     {
       "id": "SHINY_POKEMON",
@@ -270,6 +280,7 @@
     "MULTI_SAVE_SLOTS",
     "leaf_avatar",
     "gen151",
+    "mew_mirage",
     "SHINY_POKEMON",
     "kanto_achievements",
     "quest_system",
