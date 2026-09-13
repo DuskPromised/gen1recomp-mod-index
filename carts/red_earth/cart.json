@@ -1,0 +1,290 @@
+{
+  "schema": 1,
+  "id": "red_earth",
+  "title": "Pokémon Red Earth",
+  "version": "1.0.1",
+  "author": "Adam M. Aguilera",
+  "repo": "DuskPromised/gen1recomp-mod-index",
+  "summary": "A modernized Kanto with voxels, all 151, visible wilds, quests, modern UI, and quality-of-life upgrades.",
+  "shell": "#b3202a",
+  "finish": "holo",
+  "label": "label.png",
+  "base": "red",
+  "seal": "sealed+",
+  "mods": [
+    {
+      "id": "BATTLE_ART_VOXEL_FORK",
+      "source": "github",
+      "repo": "absol89/DramaticShapeVoxelMod",
+      "version": "1.10.8",
+      "sha256": "2fb9ceb02d1b4da03869696f513ff565aed6fc9ce071a13c9fa62353c5c767c3"
+    },
+    {
+      "id": "gen1_modern_ui",
+      "source": "github",
+      "repo": "ArmstrongThomas/gen1-modern-ui",
+      "version": "0.9.2",
+      "sha256": "fd88c2f14deb135f0cb6eb25d8580303fb7a484ab4fa48765493f02ad24f8969"
+    },
+    {
+      "id": "modern_ui_icon_fix",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.2.3",
+      "sha256": "ad84f3345b8ccc9ef0c1c331b82f85eb4ba29caf52912d8db98e7d4d8f719b61"
+    },
+    {
+      "id": "new_item_icons",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.0",
+      "sha256": "3fcb8dd404298ce2624739548be1b8b5da212e6ca9526b5ed106055b07ac5e88"
+    },
+    {
+      "id": "pokedex_plus",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.3.4",
+      "sha256": "00a040bad3da328309f61439c08b0abdc5c81b79d8090f9ca09b4d9a8c32115c"
+    },
+    {
+      "id": "advanced_box_system",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.1.0",
+      "sha256": "d7f340b436d03f663cbf52b7f965f35250035e78966793b80886fdbcb9d089e4"
+    },
+    {
+      "id": "modern_bag",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.6.0",
+      "sha256": "e3636bb9d2f5dd5cd4f6985748d08e94b0fd92330aa2327550fe361f0eb6fd16"
+    },
+    {
+      "id": "item_shortcut",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.4.0",
+      "sha256": "9b9372c19a7e225baab98f023356f3e1b0d9ba43e80a602da5b040d285ab536f"
+    },
+    {
+      "id": "moves_manager",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.1",
+      "sha256": "918cd1f4974818583e1c8117b38cf1504fe187b5da5ccc4abb58c6ef9c7cf764"
+    },
+    {
+      "id": "move_learn_stats",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.2",
+      "sha256": "5e464dfbc543632dd3d3a2bac3d1380f66d1c4cf42994b101f64a4af61fcbf28"
+    },
+    {
+      "id": "hm_anywhere",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.2.0",
+      "sha256": "ecc76b2d5ec73cfa7d39b32f536e62ac5b824ee1a85d91beafd74c97058c1d4e"
+    },
+    {
+      "id": "reusable_machines",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.1",
+      "sha256": "84766c594d2cfb4bb4d370873cefce2b1c5886d6f1d4268158bcc49412fe9776"
+    },
+    {
+      "id": "repel_reuse_prompt",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.0",
+      "sha256": "51b311e0693db92bfb6d55ede6812f2df424676d9d7049b62caf5bff03c3b05a"
+    },
+    {
+      "id": "nickname_changer",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.0",
+      "sha256": "52c604b5f4d7822ad5d4dfc5941927e3740f96cef129c4b965c03a80233a8c57"
+    },
+    {
+      "id": "exp_share_modes",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.0",
+      "sha256": "deb854e4c5c36ea93d6452dda1e401e92ab40cf115dff62d72dc6360d33c0e05"
+    },
+    {
+      "id": "catch_helper",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.4.0",
+      "sha256": "a65cf03c1933064703d9f369b9be2721846cc1492bd692c90dccd9e510b0631f"
+    },
+    {
+      "id": "RUN_MODE",
+      "source": "github",
+      "repo": "masterwebx/gen1recomp-run-mode",
+      "version": "1.2.0",
+      "sha256": "e9fa3da4de2ab0dc0c9e0818364ec73f3c8f607f3aad1bd0000ea63c3a570276"
+    },
+    {
+      "id": "MULTI_SAVE_SLOTS",
+      "source": "github",
+      "repo": "masterwebx/gen1recomp-multi-save-slots",
+      "version": "1.0.0",
+      "sha256": "9f364b0618041cb7abe8bda6f7c3e3d1170282d8dbf3acd20eddadbde053cdcb"
+    },
+    {
+      "id": "gen151",
+      "source": "github",
+      "repo": "wild1walker/Gen151",
+      "version": "1.7.0",
+      "sha256": "034d59cba14543c04bceab63d8f85821c0780bb7b47456e159a9e94e513dfd0f"
+    },
+    {
+      "id": "overworld_wild_spawns",
+      "source": "github",
+      "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
+      "version": "2.1.9",
+      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
+    },
+    {
+      "id": "SHINY_POKEMON",
+      "source": "github",
+      "repo": "masterwebx/gen1recomp-shiny-pokemon",
+      "version": "1.0.1",
+      "sha256": "90d2be6fcec1383bb9beec5df9038308b68fa903eb179840b344c7b6e48ccb59"
+    },
+    {
+      "id": "kanto_achievements",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.6",
+      "sha256": "c85361172e7bc87cc906b09ffd5b81623a6b5d942eab80a1de6b30dbff4bf376"
+    },
+    {
+      "id": "quest_system",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.5",
+      "sha256": "f06c4efed662f5fafd3092f678f3c187bc56d2e0a026c9d69c4b3568b9409694"
+    },
+    {
+      "id": "ashes_of_cinnabar",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.0",
+      "sha256": "f33896d19cb38b2fe1f16cc69c68151fecfbdb9fa194363fc932071425ce387d"
+    },
+    {
+      "id": "echoes_beyond_the_fog",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "2.2.2",
+      "sha256": "dcf28253593a12c2befb338eff4f1607216d58e7680a13e03fb5888eef824b41"
+    },
+    {
+      "id": "poachers_in_the_safari_zone",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.0",
+      "sha256": "68a68b72b3401bc7d6e50ad41ce61126019c51db23656924d729f9c24c2829e6"
+    },
+    {
+      "id": "the_abandoned_cabin",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.0",
+      "sha256": "700026a07618d333f18bef0adacb9bce969b427e0887b24fcb19c3dc72e2810f"
+    },
+    {
+      "id": "the_black_flower",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.0",
+      "sha256": "570da98a699789449137850778613e4caa79b77d59ffd790c1e1d9c89b0dc1ef"
+    },
+    {
+      "id": "the_empty_throne",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.2",
+      "sha256": "89f9ede6bf1fbb19cef0b0bcac88cba8d816d11b1d34acf785cef8d76abee82d"
+    },
+    {
+      "id": "the_sixth_bell",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.1.4",
+      "sha256": "a919a7a6d7ce9c52e1389bc8b7e2b1b347fb5aa419885915d5ae2313a47fb206"
+    },
+    {
+      "id": "the_stolen_fossil",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.1",
+      "sha256": "a6e0f6104646b1c057fb3476807df4bb3a8726cd92d7c990d42f7700ab00b63a"
+    },
+    {
+      "id": "whispers_beneath_cerulean",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.1",
+      "sha256": "425cbb232bf1cd63f553a959a24f74ba9f0f62dab5b2764fd5d99f9ffa9b3031"
+    },
+    {
+      "id": "eevee_three_stones",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.2",
+      "sha256": "291dc3b893098c4231be145e67a6ec660bdc024d7c5a1ae8d6b395c251d5781f"
+    },
+    {
+      "id": "crystal_onix",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.8",
+      "sha256": "355e5ab036abf08ea714121b3ee48543f2628b9178f23b56531d7c09b4dd0a39"
+    }
+  ],
+  "load_order": [
+    "BATTLE_ART_VOXEL_FORK",
+    "gen1_modern_ui",
+    "modern_ui_icon_fix",
+    "new_item_icons",
+    "pokedex_plus",
+    "advanced_box_system",
+    "modern_bag",
+    "item_shortcut",
+    "moves_manager",
+    "move_learn_stats",
+    "hm_anywhere",
+    "reusable_machines",
+    "repel_reuse_prompt",
+    "nickname_changer",
+    "exp_share_modes",
+    "catch_helper",
+    "RUN_MODE",
+    "MULTI_SAVE_SLOTS",
+    "gen151",
+    "overworld_wild_spawns",
+    "SHINY_POKEMON",
+    "kanto_achievements",
+    "quest_system",
+    "ashes_of_cinnabar",
+    "echoes_beyond_the_fog",
+    "poachers_in_the_safari_zone",
+    "the_abandoned_cabin",
+    "the_black_flower",
+    "the_empty_throne",
+    "the_sixth_bell",
+    "the_stolen_fossil",
+    "whispers_beneath_cerulean",
+    "eevee_three_stones",
+    "crystal_onix"
+  ]
+}
