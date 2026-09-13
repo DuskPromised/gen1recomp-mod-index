@@ -1,0 +1,1459 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-13T16:48:46.846454+00:00",
+  "categories": [
+    "ART",
+    "CONTENT",
+    "GAMEPLAY",
+    "MECHANIC",
+    "OPTIONAL",
+    "QOL",
+    "QUALITY_OF_LIFE",
+    "QUEST",
+    "TOOLS",
+    "UI"
+  ],
+  "base_games": [
+    "red",
+    "blue",
+    "yellow"
+  ],
+  "mods": [
+    {
+      "folder": "FAFF0x@advanced_box_system",
+      "id": "advanced_box_system",
+      "title": "Advanced Box System",
+      "author": "FAFF0x",
+      "version": "1.1.0",
+      "categories": [
+        "UI"
+      ],
+      "summary": "Modernizes Bill's PC with instant box switching, direct party/box swaps, animated Pokemon row icons, and a rich selected-Pokemon stats/moves preview in Gen1 Modern UI.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": true,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/advanced_box_system_v1.1.0.zip",
+      "source_zip": "advanced_box_system_v1.1.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@area_dexnav",
+      "id": "area_dexnav",
+      "title": "Area DexNav",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Press SELECT in the overworld to encounter an uncaught Pokemon from the current area's real encounter table.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/area_dexnav_v1.0.0.zip",
+      "source_zip": "area_dexnav_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@ashes_of_cinnabar",
+      "id": "ashes_of_cinnabar",
+      "title": "Ashes of Cinnabar",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A Quest System-compatible adventure unlocked after the Volcano Badge. Explore a burning laboratory beneath Pokemon Mansion, unlock security doors, recover secret files, survive an environmental timer and defeat a Ditto experiment that copies the player's party.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "quest_system"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/ashes_of_cinnabar_v1.0.0.zip",
+      "source_zip": "ashes_of_cinnabar_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "id": "BATTLE_ART_VOXEL_FORK",
+      "title": "Battle Art Voxel Fork",
+      "author": "absol89",
+      "version": "1.10.8",
+      "categories": [
+        "ART",
+        "UI"
+      ],
+      "repo": "https://github.com/absol89/DramaticShapeVoxelMod",
+      "downloadURL": "https://github.com/absol89/DramaticShapeVoxelMod/releases/download/1.10.8/BATTLE_ART_VOXEL_FORK-1.10.8.zip",
+      "source_zip": "BATTLE_ART_VOXEL_FORK-1.10.8.zip",
+      "summary": "A fork of the Dramatic Shape voxel mod aimed at battle art: animated back sprites, selectable sprite generations, and sprite fallback for other sprite mods.",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "conflicts": [],
+      "profile": "content",
+      "api": 2,
+      "folder": "absol89@BATTLE_ART_VOXEL_FORK",
+      "optional_integrations": [],
+      "affects_link": false,
+      "experimental": false,
+      "update_check": "off",
+      "source_scope": "Optional external integration"
+    },
+    {
+      "folder": "FAFF0x@catch_helper",
+      "id": "catch_helper",
+      "title": "Catch Helper",
+      "author": "FAFF0x",
+      "version": "1.4.0",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Whole-number catch HUD with a name-anchored owned marker and corrected Ultra Ball progression.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/catch_helper_v1.4.0.zip",
+      "source_zip": "catch_helper_v1.4.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "id": "CRYSTAL_251",
+      "title": "Crystal 251",
+      "author": "Deftones565",
+      "version": "0.11.6",
+      "categories": [
+        "OPTIONAL",
+        "CONTENT"
+      ],
+      "repo": "https://github.com/Deftones565/gen1recomp-mod-crystal-251",
+      "downloadURL": "https://github.com/Deftones565/gen1recomp-mod-crystal-251/releases/download/v0.11.6/CRYSTAL_251-0.11.6.zip",
+      "source_zip": "CRYSTAL_251-0.11.6.zip",
+      "summary": "Optional expanded-species integration referenced by FAFF0x manifests.",
+      "folder": "Deftones565@CRYSTAL_251",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "profile": "content",
+      "api": 2,
+      "affects_link": false,
+      "experimental": false,
+      "update_check": "off",
+      "source_scope": "Optional external integration"
+    },
+    {
+      "folder": "FAFF0x@crystal_onix",
+      "id": "crystal_onix",
+      "title": "Crystal Onix: The Living Crystal",
+      "author": "FAFF0x",
+      "version": "1.0.8",
+      "categories": [
+        "CONTENT"
+      ],
+      "summary": "Adds Crystal Onix as a Rock/Ice Onix variant shown as #95C directly beneath #095 ONIX in both the stock Pokédex and Pokédex Plus (when installed), with a fully integrated quest and perfect-DV/max-Stat-EXP reward.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [
+        "quest_system@>=1.0.3 <2.0.0"
+      ],
+      "optional_dependencies": [
+        "pokedex_plus@>=1.3.1 <2.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": true,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/crystal_onix_v1.0.8.zip",
+      "source_zip": "crystal_onix_v1.0.8.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off"
+    },
+    {
+      "folder": "FAFF0x@dv_ev_editor",
+      "id": "dv_ev_editor",
+      "title": "DV EV Editor",
+      "author": "FAFF0x",
+      "version": "1.1.0",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Adds an out-of-battle DV and Stat EXP editor to the Pokemon party submenu, with optional Gen1 Modern UI presentation and a START shortcut that instantly maximizes all DVs and Stat EXP for the selected Pokemon.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": true,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/dv_ev_editor_v1.1.0.zip",
+      "source_zip": "dv_ev_editor_v1.1.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@echoes_beyond_the_fog",
+      "id": "echoes_beyond_the_fog",
+      "title": "Echoes Beyond the Fog",
+      "author": "FAFF0x",
+      "version": "2.2.2",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A one-shot post-game lighthouse mystery inspired by the anime giant Dragonite episode, with nine handcrafted dungeon floors, visible interaction markers, optimized dormant quest logic, and fully safe Bill dialogue delegation that preserves the Cell Separator and vanilla chat.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "quest_system@>=1.0.5 <2.0.0"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/echoes_beyond_the_fog_v2.2.2.zip",
+      "source_zip": "echoes_beyond_the_fog_v2.2.2.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@exp_share_modes",
+      "id": "exp_share_modes",
+      "title": "EXP Share Modes",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Adds selectable Off, Classic Even Split, and Modern Progressive EXP sharing modes.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/exp_share_modes_v1.0.0.zip",
+      "source_zip": "exp_share_modes_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@free_master_ball",
+      "id": "free_master_ball",
+      "title": "Free Master Ball",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "GAMEPLAY"
+      ],
+      "summary": "Adds Master Ball to every Poké Mart and sets its buy price to 0.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/free_master_ball_v1.0.0.zip",
+      "source_zip": "free_master_ball_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@free_rare_candy",
+      "id": "free_rare_candy",
+      "title": "FREE RARE CANDY",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Adds RARE CANDY to every standard Poké Mart and makes it completely free.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/free_rare_candy_v1.0.0.zip",
+      "source_zip": "free_rare_candy_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off"
+    },
+    {
+      "id": "gen1_modern_ui",
+      "title": "Gen1 Modern UI",
+      "author": "ArmstrongThomas",
+      "version": "0.9.2",
+      "categories": [
+        "UI",
+        "QOL"
+      ],
+      "repo": "https://github.com/ArmstrongThomas/gen1-modern-ui",
+      "downloadURL": "https://github.com/ArmstrongThomas/gen1-modern-ui/releases/download/v0.9.2/gen1_modern_ui-0.9.2.zip",
+      "source_zip": "gen1_modern_ui-0.9.2.zip",
+      "summary": "Repaints the menus in full window space — responsive dialogue, Party, PC, Trainer Card, Pokedex, Bag and Shop, with themes and a minimal mode.",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "conflicts": [],
+      "profile": "overhaul",
+      "api": 2,
+      "folder": "ArmstrongThomas@gen1_modern_ui",
+      "optional_integrations": [],
+      "affects_link": false,
+      "experimental": false,
+      "update_check": "off",
+      "source_scope": "Required external dependency"
+    },
+    {
+      "folder": "FAFF0x@guaranteed_catch",
+      "id": "guaranteed_catch",
+      "title": "Guaranteed Catch",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "GAMEPLAY"
+      ],
+      "summary": "Makes every registered Poke Ball catch successfully, regardless of HP, status or species catch rate.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [
+        "catch_helper"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/guaranteed_catch_v1.0.0.zip",
+      "source_zip": "guaranteed_catch_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@hm_anywhere",
+      "id": "hm_anywhere",
+      "title": "HM Anywhere",
+      "author": "FAFF0x",
+      "version": "1.2.0",
+      "categories": [
+        "MECHANIC"
+      ],
+      "summary": "Use owned HMs without teaching them. All field HMs are available from Start -> HM; contextual A-button CUT/SURF/STRENGTH can be toggled on/off, with NPC interaction priority while surfing.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/hm_anywhere_v1.2.0.zip",
+      "source_zip": "hm_anywhere_v1.2.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@item_shortcut",
+      "id": "item_shortcut",
+      "title": "Item Shortcut",
+      "author": "FAFF0x",
+      "version": "1.4.0",
+      "categories": [
+        "UI"
+      ],
+      "summary": "Assign five Bag shortcuts, use one FAST item instantly, and remap any keyboard or controller input by pressing it.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "modern_bag"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/item_shortcut_v1.4.0.zip",
+      "source_zip": "item_shortcut_v1.4.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@kanto_achievements",
+      "id": "kanto_achievements",
+      "title": "Kanto Achievements",
+      "author": "FAFF0x",
+      "version": "1.0.6",
+      "categories": [
+        "QUALITY_OF_LIFE"
+      ],
+      "summary": "Adds 100 obtainable achievements with search/filter navigation, detail pages, unlock notifications, and optional Gen1 Modern UI presentation support.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/kanto_achievements_v1.0.6.zip",
+      "source_zip": "kanto_achievements_v1.0.6.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@modern_bag",
+      "id": "modern_bag",
+      "title": "Modern Bag",
+      "author": "FAFF0x",
+      "version": "1.6.0",
+      "categories": [
+        "UI"
+      ],
+      "summary": "Modern inventory pockets with configurable opening tab, hold-to-fast-scroll, Favorites, pinned items, unlimited capacity, touch-friendly keyboard search, TM/HM tools, and optional Gen1 Modern UI presentation.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/modern_bag_v1.6.0.zip",
+      "source_zip": "modern_bag_v1.6.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@modern_battle_ui",
+      "id": "modern_battle_ui",
+      "title": "MODERN BATTLE UI",
+      "author": "FAFF0x",
+      "version": "1.4.6",
+      "categories": [
+        "UI"
+      ],
+      "summary": "Pokemon-inspired modern battle interface with fully mirrored move-learning prompts, source-accurate forget-list selection, direct mobile touch controls, responsive Android/iOS layouts, trainer SHIFT and level-up overlays, caught markers, optional battle log, Party/Bag/Summary, effectiveness, item descriptions and animated EXP.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui@>=0.8.4 <1.0.0",
+        "BATTLE_ART_VOXEL_FORK@>=1.7.8 <2.0.0",
+        "CRYSTAL_251@>=0.10.0 <1.0.0",
+        "new_icons@>=1.1.1 <2.0.0",
+        "new_item_icons@>=1.0.0 <2.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [
+        "jj_exp_bar"
+      ],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/modern_battle_ui_v1.4.6.zip",
+      "source_zip": "modern_battle_ui_v1.4.6.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": "0.0.0-dev || >=0.1.51 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@modern_ui_icon_fix",
+      "id": "modern_ui_icon_fix",
+      "title": "Modern UI Fix",
+      "author": "FAFF0x",
+      "version": "1.2.3",
+      "categories": [
+        "UI"
+      ],
+      "summary": "Runtime compatibility patch for Gen1 Modern UI 0.8.x-0.9.x. Preserves authored Pokemon icons/Pokedex art and fixes battle UI suppression, including a hard full-uiCanvas restore for live BATTLE_ART_VOXEL_FORK staged battles.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [
+        "gen1_modern_ui@>=0.8.1 <0.10.0"
+      ],
+      "optional_dependencies": [
+        "new_icons@>=1.0.0 <2.0.0",
+        "pokedex_plus@>=1.3.3 <2.0.0",
+        "advanced_box_system@>=1.1.0 <2.0.0",
+        "BATTLE_ART_VOXEL_FORK@>=1.7.8 <2.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/modern_ui_fix_v1.2.3.zip",
+      "source_zip": "modern_ui_fix_v1.2.3.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off"
+    },
+    {
+      "folder": "FAFF0x@move_inspector",
+      "id": "move_inspector",
+      "title": "Move Inspector",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Shows type, PP, power, accuracy, effectiveness and STAB for the highlighted battle move. Works with classic and wide battle layouts.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/move_inspector_v1.0.0.zip",
+      "source_zip": "move_inspector_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@move_learn_stats",
+      "id": "move_learn_stats",
+      "title": "Move Learn Stats",
+      "author": "FAFF0x",
+      "version": "1.0.2",
+      "categories": [
+        "QUALITY_OF_LIFE"
+      ],
+      "summary": "Shows POWER and maximum PP while choosing a move to forget, with Gen1 Modern UI support and compatibility with Crystal 251 / other MoveLearnMenu decorators.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/move_learn_stats_v1.0.2.zip",
+      "source_zip": "move_learn_stats_v1.0.2.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": "0.0.0-dev || >=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@moves_manager",
+      "id": "moves_manager",
+      "title": "Moves Manager",
+      "author": "FAFF0x",
+      "version": "1.0.1",
+      "categories": [
+        "UI"
+      ],
+      "summary": "Adds a MOVES page to the Pokemon party submenu with move details, memory, reordering, legal replacement, and optional Gen1 Modern UI presentation.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": true,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/moves_manager_v1.0.1.zip",
+      "source_zip": "moves_manager_v1.0.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@new_game_plus",
+      "id": "new_game_plus",
+      "title": "New Game Plus",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "Post-League New Game Plus with stronger trainers and wild Pokemon, Gym Leader rematches, optional bosses, rewards, and repeatable difficulty cycles.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/new_game_plus_v1.0.0.zip",
+      "source_zip": "new_game_plus_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@new_icons",
+      "id": "new_icons",
+      "title": "NEW ICONS",
+      "author": "FAFF0x",
+      "version": "1.1.1",
+      "categories": [
+        "ART"
+      ],
+      "summary": "Replaces all 251 Gen 1 and Gen 2 party/menu Pokemon icons with the supplied full-color two-frame animated icon set, including compatibility with Crystal 251 and other content overhauls that register their own species icons.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui@>=0.8.1 <0.9.0",
+        "modern_ui_icon_fix@>=1.0.0 <2.0.0",
+        "pokedex_plus@>=1.3.3 <2.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/new_icons_v1.1.1.zip",
+      "source_zip": "new_icons_v1.1.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off"
+    },
+    {
+      "folder": "FAFF0x@new_item_icons",
+      "id": "new_item_icons",
+      "title": "NEW ITEM ICONS",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "UI"
+      ],
+      "summary": "Adds full-color item sprites to Bag, Shop and PC item lists. TM/HM artwork is selected dynamically from the taught move's type.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/new_item_icons_v1.0.0.zip",
+      "source_zip": "new_item_icons_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.51 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@new_sprites",
+      "id": "new_sprites",
+      "title": "NEW SPRITES",
+      "author": "FAFF0x",
+      "version": "1.1.0",
+      "categories": [
+        "ART"
+      ],
+      "summary": "Replaces large Pokemon preview artwork with full-color animated sprites for all 251 Gen 1 and Gen 2 Pokemon. Gen 1 retains front/back animation; Gen 2 uses the supplied animated front sprites and falls through to the active content mod for back sprites.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui@>=0.8.1 <0.9.0",
+        "advanced_box_system@>=1.1.0 <2.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/new_sprites_v1.1.0.zip",
+      "source_zip": "new_sprites_v1.1.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off"
+    },
+    {
+      "folder": "FAFF0x@nickname_changer",
+      "id": "nickname_changer",
+      "title": "Nickname Changer",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Adds a RENAME option to the Pokémon party submenu so any party Pokémon can be nicknamed directly from the menu.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/nickname_changer_v1.0.0.zip",
+      "source_zip": "nickname_changer_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.75 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@performance_monitor",
+      "id": "performance_monitor",
+      "title": "Performance Monitor",
+      "author": "FAFF0x",
+      "version": "1.4.1",
+      "categories": [
+        "TOOLS"
+      ],
+      "summary": "Advanced FPS/per-mod fluidity profiler with sandbox-safe attribution and mod.storage JSON/TXT diagnostic exports for current Gen1Recomp.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/performance_monitor_v1.4.1.zip",
+      "source_zip": "performance_monitor_v1.4.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.51 <2.0.0",
+      "alternate_downloads": [
+        {
+          "label": "Android edition",
+          "name": "performance_monitor_v1.5.0_android_edition.zip",
+          "url": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/performance_monitor_v1.5.0_android_edition.zip"
+        }
+      ]
+    },
+    {
+      "folder": "FAFF0x@poachers_in_the_safari_zone",
+      "id": "poachers_in_the_safari_zone",
+      "title": "Poachers in the Safari Zone",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A Quest System-compatible Safari Zone operation unlocked after the Soul Badge. Track illegal poachers with a temporary team of rescued Safari Pokemon, evade patrols, survive traps and choose a perfect rare Pokemon reward.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "quest_system"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/poachers_in_the_safari_zone_v1.0.0.zip",
+      "source_zip": "poachers_in_the_safari_zone_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@pokedex_plus",
+      "id": "pokedex_plus",
+      "title": "Pokédex Plus",
+      "author": "FAFF0x",
+      "version": "1.3.4",
+      "categories": [
+        "UI"
+      ],
+      "summary": "Enhances the Pokédex with search, stats, habitats, evolutions, moves, regional-style shared-number variants, and pokemon.icon rows compatible with the original Modern UI 0.8.x via Modern UI Icon Fix.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui@>=0.8.1 <0.9.0",
+        "modern_ui_icon_fix@>=1.0.0 <2.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/pokedex_plus_v1.3.4.zip",
+      "source_zip": "pokedex_plus_v1.3.4.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@quest_system",
+      "id": "quest_system",
+      "title": "Quest System",
+      "author": "FAFF0x",
+      "version": "1.0.5",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A reusable, performance-optimized quest journal with objectives, rewards, persistent tracking, cached NPC indicators and optional Gen1 Modern UI presentation.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/quest_system_v1.0.5.zip",
+      "source_zip": "quest_system_v1.0.5.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@repel_reuse_prompt",
+      "id": "repel_reuse_prompt",
+      "title": "Repel Reuse Prompt",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Asks whether to use another Repel when the current Repel wears off.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "modern_bag"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/repel_reuse_prompt_v1.0.0.zip",
+      "source_zip": "repel_reuse_prompt_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@reusable_machines",
+      "id": "reusable_machines",
+      "title": "Reusable Machines",
+      "author": "FAFF0x",
+      "version": "1.0.1",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Makes TMs reusable, forces HM moves to be forgettable in the normal move-learning menu, and displays each TM/HM move name directly in the Bag.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "modern_bag",
+        "moves_manager",
+        "hm_anywhere"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/reusable_machines_v1.0.1.zip",
+      "source_zip": "reusable_machines_v1.0.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@rocket_gym_ambushes",
+      "id": "rocket_gym_ambushes",
+      "title": "Rocket Gym Ambushes",
+      "author": "FAFF0x",
+      "version": "1.0.1",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "After each Gym badge, a vanilla Team Rocket trainer appears near the Gym. Defeat them and recruit one Pokemon from their team.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/rocket_gym_ambushes_v1.0.1.zip",
+      "source_zip": "rocket_gym_ambushes_v1.0.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@summon",
+      "id": "summon",
+      "title": "Summon",
+      "author": "FAFF0x",
+      "version": "1.0.2",
+      "categories": [
+        "QOL"
+      ],
+      "summary": "Adds SUMMON to the Start menu with a true Modern UI numeric keypad and wild encounters.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_modern_ui"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/summon_v1.0.2.zip",
+      "source_zip": "summon_v1.0.2.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@team_rocket_returns",
+      "id": "team_rocket_returns",
+      "title": "Team Rocket Returns",
+      "author": "FAFF0x",
+      "version": "1.0.1",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A multi-city post-Giovanni Team Rocket quest with investigations, scaled battles, a hidden laboratory and a Rocket Case menu entry that disappears after completion.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/team_rocket_returns_v1.0.1.zip",
+      "source_zip": "team_rocket_returns_v1.0.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@the_abandoned_cabin",
+      "id": "the_abandoned_cabin",
+      "title": "The Abandoned Cabin",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A Quest System-compatible adventure unlocked after the Thunder Badge. Follow a sailor's report to an abandoned Route 11 cabin, solve a generator puzzle, defeat a maximum-stat Magneton experiment and rescue a perfect Electabuzz.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "quest_system"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/the_abandoned_cabin_v1.0.0.zip",
+      "source_zip": "the_abandoned_cabin_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@the_black_flower",
+      "id": "the_black_flower",
+      "title": "The Black Flower",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A Quest System-compatible adventure unlocked after the Rainbow Badge. Help Erika explore a corrupted secret garden, survive black spores, defeat possessed Grass Pokemon and destroy the Black Flower's Victreebel guardian.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "quest_system"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/the_black_flower_v1.0.0.zip",
+      "source_zip": "the_black_flower_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@the_empty_throne",
+      "id": "the_empty_throne",
+      "title": "The Empty Throne",
+      "author": "FAFF0x",
+      "version": "1.0.2",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A Quest System-compatible final Rocket adventure unlocked after the Earth Badge. Descend beneath Viridian Gym, survive an elite succession gauntlet, make consequential moral choices and defeat Commander Vesper. v1.0.2 safely delegates vanilla Gym Guide dialogue whether MapScripts.baseTalk returns a ScriptRunner table or Lua function.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "quest_system"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/the_empty_throne_v1.0.2.zip",
+      "source_zip": "the_empty_throne_v1.0.2.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@mew_mirage",
+      "id": "mew_mirage",
+      "title": "The Mirage of Mew",
+      "author": "FAFF0x",
+      "version": "1.0.1",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A post-Earth Badge adventure through Pokemon Mansion, Pokemon Tower, Viridian Forest and Seafoam Islands to encounter and catch Mew.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/mew_mirage_v1.0.1.zip",
+      "source_zip": "mew_mirage_v1.0.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@the_sixth_bell",
+      "id": "the_sixth_bell",
+      "title": "The Sixth Bell",
+      "author": "FAFF0x",
+      "version": "1.1.4",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A Quest System-compatible horror mission unlocked after earning six Badges. Includes persistent completion recovery, conflict-safe Lavender Town interaction, Gengar reward, and zero-overhead palette handling while inactive or completed.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [
+        "quest_system"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/the_sixth_bell_v1.1.4.zip",
+      "source_zip": "the_sixth_bell_v1.1.4.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@the_stolen_fossil",
+      "id": "the_stolen_fossil",
+      "title": "The Stolen Fossil",
+      "author": "FAFF0x",
+      "version": "1.0.1",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A Quest System-compatible investigation unlocked after the Boulder Badge. Accept it from Pewter Museum's accessible front-desk guide, track thieves into Mt. Moon and choose Omanyte or Kabuto.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "quest_system"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/the_stolen_fossil_v1.0.1.zip",
+      "source_zip": "the_stolen_fossil_v1.0.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@eevee_three_stones",
+      "id": "eevee_three_stones",
+      "title": "The Three-Stone Covenant",
+      "author": "FAFF0x",
+      "version": "1.0.2",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A quest unlocked after any three Gym Badges with robust save detection, three elemental trials and all three Eevee evolutions as rewards.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "quest_system@>=1.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/eevee_three_stones_v1.0.2.zip",
+      "source_zip": "eevee_three_stones_v1.0.2.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@trade_evolution_fix",
+      "id": "trade_evolution_fix",
+      "title": "Trade Evolution Fix",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "GAMEPLAY"
+      ],
+      "summary": "Converts the four Generation I trade evolutions into level evolutions at level 40.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": true,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/trade_evolution_fix_v1.0.0.zip",
+      "source_zip": "trade_evolution_fix_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.0.0-0 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@all_tm_shop",
+      "id": "all_tm_shop",
+      "title": "Universal Free TM Shop",
+      "author": "FAFF0x",
+      "version": "1.0.0",
+      "categories": [
+        "QUALITY_OF_LIFE"
+      ],
+      "summary": "Adds a dedicated free TM Shop to every Poke Mart. Clerks offer the normal shop or a separate catalogue containing all Generation I TMs at no cost.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "modern_bag"
+      ],
+      "optional_integrations": [],
+      "conflicts": [
+        "all_tm_hm_unlocker"
+      ],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/all_tm_shop_v1.0.0.zip",
+      "source_zip": "all_tm_shop_v1.0.0.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    },
+    {
+      "folder": "FAFF0x@whispers_beneath_cerulean",
+      "id": "whispers_beneath_cerulean",
+      "title": "Whispers Beneath Cerulean",
+      "author": "FAFF0x",
+      "version": "1.0.1",
+      "categories": [
+        "CONTENT",
+        "QUEST"
+      ],
+      "summary": "A Quest System-compatible adventure unlocked after the Cascade Badge. Explore a custom canal dungeon beneath Cerulean, activate three valves, defeat contaminated Water Pokemon and rescue a Starmie with maximum DVs and EVs.",
+      "tags": [],
+      "api": 2,
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "quest_system"
+      ],
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/FAFF0x/gen1recomp",
+      "downloadURL": "https://raw.githubusercontent.com/FAFF0x/gen1recomp/main/whispers_beneath_cerulean_v1.0.1.zip",
+      "source_zip": "whispers_beneath_cerulean_v1.0.1.zip",
+      "source_scope": "FAFF0x/gen1recomp",
+      "update_check": "off",
+      "game_version": ">=0.1.38 <2.0.0"
+    }
+  ],
+  "carts": [],
+  "index_notes": {
+    "relationship_fields": {
+      "dependencies": "Hard manifest dependencies. Required.",
+      "optional_dependencies": "Dependencies explicitly declared optional by the mod manifest.",
+      "optional_integrations": "Documented soft/coexistence integrations. Not required.",
+      "conflicts": "Documented conflicts."
+    },
+    "download_policy": "Author-hosted downloads only. No ROMs or mirrored mod ZIP binaries."
+  }
+}
