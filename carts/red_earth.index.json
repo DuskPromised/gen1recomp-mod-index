@@ -4,7 +4,7 @@
   "title": "Pokémon Red Earth",
   "author": "Adam M. Aguilera",
   "summary": "A modernized Kanto with voxels, all 151, visible wilds, quests, modern UI, and quality-of-life upgrades.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "base": "red",
   "seal": "sealed+",
   "shell": "#b3202a",
@@ -301,15 +301,15 @@
   ],
   "description_url": "data/carts/DuskPromised@red_earth/description.md",
   "latest": {
-    "version": "1.0.0",
-    "name": "1.0.0",
+    "version": "1.0.1",
+    "name": "1.0.1",
     "prerelease": false,
     "zip": {
-      "name": "red_earth-1.0.0.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.0.g1rcart",
-      "size": 9554,
-      "sha256": "a0a740f580eafa7cf25a123c0fbc0564d60cad3e942ed4512ea8eabed0b6d90a"
+      "name": "red_earth-1.0.1.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.1.g1rcart",
+      "size": 18972
     }
   },
-  "update_check": "ok"
+  "update_check": "ok",
+  "thumbnail": "data/carts/DuskPromised@red_earth/thumbnail.png"
 }
