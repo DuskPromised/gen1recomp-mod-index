@@ -29,7 +29,12 @@ jobs:
           assert d["schema_version"]==1
           ids=[m["id"] for m in d["mods"]]
           assert len(ids)==len(set(ids))
-          assert all(m.get("downloadURL","").startswith("https://") for m in d["mods"])
+          for m in d["mods"]:
+              url=m.get("downloadURL") or (((m.get("latest") or {}).get("zip") or {}).get("url"))
+              if url is not None:
+                  assert url.startswith("https://"), (m["id"], url)
+              else:
+                  assert m.get("update_check") == "no installable release", m["id"]
           print("validated",len(ids),"entries")
           PY
       - name: Commit verified changes
