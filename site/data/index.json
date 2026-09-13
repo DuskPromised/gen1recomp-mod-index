@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-13T22:47:26.139731+00:00",
+  "generated_at": "2026-09-13T23:08:36.772535+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -6600,50 +6600,39 @@
       "game_version": ">=0.0.0-0 <2.0.0"
     },
     {
-      "folder": "masterwebx@MULTI_SAVE_SLOTS",
+      "folder": "DuskPromised@MULTI_SAVE_SLOTS",
       "id": "MULTI_SAVE_SLOTS",
-      "title": "Multiple Save Slots",
-      "author": "masterwebx",
-      "version": "1.0.0",
+      "title": "Multiple Save Slots (Cart-Aware Patch)",
+      "author": "masterwebx; cart patch by DuskPromised",
+      "version": "1.0.1",
       "categories": [
-        "GAMEPLAY",
         "QOL"
       ],
-      "repo": "https://github.com/masterwebx/gen1recomp-multi-save-slots",
-      "summary": "CONTINUE/SAVE pick among real slots; NEW SAVE writes immediately; MANAGE deletes a slot.",
       "tags": [
+        "save",
+        "multiple saves",
         "save slots",
-        "wex"
+        "custom carts",
+        "compatibility"
       ],
-      "github": "masterwebx/gen1recomp-multi-save-slots",
       "api": 2,
       "profile": "content",
-      "thumbnail": "data/mods/masterwebx@MULTI_SAVE_SLOTS/thumbnail.png",
-      "description_url": "data/mods/masterwebx@MULTI_SAVE_SLOTS/description.md",
-      "latest": {
-        "version": "1.0.0",
-        "tag": "v1.0.0",
-        "name": "v1.0.0",
-        "prerelease": false,
-        "published_at": "2026-08-02T04:33:51Z",
-        "zip": {
-          "name": "MULTI_SAVE_SLOTS-1.0.0.zip",
-          "url": "https://github.com/masterwebx/gen1recomp-multi-save-slots/releases/download/v1.0.0/MULTI_SAVE_SLOTS-1.0.0.zip",
-          "size": 4910
-        }
-      },
-      "update_check": "ok",
-      "downloads": {
-        "total": 5635,
-        "recent": 1206,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
-      },
-      "source_scope": "Community catalog",
+      "game_version": ">=0.1.0 <2.0.0",
+      "permissions": [],
+      "dependencies": [],
       "optional_dependencies": [],
       "optional_integrations": [],
-      "dependencies": [],
-      "conflicts": []
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+      "github": "DuskPromised/gen1recomp-mod-index",
+      "license": "MIT",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@MULTI_SAVE_SLOTS/MULTI_SAVE_SLOTS-1.0.1.zip",
+      "source_zip": "MULTI_SAVE_SLOTS-1.0.1.zip",
+      "summary": "Cart-aware Multiple Save Slots patch: uses cart-specific save registries inside custom carts and normal slots elsewhere.",
+      "source_scope": "DuskPromised compatibility patch",
+      "update_check": "off"
     },
     {
       "folder": "masterwebx@MUSIC_PLAYER",
