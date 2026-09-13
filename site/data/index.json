@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-13T23:11:40.796018+00:00",
+  "generated_at": "2026-09-13T23:39:53.706549+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -11536,8 +11536,8 @@
       "id": "red_earth",
       "title": "Pokémon Red Earth",
       "author": "Adam M. Aguilera",
-      "summary": "Modern Kanto with voxels, all 151, avatar choice, shiny starters, Mew quest, story quests, refined menus, and QOL.",
-      "version": "1.0.8",
+      "summary": "Modern Kanto with voxels, all 151, visible wilds, followers, shiny starters, Mew quest, story quests, and QOL.",
+      "version": "1.0.9",
       "base": "red",
       "seal": "sealed+",
       "shell": "#b3202a",
@@ -11703,6 +11703,13 @@
           }
         },
         {
+          "id": "overworld_wild_spawns",
+          "source": "github",
+          "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
+          "version": "2.1.9",
+          "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
+        },
+        {
           "id": "mew_mirage",
           "source": "github",
           "repo": "FAFF0x/gen1recomp",
@@ -11839,6 +11846,7 @@
         "MULTI_SAVE_SLOTS",
         "leaf_avatar",
         "gen151",
+        "overworld_wild_spawns",
         "mew_mirage",
         "shiny_starters_gifts",
         "SHINY_POKEMON",
@@ -11858,14 +11866,14 @@
       ],
       "description_url": "data/carts/DuskPromised@red_earth/description.md",
       "latest": {
-        "version": "1.0.8",
-        "name": "1.0.8",
+        "version": "1.0.9",
+        "name": "1.0.9",
         "prerelease": false,
         "zip": {
-          "name": "red_earth-1.0.8.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.8.g1rcart",
-          "size": 226935,
-          "sha256": "b416e6abd4bb7cf684cd3d40780e5f9b754bcaccda5b450e1c682e643e4d634f"
+          "name": "red_earth-1.0.9.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.9.g1rcart",
+          "size": 227225,
+          "sha256": "27dbb823291c5c7d6b0f29057f91a7ac3907bf492d0747de0b1e8389f86bf339"
         }
       },
       "update_check": "ok",
