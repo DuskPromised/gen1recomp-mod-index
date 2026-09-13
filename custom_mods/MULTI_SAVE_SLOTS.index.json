@@ -1,0 +1,35 @@
+{
+  "folder": "DuskPromised@MULTI_SAVE_SLOTS",
+  "id": "MULTI_SAVE_SLOTS",
+  "title": "Multiple Save Slots (Cart-Aware Patch)",
+  "author": "masterwebx; cart patch by DuskPromised",
+  "version": "1.0.1",
+  "categories": [
+    "QOL"
+  ],
+  "tags": [
+    "save",
+    "multiple saves",
+    "save slots",
+    "custom carts",
+    "compatibility"
+  ],
+  "api": 2,
+  "profile": "content",
+  "game_version": ">=0.1.0 <2.0.0",
+  "permissions": [],
+  "dependencies": [],
+  "optional_dependencies": [],
+  "optional_integrations": [],
+  "conflicts": [],
+  "affects_link": false,
+  "experimental": false,
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "license": "MIT",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@MULTI_SAVE_SLOTS/MULTI_SAVE_SLOTS-1.0.1.zip",
+  "source_zip": "MULTI_SAVE_SLOTS-1.0.1.zip",
+  "summary": "Cart-aware Multiple Save Slots patch: uses cart-specific save registries inside custom carts and normal slots elsewhere.",
+  "source_scope": "DuskPromised compatibility patch",
+  "update_check": "off"
+}

@@ -1,0 +1,92 @@
+name: Build cart-aware Multi Save patch
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "patches/multi-save-slots-cart-aware/**"
+      - ".github/workflows/build-multi-save-cartfix.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: multi-save-cartfix-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax and patch audit
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          luac -p patches/multi-save-slots-cart-aware/main.lua
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("patches/multi-save-slots-cart-aware")
+          m=json.loads((root/"manifest.json").read_text())
+          assert m["id"]=="MULTI_SAVE_SLOTS"
+          assert m["version"]=="1.0.1"
+          src=(root/"main.lua").read_text()
+          for needle in (
+              "SaveData.listCartSlots",
+              "SaveData.activeCartSlot",
+              "SaveData.createCartSlot",
+              "SaveData.setActiveCartSlot",
+              "SaveData.deleteCartSlot",
+              "opts.cartSlots = mergeSaveSlots",
+              '"cart_" .. cartId',
+          ):
+              assert needle in src, needle
+          print("PATCH AUDIT PASS")
+          PY
+
+      - name: Package deterministic v1.0.1 ZIP
+        run: |
+          mkdir -p "site/data/mods/DuskPromised@MULTI_SAVE_SLOTS"
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+          src=Path("patches/multi-save-slots-cart-aware")
+          out=Path("site/data/mods/DuskPromised@MULTI_SAVE_SLOTS/MULTI_SAVE_SLOTS-1.0.1.zip")
+          files=["main.lua","manifest.json","README.md","LICENSE"]
+          with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+              for name in files:
+                  info=zipfile.ZipInfo("MULTI_SAVE_SLOTS/"+name)
+                  info.date_time=(2026,1,1,0,0,0)
+                  info.compress_type=zipfile.ZIP_DEFLATED
+                  info.external_attr=0o100644 << 16
+                  z.writestr(info,(src/name).read_bytes())
+          body=out.read_bytes()
+          sha=hashlib.sha256(body).hexdigest()
+          Path("custom_mods/MULTI_SAVE_SLOTS.sha256").write_text(sha+"  "+out.name+"\n")
+          print("bytes:",len(body))
+          print("sha256:",sha)
+          PY
+
+      - name: Commit packaged patch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f \
+            "site/data/mods/DuskPromised@MULTI_SAVE_SLOTS/MULTI_SAVE_SLOTS-1.0.1.zip" \
+            "custom_mods/MULTI_SAVE_SLOTS.sha256"
+          if git diff --cached --quiet; then
+            echo "Patch archive already current."
+          else
+            git commit -m "Publish cart-aware Multi Save v1.0.1"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh combined Gen 1 index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run sync.yml --ref main

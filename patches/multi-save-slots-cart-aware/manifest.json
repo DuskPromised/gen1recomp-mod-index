@@ -1,0 +1,16 @@
+{
+  "id": "MULTI_SAVE_SLOTS",
+  "name": "Multiple Save Slots",
+  "version": "1.0.1",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "QOL",
+  "game_version": ">=0.1.0 <2.0.0",
+  "priority": 40,
+  "author": "masterwebx; cart-aware patch by DuskPromised",
+  "dependencies": [],
+  "permissions": [],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "CONTINUE and SAVE pick slots in both base games and custom carts. NEW SAVE writes immediately; delete removes the slot."
+}

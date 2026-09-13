@@ -188,6 +188,34 @@ if GENERATION=="gen1":
   mods[mid]=x
   community_imported += 1
 
+# Local compatibility builds maintained by this index. These are applied last
+# so a patched build can intentionally override the same id from the community
+# feed while preserving the original author's attribution and license.
+custom_dir=ROOT/"custom_mods"
+if GENERATION=="gen1" and custom_dir.exists():
+ for custom_file in sorted(custom_dir.glob("*.index.json")):
+  try:
+   x=json.loads(custom_file.read_text(encoding="utf-8"))
+  except Exception as e:
+   fail.append(f"{custom_file}: {e}")
+   continue
+  mid=x.get("id")
+  if not mid:
+   fail.append(f"{custom_file}: id missing")
+   continue
+  if not x.get("downloadURL"):
+   fail.append(f"{custom_file}: downloadURL missing")
+   continue
+  x.setdefault("dependencies",[])
+  x.setdefault("optional_dependencies",[])
+  x.setdefault("optional_integrations",[])
+  x.setdefault("conflicts",[])
+  x.setdefault("permissions",[])
+  x.setdefault("profile","content")
+  x.setdefault("api",2)
+  x.setdefault("source_scope","Local compatibility patch")
+  mods[mid]=x
+
 if fail:
  print("\n".join("ERROR: "+x for x in fail),file=sys.stderr)
  sys.exit(1)
