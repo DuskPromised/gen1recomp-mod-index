@@ -1,0 +1,101 @@
+name: Build Red Earth cart
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "cart_source/red_earth/**"
+      - ".github/workflows/build-red-earth.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: red-earth-cart-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build clean RGB cart label
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          src = Path("site/data/carts/DuskPromised@red_earth/thumbnail-hd.jpg")
+          dst = Path("cart_source/red_earth/label.png")
+          im = Image.open(src).convert("RGB")
+          im = im.resize((320, 320), Image.Resampling.LANCZOS)
+          im.save(dst, "PNG", optimize=True)
+          size = dst.stat().st_size
+          print(f"label: {im.size[0]}x{im.size[1]} RGB, {size} bytes")
+          if size >= 256 * 1024:
+              raise SystemExit("label exceeds cartkit warning threshold")
+          PY
+
+      - name: Fetch official cartkit
+        run: |
+          curl -fsSL \
+            https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py \
+            -o /tmp/cartkit.py
+
+      - name: Pack Red Earth v1.0.2
+        run: |
+          python /tmp/cartkit.py pack cart_source/red_earth \
+            -o /tmp/red_earth-1.0.2.g1rcart
+
+      - name: Publish cart and update index metadata
+        run: |
+          mkdir -p "site/data/carts/DuskPromised@red_earth"
+          cp /tmp/red_earth-1.0.2.g1rcart \
+            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.2.g1rcart"
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+
+          cart = Path("site/data/carts/DuskPromised@red_earth/red_earth-1.0.2.g1rcart")
+          meta_path = Path("carts/red_earth.index.json")
+          meta = json.loads(meta_path.read_text(encoding="utf-8"))
+          body = cart.read_bytes()
+
+          meta["version"] = "1.0.2"
+          meta["latest"] = {
+              "version": "1.0.2",
+              "name": "1.0.2",
+              "prerelease": False,
+              "zip": {
+                  "name": cart.name,
+                  "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.2.g1rcart",
+                  "size": len(body),
+                  "sha256": hashlib.sha256(body).hexdigest()
+              }
+          }
+          meta["update_check"] = "ok"
+          meta_path.write_text(
+              json.dumps(meta, indent=2, ensure_ascii=False) + "\n",
+              encoding="utf-8"
+          )
+          print("cart bytes:", len(body))
+          print("cart sha256:", hashlib.sha256(body).hexdigest())
+          PY
+
+      - name: Commit Red Earth v1.0.2
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.2.g1rcart" \
+            "carts/red_earth.index.json"
+          if git diff --cached --quiet; then
+            echo "Red Earth v1.0.2 is already published."
+            exit 0
+          fi
+          git commit -m "Publish Red Earth v1.0.2 HD cart label"
+          git pull --rebase origin main
+          git push
