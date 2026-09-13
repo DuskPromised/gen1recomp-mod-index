@@ -7,6 +7,7 @@ on:
     branches: ["main"]
     paths:
       - "tools/sync_index.py"
+      - "carts/**"
       - ".github/workflows/sync.yml"
 permissions:
   contents: write
