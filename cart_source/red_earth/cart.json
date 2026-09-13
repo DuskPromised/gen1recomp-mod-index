@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "red_earth",
   "title": "Pokémon Red Earth",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
   "summary": "Modern Kanto with voxels, all 151, avatar choice, shiny starters, Mew quest, story quests, refined menus, and QOL.",
@@ -133,9 +133,9 @@
     {
       "id": "MULTI_SAVE_SLOTS",
       "source": "github",
-      "repo": "masterwebx/gen1recomp-multi-save-slots",
-      "version": "1.0.0",
-      "sha256": "9f364b0618041cb7abe8bda6f7c3e3d1170282d8dbf3acd20eddadbde053cdcb"
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "1.0.1",
+      "sha256": "ba71fc0e46e90812b254921bfa1a8a0763e65d9a34bb252e21c1247a6d61044b"
     },
     {
       "id": "leaf_avatar",
