@@ -47,5 +47,6 @@ jobs:
             echo "Index already current."
           else
             git commit -m "Sync FAFF0x Gen 1 mod index"
+            git pull --rebase origin main
             git push
           fi
