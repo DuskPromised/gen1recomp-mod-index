@@ -9,3 +9,5 @@ A curated Pokémon Red cart combining voxel battles, all 151 obtainable in one s
 **Choose Your Avatar** adds Oak's boy/girl question and applies the selected player avatar across the game.
 
 The cart uses `sealed+`, so the pinned set and load order stay defined while individual pinned mods can still be toggled on or off.
+
+The v1.0.5 cart contains 33 pinned mods.
