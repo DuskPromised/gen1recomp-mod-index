@@ -1,5 +1,5 @@
 name: Deploy GitHub Pages
-# Publishes the current repository state, including site/data/index.json
+# Publishes the current repository state, including Red Earth v1.0.1 artwork.
 on:
   push:
     branches: ["main"]
