@@ -22,20 +22,21 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Build clean RGB cart label
+      - name: Verify clean RGB cart label
         run: |
-          python -m pip install --quiet pillow
           python - <<'PY'
-          from PIL import Image
           from pathlib import Path
-          src = Path("site/data/carts/DuskPromised@red_earth/thumbnail-hd.jpg")
-          dst = Path("cart_source/red_earth/label.png")
-          im = Image.open(src).convert("RGB")
-          im = im.resize((320, 320), Image.Resampling.LANCZOS)
-          im.save(dst, "PNG", optimize=True)
-          size = dst.stat().st_size
-          print(f"label: {im.size[0]}x{im.size[1]} RGB, {size} bytes")
-          if size >= 256 * 1024:
+          import struct
+
+          p = Path("cart_source/red_earth/label.png")
+          b = p.read_bytes()
+          if b[:8] != b"\x89PNG\r\n\x1a\n":
+              raise SystemExit("label.png is not a PNG")
+          width, height, bit_depth, color_type = struct.unpack(">IIBB", b[16:26])
+          print(f"label: {width}x{height}, bit depth {bit_depth}, color type {color_type}, {len(b)} bytes")
+          if color_type != 2:
+              raise SystemExit("label must be true-color RGB PNG")
+          if len(b) >= 256 * 1024:
               raise SystemExit("label exceeds cartkit warning threshold")
           PY
 
