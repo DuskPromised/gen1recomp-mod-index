@@ -1,4 +1,5 @@
 name: Build Red Earth cart
+# rebuild-safe: v1.0.8 cart-aware saves
 
 on:
   workflow_dispatch:
