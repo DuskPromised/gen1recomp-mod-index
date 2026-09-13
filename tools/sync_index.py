@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import io, json, os, re, sys, urllib.request, zipfile
+import io, json, os, re, sys, urllib.request, urllib.parse, zipfile
 from pathlib import Path
 from datetime import datetime, timezone
 
