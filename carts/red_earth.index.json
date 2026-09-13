@@ -4,7 +4,7 @@
   "title": "Pokémon Red Earth",
   "author": "Adam M. Aguilera",
   "summary": "A modernized Kanto with voxels, all 151, avatar choice, quests, refined menus, and quality-of-life upgrades.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "base": "red",
   "seal": "sealed+",
   "shell": "#b3202a",
@@ -300,14 +300,14 @@
   ],
   "description_url": "data/carts/DuskPromised@red_earth/description.md",
   "latest": {
-    "version": "1.0.4",
-    "name": "1.0.4",
+    "version": "1.0.5",
+    "name": "1.0.5",
     "prerelease": false,
     "zip": {
-      "name": "red_earth-1.0.4.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.4.g1rcart",
-      "size": 226367,
-      "sha256": "6895f391af337d712495dec86a74479d56829e1b61e2adad375375fddb78bdad"
+      "name": "red_earth-1.0.5.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.5.g1rcart",
+      "size": 226227,
+      "sha256": "f3824b3df3245a888239bef833364cd307b21b45a11cda5c7a005a61706028d1"
     }
   },
   "update_check": "ok",
