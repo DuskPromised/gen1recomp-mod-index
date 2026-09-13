@@ -23,22 +23,17 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Verify clean RGB cart label
+      - name: Build 256px RGB cart label from repository artwork
         run: |
+          python -m pip install --quiet pillow
           python - <<'PY'
+          from PIL import Image
           from pathlib import Path
-          import struct
-
-          p = Path("cart_source/red_earth/label.png")
-          b = p.read_bytes()
-          if b[:8] != b"\x89PNG\r\n\x1a\n":
-              raise SystemExit("label.png is not a PNG")
-          width, height, bit_depth, color_type = struct.unpack(">IIBB", b[16:26])
-          print(f"label: {width}x{height}, bit depth {bit_depth}, color type {color_type}, {len(b)} bytes")
-          if color_type != 2:
-              raise SystemExit("label must be true-color RGB PNG")
-          if len(b) >= 256 * 1024:
-              raise SystemExit("label exceeds cartkit warning threshold")
+          src = Path("site/data/carts/DuskPromised@red_earth/thumbnail.jpg")
+          dst = Path("cart_source/red_earth/label.png")
+          im = Image.open(src).convert("RGB").resize((256, 256), Image.Resampling.LANCZOS)
+          im.save(dst, "PNG", optimize=True)
+          print("label:", im.size, im.mode, dst.stat().st_size, "bytes")
           PY
 
       - name: Fetch official cartkit
@@ -47,37 +42,38 @@ jobs:
             https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py \
             -o /tmp/cartkit.py
 
-      - name: Pack Red Earth v1.0.2
+      - name: Pack Red Earth v1.0.4
         run: |
           python /tmp/cartkit.py pack cart_source/red_earth \
-            -o /tmp/red_earth-1.0.2.g1rcart
+            -o /tmp/red_earth-1.0.4.g1rcart
 
       - name: Publish cart and update index metadata
         run: |
           mkdir -p "site/data/carts/DuskPromised@red_earth"
-          cp /tmp/red_earth-1.0.2.g1rcart \
-            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.2.g1rcart"
+          cp /tmp/red_earth-1.0.4.g1rcart \
+            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.4.g1rcart"
           python - <<'PY'
           import hashlib, json
           from pathlib import Path
 
-          cart = Path("site/data/carts/DuskPromised@red_earth/red_earth-1.0.2.g1rcart")
+          cart = Path("site/data/carts/DuskPromised@red_earth/red_earth-1.0.4.g1rcart")
           meta_path = Path("carts/red_earth.index.json")
           meta = json.loads(meta_path.read_text(encoding="utf-8"))
           body = cart.read_bytes()
 
-          meta["version"] = "1.0.2"
+          meta["version"] = "1.0.4"
           meta["latest"] = {
-              "version": "1.0.2",
-              "name": "1.0.2",
+              "version": "1.0.4",
+              "name": "1.0.4",
               "prerelease": False,
               "zip": {
                   "name": cart.name,
-                  "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.2.g1rcart",
+                  "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.4.g1rcart",
                   "size": len(body),
                   "sha256": hashlib.sha256(body).hexdigest()
               }
           }
+          meta["thumbnail"] = "data/carts/DuskPromised@red_earth/thumbnail.jpg"
           meta["update_check"] = "ok"
           meta_path.write_text(
               json.dumps(meta, indent=2, ensure_ascii=False) + "\n",
@@ -87,18 +83,18 @@ jobs:
           print("cart sha256:", hashlib.sha256(body).hexdigest())
           PY
 
-      - name: Commit Red Earth v1.0.2
+      - name: Commit Red Earth v1.0.4
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
-            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.2.g1rcart" \
+            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.4.g1rcart" \
             "carts/red_earth.index.json"
           if git diff --cached --quiet; then
-            echo "Red Earth v1.0.2 is already published."
+            echo "Red Earth v1.0.4 is already published."
             exit 0
           fi
-          git commit -m "Publish Red Earth v1.0.2 HD cart label"
+          git commit -m "Publish Red Earth v1.0.4 HD cart label"
           git pull --rebase origin main
           git push
 
