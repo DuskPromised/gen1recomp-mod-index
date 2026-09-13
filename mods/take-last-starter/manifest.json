@@ -1,0 +1,21 @@
+{
+  "id": "take_last_starter",
+  "name": "Take the Last Starter",
+  "version": "1.0.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "QOL",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 50,
+  "author": "Adam M. Aguilera",
+  "dependencies": [],
+  "optional_dependencies": [
+    "shiny_starters_gifts@>=1.2.0 <2.0.0"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "After the normal Red/Blue starter choice, lets the player claim Oak's remaining starter once. Uses give_pokemon so shiny gift mods can transform it."
+}

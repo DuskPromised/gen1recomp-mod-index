@@ -1,0 +1,105 @@
+name: Build Take the Last Starter
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "mods/take-last-starter/**"
+      - ".github/workflows/build-take-last-starter.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: take-last-starter-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax and behavior audit
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          luac -p mods/take-last-starter/main.lua
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root=Path("mods/take-last-starter")
+          manifest=json.loads((root/"manifest.json").read_text())
+          src=(root/"main.lua").read_text()
+
+          assert manifest["id"]=="take_last_starter"
+          assert manifest["version"]=="1.0.0"
+          assert "shiny_starters_gifts@>=1.2.0 <2.0.0" in manifest["optional_dependencies"]
+
+          # Critical behavior contracts.
+          assert 'flags.EVENT_GOT_STARTER' in src
+          assert 'MOD_TAKE_LAST_STARTER_CLAIMED' in src
+          assert '{ "give_pokemon", info.species, 5 }' in src
+          assert '{ "jump_if_false", "no_room" }' in src
+          assert '{ "hide_object", "OAKS_LAB", info.object }' in src
+          assert src.index('{ "give_pokemon", info.species, 5 }') < src.index('{ "hide_object", "OAKS_LAB", info.object }')
+          for species in ("BULBASAUR","CHARMANDER","SQUIRTLE"):
+              assert species in src
+          for text in (
+              "TEXT_OAKSLAB_BULBASAUR_POKE_BALL",
+              "TEXT_OAKSLAB_CHARMANDER_POKE_BALL",
+              "TEXT_OAKSLAB_SQUIRTLE_POKE_BALL",
+          ):
+              assert text in src
+
+          print("TAKE LAST STARTER AUDIT PASS")
+          PY
+
+      - name: Package deterministic v1.0.0 ZIP
+        run: |
+          mkdir -p "site/data/mods/DuskPromised@take_last_starter"
+          python - <<'PY'
+          import hashlib, zipfile
+          from pathlib import Path
+
+          src=Path("mods/take-last-starter")
+          out=Path("site/data/mods/DuskPromised@take_last_starter/take_last_starter-1.0.0.zip")
+          files=["main.lua","manifest.json","README.md","LICENSE"]
+
+          with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+              for name in files:
+                  info=zipfile.ZipInfo("take_last_starter/"+name)
+                  info.date_time=(2026,1,1,0,0,0)
+                  info.compress_type=zipfile.ZIP_DEFLATED
+                  info.external_attr=0o100644 << 16
+                  z.writestr(info,(src/name).read_bytes())
+
+          body=out.read_bytes()
+          sha=hashlib.sha256(body).hexdigest()
+          Path("custom_mods/take_last_starter.sha256").write_text(sha+"  "+out.name+"\n")
+          print("bytes:",len(body))
+          print("sha256:",sha)
+          PY
+
+      - name: Commit packaged mod
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f \
+            "site/data/mods/DuskPromised@take_last_starter/take_last_starter-1.0.0.zip" \
+            "custom_mods/take_last_starter.sha256"
+          if git diff --cached --quiet; then
+            echo "Take the Last Starter archive already current."
+          else
+            git commit -m "Publish Take the Last Starter v1.0.0"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh combined Gen 1 index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run sync.yml --ref main
