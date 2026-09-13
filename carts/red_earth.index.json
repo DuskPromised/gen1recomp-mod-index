@@ -3,8 +3,8 @@
   "id": "red_earth",
   "title": "Pokémon Red Earth",
   "author": "Adam M. Aguilera",
-  "summary": "A modernized Kanto with voxels, all 151, boy/girl avatar choice, quests, refined menus, and quality-of-life upgrades.",
-  "version": "1.0.5",
+  "summary": "Modern Kanto with voxels, all 151, avatar choice, Mirage of Mew, story quests, refined menus, and QOL upgrades.",
+  "version": "1.0.6",
   "base": "red",
   "seal": "sealed+",
   "shell": "#b3202a",
@@ -162,7 +162,17 @@
       "source": "github",
       "repo": "wild1walker/Gen151",
       "version": "1.7.0",
-      "sha256": "034d59cba14543c04bceab63d8f85821c0780bb7b47456e159a9e94e513dfd0f"
+      "sha256": "034d59cba14543c04bceab63d8f85821c0780bb7b47456e159a9e94e513dfd0f",
+      "options": {
+        "mew": false
+      }
+    },
+    {
+      "id": "mew_mirage",
+      "source": "github",
+      "repo": "FAFF0x/gen1recomp",
+      "version": "1.0.1",
+      "sha256": "472a0517e51c4fb7a8a40a5e30edbc39fb8e24d93c4624670cf8abbc37fa1ec1"
     },
     {
       "id": "SHINY_POKEMON",
@@ -283,6 +293,7 @@
     "MULTI_SAVE_SLOTS",
     "leaf_avatar",
     "gen151",
+    "mew_mirage",
     "SHINY_POKEMON",
     "kanto_achievements",
     "quest_system",
@@ -300,14 +311,14 @@
   ],
   "description_url": "data/carts/DuskPromised@red_earth/description.md",
   "latest": {
-    "version": "1.0.5",
-    "name": "1.0.5",
+    "version": "1.0.6",
+    "name": "1.0.6",
     "prerelease": false,
     "zip": {
-      "name": "red_earth-1.0.5.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.5.g1rcart",
-      "size": 226227,
-      "sha256": "f3824b3df3245a888239bef833364cd307b21b45a11cda5c7a005a61706028d1"
+      "name": "red_earth-1.0.6.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart",
+      "size": 226537,
+      "sha256": "0c075eedf7790cd840e6548d3fcd124a127acc43039f908f1902c82361cf2e68"
     }
   },
   "update_check": "ok",
