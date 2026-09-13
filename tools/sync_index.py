@@ -8,6 +8,7 @@ GENERATION=os.environ.get("GENERATION","gen1")
 ROOT=Path(__file__).parents[1]
 OUT=ROOT/"site"/"data"
 OUT.mkdir(parents=True,exist_ok=True)
+COMMUNITY_FEED="https://raw.githubusercontent.com/bryanthaboi/gen1recomp-mod-index/main/site/data/index.json"
 
 UA={"User-Agent":"DuskPromised-GenRecomp-Index","Accept":"application/vnd.github+json"}
 TOKEN=os.environ.get("GITHUB_TOKEN")
@@ -59,6 +60,11 @@ def authors(m):
 def version_key(v):
  return tuple(int(x) for x in re.findall(r"\d+",str(v))[:4])
 
+def gen1_targeted(entry):
+ games=[str(x).lower() for x in (entry.get("games") or [])]
+ if not games: return True
+ return any(x in {"all","gen1","red","blue","yellow"} for x in games)
+
 owner,name=SOURCE_REPO.split("/",1)
 branch=get_json(f"https://api.github.com/repos/{SOURCE_REPO}/branches/main")
 commit=branch["commit"]["sha"]
@@ -91,7 +97,7 @@ for path in zips:
    "optional_integrations":SOFT.get(mid,[]),"conflicts":m.get("conflicts") or [],
    "affects_link":bool(m.get("affects_link",False)),"experimental":bool(m.get("experimental",False)),
    "repo":f"https://github.com/{SOURCE_REPO}","downloadURL":url,"source_zip":Path(path).name,
-   "source_scope":SOURCE_REPO,"update_check":"off"
+   "source_scope":"FAFF0x collection","update_check":"off"
  }
  if m.get("game_version"): entry["game_version"]=m["game_version"]
  old=mods.get(mid)
@@ -128,10 +134,13 @@ source_ids=set(mods)
 hard={d for m in mods.values() for x in m["dependencies"] if (d:=dep_id(x))}-source_ids
 opt={d for m in mods.values() for x in m["optional_dependencies"] if (d:=dep_id(x))}-source_ids
 canonical={}
+community_doc={}
 try:
- c=get_json("https://raw.githubusercontent.com/bryanthaboi/gen1recomp-mod-index/main/site/data/index.json")
- canonical={m.get("id"):m for m in c.get("mods",[]) if m.get("id")}
-except Exception: pass
+ community_doc=get_json(COMMUNITY_FEED)
+ canonical={m.get("id"):m for m in community_doc.get("mods",[]) if m.get("id")}
+except Exception as e:
+ if GENERATION=="gen1":
+  fail.append(f"Could not load community Gen 1 index: {e}")
 
 for did in sorted(hard|opt):
  if did in EXTERNAL:
@@ -160,6 +169,25 @@ for did in sorted(hard|opt):
  x["source_scope"]="Required external dependency" if did in hard else "Optional external integration"
  mods[did]=x
 
+community_imported=0
+community_excluded_gen2=0
+if GENERATION=="gen1":
+ for cm in community_doc.get("mods",[]):
+  mid=cm.get("id")
+  if not mid or mid in mods:
+   continue
+  if not gen1_targeted(cm):
+   community_excluded_gen2 += 1
+   continue
+  x=json.loads(json.dumps(cm))
+  x["source_scope"]="Community catalog"
+  x.setdefault("optional_dependencies",[])
+  x.setdefault("optional_integrations",[])
+  x.setdefault("dependencies",[])
+  x.setdefault("conflicts",[])
+  mods[mid]=x
+  community_imported += 1
+
 if fail:
  print("\n".join("ERROR: "+x for x in fail),file=sys.stderr)
  sys.exit(1)
@@ -185,10 +213,14 @@ feed={
 }
 (OUT/"index.json").write_text(json.dumps(feed,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
 prov={"generated_at":feed["generated_at"],"source_repository":f"https://github.com/{SOURCE_REPO}","source_commit":commit,
-      "source_zip_count":len(zips),"entry_count":len(entries),
+      "community_source":COMMUNITY_FEED if GENERATION=="gen1" else None,
+      "community_source_generated_at":community_doc.get("generated_at") if GENERATION=="gen1" else None,
+      "source_zip_count":len(zips),"community_imported":community_imported,
+      "community_gen2_only_excluded":community_excluded_gen2,
+      "entry_count":len(entries),
       "policy":"No ROMs or mirrored mod binaries are stored in this repository."}
 (OUT/"provenance.json").write_text(json.dumps(prov,indent=2)+"\n",encoding="utf-8")
 (ROOT/"VALIDATION.md").write_text(
- f"# Validation report\n\nSource: {SOURCE_REPO}\n\nCommit: `{commit}`\n\nZIPs inspected: **{len(zips)}**\n\nFeed entries: **{len(entries)}**\n\nAll source ZIPs were downloaded successfully and their manifests parsed.\n",
+ f"# Validation report\n\nFAFF0x source: {SOURCE_REPO}\n\nFAFF0x commit: `{commit}`\n\nFAFF0x ZIPs inspected: **{len(zips)}**\n\nCommunity entries imported: **{community_imported}**\n\nExplicit Gen-2-only community entries excluded: **{community_excluded_gen2}**\n\nCombined feed entries: **{len(entries)}**\n\nFAFF0x ZIP manifests were parsed directly; wider community metadata is preserved from the current bryanthaboi community index. Duplicate IDs prefer the FAFF0x/directly verified entry.\n",
  encoding="utf-8")
-print(f"OK: {SOURCE_REPO} @ {commit}: {len(zips)} ZIPs -> {len(entries)} feed entries")
+print(f"OK: {SOURCE_REPO} @ {commit}: {len(zips)} FAFF0x ZIPs + {community_imported} community entries -> {len(entries)} unique Gen 1 feed entries")
