@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-13T17:51:36.048105+00:00",
+  "generated_at": "2026-09-13T18:08:50.075030+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -11851,7 +11851,7 @@
         "zip": {
           "name": "red_earth-1.0.1.g1rcart",
           "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.1.g1rcart",
-          "size": 18972
+          "size": 18973
         }
       },
       "update_check": "ok",
