@@ -78,6 +78,13 @@ jobs:
           assert "modern_bag" in active
           assert "BATTLE_ART_VOXEL_FORK" in active
 
+          shiny_gifts = next(m for m in pins if m["id"] == "shiny_starters_gifts")
+          shiny_opts = shiny_gifts.get("options", {})
+          assert shiny_opts.get("shiny_starters") is True, "Shiny starters must be ON"
+          assert shiny_opts.get("shiny_all_gifts") is False, "Shiny all gifts must stay OFF by default"
+          assert ids.index("shiny_starters_gifts") < ids.index("SHINY_POKEMON"), \
+              "Shiny Gifts & Starters must load before the shiny visual mod"
+
           print(f"AUDIT PASS: {len(ids)} mods, 0 missing dependencies, 0 declared conflicts")
           PY
 
@@ -101,21 +108,21 @@ jobs:
             https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py \
             -o /tmp/cartkit.py
 
-      - name: Pack Red Earth v1.0.6
+      - name: Pack Red Earth v1.0.7
         run: |
           python /tmp/cartkit.py pack cart_source/red_earth \
-            -o /tmp/red_earth-1.0.6.g1rcart
+            -o /tmp/red_earth-1.0.7.g1rcart
 
       - name: Publish cart and update index metadata
         run: |
           mkdir -p "site/data/carts/DuskPromised@red_earth"
-          cp /tmp/red_earth-1.0.6.g1rcart \
-            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart"
+          cp /tmp/red_earth-1.0.7.g1rcart \
+            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.7.g1rcart"
           python - <<'PY'
           import hashlib, json
           from pathlib import Path
 
-          cart = Path("site/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart")
+          cart = Path("site/data/carts/DuskPromised@red_earth/red_earth-1.0.7.g1rcart")
           meta_path = Path("carts/red_earth.index.json")
           meta = json.loads(meta_path.read_text(encoding="utf-8"))
           source = json.loads(Path("cart_source/red_earth/cart.json").read_text(encoding="utf-8"))
@@ -124,14 +131,14 @@ jobs:
           meta["summary"] = source["summary"]
           meta["mods"] = source["mods"]
           meta["load_order"] = source["load_order"]
-          meta["version"] = "1.0.6"
+          meta["version"] = "1.0.7"
           meta["latest"] = {
-              "version": "1.0.6",
-              "name": "1.0.6",
+              "version": "1.0.7",
+              "name": "1.0.7",
               "prerelease": False,
               "zip": {
                   "name": cart.name,
-                  "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart",
+                  "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.7.g1rcart",
                   "size": len(body),
                   "sha256": hashlib.sha256(body).hexdigest()
               }
@@ -146,20 +153,20 @@ jobs:
           print("cart sha256:", hashlib.sha256(body).hexdigest())
           PY
 
-      - name: Commit Red Earth v1.0.6
+      - name: Commit Red Earth v1.0.7
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             "cart_source/red_earth/label.png" \
             "site/data/carts/DuskPromised@red_earth/thumbnail.jpg" \
-            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart" \
+            "site/data/carts/DuskPromised@red_earth/red_earth-1.0.7.g1rcart" \
             "carts/red_earth.index.json"
           if git diff --cached --quiet; then
-            echo "Red Earth v1.0.6 is already published."
+            echo "Red Earth v1.0.7 is already published."
             exit 0
           fi
-          git commit -m "Publish Red Earth v1.0.6 HD cart label"
+          git commit -m "Publish Red Earth v1.0.7 HD cart label"
           git pull --rebase origin main
           git push
 
