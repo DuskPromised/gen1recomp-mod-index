@@ -4,7 +4,7 @@
   "title": "Pokémon Red Earth",
   "author": "Adam M. Aguilera",
   "summary": "Modern Kanto with voxels, all 151, avatar choice, shiny starters, Mew quest, story quests, refined menus, and QOL.",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "base": "red",
   "seal": "sealed+",
   "shell": "#b3202a",
@@ -324,12 +324,12 @@
   ],
   "description_url": "data/carts/DuskPromised@red_earth/description.md",
   "latest": {
-    "version": "1.0.7",
-    "name": "1.0.7",
+    "version": "1.0.8",
+    "name": "1.0.8",
     "prerelease": false,
     "zip": {
-      "name": "red_earth-1.0.7.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.7.g1rcart",
+      "name": "red_earth-1.0.8.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.8.g1rcart",
       "size": 226935,
       "sha256": "b416e6abd4bb7cf684cd3d40780e5f9b754bcaccda5b450e1c682e643e4d634f"
     }
