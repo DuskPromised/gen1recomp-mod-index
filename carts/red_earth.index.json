@@ -3,8 +3,8 @@
   "id": "red_earth",
   "title": "Pokémon Red Earth",
   "author": "Adam M. Aguilera",
-  "summary": "Modern Kanto with voxels, all 151, visible wilds, followers, shiny starters, Mew quest, story quests, and QOL.",
-  "version": "1.0.9",
+  "summary": "Modern Kanto with voxels, all 151, visible wilds, followers, two shiny starters, Mew quest, story quests, and QOL.",
+  "version": "1.0.10",
   "base": "red",
   "seal": "sealed+",
   "shell": "#b3202a",
@@ -195,6 +195,13 @@
       }
     },
     {
+      "id": "take_last_starter",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "1.0.0",
+      "sha256": "5ebd100263c607c7ec87e31a7409c54e18f3f42f3788b27900883928d5e19c0c"
+    },
+    {
       "id": "SHINY_POKEMON",
       "source": "github",
       "repo": "masterwebx/gen1recomp-shiny-pokemon",
@@ -316,6 +323,7 @@
     "overworld_wild_spawns",
     "mew_mirage",
     "shiny_starters_gifts",
+    "take_last_starter",
     "SHINY_POKEMON",
     "kanto_achievements",
     "quest_system",
@@ -333,14 +341,14 @@
   ],
   "description_url": "data/carts/DuskPromised@red_earth/description.md",
   "latest": {
-    "version": "1.0.9",
-    "name": "1.0.9",
+    "version": "1.0.10",
+    "name": "1.0.10",
     "prerelease": false,
     "zip": {
-      "name": "red_earth-1.0.9.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.9.g1rcart",
-      "size": 227225,
-      "sha256": "27dbb823291c5c7d6b0f29057f91a7ac3907bf492d0747de0b1e8389f86bf339"
+      "name": "red_earth-1.0.10.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.10.g1rcart",
+      "size": 227513,
+      "sha256": "610fe779e67b47861de36c13c6ee55137f8ae98d557919be0c2cf8854a41cf65"
     }
   },
   "update_check": "ok",
