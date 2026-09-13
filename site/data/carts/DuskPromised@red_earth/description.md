@@ -2,11 +2,13 @@
 
 A curated Pokémon Red cart combining voxel battles, all 151 obtainable in one save, a boy/girl avatar choice, **The Mirage of Mew**, refined widescreen menus, shiny Pokémon, quality-of-life upgrades, Kanto achievements, and the FAFF0x quest/story layer.
 
-**Red Earth v1.0.8 removes Gen1 Modern UI, Modern UI Fix, and Wilds of Kanto.** Gen1 Modern UI caused misaligned touch/options input on iOS; Wilds of Kanto was removed while isolating the encounter-field crash.
+**Red Earth v1.0.9 keeps Gen1 Modern UI and Modern UI Fix removed because they caused misaligned touch/options input on iOS. **Wilds of Kanto is restored** as the cart's only overworld wild/follower system; the separate `overworld_encounters` mod remains excluded to avoid overlap.
 
 **Gen1BetterMenus is configured to avoid overlap with the existing specialized mods:** BetterPC is OFF so Advanced Box System remains authoritative; BetterBag is OFF so Modern Bag remains authoritative; BetterParty is ON; BetterBattle is set to MOD so Battle Art Voxel remains the battle renderer.
 
 **Choose Your Avatar** adds Oak's boy/girl question and applies the selected player avatar across the game.
+
+**Wilds of Kanto v2.1.9** provides visible overworld Pokémon and the built-in party follower system. No separate Followers EX/PokéPC install is pinned, and the older overlapping `overworld_encounters` mod is intentionally excluded.
 
 **The Mirage of Mew is the cart's Mew storyline.** Gen151 remains enabled for the all-151 framework, but its own `MEW EVENT` option is pinned OFF so the two Mew systems do not overlap.
 
@@ -18,4 +20,4 @@ The cart includes `quest_system` plus the FAFF0x story quests that depend on it.
 
 The cart uses `sealed+`, so the pinned set and load order stay defined while individual pinned mods can still be toggled on or off.
 
-The v1.0.8 cart contains 35 pinned mods.
+The v1.0.9 cart contains 36 pinned mods.

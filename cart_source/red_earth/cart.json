@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth",
   "title": "Pokémon Red Earth",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Modern Kanto with voxels, all 151, avatar choice, shiny starters, Mew quest, story quests, refined menus, and QOL.",
+  "summary": "Modern Kanto with voxels, all 151, visible wilds, followers, shiny starters, Mew quest, story quests, and QOL.",
   "shell": "#b3202a",
   "finish": "holo",
   "label": "label.png",
@@ -155,6 +155,13 @@
       }
     },
     {
+      "id": "overworld_wild_spawns",
+      "source": "github",
+      "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
+      "version": "2.1.9",
+      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
+    },
+    {
       "id": "mew_mirage",
       "source": "github",
       "repo": "FAFF0x/gen1recomp",
@@ -291,6 +298,7 @@
     "MULTI_SAVE_SLOTS",
     "leaf_avatar",
     "gen151",
+    "overworld_wild_spawns",
     "mew_mirage",
     "shiny_starters_gifts",
     "SHINY_POKEMON",
