@@ -3,8 +3,8 @@
   "id": "red_earth",
   "title": "Pokémon Red Earth",
   "author": "Adam M. Aguilera",
-  "summary": "Modern Kanto with voxels, all 151, avatar choice, Mirage of Mew, story quests, refined menus, and QOL upgrades.",
-  "version": "1.0.6",
+  "summary": "Modern Kanto with voxels, all 151, avatar choice, shiny starters, Mew quest, story quests, refined menus, and QOL.",
+  "version": "1.0.7",
   "base": "red",
   "seal": "sealed+",
   "shell": "#b3202a",
@@ -175,6 +175,17 @@
       "sha256": "472a0517e51c4fb7a8a40a5e30edbc39fb8e24d93c4624670cf8abbc37fa1ec1"
     },
     {
+      "id": "shiny_starters_gifts",
+      "source": "github",
+      "repo": "Satori7Kensho/gen1recomp-shiny-starters-gifts",
+      "version": "1.2.0",
+      "sha256": "77629dcab07ffa9b7fe1d760dacf278d0983aa40de5d02ed260349806af150a4",
+      "options": {
+        "shiny_starters": true,
+        "shiny_all_gifts": false
+      }
+    },
+    {
       "id": "SHINY_POKEMON",
       "source": "github",
       "repo": "masterwebx/gen1recomp-shiny-pokemon",
@@ -294,6 +305,7 @@
     "leaf_avatar",
     "gen151",
     "mew_mirage",
+    "shiny_starters_gifts",
     "SHINY_POKEMON",
     "kanto_achievements",
     "quest_system",
@@ -311,14 +323,14 @@
   ],
   "description_url": "data/carts/DuskPromised@red_earth/description.md",
   "latest": {
-    "version": "1.0.6",
-    "name": "1.0.6",
+    "version": "1.0.7",
+    "name": "1.0.7",
     "prerelease": false,
     "zip": {
-      "name": "red_earth-1.0.6.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.6.g1rcart",
-      "size": 226537,
-      "sha256": "0c075eedf7790cd840e6548d3fcd124a127acc43039f908f1902c82361cf2e68"
+      "name": "red_earth-1.0.7.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth/red_earth-1.0.7.g1rcart",
+      "size": 226940,
+      "sha256": "f168d4580d53f6a84582733d1351f830d4a79ccc3da76cd4216ea97f02c26b5b"
     }
   },
   "update_check": "ok",
