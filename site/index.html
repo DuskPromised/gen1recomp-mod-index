@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Gen 1 Recomp Mod Index</title>
+<title>Gen 1 Recomp Community Mod Index</title>
 <style>
 :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111827;background:#f8fafc}
 body{margin:0}.wrap{max-width:1450px;margin:auto;padding:28px}h1{margin:0 0 5px}.muted{color:#64748b}
@@ -11,23 +11,48 @@ body{margin:0}.wrap{max-width:1450px;margin:auto;padding:28px}h1{margin:0 0 5px}
 .badge{display:inline-block;padding:3px 7px;border-radius:999px;background:#e2e8f0;font-size:12px;margin:2px}.req{background:#fee2e2}.opt{background:#dbeafe}.soft{background:#ede9fe}.conf{background:#ffedd5}
 .scope{font-size:12px;padding:4px 8px;border-radius:999px;background:#f1f5f9}.links{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
 code{background:#f1f5f9;padding:2px 5px;border-radius:5px;word-break:break-all}.alt{margin-top:8px;padding:8px;border-left:3px solid #94a3b8;background:#f8fafc}
+.warn{padding:8px 10px;background:#fff7ed;border:1px solid #fed7aa;border-radius:9px;margin-top:10px}.summary{max-width:1100px}
 </style></head><body><div class="wrap">
-<h1>Gen 1 Recomp Mod Index</h1><div class="muted">FAFF0x/gen1recomp + verified referenced dependencies. Author-hosted downloads only; no ROMs or mirrored ZIPs.</div>
-<div class="toolbar"><input id="q" placeholder="Search mod, ID, ZIP…"><select id="rel"><option value="">All entries</option><option value="hard">Required dependencies</option><option value="optional">Optional dependencies</option><option value="soft">Documented integrations</option><option value="conflict">Conflicts</option></select></div>
-<div><strong id="count">0</strong> entries</div><div id="mods"></div></div>
+<h1>Gen 1 Recomp Community Mod Index</h1>
+<div class="muted summary">Red / Blue / Yellow community catalog + complete FAFF0x collection. Author-hosted downloads only; no ROMs or mirrored mod ZIPs. FAFF0x entries override duplicate community IDs.</div>
+<div class="toolbar">
+<input id="q" placeholder="Search title, author, ID, ZIP…">
+<select id="scope"><option value="">All sources</option><option>FAFF0x collection</option><option>Community catalog</option><option>Required external dependency</option><option>Optional external integration</option></select>
+<select id="rel"><option value="">All relationships</option><option value="hard">Required dependencies</option><option value="optional">Manifest-optional dependencies</option><option value="soft">Documented integrations</option><option value="conflict">Conflicts</option></select>
+<select id="availability"><option value="">All availability</option><option value="installable">Installable now</option><option value="catalog">Catalog-only / no ZIP</option></select>
+</div>
+<div><strong id="count">0</strong> entries shown · <span id="total">0</span> total</div><div id="mods"></div></div>
 <script>
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-const pills=(a,c)=>(a||[]).length?(a||[]).map(x=>`<span class="badge ${c}">${esc(x)}</span>`).join(""):'<span class="muted">None documented</span>';
+const spec=x=>typeof x==="string"?x:(x&&typeof x==="object"?(x.id||"dependency")+((x.range||x.version)?(" "+(x.range||x.version)):""):String(x));
+const listSpecs=v=>{if(!v)return[];if(Array.isArray(v))return v.map(spec);if(typeof v==="object")return Object.entries(v).map(([k,val])=>k+(typeof val==="string"&&val?(" "+val):""));return[]};
+const pills=(v,c)=>{const a=listSpecs(v);return a.length?a.map(x=>`<span class="badge ${c}">${esc(x)}</span>`).join(""):'<span class="muted">None documented</span>'};
+const install=m=>m.downloadURL||m.latest?.zip?.url||null;
+const zipname=m=>m.source_zip||m.latest?.zip?.name||((m.latest?.zip?.url||"").split("/").pop())||"release asset";
+const version=m=>m.latest?.version||m.version||"?";
 let feed={mods:[]};
-function render(){const q=document.querySelector("#q").value.toLowerCase(),r=document.querySelector("#rel").value;
-const mods=feed.mods.filter(m=>{const h=[m.title,m.id,m.author,m.summary,m.source_zip,...(m.tags||[])].join(" ").toLowerCase();if(q&&!h.includes(q))return false;
-if(r==="hard"&&!(m.dependencies||[]).length)return false;if(r==="optional"&&!(m.optional_dependencies||[]).length)return false;if(r==="soft"&&!(m.optional_integrations||[]).length)return false;if(r==="conflict"&&!(m.conflicts||[]).length)return false;return true;});
-document.querySelector("#count").textContent=mods.length;document.querySelector("#mods").innerHTML=mods.map(m=>`<article class="card"><div class="head"><div><div class="title">${esc(m.title)}</div><div class="meta"><code>${esc(m.id)}</code> · v${esc(m.version)} · ${esc(m.author)}</div></div><span class="scope">${esc(m.source_scope)}</span></div><p>${esc(m.summary||"")}</p>
-<div class="links"><a href="${esc(m.downloadURL)}">Download ZIP — ${esc(m.source_zip||"release asset")}</a>${m.repo?`<a href="${esc(m.repo)}">Source repository</a>`:""}</div>
-${(m.alternate_downloads||[]).map(a=>`<div class="alt"><strong>Alternate:</strong> <a href="${esc(a.url)}">${esc(a.name)}</a></div>`).join("")}
-<div class="grid"><div><strong>Required dependencies</strong><br>${pills(m.dependencies,"req")}<br><br><strong>Manifest-optional dependencies</strong><br>${pills(m.optional_dependencies,"opt")}</div>
-<div><strong>Documented optional integrations</strong><br>${pills(m.optional_integrations,"soft")}<br><br><strong>Conflicts</strong><br>${pills(m.conflicts,"conf")}</div></div>
-${m.game_version?`<div class="meta" style="margin-top:10px">Engine: <code>${esc(m.game_version)}</code></div>`:""}</article>`).join("")}
-document.addEventListener("input",e=>{if(e.target.id==="q"||e.target.id==="rel")render()});
-fetch("data/index.json",{cache:"no-store"}).then(r=>r.json()).then(j=>{feed=j;render()}).catch(e=>{document.querySelector("#mods").textContent="Feed has not been generated yet. Run the Sync Index workflow.";});
+function render(){
+ const q=document.querySelector("#q").value.toLowerCase(),r=document.querySelector("#rel").value,s=document.querySelector("#scope").value,a=document.querySelector("#availability").value;
+ const mods=feed.mods.filter(m=>{
+  const h=[m.title,m.id,m.author,m.summary,m.source_zip,m.latest?.zip?.name,...(m.tags||[]),...(m.categories||[])].join(" ").toLowerCase();
+  if(q&&!h.includes(q))return false;if(s&&(m.source_scope||"")!==s)return false;
+  if(r==="hard"&&!listSpecs(m.dependencies).length)return false;if(r==="optional"&&!listSpecs(m.optional_dependencies).length)return false;
+  if(r==="soft"&&!listSpecs(m.optional_integrations).length)return false;if(r==="conflict"&&!listSpecs(m.conflicts).length)return false;
+  if(a==="installable"&&!install(m))return false;if(a==="catalog"&&install(m))return false;return true;
+ });
+ document.querySelector("#count").textContent=mods.length;document.querySelector("#total").textContent=feed.mods.length;
+ document.querySelector("#mods").innerHTML=mods.map(m=>{
+  const url=install(m);const src=m.source_scope||"Community catalog";const games=(m.games||[]).join(", ");
+  return `<article class="card"><div class="head"><div><div class="title">${esc(m.title||m.id)}</div><div class="meta"><code>${esc(m.id)}</code> · v${esc(version(m))} · ${esc(m.author||"Unknown")}</div></div><span class="scope">${esc(src)}</span></div>
+  <p>${esc(m.summary||"")}</p>
+  <div class="links">${url?`<a href="${esc(url)}">Download ZIP — ${esc(zipname(m))}</a>`:`<span class="muted">No installable ZIP currently published</span>`}${m.repo?`<a href="${esc(m.repo)}">Source repository</a>`:""}</div>
+  ${!url?`<div class="warn">Catalog-only listing: Recomp can show this mod, but the author currently has no installable ZIP exposed by the upstream index.</div>`:""}
+  ${(m.alternate_downloads||[]).map(x=>`<div class="alt"><strong>Alternate:</strong> <a href="${esc(x.url)}">${esc(x.name)}</a></div>`).join("")}
+  <div class="grid"><div><strong>Required dependencies</strong><br>${pills(m.dependencies,"req")}<br><br><strong>Manifest-optional dependencies</strong><br>${pills(m.optional_dependencies,"opt")}</div>
+  <div><strong>Documented optional integrations</strong><br>${pills(m.optional_integrations,"soft")}<br><br><strong>Conflicts</strong><br>${pills(m.conflicts,"conf")}</div></div>
+  <div class="meta" style="margin-top:10px">${m.game_version?`Engine: <code>${esc(m.game_version)}</code>`:""}${games?` · Targets: ${esc(games)}`:""}</div></article>`;
+ }).join("");
+}
+document.addEventListener("input",e=>{if(["q","scope","rel","availability"].includes(e.target.id))render()});
+fetch("data/index.json",{cache:"no-store"}).then(r=>r.json()).then(j=>{feed=j;render()}).catch(()=>{document.querySelector("#mods").textContent="Feed could not be loaded.";});
 </script></body></html>
