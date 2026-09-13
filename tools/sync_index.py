@@ -196,11 +196,27 @@ entries=sorted(mods.values(),key=lambda m:m["title"].lower())
 ids=[m["id"] for m in entries]
 if len(ids)!=len(set(ids)): raise SystemExit("duplicate IDs")
 
+cart_entries=[]
+if GENERATION=="gen1":
+ cart_dir=ROOT/"carts"
+ for cart_file in sorted(cart_dir.glob("*.index.json")) if cart_dir.exists() else []:
+  cart=json.loads(cart_file.read_text(encoding="utf-8"))
+  if not cart.get("id"): raise SystemExit(f"{cart_file}: cart id missing")
+  pins=cart.get("mods") or []
+  missing=[p.get("id") for p in pins if p.get("id") not in mods]
+  if missing:
+   raise SystemExit(f"{cart_file}: pinned mod ids missing from index: {', '.join(str(x) for x in missing)}")
+  for pin in pins:
+   sha=str(pin.get("sha256") or "")
+   if pin.get("source")=="github" and not re.fullmatch(r"[0-9a-f]{64}",sha):
+    raise SystemExit(f"{cart_file}: invalid sha256 for {pin.get('id')}")
+  cart_entries.append(cart)
+
 feed={
  "schema_version":1,"generated_at":datetime.now(timezone.utc).isoformat(),
  "categories":sorted({c for m in entries for c in m.get("categories",[])}),
  "base_games":["red","blue","yellow"] if GENERATION=="gen1" else ["gold","silver","crystal"],
- "mods":entries,"carts":[],
+ "mods":entries,"carts":cart_entries,
  "index_notes":{
   "relationship_fields":{
    "dependencies":"Hard manifest dependencies. Required.",
@@ -217,10 +233,10 @@ prov={"generated_at":feed["generated_at"],"source_repository":f"https://github.c
       "community_source_generated_at":community_doc.get("generated_at") if GENERATION=="gen1" else None,
       "source_zip_count":len(zips),"community_imported":community_imported,
       "community_gen2_only_excluded":community_excluded_gen2,
-      "entry_count":len(entries),
+      "entry_count":len(entries),"cart_count":len(cart_entries),
       "policy":"No ROMs or mirrored mod binaries are stored in this repository."}
 (OUT/"provenance.json").write_text(json.dumps(prov,indent=2)+"\n",encoding="utf-8")
 (ROOT/"VALIDATION.md").write_text(
- f"# Validation report\n\nFAFF0x source: {SOURCE_REPO}\n\nFAFF0x commit: `{commit}`\n\nFAFF0x ZIPs inspected: **{len(zips)}**\n\nCommunity entries imported: **{community_imported}**\n\nExplicit Gen-2-only community entries excluded: **{community_excluded_gen2}**\n\nCombined feed entries: **{len(entries)}**\n\nFAFF0x ZIP manifests were parsed directly; wider community metadata is preserved from the current bryanthaboi community index. Duplicate IDs prefer the FAFF0x/directly verified entry.\n",
+ f"# Validation report\n\nFAFF0x source: {SOURCE_REPO}\n\nFAFF0x commit: `{commit}`\n\nFAFF0x ZIPs inspected: **{len(zips)}**\n\nCommunity entries imported: **{community_imported}**\n\nExplicit Gen-2-only community entries excluded: **{community_excluded_gen2}**\n\nCombined feed entries: **{len(entries)}**\n\nPublished carts: **{len(cart_entries)}**\n\nFAFF0x ZIP manifests were parsed directly; wider community metadata is preserved from the current bryanthaboi community index. Duplicate IDs prefer the FAFF0x/directly verified entry.\n",
  encoding="utf-8")
-print(f"OK: {SOURCE_REPO} @ {commit}: {len(zips)} FAFF0x ZIPs + {community_imported} community entries -> {len(entries)} unique Gen 1 feed entries")
+print(f"OK: {SOURCE_REPO} @ {commit}: {len(zips)} FAFF0x ZIPs + {community_imported} community entries -> {len(entries)} unique Gen 1 feed entries; {len(cart_entries)} carts")
