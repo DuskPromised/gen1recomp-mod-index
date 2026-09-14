@@ -49,3 +49,11 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - Normalized party icons from horizontal 32x16 sheets to GenRecomp's required vertical 16x32 two-frame layout.
 - Added Pillow decode/CRC validation and exact-dimension checks to CI so malformed art cannot publish again.
 - The existing Wilds follower fallback remains functional; dedicated six-frame walker art is still a later art upgrade.
+
+
+### v1.0.3
+
+- Psydren/Vesperis/Solipsdion now use a private **CONFUSION** move record with the same Psychic power/accuracy/PP/confusion side effect, but a particle-based battle animation instead of the classic scanline-deformation animation.
+- This specifically avoids the odd Dramaless 3D battlefield/sprite warping seen during the first Psydren tests.
+- Species IDs, save compatibility, shiny DVs, evolution levels, stats, and the rest of the learnsets are unchanged.
+- Battle/follower art is still the functional concept set; the dedicated final art pass remains separate from this gameplay hotfix.

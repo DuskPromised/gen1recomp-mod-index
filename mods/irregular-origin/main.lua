@@ -1,4 +1,4 @@
--- Irregular Origin v1.0.2
+-- Irregular Origin v1.0.3
 -- Custom three-stage starter line for Pokémon Red Earth: The Philosopher's Stones.
 -- Psydren is received before Oak's normal regional companion choice.
 
@@ -42,7 +42,7 @@ return function(mod)
     return "TACKLE"
   end
 
-  local confusion=existingMove("CONFUSION")
+  local vanillaConfusion=existingMove("CONFUSION")
   local withdraw=existingMove("WITHDRAW","HARDEN")
   local waterGun=existingMove("WATER_GUN","WATERGUN")
   local hypnosis=existingMove("HYPNOSIS")
@@ -57,8 +57,20 @@ return function(mod)
   local hydroPump=existingMove("HYDRO_PUMP","HYDROPUMP")
   local psychic=existingMove("PSYCHIC_M","PSYCHIC")
 
+  -- Classic CONFUSION uses a scanline-deformation animation. That looks fine
+  -- in the flat renderer but can leave distracting scene/sprite deformation
+  -- in the Dramaless 3D battle presentation. Keep the exact move gameplay,
+  -- but give the Irregular line a particle-based visual that doesn't warp the
+  -- battlefield. SWIFT is preferred; EMBER/TACKLE are only defensive fallbacks.
+  local confusionAnim=(moves:get(existingMove("SWIFT","EMBER","TACKLE")) or {}).anim
   local rageAnim=(moves:get(existingMove("DRAGON_RAGE")) or {}).anim
   local beamAnim=(moves:get(existingMove("HYPER_BEAM")) or {}).anim
+
+  mod.content.moves:register("IRR_CONFUSION",{
+    id="IRR_CONFUSION",name="CONFUSION",
+    type="PSYCHIC",power=50,accuracy=100,pp=25,
+    effect="CONFUSION_SIDE_EFFECT",category="special",anim=confusionAnim,
+  })
 
   mod.content.moves:register("IRR_SOVEREIGN_RAGE",{
     id="IRR_SOVEREIGN_RAGE",name="SOVEREIGN RAGE",
@@ -82,7 +94,7 @@ return function(mod)
     types={"PSYCHIC","WATER"},
     baseStats={hp=55,attack=40,defense=65,speed=45,special=70},
     catchRate=45,baseExp=80,growthRate="MEDIUM_SLOW",
-    level1Moves={confusion,withdraw},
+    level1Moves={"IRR_CONFUSION",withdraw},
     learnset={
       {level=7,move=waterGun},{level=11,move=hypnosis},{level=14,move=bubbleBeam},
     },
@@ -101,7 +113,7 @@ return function(mod)
     types={"PSYCHIC","GHOST"},
     baseStats={hp=70,attack=55,defense=75,speed=80,special=95},
     catchRate=20,baseExp=150,growthRate="MEDIUM_SLOW",
-    level1Moves={confusion,withdraw},
+    level1Moves={"IRR_CONFUSION",withdraw},
     learnset={
       {level=16,move=nightShade},{level=20,move=psybeam},
       {level=25,move=confuseRay},{level=29,move=recover},{level=33,move=dreamEater},
@@ -121,7 +133,7 @@ return function(mod)
     types={"PSYCHIC","DRAGON"},
     baseStats={hp=95,attack=85,defense=105,speed=105,special=125},
     catchRate=3,baseExp=220,growthRate="MEDIUM_SLOW",
-    level1Moves={confusion,nightShade},
+    level1Moves={"IRR_CONFUSION",nightShade},
     learnset={
       {level=36,move="IRR_SOVEREIGN_RAGE"},{level=42,move=amnesia},
       {level=49,move=aeroblast},{level=57,move=hydroPump},
@@ -342,7 +354,7 @@ return function(mod)
     game.stack:push(mod.ui.TextBox.new(game,msg:gsub("{RAM}",name)))
   end)
 
-  mod.exports.version="1.0.2"
+  mod.exports.version="1.0.3"
   mod.exports.species=IDS
   mod.exports.isIrregular=isIrregular
 end
