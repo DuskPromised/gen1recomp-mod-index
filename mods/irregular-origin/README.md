@@ -34,7 +34,11 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.2 normalizes all party-icon sheets to the engine's vertical 16x32 two-frame format and regenerates every 64x64 battle image from a verified icon frame. This fixes the corrupted Psydren PNG crash and the broken party-menu icon while preserving species/save IDs. The current package prioritizes functional battle/icon art; dedicated rear-facing and follower sheets can replace these assets later without changing species IDs or save compatibility.
+v1.0.4 is the production art pass. Psydren, Vesperis, and Solipsdion each ship with dedicated **normal and shiny** front battle art, rear battle art, 64x64 summary/dex portraits, 16x32 two-frame party icons, and 16x96 six-frame follower sheets.
+
+The engine's `pokemon.sprite` and `pokemon.icon` hooks select normal versus shiny art from the actual Pokémon instance, so the guaranteed shiny Psydren line displays its authored shiny identity everywhere instead of relying on a palette swap. Solipsdion's normal form uses the pearl/lilac/gold design; the ruby-ascended design is reserved for its shiny form.
+
+When **Wilds of Kanto** is present, Irregular Origin wraps its final Pokedex follower provider only for the three custom species so the dedicated follower sheets are used without changing other Pokémon providers. Species IDs and save compatibility remain unchanged.
 
 
 ### v1.0.1
@@ -57,3 +61,12 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - This specifically avoids the odd Dramaless 3D battlefield/sprite warping seen during the first Psydren tests.
 - Species IDs, save compatibility, shiny DVs, evolution levels, stats, and the rest of the learnsets are unchanged.
 - Battle/follower art is still the functional concept set; the dedicated final art pass remains separate from this gameplay hotfix.
+
+### v1.0.4
+
+- Added the complete 30-file production sprite pack: normal + shiny front, back, menu/stat portrait, party icon, and follower art for all three stages.
+- Added runtime shiny routing for battle, summary/dex, and party visuals.
+- Added dedicated rear-facing battle sprites instead of mirroring/reusing the front art.
+- Added optional Wilds of Kanto follower-provider integration for the custom 16x96 walker sheets.
+- Locked Solipsdion's normal presentation to pearl/lilac/gold and its shiny presentation to the ruby-ascended art direction.
+- Removed the old build-time art regeneration path; CI now validates authored PNGs without overwriting them.

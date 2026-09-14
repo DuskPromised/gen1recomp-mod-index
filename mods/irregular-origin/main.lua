@@ -1,4 +1,4 @@
--- Irregular Origin v1.0.3
+-- Irregular Origin v1.0.4
 -- Custom three-stage starter line for Pokémon Red Earth: The Philosopher's Stones.
 -- Psydren is received before Oak's normal regional companion choice.
 
@@ -33,6 +33,47 @@ return function(mod)
     mod.log:warn("pokemon/moves registry unavailable; Irregular Origin skipped")
     return
   end
+
+  -- Production art map. Normal and shiny assets are separate authored
+  -- sprites; the shiny line is not a runtime palette swap.
+  local ART={
+    [IDS.PSYDREN]={
+      front=mod.path.."/assets/psydren_front.png",
+      back=mod.path.."/assets/psydren_back.png",
+      menu=mod.path.."/assets/psydren_menu.png",
+      icon=mod.path.."/assets/psydren_icon.png",
+      follower=mod.path.."/assets/psydren_follower.png",
+      frontShiny=mod.path.."/assets/psydren_front_shiny.png",
+      backShiny=mod.path.."/assets/psydren_back_shiny.png",
+      menuShiny=mod.path.."/assets/psydren_menu_shiny.png",
+      iconShiny=mod.path.."/assets/psydren_icon_shiny.png",
+      followerShiny=mod.path.."/assets/psydren_follower_shiny.png",
+    },
+    [IDS.VESPERIS]={
+      front=mod.path.."/assets/vesperis_front.png",
+      back=mod.path.."/assets/vesperis_back.png",
+      menu=mod.path.."/assets/vesperis_menu.png",
+      icon=mod.path.."/assets/vesperis_icon.png",
+      follower=mod.path.."/assets/vesperis_follower.png",
+      frontShiny=mod.path.."/assets/vesperis_front_shiny.png",
+      backShiny=mod.path.."/assets/vesperis_back_shiny.png",
+      menuShiny=mod.path.."/assets/vesperis_menu_shiny.png",
+      iconShiny=mod.path.."/assets/vesperis_icon_shiny.png",
+      followerShiny=mod.path.."/assets/vesperis_follower_shiny.png",
+    },
+    [IDS.SOLIPSDION]={
+      front=mod.path.."/assets/solipsdion_front.png",
+      back=mod.path.."/assets/solipsdion_back.png",
+      menu=mod.path.."/assets/solipsdion_menu.png",
+      icon=mod.path.."/assets/solipsdion_icon.png",
+      follower=mod.path.."/assets/solipsdion_follower.png",
+      frontShiny=mod.path.."/assets/solipsdion_front_shiny.png",
+      backShiny=mod.path.."/assets/solipsdion_back_shiny.png",
+      menuShiny=mod.path.."/assets/solipsdion_menu_shiny.png",
+      iconShiny=mod.path.."/assets/solipsdion_icon_shiny.png",
+      followerShiny=mod.path.."/assets/solipsdion_follower_shiny.png",
+    },
+  }
 
   local function existingMove(...)
     local names={...}
@@ -100,7 +141,7 @@ return function(mod)
     },
     evolutions={{method="LEVEL",level=16,species=IDS.VESPERIS}},
     spriteFront=mod.path.."/assets/psydren_front.png",
-    spriteBack=mod.path.."/assets/psydren_front.png",
+    spriteBack=mod.path.."/assets/psydren_back.png",
     frontSize=7,trueColor=true,battleScaleFront=1.0,battleScaleBack=1.0,
     icon={image=mod.path.."/assets/psydren_icon.png",frames=2},
     cry="MEW",
@@ -120,7 +161,7 @@ return function(mod)
     },
     evolutions={{method="LEVEL",level=36,species=IDS.SOLIPSDION}},
     spriteFront=mod.path.."/assets/vesperis_front.png",
-    spriteBack=mod.path.."/assets/vesperis_front.png",
+    spriteBack=mod.path.."/assets/vesperis_back.png",
     frontSize=7,trueColor=true,battleScaleFront=1.0,battleScaleBack=1.0,
     icon={image=mod.path.."/assets/vesperis_icon.png",frames=2},
     cry="HAUNTER",
@@ -141,7 +182,7 @@ return function(mod)
     },
     evolutions={},
     spriteFront=mod.path.."/assets/solipsdion_front.png",
-    spriteBack=mod.path.."/assets/solipsdion_front.png",
+    spriteBack=mod.path.."/assets/solipsdion_back.png",
     frontSize=7,trueColor=true,battleScaleFront=1.0,battleScaleBack=1.0,
     icon={image=mod.path.."/assets/solipsdion_icon.png",frames=2},
     cry="MEWTWO",
@@ -153,6 +194,119 @@ return function(mod)
   if mod.content.constants then
     mod.content.constants:patch("dexSize",d3)
   end
+
+  -- Gen-II-compatible shiny test used by both battle/menu and follower art.
+  -- mon.shiny is honored first because the Irregular gift explicitly marks it.
+  local SHINY_ATTACK_DVS={
+    [2]=true,[3]=true,[6]=true,[7]=true,
+    [10]=true,[11]=true,[14]=true,[15]=true,
+  }
+  local function isVisualShiny(mon)
+    if not mon then return false end
+    if mon.shiny==true or mon.isShiny==true then return true end
+    local d=mon.dvs
+    if type(d)~="table" then return false end
+    local a=tonumber(d.attack)
+    return tonumber(d.defense)==10
+      and tonumber(d.speed)==10
+      and tonumber(d.special)==10
+      and SHINY_ATTACK_DVS[a]==true
+  end
+
+  local function artFor(ctx)
+    if not ctx then return nil end
+    local species=ctx.species or (ctx.mon and ctx.mon.species)
+    return ART[species]
+  end
+
+  -- Route every engine battle/stat/dex request through the authored normal or
+  -- shiny production art. Summary/Dex use the dedicated portrait instead of
+  -- stretching a battle sprite.
+  mod.hooks:wrap("pokemon.sprite",function(next,path,ctx)
+    local art=artFor(ctx)
+    if not art then return next(path,ctx) end
+    ctx.trueColor=true
+    local result=next(path,ctx)
+    local shiny=isVisualShiny(ctx.mon)
+    if ctx.kind=="summary" or ctx.kind=="dex" or ctx.kind=="menu" then
+      return shiny and art.menuShiny or art.menu
+    end
+    if ctx.side=="back" then
+      return shiny and art.backShiny or art.back
+    end
+    return shiny and art.frontShiny or art.front
+  end,125)
+
+  -- Party icons are separate two-frame 16x32 sheets, also with authored
+  -- normal/shiny variants.
+  mod.hooks:wrap("pokemon.icon",function(next,path,ctx)
+    local art=artFor(ctx)
+    if not art then return next(path,ctx) end
+    ctx.trueColor=true
+    local result=next(path,ctx)
+    return isVisualShiny(ctx.mon) and art.iconShiny or art.icon
+  end,125)
+
+  -- Wilds of Kanto owns follower rendering. When it is installed, wrap only
+  -- its final Pokedex provider so these three custom species get their own
+  -- six-frame 16x96 walkers without changing any other Pokémon provider.
+  local followerProviderInstalled=false
+  local function installIrregularFollowerProvider(game)
+    if followerProviderInstalled or type(mod.find)~="function" then return end
+    local okFind,wilds=pcall(function()
+      return mod:find("overworld_wild_spawns")
+    end)
+    local ex=okFind and wilds and wilds.exports
+    if not (ex and type(ex.getSpriteProvider)=="function"
+        and type(ex.registerSpriteProvider)=="function") then return end
+
+    local okBase,base=pcall(ex.getSpriteProvider,"pokedex")
+    if not okBase or type(base)~="table" then return end
+    if base.__irregularOriginWrapper then
+      followerProviderInstalled=true
+      return
+    end
+
+    local wrapper={id="pokedex",__irregularOriginWrapper=true}
+    function wrapper:isAvailable(_game)
+      return true,"Irregular Origin production follower provider"
+    end
+    function wrapper:resolve(speciesId,variant,targetGame)
+      local art=ART[speciesId]
+      if art then
+        local shiny=variant==true or tostring(variant or ""):lower()=="shiny"
+        local image=shiny and art.followerShiny or art.follower
+        return {
+          id="SPRITE_"..tostring(speciesId)..(shiny and "_SHINY" or ""),
+          image=image,frames=6,walker=true,trueColor=true,
+          frameWidth=16,frameHeight=16,anchorX=8,anchorY=15,
+        },{
+          providerId="pokedex",
+          providerMod=mod.id,
+          usedVariant=shiny and "shiny" or "normal",
+          bodyRenderer="NATIVE_SPRITE_RENDERER",
+        },nil
+      end
+      if type(base.resolve)=="function" then
+        return base:resolve(speciesId,variant,targetGame)
+      end
+      return nil,nil,"no follower sprite"
+    end
+
+    local okRegister,registered=pcall(ex.registerSpriteProvider,"pokedex",wrapper)
+    if okRegister and registered~=false then
+      followerProviderInstalled=true
+      if type(ex.refreshAllEntitySprites)=="function" then
+        pcall(ex.refreshAllEntitySprites,game)
+      end
+      mod.log:info("Irregular production follower art registered with Wilds of Kanto")
+    end
+  end
+
+  mod.events:on("game.ready",function(ev)
+    installIrregularFollowerProvider((ev and ev.game) or mod.game)
+  end)
+  pcall(installIrregularFollowerProvider,mod.game)
 
   local function isIrregular(mon)
     return mon and IRREGULAR[mon.species] == true
@@ -354,7 +508,7 @@ return function(mod)
     game.stack:push(mod.ui.TextBox.new(game,msg:gsub("{RAM}",name)))
   end)
 
-  mod.exports.version="1.0.3"
+  mod.exports.version="1.0.4"
   mod.exports.species=IDS
   mod.exports.isIrregular=isIrregular
 end
