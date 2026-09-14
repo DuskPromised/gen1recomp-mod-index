@@ -2,8 +2,15 @@
   "schema_version": 1,
   "cart_id": "red_earth_philosophers_stones",
   "title": "Pokémon Red Earth: The Philosopher's Stones",
-  "latest": "1.0.4",
+  "latest": "1.0.5",
   "versions": [
+    {
+      "version": "1.0.5",
+      "name": "red_earth_philosophers_stones-1.0.5.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.5.g1rcart",
+      "size": 225805,
+      "sha256": "8d3827fb526015d3f29752e53b0311376bd1d8b35fea1834097eb1ab9e485533"
+    },
     {
       "version": "1.0.4",
       "name": "red_earth_philosophers_stones-1.0.4.g1rcart",
