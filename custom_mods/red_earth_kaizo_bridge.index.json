@@ -1,0 +1,46 @@
+{
+  "folder": "DuskPromised@red_earth_kaizo_bridge",
+  "id": "red_earth_kaizo_bridge",
+  "title": "Red Earth Kaizo Bridge",
+  "author": "Adam M. Aguilera",
+  "version": "1.0.0",
+  "categories": [
+    "GAMEPLAY"
+  ],
+  "tags": [
+    "kaizo",
+    "compatibility",
+    "second starter",
+    "shiny starter",
+    "difficulty",
+    "level scaling"
+  ],
+  "api": 2,
+  "profile": "content",
+  "game_version": ">=0.2.21 <2.0.0",
+  "permissions": [
+    "engine_internals"
+  ],
+  "dependencies": [
+    "gen1_kaizo@>=0.8.3 <1.0.0"
+  ],
+  "optional_dependencies": [
+    "overworld_wild_spawns@>=2.1.9 <3.0.0"
+  ],
+  "optional_integrations": [],
+  "conflicts": [
+    "take_last_starter",
+    "shiny_starters_gifts",
+    "level_match_mod"
+  ],
+  "affects_link": false,
+  "experimental": false,
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "license": "MIT",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.0.zip",
+  "source_zip": "red_earth_kaizo_bridge-1.0.0.zip",
+  "summary": "Allgen Kaizo compatibility bridge with regional second starter, shiny Oak gifts, and upward-only dynamic trainer/wild scaling.",
+  "source_scope": "DuskPromised original mod",
+  "update_check": "off"
+}

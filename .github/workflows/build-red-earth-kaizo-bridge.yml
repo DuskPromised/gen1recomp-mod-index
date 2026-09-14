@@ -1,0 +1,92 @@
+name: Build Red Earth Kaizo Bridge
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "mods/red-earth-kaizo-bridge/**"
+      - ".github/workflows/build-red-earth-kaizo-bridge.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: red_earth_kaizo_bridge-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax and behavior audit
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          luac -p mods/red-earth-kaizo-bridge/main.lua
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("mods/red-earth-kaizo-bridge")
+          manifest=json.loads((root/"manifest.json").read_text())
+          src=(root/"main.lua").read_text()
+          assert manifest["id"]=="red_earth_kaizo_bridge"
+          assert manifest["version"]=="1.0.0"
+          assert "gen1_kaizo@>=0.8.3 <1.0.0" in manifest["dependencies"]
+          for needle in [
+              'encounter.species','trainer.party','script.command','world.talk',
+              'starter_gen','MOD_RED_EARTH_KAIZO_SECOND_STARTER',
+              'TEXT_OAKSLAB_CHARMANDER_POKE_BALL','TEXT_OAKSLAB_SQUIRTLE_POKE_BALL',
+              'TEXT_OAKSLAB_BULBASAUR_POKE_BALL','PHILOSOPHER' if False else 'makeShiny'
+          ]:
+              assert needle in src, needle
+          assert 'math.max(tonumber(member.level) or 1, target)' in src
+          assert 'math.max(tonumber(rolled.level) or 1, target)' in src
+          print("RED EARTH KAIZO BRIDGE AUDIT PASS")
+          PY
+
+      - name: Package deterministic v1.0.0 ZIP
+        run: |
+          mkdir -p "site/data/mods/DuskPromised@red_earth_kaizo_bridge"
+          python - <<'PY'
+          import hashlib, zipfile
+          from pathlib import Path
+          src=Path("mods/red-earth-kaizo-bridge")
+          out=Path("site/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.0.zip")
+          files=["main.lua","manifest.json","README.md","LICENSE"]
+          with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+              for name in files:
+                  info=zipfile.ZipInfo("red_earth_kaizo_bridge/"+name)
+                  info.date_time=(2026,1,1,0,0,0)
+                  info.compress_type=zipfile.ZIP_DEFLATED
+                  info.external_attr=0o100644 << 16
+                  z.writestr(info,(src/name).read_bytes())
+          body=out.read_bytes()
+          sha=hashlib.sha256(body).hexdigest()
+          Path("custom_mods/red_earth_kaizo_bridge.sha256").write_text(sha+"  "+out.name+"\n")
+          print("bytes:",len(body))
+          print("sha256:",sha)
+          PY
+
+      - name: Commit packaged mod
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f \
+            "site/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.0.zip" \
+            "custom_mods/red_earth_kaizo_bridge.sha256"
+          if git diff --cached --quiet; then
+            echo "Red Earth Kaizo Bridge archive already current."
+          else
+            git commit -m "Publish Red Earth Kaizo Bridge v1.0.0"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh combined Gen 1 index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run sync.yml --ref main

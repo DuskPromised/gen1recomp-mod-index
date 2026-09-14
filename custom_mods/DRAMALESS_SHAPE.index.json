@@ -1,0 +1,44 @@
+{
+  "folder": "artyrambles@DRAMALESS_SHAPE",
+  "id": "DRAMALESS_SHAPE",
+  "title": "Dramaless Shape",
+  "author": "artyrambles",
+  "version": "2.0.4",
+  "categories": [
+    "GRAPHICS"
+  ],
+  "tags": [
+    "voxel",
+    "3d",
+    "battle",
+    "diorama",
+    "mobile"
+  ],
+  "api": 2,
+  "profile": "content",
+  "game_version": "0.0.0-dev || >=0.1.86 <2.0.0",
+  "permissions": [
+    "engine_internals"
+  ],
+  "dependencies": [],
+  "optional_dependencies": [
+    "STADIUM_BATTLE_FX@>=2.0.0 <3.0.0"
+  ],
+  "conflicts": [
+    "DRAMATIC_SHAPE",
+    "TERRARIUM",
+    "BATTLE_ART_VOXEL_FORK",
+    "potato_voxel",
+    "STADIUM_BATTLE_FX@<2.0.0"
+  ],
+  "affects_link": false,
+  "experimental": false,
+  "repo": "https://github.com/artyrambles/DRAMALESS_SHAPE",
+  "github": "artyrambles/DRAMALESS_SHAPE",
+  "license": "MIT",
+  "downloadURL": "https://github.com/artyrambles/DRAMALESS_SHAPE/releases/download/v2.0.4/DRAMALESS_SHAPE-2.0.4.zip",
+  "source_zip": "DRAMALESS_SHAPE-2.0.4.zip",
+  "summary": "Voxel Kanto with native 2D battle cards staged in the 3D world, without Stadium-model battle dependencies.",
+  "source_scope": "upstream release",
+  "update_check": "off"
+}

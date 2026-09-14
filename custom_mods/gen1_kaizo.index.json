@@ -1,0 +1,36 @@
+{
+  "folder": "AyeBathingApe@gen1_kaizo",
+  "id": "gen1_kaizo",
+  "title": "Gen1 Recomp Allgen Kaizo",
+  "author": "AyeBathingApe",
+  "version": "0.8.3",
+  "categories": [
+    "MECHANIC",
+    "OVERHAUL"
+  ],
+  "tags": [
+    "kaizo",
+    "all generations",
+    "908 pokemon",
+    "difficulty",
+    "trainer ai",
+    "mega evolution"
+  ],
+  "api": 2,
+  "profile": "overhaul",
+  "game_version": ">=0.0.0-0 <2.0.0",
+  "permissions": [],
+  "dependencies": [],
+  "optional_dependencies": [],
+  "conflicts": [],
+  "affects_link": false,
+  "experimental": false,
+  "repo": "https://github.com/AyeBathingApe/gen1recomp-allgen-kaizo",
+  "github": "AyeBathingApe/gen1recomp-allgen-kaizo",
+  "license": "MIT",
+  "downloadURL": "https://github.com/AyeBathingApe/gen1recomp-allgen-kaizo/releases/download/v0.8.3/gen1-recomp-allgen-kaizo-0.8.3.zip",
+  "source_zip": "gen1-recomp-allgen-kaizo-0.8.3.zip",
+  "summary": "All-gen Kaizo overhaul: ~908 species, modern types and moves, six-mon trainers, competitive AI, Megas, and expanded wild pools.",
+  "source_scope": "upstream release",
+  "update_check": "off"
+}

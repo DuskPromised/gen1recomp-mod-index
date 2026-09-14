@@ -1,0 +1,28 @@
+{
+  "id": "red_earth_kaizo_bridge",
+  "name": "Red Earth Kaizo Bridge",
+  "version": "1.0.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GAMEPLAY",
+  "game_version": ">=0.2.21 <2.0.0",
+  "priority": 220,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "gen1_kaizo@>=0.8.3 <1.0.0"
+  ],
+  "optional_dependencies": [
+    "overworld_wild_spawns@>=2.1.9 <3.0.0"
+  ],
+  "conflicts": [
+    "take_last_starter",
+    "shiny_starters_gifts",
+    "level_match_mod"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Compatibility bridge for Red Earth Kaizo: regional second starter, guaranteed shiny Oak gifts, and upward-only dynamic trainer/wild scaling."
+}
