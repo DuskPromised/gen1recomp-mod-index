@@ -1,7 +1,7 @@
 {
   "id": "irregular_origin",
   "name": "Irregular Origin",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -14,9 +14,7 @@
   ],
   "optional_dependencies": [
     "red_earth_kaizo_bridge@>=1.0.0 <2.0.0",
-    "philosopher_stones@>=1.1.0 <2.0.0",
-    "overworld_wild_spawns@>=2.2.0 <3.0.0",
-    "DRAMALESS_SHAPE@>=2.0.0 <3.0.0"
+    "philosopher_stones@>=1.1.0 <2.0.0"
   ],
   "conflicts": [
     "take_last_starter",
@@ -26,5 +24,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Adds Psydren, Vesperis, and Solipsdion with dedicated normal/shiny 2D battle-card, summary, party, and follower art; Dramaless voxel-billboard compatibility; a forced shiny Irregular starter encounter; signature moves; regional companion flow; and Philosopher Stone resonance."
+  "description": "Adds Psydren, Vesperis, and Solipsdion with dedicated normal/shiny 2D battle-card, summary, party, and follower art; Wilds/Dramaless billboard compatibility; a forced shiny Irregular starter encounter; signature moves; regional companion flow; and Philosopher Stone resonance."
 }

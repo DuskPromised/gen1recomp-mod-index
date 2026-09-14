@@ -34,7 +34,7 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.5 is the production art pass for the entire Irregular line. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
+v1.0.6 carries the production art pass for the entire Irregular line. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
 
 - Battle front/back and menu portraits: 64×64 true-color PNGs
 - Party icons: engine-native 16×32 two-frame sheets
@@ -89,5 +89,14 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - Restored clean copies of art files that were damaged during the previous binary transfer and corrected remaining PNG chunk CRCs without regenerating the artwork from icons.
 - Kept the final art as true-color 2D textures because Dramaless 2.x renders native Pokémon art as 3D billboards in its voxel arena; no 3D model conversion is required.
 - Improved the `pokemon.sprite` wrapper so Dramaless' **BACK SPRITES** setting still composes correctly while shiny Irregulars keep their authored shiny front/back art.
-- Declared Wilds of Kanto 2.2+ and Dramaless Shape 2.x as optional integrations; neither is required to use Irregular Origin.
+- Declared Wilds of Kanto and Dramaless Shape as optional integrations; neither is required to use Irregular Origin.
 - Version/package/index advanced to v1.0.5. Species IDs and save compatibility are unchanged.
+
+
+### v1.0.6
+
+- Corrected integration metadata without changing species IDs, stats, moves, saves, or authored sprite art.
+- Wilds of Kanto and Dramaless Shape are documented as **optional integrations**, not hard/optional manifest dependencies; Irregular Origin remains usable without either graphics/overworld mod.
+- Compatibility is verified against the currently released **Wilds of Kanto v2.1.9** provider API and **Dramaless Shape v2.0.4**.
+- Keeps the complete 30-file normal/shiny production art set and the Dramaless-aware front/back shiny routing introduced in v1.0.5.
+- Publishes a new immutable v1.0.6 package rather than overwriting the already-published v1.0.5 archive.
