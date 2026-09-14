@@ -62,7 +62,7 @@ jobs:
           root=Path("mods/irregular-origin")
           m=json.loads((root/"manifest.json").read_text())
           src=(root/"main.lua").read_text()
-          assert m["id"]=="irregular_origin" and m["version"]=="1.0.4"
+          assert m["id"]=="irregular_origin" and m["version"]=="1.0.5"
           for needle in [
             "IRR_PSYDREN","IRR_VESPERIS","IRR_SOLIPSDION",
             "IRR_SOVEREIGN_RAGE","IRR_SERAPHS_VERDICT",
@@ -86,7 +86,7 @@ jobs:
           import hashlib,zipfile
           from pathlib import Path
           src=Path("mods/irregular-origin")
-          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.4.zip")
+          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.5.zip")
           files=["main.lua","manifest.json","README.md","LICENSE"]
           files += [str(p.relative_to(src)) for p in sorted((src/"assets").glob("*.png"))]
           with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
@@ -108,12 +108,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f \
             "mods/irregular-origin/assets/"*.png \
-            "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.4.zip" \
+            "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.5.zip" \
             "custom_mods/irregular_origin.sha256"
           if git diff --cached --quiet; then
             echo "Irregular Origin archive already current."
           else
-            git commit -m "Publish Irregular Origin v1.0.4"
+            git commit -m "Publish Irregular Origin v1.0.5"
             git pull --rebase origin main
             git push
           fi

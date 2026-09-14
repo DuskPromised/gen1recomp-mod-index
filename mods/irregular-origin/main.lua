@@ -1,4 +1,4 @@
--- Irregular Origin v1.0.4
+-- Irregular Origin v1.0.5
 -- Custom three-stage starter line for Pokémon Red Earth: The Philosopher's Stones.
 -- Psydren is received before Oak's normal regional companion choice.
 
@@ -221,7 +221,11 @@ return function(mod)
 
   -- Route every engine battle/stat/dex request through the authored normal or
   -- shiny production art. Summary/Dex use the dedicated portrait instead of
-  -- stretching a battle sprite.
+  -- stretching a battle sprite. Call downstream first so graphics hosts such
+  -- as Dramaless can choose their presentation. In Dramaless' voxel-card mode,
+  -- BACK SPRITES OFF intentionally substitutes the front illustration on the
+  -- player side; preserve that choice while swapping in the correct shiny
+  -- front rather than falling back to the species' static normal front.
   mod.hooks:wrap("pokemon.sprite",function(next,path,ctx)
     local art=artFor(ctx)
     if not art then return next(path,ctx) end
@@ -232,6 +236,12 @@ return function(mod)
       return shiny and art.menuShiny or art.menu
     end
     if ctx.side=="back" then
+      local data=ctx.data
+      local def=data and data.pokemon and ctx.species and data.pokemon[ctx.species]
+      local staticFront=def and def.spriteFront
+      if result==staticFront or result==art.front or result==art.frontShiny then
+        return shiny and art.frontShiny or art.front
+      end
       return shiny and art.backShiny or art.back
     end
     return shiny and art.frontShiny or art.front
@@ -508,7 +518,7 @@ return function(mod)
     game.stack:push(mod.ui.TextBox.new(game,msg:gsub("{RAM}",name)))
   end)
 
-  mod.exports.version="1.0.4"
+  mod.exports.version="1.0.5"
   mod.exports.species=IDS
   mod.exports.isIrregular=isIrregular
 end

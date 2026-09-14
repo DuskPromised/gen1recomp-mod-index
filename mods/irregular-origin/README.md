@@ -34,7 +34,7 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.4 is the production art pass for the entire Irregular line. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
+v1.0.5 is the production art pass for the entire Irregular line. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
 
 - Battle front/back and menu portraits: 64×64 true-color PNGs
 - Party icons: engine-native 16×32 two-frame sheets
@@ -45,6 +45,11 @@ v1.0.4 is the production art pass for the entire Irregular line. Each species no
 - Solipsdion's seven-wing canon remains **2 flight wings + 4 hand-wings + 1 crown wing**.
 - Wilds integration supplies the dedicated six-frame Irregular follower sheets while delegating every non-Irregular species back to Wilds unchanged.
 
+## Dramaless / voxel presentation
+
+The Irregular artwork should stay **2D**. Dramaless Shape 2.x deliberately stages native 2D Pokémon battle pictures as camera-facing **3D billboards** inside its voxel arena; 3D Pokémon models belong to StadiumBattleFX rather than Dramaless itself. Irregular Origin therefore supplies true-color 2D front/back PNGs and lets Dramaless project them into the voxel scene.
+
+The overworld/follower side works the same way: the dedicated 16×96 six-frame walker sheets remain 2D textures, while Wilds of Kanto and compatible voxel renderers place those textures on world billboards with depth, grass occlusion, and geometry-aware sizing.
 
 ### v1.0.1
 
@@ -76,3 +81,13 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - Added dedicated Wilds follower sheets for the Irregular line.
 - Preserved Solipsdion's pearl/lilac/gold normal identity and ruby-ascended shiny identity, including the seven-wing anatomy requirement.
 - Removed the old build-time behavior that regenerated battle art from tiny party icons.
+
+
+### v1.0.5
+
+- Repaired the production PNG set and made CI validate all 30 authored assets before packaging.
+- Restored clean copies of art files that were damaged during the previous binary transfer and corrected remaining PNG chunk CRCs without regenerating the artwork from icons.
+- Kept the final art as true-color 2D textures because Dramaless 2.x renders native Pokémon art as 3D billboards in its voxel arena; no 3D model conversion is required.
+- Improved the `pokemon.sprite` wrapper so Dramaless' **BACK SPRITES** setting still composes correctly while shiny Irregulars keep their authored shiny front/back art.
+- Declared Wilds of Kanto 2.2+ and Dramaless Shape 2.x as optional integrations; neither is required to use Irregular Origin.
+- Version/package/index advanced to v1.0.5. Species IDs and save compatibility are unchanged.
