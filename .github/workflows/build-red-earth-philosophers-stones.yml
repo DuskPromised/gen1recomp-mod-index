@@ -33,6 +33,42 @@ jobs:
           echo "CART_VERSION=$version" >> "$GITHUB_ENV"
           echo "Building cart version $version"
 
+      - name: Resolve and lock Crystal Animated Sprites v2.0.3
+        run: |
+          curl -fsSL \
+            "https://raw.githubusercontent.com/distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals/main/crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip" \
+            -o /tmp/crystal_sprites.zip
+          python - <<'PY'
+          import hashlib,json,zipfile
+          from pathlib import Path
+
+          archive=Path("/tmp/crystal_sprites.zip")
+          raw=archive.read_bytes()
+          digest=hashlib.sha256(raw).hexdigest()
+          assert len(raw)>1_000_000, len(raw)
+
+          with zipfile.ZipFile(archive) as z:
+              assert z.testzip() is None, "Crystal sprite ZIP CRC failure"
+              manifests=[n for n in z.namelist() if n.endswith("/manifest.json") or n=="manifest.json"]
+              assert len(manifests)==1, manifests
+              manifest=json.loads(z.read(manifests[0]))
+              assert manifest.get("id")=="crystal_animated_sprites_with_shiny_visuals", manifest
+              assert manifest.get("version")=="2.0.3", manifest.get("version")
+
+          path=Path("cart_source/red_earth_philosophers_stones/cart.json")
+          cart=json.loads(path.read_text())
+          pin=next(m for m in cart["mods"] if m["id"]=="crystal_animated_sprites_with_shiny_visuals")
+          expected=pin.get("sha256")
+          if expected=="0"*64:
+              pin["sha256"]=digest
+              path.write_text(json.dumps(cart,indent=2,ensure_ascii=False)+"\n")
+              print("Locked Crystal v2.0.3 SHA-256:",digest)
+          else:
+              assert expected==digest, (expected,digest)
+              print("Crystal v2.0.3 immutable SHA-256 verified:",digest)
+          Path("/tmp/crystal_sprites.sha256").write_text(digest+"\n")
+          PY
+
       - name: Audit Philosopher Stones dependencies and overlaps
         run: |
           python - <<'PY'
@@ -46,7 +82,7 @@ jobs:
           ids=[m["id"] for m in pins]
           active=set(ids)
 
-          assert cart["version"]=="1.0.7", cart["version"]
+          assert cart["version"]=="1.0.8", cart["version"]
           assert len(ids)==len(set(ids)), "duplicate mod ids"
           assert cart["load_order"]==ids, "load_order must match pin order"
 
@@ -66,6 +102,7 @@ jobs:
           required={
             "gen1_kaizo","DRAMALESS_SHAPE","overworld_wild_spawns",
             "red_earth_kaizo_bridge","philosopher_stones","irregular_origin","MULTI_SAVE_SLOTS",
+            "crystal_animated_sprites_with_shiny_visuals",
             "quest_system","advanced_box_system","modern_bag"
           }
           assert required <= active, required-active
@@ -87,16 +124,27 @@ jobs:
           dramaless=next(m for m in pins if m["id"]=="DRAMALESS_SHAPE")
           assert dramaless["version"]=="2.0.4"
 
+          crystal=next(m for m in pins if m["id"]=="crystal_animated_sprites_with_shiny_visuals")
+          assert crystal["version"]=="2.0.3", crystal
+          assert crystal["repo"]=="distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals"
+          crystal_sha=Path("/tmp/crystal_sprites.sha256").read_text().strip()
+          assert crystal["sha256"]==crystal_sha, (crystal["sha256"],crystal_sha)
+          crystal_meta=by_id["crystal_animated_sprites_with_shiny_visuals"]
+          assert crystal_meta.get("version")=="2.0.3", crystal_meta.get("version")
+          assert crystal_meta.get("downloadURL","").endswith(
+              "/crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip")
+
           bridge=next(m for m in pins if m["id"]=="red_earth_kaizo_bridge")
-          assert bridge["version"]=="1.0.1", bridge
-          assert bridge["sha256"]=="b427b2ad5af11dc6aa5086831124e1e4942f16ca04c4249fca7c1657e56a9f7e"
+          assert bridge["version"]=="1.0.2", bridge
+          assert bridge["sha256"]=="fd3097eb7c49f624df4bdce9c32e644e0633858950727024b454944126f512e0"
           bridge_meta=by_id["red_earth_kaizo_bridge"]
-          assert bridge_meta.get("version")=="1.0.1", bridge_meta.get("version")
+          assert bridge_meta.get("version")=="1.0.2", bridge_meta.get("version")
           bopts=bridge.get("options",{})
           assert bopts.get("dynamic_wilds") is True
           assert bopts.get("dynamic_trainers") is True
           assert bopts.get("shiny_starters") is True
-          assert bopts.get("second_starter") is False,               "Irregular route already has Psydren + one regional companion"
+          assert bopts.get("second_starter") is True, \
+              "Irregular route intentionally keeps the optional final-ball region reselect"
 
           stones=next(m for m in pins if m["id"]=="philosopher_stones")
           assert stones["version"]=="1.1.0", stones
@@ -106,13 +154,13 @@ jobs:
           assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
 
           irregular=next(m for m in pins if m["id"]=="irregular_origin")
-          assert irregular["version"]=="1.0.7", irregular
+          assert irregular["version"]=="1.0.8", irregular
           assert irregular["repo"]=="DuskPromised/gen1recomp-mod-index"
-          assert irregular["sha256"]=="37ad54f3597f2cbf9fe24a840d1c80a70259786a5951cd16c7ddb41e7d1a7785"
+          assert irregular["sha256"]=="94eed77a5eb7b11994d7c781770616cbe27354ba89b8f777ebe1261c66f768ef"
           irregular_meta=by_id["irregular_origin"]
-          assert irregular_meta.get("version")=="1.0.7"
-          assert irregular_meta.get("source_zip")=="irregular_origin-1.0.7.zip"
-          assert irregular_meta.get("downloadURL","").endswith("/irregular_origin-1.0.7.zip")
+          assert irregular_meta.get("version")=="1.0.8"
+          assert irregular_meta.get("source_zip")=="irregular_origin-1.0.8.zip"
+          assert irregular_meta.get("downloadURL","").endswith("/irregular_origin-1.0.8.zip")
           irregular_sha=Path("custom_mods/irregular_origin.sha256").read_text().split()[0]
           assert irregular["sha256"]==irregular_sha, (irregular["sha256"],irregular_sha)
           assert irregular_meta.get("optional_dependencies")==[
@@ -139,6 +187,8 @@ jobs:
           assert opts.get("modern_party_ui") is True
           assert opts.get("modern_battle_ui")=="mod"
 
+          assert ids.index("DRAMALESS_SHAPE") < ids.index("crystal_animated_sprites_with_shiny_visuals")
+          assert ids.index("crystal_animated_sprites_with_shiny_visuals") < ids.index("irregular_origin")
           assert ids.index("gen1_kaizo") < ids.index("philosopher_stones")
           assert ids.index("philosopher_stones") < ids.index("irregular_origin")
           assert ids.index("irregular_origin") < ids.index("overworld_wild_spawns"),               "Wilds must load after Irregular species registration for follower sprites"
@@ -283,6 +333,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
+            "cart_source/red_earth_philosophers_stones/cart.json" \
             "cart_source/red_earth_philosophers_stones/label.png" \
             "site/data/carts/DuskPromised@red_earth_philosophers_stones/thumbnail.jpg" \
             "site/data/carts/DuskPromised@red_earth_philosophers_stones/"*.g1rcart \
