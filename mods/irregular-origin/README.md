@@ -34,11 +34,16 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.4 is the production art pass. Psydren, Vesperis, and Solipsdion each ship with dedicated **normal and shiny** front battle art, rear battle art, 64x64 summary/dex portraits, 16x32 two-frame party icons, and 16x96 six-frame follower sheets.
+v1.0.4 is the production art pass for the entire Irregular line. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
 
-The engine's `pokemon.sprite` and `pokemon.icon` hooks select normal versus shiny art from the actual Pokémon instance, so the guaranteed shiny Psydren line displays its authored shiny identity everywhere instead of relying on a palette swap. Solipsdion's normal form uses the pearl/lilac/gold design; the ruby-ascended design is reserved for its shiny form.
-
-When **Wilds of Kanto** is present, Irregular Origin wraps its final Pokedex follower provider only for the three custom species so the dedicated follower sheets are used without changing other Pokémon providers. Species IDs and save compatibility remain unchanged.
+- Battle front/back and menu portraits: 64×64 true-color PNGs
+- Party icons: engine-native 16×32 two-frame sheets
+- Followers: 16×96 six-frame walker sheets
+- Runtime shiny routing uses GenRecomp's sanctioned `pokemon.sprite` and `pokemon.icon` hooks, so the shiny is a distinct picture rather than a palette swap.
+- The guaranteed gift Psydren remains shiny and keeps that shiny identity through Vesperis and Solipsdion.
+- Solipsdion's **normal** form is the pearl/lilac/gold sovereign design. Its **shiny** is the ruby-ascended design.
+- Solipsdion's seven-wing canon remains **2 flight wings + 4 hand-wings + 1 crown wing**.
+- Wilds integration supplies the dedicated six-frame Irregular follower sheets while delegating every non-Irregular species back to Wilds unchanged.
 
 
 ### v1.0.1
@@ -62,11 +67,12 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - Species IDs, save compatibility, shiny DVs, evolution levels, stats, and the rest of the learnsets are unchanged.
 - Battle/follower art is still the functional concept set; the dedicated final art pass remains separate from this gameplay hotfix.
 
+
 ### v1.0.4
 
-- Added the complete 30-file production sprite pack: normal + shiny front, back, menu/stat portrait, party icon, and follower art for all three stages.
-- Added runtime shiny routing for battle, summary/dex, and party visuals.
-- Added dedicated rear-facing battle sprites instead of mirroring/reusing the front art.
-- Added optional Wilds of Kanto follower-provider integration for the custom 16x96 walker sheets.
-- Locked Solipsdion's normal presentation to pearl/lilac/gold and its shiny presentation to the ruby-ascended art direction.
-- Removed the old build-time art regeneration path; CI now validates authored PNGs without overwriting them.
+- Replaced the functional concept placeholders with the final production art pass for Psydren, Vesperis, and Solipsdion.
+- Added independent normal/shiny front, back, menu, party-icon, and follower assets for all three stages.
+- Added runtime shiny image routing for battle/summary art and party icons; no palette-swap shortcut is used.
+- Added dedicated Wilds follower sheets for the Irregular line.
+- Preserved Solipsdion's pearl/lilac/gold normal identity and ruby-ascended shiny identity, including the seven-wing anatomy requirement.
+- Removed the old build-time behavior that regenerated battle art from tiny party icons.
