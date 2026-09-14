@@ -46,7 +46,7 @@ jobs:
           ids=[m["id"] for m in pins]
           active=set(ids)
 
-          assert cart["version"]=="1.0.4", cart["version"]
+          assert cart["version"]=="1.0.5", cart["version"]
           assert len(ids)==len(set(ids)), "duplicate mod ids"
           assert cart["load_order"]==ids, "load_order must match pin order"
 
@@ -88,9 +88,15 @@ jobs:
           assert dramaless["version"]=="2.0.4"
 
           bridge=next(m for m in pins if m["id"]=="red_earth_kaizo_bridge")
+          assert bridge["version"]=="1.0.1", bridge
+          assert bridge["sha256"]=="b427b2ad5af11dc6aa5086831124e1e4942f16ca04c4249fca7c1657e56a9f7e"
+          bridge_meta=by_id["red_earth_kaizo_bridge"]
+          assert bridge_meta.get("version")=="1.0.1", bridge_meta.get("version")
           bopts=bridge.get("options",{})
-          for key in ("dynamic_wilds","dynamic_trainers","second_starter","shiny_starters"):
-              assert bopts.get(key) is True, key
+          assert bopts.get("dynamic_wilds") is True
+          assert bopts.get("dynamic_trainers") is True
+          assert bopts.get("shiny_starters") is True
+          assert bopts.get("second_starter") is False,               "Irregular route already has Psydren + one regional companion"
 
           stones=next(m for m in pins if m["id"]=="philosopher_stones")
           assert stones["version"]=="1.1.0", stones
@@ -100,11 +106,11 @@ jobs:
           assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
 
           irregular=next(m for m in pins if m["id"]=="irregular_origin")
-          assert irregular["version"]=="1.0.2", irregular
+          assert irregular["version"]=="1.0.3", irregular
           assert irregular["repo"]=="DuskPromised/gen1recomp-mod-index"
-          assert irregular["sha256"]=="d9502f5538efe164ade25a727a1603f21052c906ff698bbff7892944cbf35ce0"
+          assert irregular["sha256"]=="ee07c4f148b4dc80ba238dbfd68f1ab5f972a75ef9b8ea9e5d88d0233306df3c"
           irregular_meta=by_id["irregular_origin"]
-          assert irregular_meta.get("version")=="1.0.2"
+          assert irregular_meta.get("version")=="1.0.3"
           assert ids.index("philosopher_stones") < ids.index("irregular_origin"), \
               "Irregular Origin must load after Philosopher Stones for resonance wrapping"
 
@@ -119,10 +125,10 @@ jobs:
           assert opts.get("modern_party_ui") is True
           assert opts.get("modern_battle_ui")=="mod"
 
-          assert ids.index("gen1_kaizo") < ids.index("overworld_wild_spawns")
-          assert ids.index("overworld_wild_spawns") < ids.index("red_earth_kaizo_bridge")
-          assert ids.index("red_earth_kaizo_bridge") < ids.index("philosopher_stones")
+          assert ids.index("gen1_kaizo") < ids.index("philosopher_stones")
           assert ids.index("philosopher_stones") < ids.index("irregular_origin")
+          assert ids.index("irregular_origin") < ids.index("overworld_wild_spawns"),               "Wilds must load after Irregular species registration for follower sprites"
+          assert ids.index("overworld_wild_spawns") < ids.index("red_earth_kaizo_bridge")
           print(f"AUDIT PASS: {len(ids)} mods, Irregular Origin + Greater Stones pinned, no missing dependencies or declared conflicts")
           PY
 

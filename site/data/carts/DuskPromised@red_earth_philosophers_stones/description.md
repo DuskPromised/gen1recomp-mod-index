@@ -74,3 +74,12 @@ v1.0.1 uses the approved concept-poster pixel artwork as the first functional ba
 ## v1.0.4 — Irregular art hotfix
 
 Irregular Origin is pinned to v1.0.2. Psydren's malformed battle PNG was rebuilt from verified source art, all Irregular party icons were normalized to GenRecomp's 16x32 two-frame layout, and CI now verifies PNG decoding plus dimensions before publishing. This fixes the Oak rival battle/switch-in crash and the broken Psydren party-menu icon. Wilds follower fallback remains functional; dedicated six-frame follower art is a later visual upgrade.
+
+
+## v1.0.5 — Regional rival + battle-effects hotfix
+
+- **Red Earth Kaizo Bridge v1.0.1** now rewrites the rival's Kanto starter slot to the matching line from the selected region. Choosing Fennekin therefore makes the lab counter Froakie rather than Squirtle, with Frogadier/Greninja used in later rival rosters.
+- The Irregular route now explicitly disables the old leftover-ball feature: the intended opening party is **Psydren + one chosen regional companion**, not three starters.
+- **Irregular Origin v1.0.3** keeps Confusion's Psychic gameplay but replaces its scanline-warp battle animation with a Dramaless-safe particle animation.
+- Irregular Origin now loads before Wilds of Kanto so Wilds can see the custom species during sprite registration. This should improve follower fallback consistency; final dedicated walk-cycle art is still a later visual pass.
+- Existing saves are never stripped of Pokémon. If an earlier test save already received the accidental third starter, it will remain there.
