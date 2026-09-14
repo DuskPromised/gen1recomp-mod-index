@@ -46,7 +46,7 @@ jobs:
           ids=[m["id"] for m in pins]
           active=set(ids)
 
-          assert cart["version"]=="1.0.2", cart["version"]
+          assert cart["version"]=="1.0.3", cart["version"]
           assert len(ids)==len(set(ids)), "duplicate mod ids"
           assert cart["load_order"]==ids, "load_order must match pin order"
 
@@ -65,7 +65,7 @@ jobs:
 
           required={
             "gen1_kaizo","DRAMALESS_SHAPE","overworld_wild_spawns",
-            "red_earth_kaizo_bridge","philosopher_stones","MULTI_SAVE_SLOTS",
+            "red_earth_kaizo_bridge","philosopher_stones","irregular_origin","MULTI_SAVE_SLOTS",
             "quest_system","advanced_box_system","modern_bag"
           }
           assert required <= active, required-active
@@ -99,6 +99,15 @@ jobs:
           stone_meta=by_id["philosopher_stones"]
           assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
 
+          irregular=next(m for m in pins if m["id"]=="irregular_origin")
+          assert irregular["version"]=="1.0.0", irregular
+          assert irregular["repo"]=="DuskPromised/gen1recomp-mod-index"
+          assert irregular["sha256"]=="061377301d6c56a9bf73f49d9063f1c67077b54966f0f8b8f83c5b801a314521"
+          irregular_meta=by_id["irregular_origin"]
+          assert irregular_meta.get("version")=="1.0.0"
+          assert ids.index("philosopher_stones") < ids.index("irregular_origin"), \
+              "Irregular Origin must load after Philosopher Stones for resonance wrapping"
+
           multi=next(m for m in pins if m["id"]=="MULTI_SAVE_SLOTS")
           assert multi["version"]=="1.0.1"
           assert multi["repo"]=="DuskPromised/gen1recomp-mod-index"
@@ -113,7 +122,8 @@ jobs:
           assert ids.index("gen1_kaizo") < ids.index("overworld_wild_spawns")
           assert ids.index("overworld_wild_spawns") < ids.index("red_earth_kaizo_bridge")
           assert ids.index("red_earth_kaizo_bridge") < ids.index("philosopher_stones")
-          print(f"AUDIT PASS: {len(ids)} mods, Greater Stones v1.1.0 pinned, no missing dependencies or declared conflicts")
+          assert ids.index("philosopher_stones") < ids.index("irregular_origin")
+          print(f"AUDIT PASS: {len(ids)} mods, Irregular Origin + Greater Stones pinned, no missing dependencies or declared conflicts")
           PY
 
       - name: Build clean 256px cart label

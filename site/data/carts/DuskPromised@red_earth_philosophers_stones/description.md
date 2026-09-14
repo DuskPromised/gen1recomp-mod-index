@@ -52,3 +52,20 @@ Published cart builds are never overwritten. Every released `.g1rcart` remains i
 `site/data/carts/DuskPromised@red_earth_philosophers_stones/`
 
 The machine-readable `versions.json` in that folder records each released version, file URL, byte size, and SHA-256. GenRecomp++ follows the newest release from the normal cart feed, while older editions remain directly downloadable for anyone who wants them.
+
+
+## Irregular Origin
+
+**Irregular Origin v1.0.0** adds a new three-stage species line created specifically for this cart:
+
+- **Psydren** — Psychic / Water — the Abyssal Seed
+- **Vesperis** — Psychic / Ghost — the Gravekeeper's Storm
+- **Solipsdion** — Psychic / Dragon — the Sovereign Apex
+
+The first interaction with Oak's starter table triggers a fated encounter instead of immediately opening the regional starter selection. Oak entrusts the player with a guaranteed shiny Psydren at level 5, using a legitimate Gen-II-compatible shiny DV spread. The normal starter flag stays unset, so the player then chooses a conventional regional companion through Allgen Kaizo's existing seven-region starter system.
+
+Psydren evolves at level 16 and Vesperis at level 36. Solipsdion learns two custom Dragon-special signature moves: **Sovereign Rage** and **Seraph's Verdict**.
+
+The entire line has hidden **Irregular Resonance** with Philosopher Stones. It gains modest secondary effects from bound stones, unique resonance dialogue in the party menu, and atmospheric reactions near Greater Stone discovery sites. The red core visible through the evolutionary line is deliberately tied to the larger alchemical mystery.
+
+v1.0.0 uses the approved concept-poster pixel artwork as the first functional battle/icon set. Dedicated rear-facing and follower sheets can be upgraded later without changing species IDs or save compatibility.

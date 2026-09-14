@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Pokémon Red Earth: The Philosopher's Stones",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Kaizo Kanto: 908 Pokémon, Dramaless voxels, scaling battles, two shiny starters, Greater Stones, quests, and QOL.",
+  "summary": "Kaizo Kanto with 908+ Pokémon, Irregular starter line, Dramaless voxels, scaling battles, Greater Stones, quests, and QOL.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -161,6 +161,13 @@
       "sha256": "b62e8eb02c983b6aa4c0e28e62b8eb00b6aec502ae3202ea81bbe3be0a5836e0"
     },
     {
+      "id": "irregular_origin",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "1.0.0",
+      "sha256": "061377301d6c56a9bf73f49d9063f1c67077b54966f0f8b8f83c5b801a314521"
+    },
+    {
       "id": "quest_system",
       "source": "github",
       "repo": "FAFF0x/gen1recomp",
@@ -251,6 +258,7 @@
     "overworld_wild_spawns",
     "red_earth_kaizo_bridge",
     "philosopher_stones",
+    "irregular_origin",
     "quest_system",
     "ashes_of_cinnabar",
     "echoes_beyond_the_fog",
