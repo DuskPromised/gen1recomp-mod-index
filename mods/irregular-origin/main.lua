@@ -1,4 +1,4 @@
--- Irregular Origin v1.0.7
+-- Irregular Origin v1.0.8
 -- Custom three-stage starter line for Pokémon Red Earth: The Philosopher's Stones.
 -- Psydren is received before Oak's normal regional companion choice.
 
@@ -98,12 +98,12 @@ return function(mod)
   local hydroPump=existingMove("HYDRO_PUMP","HYDROPUMP")
   local psychic=existingMove("PSYCHIC_M","PSYCHIC")
 
-  -- Classic CONFUSION uses a scanline-deformation animation. That looks fine
-  -- in the flat renderer but can leave distracting scene/sprite deformation
-  -- in the Dramaless 3D battle presentation. Keep the exact move gameplay,
-  -- but give the Irregular line a particle-based visual that doesn't warp the
-  -- battlefield. SWIFT is preferred; EMBER/TACKLE are only defensive fallbacks.
-  local confusionAnim=(moves:get(existingMove("SWIFT","EMBER","TACKLE")) or {}).anim
+  -- Classic CONFUSION's scanline deformation looks wrong on Dramaless'
+  -- billboard battlefield. v1.0.3 temporarily borrowed SWIFT, but in the voxel
+  -- renderer that collapses visually into the same quick hit-flash family as
+  -- POUND. Keep Confusion's gameplay, but borrow PSYBEAM's unmistakably psychic
+  -- projectile animation instead. CONFUSE RAY / PSYCHIC are defensive fallbacks.
+  local confusionAnim=(moves:get(existingMove("PSYBEAM","CONFUSE_RAY","PSYCHIC_M","PSYCHIC")) or {}).anim
   local rageAnim=(moves:get(existingMove("DRAGON_RAGE")) or {}).anim
   local beamAnim=(moves:get(existingMove("HYPER_BEAM")) or {}).anim
 
@@ -221,11 +221,11 @@ return function(mod)
 
   -- Route every engine battle/stat/dex request through the authored normal or
   -- shiny production art. Summary/Dex use the dedicated portrait instead of
-  -- stretching a battle sprite. Call downstream first so graphics hosts such
-  -- as Dramaless can choose their presentation. In Dramaless' voxel-card mode,
-  -- BACK SPRITES OFF intentionally substitutes the front illustration on the
-  -- player side; preserve that choice while swapping in the correct shiny
-  -- front rather than falling back to the species' static normal front.
+  -- stretching a battle sprite. Battle orientation is authoritative here:
+  -- enemy/preview requests use the true front sprite and player-side requests
+  -- use the true back sprite. This deliberately prevents Dramaless or another
+  -- presentation wrapper from substituting the portrait/front view on the
+  -- player side, which made the Irregular look like a pasted illustration.
   mod.hooks:wrap("pokemon.sprite",function(next,path,ctx)
     local art=artFor(ctx)
     if not art then return next(path,ctx) end
@@ -236,12 +236,6 @@ return function(mod)
       return shiny and art.menuShiny or art.menu
     end
     if ctx.side=="back" then
-      local data=ctx.data
-      local def=data and data.pokemon and ctx.species and data.pokemon[ctx.species]
-      local staticFront=def and def.spriteFront
-      if result==staticFront or result==art.front or result==art.frontShiny then
-        return shiny and art.frontShiny or art.front
-      end
       return shiny and art.backShiny or art.back
     end
     return shiny and art.frontShiny or art.front
@@ -518,7 +512,7 @@ return function(mod)
     game.stack:push(mod.ui.TextBox.new(game,msg:gsub("{RAM}",name)))
   end)
 
-  mod.exports.version="1.0.7"
+  mod.exports.version="1.0.8"
   mod.exports.species=IDS
   mod.exports.isIrregular=isIrregular
 end

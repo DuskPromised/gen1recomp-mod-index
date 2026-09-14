@@ -34,7 +34,7 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.7 carries the production art pass for the entire Irregular line with a hardened corruption-checking release pipeline. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
+v1.0.8 carries the production art pass for the entire Irregular line with Crystal-style pixel battle sprites and the hardened corruption-checking release pipeline. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
 
 - Battle front/back and menu portraits: 64×64 true-color PNGs
 - Party icons: engine-native 16×32 two-frame sheets
@@ -110,3 +110,12 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - Verifies the packaged ZIP after creation with ZIP CRC testing, exact file-list checks, byte-for-byte source/package comparisons, PNG re-validation from inside the archive, and manifest/version checks.
 - The release is blocked before publication if any sprite byte, PNG chunk, frame sheet, ZIP member, or package metadata is corrupted or missing.
 - Publishes a new immutable v1.0.7 archive; v1.0.6 remains unchanged for rollback.
+
+
+### v1.0.8
+
+- Reworked all twelve battle images (front/back × normal/shiny × three stages) into deterministic low-color, hard-edged pixel sprites instead of downscaled illustration-like PNGs.
+- Player-side battles now always use the authored **back** angle; enemy-side battles use the authored **front** angle. Dramaless can still billboard the texture in 3D, but it can no longer silently replace an Irregular back sprite with its front portrait.
+- Menu portraits remain the richer 64×64 artwork; battle sprites are intentionally a separate visual treatment.
+- **IRR CONFUSION** no longer borrows SWIFT. It now uses PSYBEAM's psychic projectile animation while preserving Confusion's 50 power, accuracy, PP, Psychic typing, and confusion side effect.
+- CI pixel-locks and validates the battle sprites before packaging: binary alpha, low color count, correct dimensions, PNG CRCs, and byte-identical ZIP verification.

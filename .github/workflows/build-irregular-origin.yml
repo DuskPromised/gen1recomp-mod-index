@@ -23,6 +23,75 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Pixel-lock battle sprites
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          from pathlib import Path
+          from PIL import Image, ImageFilter
+          import numpy as np
+
+          root=Path("mods/irregular-origin/assets")
+          names=[
+              f"{stem}_{side}{shiny}.png"
+              for stem in ("psydren","vesperis","solipsdion")
+              for side in ("front","back")
+              for shiny in ("","_shiny")
+          ]
+
+          def already_locked(im):
+              rgba=im.convert("RGBA")
+              colors={px for px in rgba.getdata() if px[3]}
+              alphas={px[3] for px in rgba.getdata()}
+              return len(colors)<=9 and alphas <= {0,255}
+
+          def lock(path):
+              im=Image.open(path).convert("RGBA")
+              if already_locked(im):
+                  return False
+              alpha=im.getchannel("A")
+              bbox=alpha.getbbox()
+              assert bbox, path
+              crop=im.crop(bbox)
+              low=30 if path.name.startswith("solipsdion_") else 28
+              maxdim=low-4
+              scale=min(maxdim/crop.width,maxdim/crop.height)
+              nw=max(1,round(crop.width*scale))
+              nh=max(1,round(crop.height*scale))
+              small=crop.resize((nw,nh),Image.Resampling.LANCZOS)
+              arr=np.array(small)
+              mask=arr[...,3]>=80
+              rgb=Image.fromarray(arr[...,:3],"RGB")
+              q=rgb.quantize(colors=8 if path.name.startswith("solipsdion_") else 7,
+                             method=Image.Quantize.MEDIANCUT,
+                             dither=Image.Dither.NONE).convert("RGB")
+              qa=np.zeros((nh,nw,4),dtype=np.uint8)
+              qa[...,:3]=np.array(q)
+              qa[...,3]=np.where(mask,255,0).astype(np.uint8)
+              spr=Image.fromarray(qa,"RGBA")
+
+              a=spr.getchannel("A")
+              dil=a.filter(ImageFilter.MaxFilter(3))
+              border=(np.array(dil)>0) & (np.array(a)==0)
+              outline=np.zeros((nh,nw,4),dtype=np.uint8)
+              outline[border,:3]=[18,24,38]
+              outline[border,3]=255
+              merged=Image.fromarray(outline,"RGBA")
+              merged.alpha_composite(spr)
+              big=merged.resize((nw*2,nh*2),Image.Resampling.NEAREST)
+              canvas=Image.new("RGBA",(64,64),(0,0,0,0))
+              canvas.alpha_composite(big,((64-big.width)//2,64-big.height-2))
+              canvas.save(path,optimize=True)
+              return True
+
+          changed=[]
+          for name in names:
+              path=root/name
+              assert path.is_file(), path
+              if lock(path): changed.append(name)
+          print("PIXEL-LOCKED:", ", ".join(changed) if changed else "already locked")
+          PY
+
       - name: Validate authored production sprites
         run: |
           python -m pip install --quiet pillow
@@ -88,6 +157,12 @@ jobs:
                   im.load()
                   assert im.size==size, (path,im.size,size)
                   nonempty_frames(im,name)
+                  if "_front" in name or "_back" in name:
+                      rgba=im.convert("RGBA")
+                      alphas={px[3] for px in rgba.getdata()}
+                      opaque={px for px in rgba.getdata() if px[3]}
+                      assert alphas <= {0,255}, f"{name}: battle sprite has soft alpha"
+                      assert len(opaque)<=9, f"{name}: battle sprite is not pixel-locked ({len(opaque)} colors)"
 
           actual={p.name for p in root.glob("*.png")}
           assert actual==set(expected), (
@@ -112,13 +187,13 @@ jobs:
           idx=json.loads(Path("custom_mods/irregular_origin.index.json").read_text())
           src=(root/"main.lua").read_text()
 
-          assert m["id"]=="irregular_origin" and m["version"]=="1.0.7"
-          assert idx["version"]=="1.0.7"
-          assert idx["source_zip"]=="irregular_origin-1.0.7.zip"
-          assert idx["downloadURL"].endswith("/irregular_origin-1.0.7.zip")
+          assert m["id"]=="irregular_origin" and m["version"]=="1.0.8"
+          assert idx["version"]=="1.0.8"
+          assert idx["source_zip"]=="irregular_origin-1.0.8.zip"
+          assert idx["downloadURL"].endswith("/irregular_origin-1.0.8.zip")
           assert idx.get("optional_dependencies")==m.get("optional_dependencies")
           assert set(idx.get("optional_integrations",[]))=={"overworld_wild_spawns","DRAMALESS_SHAPE"}
-          assert 'mod.exports.version="1.0.7"' in src
+          assert 'mod.exports.version="1.0.8"' in src
 
           for needle in [
             "IRR_PSYDREN","IRR_VESPERIS","IRR_SOLIPSDION",
@@ -126,7 +201,8 @@ jobs:
             "PSYCHIC","GHOST","DRAGON","EVENT_GOT_STARTER",
             "PHILOSOPHER_RUBY","RESONANCE","records end",
             "pokemon.sprite","pokemon.icon","frontShiny","backShiny",
-            "menuShiny","iconShiny","followerShiny","overworld_wild_spawns"
+            "menuShiny","iconShiny","followerShiny","overworld_wild_spawns",
+            'existingMove("PSYBEAM","CONFUSE_RAY","PSYCHIC_M","PSYCHIC")'
           ]:
               assert needle in src, needle
 
@@ -151,7 +227,7 @@ jobs:
           from PIL import Image
 
           src=Path("mods/irregular-origin")
-          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.7.zip")
+          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.8.zip")
           files=["main.lua","manifest.json","README.md","LICENSE"]
           pngs=[str(p.relative_to(src)) for p in sorted((src/"assets").glob("*.png"))]
           assert len(pngs)==30, len(pngs)
@@ -212,9 +288,9 @@ jobs:
                           im.load()
               packed_manifest=json.loads(z.read("irregular_origin/manifest.json"))
               assert packed_manifest["id"]=="irregular_origin"
-              assert packed_manifest["version"]=="1.0.7"
+              assert packed_manifest["version"]=="1.0.8"
               packed_main=z.read("irregular_origin/main.lua").decode("utf-8")
-              assert 'mod.exports.version="1.0.7"' in packed_main
+              assert 'mod.exports.version="1.0.8"' in packed_main
 
           body=out.read_bytes()
           sha=hashlib.sha256(body).hexdigest()
@@ -229,11 +305,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f             "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.7.zip"             "custom_mods/irregular_origin.sha256"
+          git add -f \
+            "mods/irregular-origin/assets/"*.png \
+            "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.8.zip" \
+            "custom_mods/irregular_origin.sha256"
           if git diff --cached --quiet; then
-            echo "Irregular Origin v1.0.7 archive already current."
+            echo "Irregular Origin v1.0.8 archive already current."
           else
-            git commit -m "Publish Irregular Origin v1.0.7 verified package"
+            git commit -m "Publish Irregular Origin v1.0.8 verified package"
             git pull --rebase origin main
             git push
           fi
