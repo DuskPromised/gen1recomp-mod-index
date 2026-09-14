@@ -34,9 +34,18 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.1 uses the approved concept-poster pixel sprites as the first functional battle/icon set. The current package prioritizes functional battle/icon art; dedicated rear-facing and follower sheets can replace these assets later without changing species IDs or save compatibility.
+v1.0.2 normalizes all party-icon sheets to the engine's vertical 16x32 two-frame format and regenerates every 64x64 battle image from a verified icon frame. This fixes the corrupted Psydren PNG crash and the broken party-menu icon while preserving species/save IDs. The current package prioritizes functional battle/icon art; dedicated rear-facing and follower sheets can replace these assets later without changing species IDs or save compatibility.
 
 
 ### v1.0.1
 
 Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry key before cart integration.
+
+
+### v1.0.2
+
+- Fixed Psydren battle crash caused by a malformed PNG IDAT CRC.
+- Rebuilt all three battle-front PNGs from verified icon frames.
+- Normalized party icons from horizontal 32x16 sheets to GenRecomp's required vertical 16x32 two-frame layout.
+- Added Pillow decode/CRC validation and exact-dimension checks to CI so malformed art cannot publish again.
+- The existing Wilds follower fallback remains functional; dedicated six-frame walker art is still a later art upgrade.

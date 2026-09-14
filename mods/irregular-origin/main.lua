@@ -1,4 +1,4 @@
--- Irregular Origin v1.0.1
+-- Irregular Origin v1.0.2
 -- Custom three-stage starter line for Pokémon Red Earth: The Philosopher's Stones.
 -- Psydren is received before Oak's normal regional companion choice.
 
@@ -342,7 +342,7 @@ return function(mod)
     game.stack:push(mod.ui.TextBox.new(game,msg:gsub("{RAM}",name)))
   end)
 
-  mod.exports.version="1.0.1"
+  mod.exports.version="1.0.2"
   mod.exports.species=IDS
   mod.exports.isIrregular=isIrregular
 end
