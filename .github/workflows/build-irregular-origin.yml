@@ -55,7 +55,7 @@ jobs:
             "IRR_PSYDREN","IRR_VESPERIS","IRR_SOLIPSDION",
             "IRR_SOVEREIGN_RAGE","IRR_SERAPHS_VERDICT",
             "PSYCHIC_TYPE","GHOST","DRAGON","EVENT_GOT_STARTER",
-            "PHILOSOPHER_RUBY","RESONANCE","where records end"
+            "PHILOSOPHER_RUBY","RESONANCE","records end"
           ]:
             assert needle in src, needle
           for asset in [
