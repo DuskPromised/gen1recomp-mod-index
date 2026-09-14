@@ -6,6 +6,7 @@ on:
     branches: ["main"]
     paths:
       - "mods/irregular-origin/**"
+      - "custom_mods/irregular_origin.index.json"
       - ".github/workflows/build-irregular-origin.yml"
 
 permissions:
@@ -22,37 +23,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Normalize icon sheets and regenerate battle sprites
+      - name: Validate production art assets
         run: |
           python -m pip install --quiet pillow
           python - <<'PY'
           from pathlib import Path
           from PIL import Image
-          root=Path("mods/irregular-origin/assets")
-          # GenRecomp party icons are 16x32 sheets with two 16x16 frames
-          # stacked vertically. Early Irregular art was authored as 32x16,
-          # and Psydren's hand-built front PNG also carried a bad IDAT CRC.
-          # Use the valid icon art as the single source of truth, normalize the
-          # sheet orientation, then regenerate every battle card with Pillow.
-          for stem in ("psydren","vesperis","solipsdion"):
-              path=root/f"{stem}_icon.png"
-              with Image.open(path) as src:
-                  icon=src.convert("RGBA")
-              if icon.size == (32,16):
-                  f0=icon.crop((0,0,16,16))
-                  f1=icon.crop((16,0,32,16))
-              elif icon.size == (16,32):
-                  f0=icon.crop((0,0,16,16))
-                  f1=icon.crop((0,16,16,32))
-              else:
-                  raise AssertionError(f"{stem} icon has unexpected size {icon.size}")
-              sheet=Image.new("RGBA",(16,32),(0,0,0,0))
-              sheet.paste(f0,(0,0))
-              sheet.paste(f1,(0,16))
-              sheet.save(path,"PNG",compress_level=9)
 
-              front=f0.resize((64,64),Image.Resampling.NEAREST)
-              front.save(root/f"{stem}_front.png","PNG",compress_level=9)
+          root=Path("mods/irregular-origin/assets")
+          expected={
+              "front":(64,64),
+              "back":(64,64),
+              "menu":(64,64),
+              "icon":(16,32),
+              "follower":(16,96),
+          }
+          count=0
+          for stem in ("psydren","vesperis","solipsdion"):
+              for suffix in ("","_shiny"):
+                  for kind,size in expected.items():
+                      path=root/f"{stem}_{kind}{suffix}.png"
+                      assert path.is_file() and path.stat().st_size>100, path
+                      with Image.open(path) as im:
+                          im.verify()
+                      with Image.open(path) as im:
+                          assert im.size==size, (path,im.size,size)
+                      count+=1
+          assert count==30
+          print("IRREGULAR ORIGIN PRODUCTION ART PASS:",count,"PNGs")
           PY
 
       - name: Syntax and content audit
@@ -63,32 +61,23 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
+
           root=Path("mods/irregular-origin")
           m=json.loads((root/"manifest.json").read_text())
           src=(root/"main.lua").read_text()
-          assert m["id"]=="irregular_origin" and m["version"]=="1.0.3"
+          assert m["id"]=="irregular_origin" and m["version"]=="1.0.4"
           for needle in [
-            "IRR_PSYDREN","IRR_VESPERIS","IRR_SOLIPSDION",
-            "IRR_SOVEREIGN_RAGE","IRR_SERAPHS_VERDICT",
-            "PSYCHIC","GHOST","DRAGON","EVENT_GOT_STARTER",
-            "PHILOSOPHER_RUBY","RESONANCE","records end"
+              "IRR_PSYDREN","IRR_VESPERIS","IRR_SOLIPSDION",
+              "IRR_SOVEREIGN_RAGE","IRR_SERAPHS_VERDICT",
+              "PSYCHIC","GHOST","DRAGON","EVENT_GOT_STARTER",
+              "PHILOSOPHER_RUBY","RESONANCE","records end",
+              'pokemon.sprite','pokemon.icon','irregularIsShiny',
+              'psydren_follower_shiny.png','vesperis_back_shiny.png',
+              'solipsdion_front_shiny.png','registerSpriteProvider'
           ]:
-            assert needle in src, needle
-          from PIL import Image
-          for stem in ("psydren","vesperis","solipsdion"):
-            front=root/"assets"/f"{stem}_front.png"
-            icon=root/"assets"/f"{stem}_icon.png"
-            assert front.is_file() and front.stat().st_size>100, front
-            assert icon.is_file() and icon.stat().st_size>100, icon
-            with Image.open(front) as im:
-              im.verify()
-            with Image.open(icon) as im:
-              im.verify()
-            with Image.open(front) as im:
-              assert im.size==(64,64), (front,im.size)
-            with Image.open(icon) as im:
-              assert im.size==(16,32), (icon,im.size)
-          print("IRREGULAR ORIGIN PNG/AUDIT PASS")
+              assert needle in src, needle
+          assert 'mod.exports.version="1.0.4"' in src
+          print("IRREGULAR ORIGIN LUA/AUDIT PASS")
           PY
 
       - name: Package deterministic ZIP
@@ -97,20 +86,23 @@ jobs:
           python - <<'PY'
           import hashlib,zipfile
           from pathlib import Path
+
           src=Path("mods/irregular-origin")
-          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.3.zip")
+          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.4.zip")
           files=["main.lua","manifest.json","README.md","LICENSE"]
           files += [str(p.relative_to(src)) for p in sorted((src/"assets").glob("*.png"))]
+          assert len([f for f in files if f.startswith("assets/")])==30
           with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
-            for name in files:
-              info=zipfile.ZipInfo("irregular_origin/"+name)
-              info.date_time=(2026,1,1,0,0,0)
-              info.compress_type=zipfile.ZIP_DEFLATED
-              info.external_attr=0o100644<<16
-              z.writestr(info,(src/name).read_bytes())
+              for name in files:
+                  info=zipfile.ZipInfo("irregular_origin/"+name)
+                  info.date_time=(2026,1,1,0,0,0)
+                  info.compress_type=zipfile.ZIP_DEFLATED
+                  info.external_attr=0o100644<<16
+                  z.writestr(info,(src/name).read_bytes())
           body=out.read_bytes()
           sha=hashlib.sha256(body).hexdigest()
-          Path("custom_mods/irregular_origin.sha256").write_text(sha+"  "+out.name+"\n")
+          Path("custom_mods/irregular_origin.sha256").write_text(
+              sha+"  "+out.name+"\n")
           print("sha256:",sha,"bytes:",len(body))
           PY
 
@@ -120,12 +112,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f \
             "mods/irregular-origin/assets/"*.png \
-            "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.3.zip" \
+            "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.4.zip" \
             "custom_mods/irregular_origin.sha256"
           if git diff --cached --quiet; then
             echo "Irregular Origin archive already current."
           else
-            git commit -m "Publish Irregular Origin v1.0.3"
+            git commit -m "Publish Irregular Origin v1.0.4"
             git pull --rebase origin main
             git push
           fi
