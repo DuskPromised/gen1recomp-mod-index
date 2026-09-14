@@ -100,11 +100,11 @@ jobs:
           assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
 
           irregular=next(m for m in pins if m["id"]=="irregular_origin")
-          assert irregular["version"]=="1.0.0", irregular
+          assert irregular["version"]=="1.0.1", irregular
           assert irregular["repo"]=="DuskPromised/gen1recomp-mod-index"
-          assert irregular["sha256"]=="061377301d6c56a9bf73f49d9063f1c67077b54966f0f8b8f83c5b801a314521"
+          assert irregular["sha256"]=="92b1aa69dde6f90bcd09a79d065ca5f083f5aaafbc23beada4133e2a42210195"
           irregular_meta=by_id["irregular_origin"]
-          assert irregular_meta.get("version")=="1.0.0"
+          assert irregular_meta.get("version")=="1.0.1"
           assert ids.index("philosopher_stones") < ids.index("irregular_origin"), \
               "Irregular Origin must load after Philosopher Stones for resonance wrapping"
 

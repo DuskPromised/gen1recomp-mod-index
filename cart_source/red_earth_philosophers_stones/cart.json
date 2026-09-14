@@ -5,7 +5,7 @@
   "version": "1.0.3",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Kaizo Kanto with 908+ Pokémon, Irregular starter line, Dramaless voxels, scaling battles, Greater Stones, quests, and QOL.",
+  "summary": "Kaizo Kanto with Irregular starter line, Dramaless voxels, scaling battles, Greater Stones, quests, and QOL.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -164,8 +164,8 @@
       "id": "irregular_origin",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.0",
-      "sha256": "061377301d6c56a9bf73f49d9063f1c67077b54966f0f8b8f83c5b801a314521"
+      "version": "1.0.1",
+      "sha256": "92b1aa69dde6f90bcd09a79d065ca5f083f5aaafbc23beada4133e2a42210195"
     },
     {
       "id": "quest_system",

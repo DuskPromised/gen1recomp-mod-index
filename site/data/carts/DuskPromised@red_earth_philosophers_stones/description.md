@@ -56,7 +56,7 @@ The machine-readable `versions.json` in that folder records each released versio
 
 ## Irregular Origin
 
-**Irregular Origin v1.0.0** adds a new three-stage species line created specifically for this cart:
+**Irregular Origin v1.0.1** adds a new three-stage species line created specifically for this cart:
 
 - **Psydren** — Psychic / Water — the Abyssal Seed
 - **Vesperis** — Psychic / Ghost — the Gravekeeper's Storm
@@ -68,4 +68,4 @@ Psydren evolves at level 16 and Vesperis at level 36. Solipsdion learns two cust
 
 The entire line has hidden **Irregular Resonance** with Philosopher Stones. It gains modest secondary effects from bound stones, unique resonance dialogue in the party menu, and atmospheric reactions near Greater Stone discovery sites. The red core visible through the evolutionary line is deliberately tied to the larger alchemical mystery.
 
-v1.0.0 uses the approved concept-poster pixel artwork as the first functional battle/icon set. Dedicated rear-facing and follower sheets can be upgraded later without changing species IDs or save compatibility.
+v1.0.1 uses the approved concept-poster pixel artwork as the first functional battle/icon set. Dedicated rear-facing and follower sheets can be upgraded later without changing species IDs or save compatibility.
