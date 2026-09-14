@@ -1,4 +1,4 @@
--- Irregular Origin v1.0.0
+-- Irregular Origin v1.0.1
 -- Custom three-stage starter line for Pokémon Red Earth: The Philosopher's Stones.
 -- Psydren is received before Oak's normal regional companion choice.
 
@@ -79,7 +79,7 @@ return function(mod)
 
   pokemon:register(IDS.PSYDREN,{
     id=IDS.PSYDREN,name="PSYDREN",dex=d1,
-    types={"PSYCHIC_TYPE","WATER"},
+    types={"PSYCHIC","WATER"},
     baseStats={hp=55,attack=40,defense=65,speed=45,special=70},
     catchRate=45,baseExp=80,growthRate="MEDIUM_SLOW",
     level1Moves={confusion,withdraw},
@@ -98,7 +98,7 @@ return function(mod)
   })
   pokemon:register(IDS.VESPERIS,{
     id=IDS.VESPERIS,name="VESPERIS",dex=d2,
-    types={"PSYCHIC_TYPE","GHOST"},
+    types={"PSYCHIC","GHOST"},
     baseStats={hp=70,attack=55,defense=75,speed=80,special=95},
     catchRate=20,baseExp=150,growthRate="MEDIUM_SLOW",
     level1Moves={confusion,withdraw},
@@ -118,7 +118,7 @@ return function(mod)
   })
   pokemon:register(IDS.SOLIPSDION,{
     id=IDS.SOLIPSDION,name="SOLIPSDION",dex=d3,
-    types={"PSYCHIC_TYPE","DRAGON"},
+    types={"PSYCHIC","DRAGON"},
     baseStats={hp=95,attack=85,defense=105,speed=105,special=125},
     catchRate=3,baseExp=220,growthRate="MEDIUM_SLOW",
     level1Moves={confusion,nightShade},
@@ -253,7 +253,7 @@ return function(mod)
       damage=math.max(1,math.floor(damage*0.94))
     end
     if ctx.user==battle.player and s=="PHILOSOPHER_SOLAR"
-        and (t=="PSYCHIC" or t=="PSYCHIC_TYPE" or t=="DRAGON") then
+        and (t=="PSYCHIC" or t=="PSYCHIC" or t=="DRAGON") then
       damage=math.max(1,math.floor(damage*1.10))
     end
     if ctx.user==battle.player and s=="PHILOSOPHER_TEMPEST" and t=="ELECTRIC" then
@@ -342,7 +342,7 @@ return function(mod)
     game.stack:push(mod.ui.TextBox.new(game,msg:gsub("{RAM}",name)))
   end)
 
-  mod.exports.version="1.0.0"
+  mod.exports.version="1.0.1"
   mod.exports.species=IDS
   mod.exports.isIrregular=isIrregular
 end

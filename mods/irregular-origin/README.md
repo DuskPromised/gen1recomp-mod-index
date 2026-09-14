@@ -34,4 +34,9 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.0 uses the approved concept-poster pixel sprites as the first functional battle/icon set. Dedicated rear-facing and follower sheets can replace these assets later without changing species IDs or save compatibility.
+v1.0.1 uses the approved concept-poster pixel sprites as the first functional battle/icon set. The current package prioritizes functional battle/icon art; dedicated rear-facing and follower sheets can replace these assets later without changing species IDs or save compatibility.
+
+
+### v1.0.1
+
+Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry key before cart integration.
