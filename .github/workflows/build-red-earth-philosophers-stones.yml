@@ -1,0 +1,194 @@
+name: Build Red Earth Philosopher Stones cart
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "cart_source/red_earth_philosophers_stones/**"
+      - ".github/workflows/build-red-earth-philosophers-stones.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: red-earth-philosophers-stones-cart-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Audit Philosopher Stones dependencies and overlaps
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
+          index=json.loads(Path("site/data/index.json").read_text())
+          by_id={m["id"]:m for m in index.get("mods",[])}
+          pins=cart["mods"]
+          ids=[m["id"] for m in pins]
+          active=set(ids)
+
+          assert len(ids)==len(set(ids)), "duplicate mod ids"
+          assert cart["load_order"]==ids, "load_order must match pin order"
+
+          def dep_id(spec): return spec.split("@",1)[0]
+          missing=[]
+          conflicts=[]
+          for pin in pins:
+              assert pin["id"] in by_id, f"{pin['id']} missing from live index"
+              meta=by_id[pin["id"]]
+              for dep in meta.get("dependencies",[]):
+                  if dep_id(dep) not in active: missing.append((pin["id"],dep))
+              for con in meta.get("conflicts",[]):
+                  if dep_id(con) in active: conflicts.append((pin["id"],con))
+          assert not missing, f"missing dependencies: {missing}"
+          assert not conflicts, f"declared conflicts: {conflicts}"
+
+          required={
+            "gen1_kaizo","DRAMALESS_SHAPE","overworld_wild_spawns",
+            "red_earth_kaizo_bridge","philosopher_stones","MULTI_SAVE_SLOTS",
+            "quest_system","advanced_box_system","modern_bag"
+          }
+          assert required <= active, required-active
+
+          omitted={
+            "BATTLE_ART_VOXEL_FORK","DRAMATIC_SHAPE","TERRARIUM","potato_voxel",
+            "gen151","pokedex_plus","moves_manager","move_learn_stats",
+            "mew_mirage","shiny_starters_gifts","take_last_starter",
+            "SHINY_POKEMON","kanto_achievements","eevee_three_stones","crystal_onix",
+            "level_match_mod","overworld_encounters"
+          }
+          assert not (omitted & active), f"overlap mods present: {sorted(omitted & active)}"
+
+          kaizo=next(m for m in pins if m["id"]=="gen1_kaizo")
+          assert kaizo["version"]=="0.8.3"
+          assert kaizo.get("options",{}).get("battle")=="static",               "Kaizo native scaling must stay static; bridge owns upward-only dynamic scaling"
+
+          dramaless=next(m for m in pins if m["id"]=="DRAMALESS_SHAPE")
+          assert dramaless["version"]=="2.0.4"
+
+          bridge=next(m for m in pins if m["id"]=="red_earth_kaizo_bridge")
+          bopts=bridge.get("options",{})
+          for key in ("dynamic_wilds","dynamic_trainers","second_starter","shiny_starters"):
+              assert bopts.get(key) is True, key
+
+          multi=next(m for m in pins if m["id"]=="MULTI_SAVE_SLOTS")
+          assert multi["version"]=="1.0.1"
+          assert multi["repo"]=="DuskPromised/gen1recomp-mod-index"
+
+          menus=next(m for m in pins if m["id"]=="gen1-better-menus")
+          opts=menus.get("options",{})
+          assert opts.get("modern_pc_ui") is False
+          assert opts.get("modern_bag_ui") is False
+          assert opts.get("modern_party_ui") is True
+          assert opts.get("modern_battle_ui")=="mod"
+
+          assert ids.index("gen1_kaizo") < ids.index("overworld_wild_spawns")
+          assert ids.index("overworld_wild_spawns") < ids.index("red_earth_kaizo_bridge")
+          assert ids.index("red_earth_kaizo_bridge") < ids.index("philosopher_stones")
+          print(f"AUDIT PASS: {len(ids)} mods, no missing dependencies or declared conflicts")
+          PY
+
+      - name: Build clean 256px cart label
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          src=Path("site/data/carts/DuskPromised@red_earth_philosophers_stones/thumbnail.jpg")
+          dst=Path("cart_source/red_earth_philosophers_stones/label.png")
+          im=Image.open(src).convert("RGB").resize((256,256),Image.Resampling.LANCZOS)
+          im.save(dst,"PNG",optimize=True)
+          print("label:",dst.stat().st_size,"bytes")
+          PY
+
+      - name: Fetch official cartkit
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py -o /tmp/cartkit.py
+
+      - name: Pack Philosopher Stones v1.0.0
+        run: |
+          python /tmp/cartkit.py pack cart_source/red_earth_philosophers_stones \
+            -o /tmp/red_earth_philosophers_stones-1.0.0.g1rcart
+
+      - name: Publish cart and update metadata
+        run: |
+          mkdir -p "site/data/carts/DuskPromised@red_earth_philosophers_stones"
+          cp /tmp/red_earth_philosophers_stones-1.0.0.g1rcart \
+            "site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart"
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+
+          source=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
+          cart=Path("site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart")
+          body=cart.read_bytes()
+          meta={
+            "folder":"DuskPromised@red_earth_philosophers_stones",
+            "id":source["id"],
+            "title":source["title"],
+            "author":source["author"],
+            "summary":source["summary"],
+            "version":"1.0.0",
+            "base":"red",
+            "seal":"sealed+",
+            "shell":source["shell"],
+            "finish":source["finish"],
+            "tags":[
+              "cart","bundle","red","kanto","kaizo","908 pokemon","dramaless",
+              "voxel","dynamic difficulty","second starter","shiny starters",
+              "philosopher stones","quests","quality of life","cart-aware saves"
+            ],
+            "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
+            "github":"DuskPromised/gen1recomp-mod-index",
+            "automatic_version_check":False,
+            "mods":source["mods"],
+            "load_order":source["load_order"],
+            "description_url":"data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
+            "latest":{
+              "version":"1.0.0","name":"1.0.0","prerelease":False,
+              "zip":{
+                "name":cart.name,
+                "url":"https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart",
+                "size":len(body),
+                "sha256":hashlib.sha256(body).hexdigest()
+              }
+            },
+            "update_check":"ok",
+            "thumbnail":"data/carts/DuskPromised@red_earth_philosophers_stones/thumbnail.jpg"
+          }
+          Path("carts/red_earth_philosophers_stones.index.json").write_text(
+            json.dumps(meta,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+          print("cart bytes:",len(body))
+          print("cart sha256:",hashlib.sha256(body).hexdigest())
+          PY
+
+      - name: Commit Philosopher Stones v1.0.0
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            "cart_source/red_earth_philosophers_stones/label.png" \
+            "site/data/carts/DuskPromised@red_earth_philosophers_stones/thumbnail.jpg" \
+            "site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart" \
+            "carts/red_earth_philosophers_stones.index.json"
+          if git diff --cached --quiet; then
+            echo "Philosopher Stones v1.0.0 already published."
+          else
+            git commit -m "Publish Red Earth Philosopher Stones v1.0.0"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh combined Gen 1 index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run sync.yml --ref main
