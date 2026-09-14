@@ -34,7 +34,16 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.2 normalizes all party-icon sheets to the engine's vertical 16x32 two-frame format and regenerates every 64x64 battle image from a verified icon frame. This fixes the corrupted Psydren PNG crash and the broken party-menu icon while preserving species/save IDs. The current package prioritizes functional battle/icon art; dedicated rear-facing and follower sheets can replace these assets later without changing species IDs or save compatibility.
+v1.0.4 is the production art pass for the entire Irregular line. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
+
+- Battle front/back and menu portraits: 64×64 true-color PNGs
+- Party icons: engine-native 16×32 two-frame sheets
+- Followers: 16×96 six-frame walker sheets
+- Runtime shiny routing uses GenRecomp's sanctioned `pokemon.sprite` and `pokemon.icon` hooks, so the shiny is a distinct picture rather than a palette swap.
+- The guaranteed gift Psydren remains shiny and keeps that shiny identity through Vesperis and Solipsdion.
+- Solipsdion's **normal** form is the pearl/lilac/gold sovereign design. Its **shiny** is the ruby-ascended design.
+- Solipsdion's seven-wing canon remains **2 flight wings + 4 hand-wings + 1 crown wing**.
+- Wilds integration supplies the dedicated six-frame Irregular follower sheets while delegating every non-Irregular species back to Wilds unchanged.
 
 
 ### v1.0.1
@@ -57,3 +66,13 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - This specifically avoids the odd Dramaless 3D battlefield/sprite warping seen during the first Psydren tests.
 - Species IDs, save compatibility, shiny DVs, evolution levels, stats, and the rest of the learnsets are unchanged.
 - Battle/follower art is still the functional concept set; the dedicated final art pass remains separate from this gameplay hotfix.
+
+
+### v1.0.4
+
+- Replaced the functional concept placeholders with the final production art pass for Psydren, Vesperis, and Solipsdion.
+- Added independent normal/shiny front, back, menu, party-icon, and follower assets for all three stages.
+- Added runtime shiny image routing for battle/summary art and party icons; no palette-swap shortcut is used.
+- Added dedicated Wilds follower sheets for the Irregular line.
+- Preserved Solipsdion's pearl/lilac/gold normal identity and ruby-ascended shiny identity, including the seven-wing anatomy requirement.
+- Removed the old build-time behavior that regenerated battle art from tiny party icons.
