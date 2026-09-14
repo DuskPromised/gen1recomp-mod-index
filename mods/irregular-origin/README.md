@@ -34,7 +34,7 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.8 carries the production art pass for the entire Irregular line with Crystal-style pixel battle sprites and the hardened corruption-checking release pipeline. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
+v1.0.9 carries the first complete Pokémon-native sprite authenticity pass for the entire Irregular line, while retaining the hardened corruption-checking release pipeline. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
 
 - Battle front/back and menu portraits: 64×64 true-color PNGs
 - Party icons: engine-native 16×32 two-frame sheets
@@ -119,3 +119,14 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - Menu portraits remain the richer 64×64 artwork; battle sprites are intentionally a separate visual treatment.
 - **IRR CONFUSION** no longer borrows SWIFT. It now uses PSYBEAM's psychic projectile animation while preserving Confusion's 50 power, accuracy, PP, Psychic typing, and confusion side effect.
 - CI pixel-locks and validates the battle sprites before packaging: binary alpha, low color count, correct dimensions, PNG CRCs, and byte-identical ZIP verification.
+
+
+### v1.0.9 — Round-one sprite authenticity pass
+
+- Replaced the full battle front/back set for **Psydren, Vesperis, and Solipsdion**, normal and shiny, with cleaner full-body sprites derived from the approved round-one sprite sheets.
+- Replaced the menu/status art with **compact full-body versions** so the stats screen shows the complete creature rather than an oversized head/upper-body crop.
+- Preserved the existing party icons and six-frame followers because those were already reading correctly in-game; the follower presentation remains the strongest continuity anchor across the line.
+- Player-side art remains a genuine rear view, while enemy-side art remains a genuine front view.
+- Psydren keeps its pearl/aqua normal identity and seafoam/mint shiny; Vesperis keeps violet/indigo normal and ash/crimson shiny; Solipsdion keeps pearl/lilac/gold normal and ruby-ascended shiny.
+- Solipsdion still preserves the mandatory **seven-wing canon: 2 flight + 4 hand + 1 crown**.
+- CI no longer mutates authored battle art at build time. It validates the final sprites as shipped: PNG CRC, decode, 64×64 dimensions, binary alpha, bounded framing, and a controlled low-color pixel palette.
