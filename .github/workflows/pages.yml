@@ -1,5 +1,5 @@
 name: Deploy GitHub Pages
-# Publishes the current repository state, including Red Earth v1.0.1 artwork.
+# Publishes the current repository state and verifies the live Red Earth version.
 on:
   push:
     branches: ["main"]
@@ -26,6 +26,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Verify checked-out Red Earth feed is current
+        run: |
+          python - <<'PY'
+          import json
+          feed=json.load(open("site/data/index.json", encoding="utf-8"))
+          meta=json.load(open("carts/red_earth.index.json", encoding="utf-8"))
+          cart=next(c for c in feed.get("carts", []) if c.get("id")=="red_earth")
+          assert cart["version"] == meta["version"], (cart["version"], meta["version"])
+          assert cart["latest"]["version"] == meta["latest"]["version"], (cart["latest"], meta["latest"])
+          print("checked-out Red Earth:", cart["version"])
+          PY
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -37,20 +50,34 @@ jobs:
       - name: Verify published index feed
         run: |
           url="${{ steps.deployment.outputs.page_url }}data/index.json"
-          echo "Checking $url"
-          for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
-            if curl -fsSL "$url" -o /tmp/index.json; then
-              python - <<'PY'
+          expected="$(python - <<'PY'
           import json
+          d=json.load(open("site/data/index.json", encoding="utf-8"))
+          c=next(c for c in d.get("carts", []) if c.get("id")=="red_earth")
+          print(c["version"])
+          PY
+          )"
+          echo "Checking $url for Red Earth $expected"
+          for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
+            if curl -fsSL -H 'Cache-Control: no-cache' "$url?verify=$GITHUB_RUN_ID-$attempt" -o /tmp/index.json; then
+              if EXPECTED="$expected" python - <<'PY'
+          import json, os, sys
           with open("/tmp/index.json", "r", encoding="utf-8") as f:
               d=json.load(f)
           assert d.get("schema_version")==1
           assert isinstance(d.get("mods"), list) and len(d["mods"]) > 0
-          print("public feed OK:", len(d["mods"]), "entries")
+          cart=next(c for c in d.get("carts", []) if c.get("id")=="red_earth")
+          expected=os.environ["EXPECTED"]
+          if cart.get("version") != expected:
+              print("public Red Earth still", cart.get("version"), "expected", expected)
+              sys.exit(2)
+          print("public Red Earth OK:", cart["version"])
           PY
-              exit 0
+              then
+                exit 0
+              fi
             fi
             sleep 5
           done
-          echo "Published feed could not be fetched."
+          echo "Published Red Earth version did not match checked-out feed."
           exit 1
