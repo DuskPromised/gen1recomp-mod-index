@@ -1,33 +1,54 @@
 # Pokémon Red Earth: The Philosopher's Stones
 
-A separate, harder Red Earth cart built around **Gen1 Recomp Allgen Kaizo** rather than Gen151. The original **Pokémon Red Earth** cart remains unchanged.
+A separate, harder Red Earth cart built around **Gen1 Recomp Allgen Kaizo** rather than Gen151. The original **Pokémon Red Earth** cart remains a separate experience and is not replaced by this one.
+
+## v1.0.2 — Greater Stones
+
+Cart edition **1.0.2** upgrades the Philosopher Stones system to **v1.1.0**. The four badge-awakened Lesser Stones remain, but four **Greater Stones** are now actual exploration/story discoveries rather than automatic rewards. The cart also adds an **ALCHEMY** start-menu journal that tracks found relics and the alchemical essences they reveal.
+
+### Lesser Stones
+
+- **Ruby Stone** — awakens from the Boulder Badge — +15% damage dealt.
+- **Sapphire Stone** — awakens from the Cascade Badge — -15% damage taken.
+- **Emerald Stone** — awakens from the Rainbow Badge — restores 1/16 max HP after each completed battle turn.
+- **Amethyst Stone** — awakens from the Marsh Badge — a missed move gets a 10% second-chance accuracy roll.
+
+### Greater Stones
+
+- **Moonstone** — after earning the Cascade Badge, return to **Mt. Moon B2F** with a normal Moon Stone. The normal Moon Stone acts as the catalyst and is consumed. The Greater Moonstone cleanses the holder's first major status condition each battle and reveals **Aether Essence**.
+- **Obsidian Stone** — after the restless Marowak spirit has departed, return through **Pokémon Tower 7F**. Obsidian lets its holder survive one otherwise-lethal hit at 1 HP per battle and reveals **Salt Essence**.
+- **Solar Stone** — after earning the Volcano Badge, investigate **Pokémon Mansion B1F** again. Solar creates a field-like aura while its holder is active: Fire damage +25%, Water damage -25%, and reveals **Sulfur Essence**.
+- **Tempest Stone** — after defeating or capturing Zapdos, investigate the charged area of the **Power Plant**. Tempest boosts the holder's Electric damage by 20%, immediately cleanses paralysis, and reveals **Mercury Essence**.
+
+Greater Stones are not consumed when their essences are learned. The journal knowledge is permanent progression for the later Prime-Stone / final Philosopher's Stone system.
+
+## Binding
+
+Use the Pokémon party submenu's **STONE** entry to bind or remove a relic. A physical stone can resonate with only one Pokémon at a time. The binding lives on that Pokémon, so it follows the Pokémon through party reordering, PC storage, evolution, save and reload.
 
 ## Core identity
 
 - **Allgen Kaizo v0.8.3** supplies the expanded ~908-species roster, modernized type/move ecosystem, six-Pokémon trainer teams, competitive movesets and AI, boss Megas, and expanded Kanto encounter pools.
-- **Dramaless Shape v2.0.4** replaces Battle Art Voxel Fork. It keeps voxel Kanto while using native 2D battle cards, avoiding the Battle Art path that proved unstable on the user's iPhone setup.
-- **Wilds of Kanto v2.1.9** stays for visible overworld Pokémon and party followers. Its renderer can fall back to each species' registered battle-front art for species without dedicated walker sheets.
-- **Red Earth Kaizo Bridge v1.0.0** keeps Kaizo's authored floors but dynamically raises wilds to roughly **-2 to +1** of the strongest healthy party Pokémon and trainers to **+0 to +2**. Nothing is scaled downward.
+- **Dramaless Shape v2.0.4** replaces Battle Art Voxel Fork. It keeps voxel Kanto while using native 2D battle cards and avoids the Battle Art rendering path.
+- **Wilds of Kanto v2.1.9** supplies visible overworld Pokémon and party followers, with fallback rendering for species that do not have dedicated walker sheets.
+- **Red Earth Kaizo Bridge v1.0.0** leaves Kaizo's authored level floors intact while dynamically raising wild Pokémon to approximately **-2 to +1** of the strongest healthy party Pokémon and trainers to **+0 to +2**. It never scales a stronger authored encounter downward.
 
 ## Oak's Lab
 
-Allgen Kaizo's region selector remains authoritative. Pick Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, or Alola once; the three Oak balls become that region's Grass / Fire / Water trio.
+Allgen Kaizo's region selector remains authoritative. Choose Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, or Alola; Oak's three balls become that region's Grass / Fire / Water trio.
 
 After you choose and the rival takes the counter-pick, the surviving ball remains claimable once. It gives the **leftover starter from the same selected region**. Both player Oak gifts receive real Gen-2-compatible shiny DVs by default.
 
-## Philosopher Stones
-
-Four permanent relics awaken from badge progress and may bind to one Pokémon at a time:
-
-- **Ruby Stone** — Boulder Badge — +15% damage dealt.
-- **Sapphire Stone** — Cascade Badge — -15% damage taken.
-- **Emerald Stone** — Rainbow Badge — restores 1/16 max HP after each completed battle turn.
-- **Amethyst Stone** — Marsh Badge — gives missed moves a 10% second-chance accuracy roll.
-
-Use the Pokémon party submenu's **STONE** entry to bind or remove a relic. Stone bindings follow a Pokémon through party order, PC storage, evolution, save and reload.
-
-## Intentionally omitted from this cart
+## Intentionally omitted
 
 To keep the expanded Kaizo runtime coherent and reduce overlap, this cart does **not** include Gen151, Battle Art Voxel Fork, Pokédex Plus, Moves Manager, Move Learn Stats, Mirage of Mew, the Kanto-only Shiny Gifts & Starters / Take the Last Starter pair, Shiny Pokémon, Kanto Achievements, Eevee Three Stones, or Crystal Onix.
 
-The existing Red Earth quest pack, cart-aware Multi Save, BetterMenus, Wilds, avatar choice, bag/box/QOL stack, and other low-overlap conveniences remain.
+The Red Earth quest pack, cart-aware Multi Save, BetterMenus, Wilds, avatar choice, bag/box/QOL stack, and other low-overlap conveniences remain.
+
+## Version archive
+
+Published cart builds are never overwritten. Every released `.g1rcart` remains in:
+
+`site/data/carts/DuskPromised@red_earth_philosophers_stones/`
+
+The machine-readable `versions.json` in that folder records each released version, file URL, byte size, and SHA-256. GenRecomp++ follows the newest release from the normal cart feed, while older editions remain directly downloadable for anyone who wants them.

@@ -23,6 +23,16 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Read cart version
+        run: |
+          version="$(python - <<'PY'
+          import json
+          print(json.load(open("cart_source/red_earth_philosophers_stones/cart.json", encoding="utf-8"))["version"])
+          PY
+          )"
+          echo "CART_VERSION=$version" >> "$GITHUB_ENV"
+          echo "Building cart version $version"
+
       - name: Audit Philosopher Stones dependencies and overlaps
         run: |
           python - <<'PY'
@@ -36,6 +46,7 @@ jobs:
           ids=[m["id"] for m in pins]
           active=set(ids)
 
+          assert cart["version"]=="1.0.2", cart["version"]
           assert len(ids)==len(set(ids)), "duplicate mod ids"
           assert cart["load_order"]==ids, "load_order must match pin order"
 
@@ -70,7 +81,8 @@ jobs:
 
           kaizo=next(m for m in pins if m["id"]=="gen1_kaizo")
           assert kaizo["version"]=="0.8.3"
-          assert kaizo.get("options",{}).get("battle")=="static",               "Kaizo native scaling must stay static; bridge owns upward-only dynamic scaling"
+          assert kaizo.get("options",{}).get("battle")=="static", \
+              "Kaizo native scaling must stay static; bridge owns upward-only dynamic scaling"
 
           dramaless=next(m for m in pins if m["id"]=="DRAMALESS_SHAPE")
           assert dramaless["version"]=="2.0.4"
@@ -79,6 +91,13 @@ jobs:
           bopts=bridge.get("options",{})
           for key in ("dynamic_wilds","dynamic_trainers","second_starter","shiny_starters"):
               assert bopts.get(key) is True, key
+
+          stones=next(m for m in pins if m["id"]=="philosopher_stones")
+          assert stones["version"]=="1.1.0", stones
+          assert stones["repo"]=="DuskPromised/gen1recomp-mod-index"
+          assert stones["sha256"]=="b62e8eb02c983b6aa4c0e28e62b8eb00b6aec502ae3202ea81bbe3be0a5836e0"
+          stone_meta=by_id["philosopher_stones"]
+          assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
 
           multi=next(m for m in pins if m["id"]=="MULTI_SAVE_SLOTS")
           assert multi["version"]=="1.0.1"
@@ -94,7 +113,7 @@ jobs:
           assert ids.index("gen1_kaizo") < ids.index("overworld_wild_spawns")
           assert ids.index("overworld_wild_spawns") < ids.index("red_earth_kaizo_bridge")
           assert ids.index("red_earth_kaizo_bridge") < ids.index("philosopher_stones")
-          print(f"AUDIT PASS: {len(ids)} mods, no missing dependencies or declared conflicts")
+          print(f"AUDIT PASS: {len(ids)} mods, Greater Stones v1.1.0 pinned, no missing dependencies or declared conflicts")
           PY
 
       - name: Build clean 256px cart label
@@ -114,30 +133,35 @@ jobs:
         run: |
           curl -fsSL https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py -o /tmp/cartkit.py
 
-      - name: Pack Philosopher Stones v1.0.0
+      - name: Pack cart
         run: |
           python /tmp/cartkit.py pack cart_source/red_earth_philosophers_stones \
-            -o /tmp/red_earth_philosophers_stones-1.0.0.g1rcart
+            -o "/tmp/red_earth_philosophers_stones-$CART_VERSION.g1rcart"
 
-      - name: Publish cart and update metadata
+      - name: Publish cart, metadata, and version archive
         run: |
           mkdir -p "site/data/carts/DuskPromised@red_earth_philosophers_stones"
-          cp /tmp/red_earth_philosophers_stones-1.0.0.g1rcart \
-            "site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart"
+          cp "/tmp/red_earth_philosophers_stones-$CART_VERSION.g1rcart" \
+            "site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-$CART_VERSION.g1rcart"
           python - <<'PY'
-          import hashlib,json
+          import hashlib,json,re
           from pathlib import Path
 
-          source=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          cart=Path("site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart")
+          source_path=Path("cart_source/red_earth_philosophers_stones/cart.json")
+          source=json.loads(source_path.read_text(encoding="utf-8"))
+          version=source["version"]
+          folder=Path("site/data/carts/DuskPromised@red_earth_philosophers_stones")
+          cart=folder/f"red_earth_philosophers_stones-{version}.g1rcart"
           body=cart.read_bytes()
+          url_base="https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones"
+
           meta={
             "folder":"DuskPromised@red_earth_philosophers_stones",
             "id":source["id"],
             "title":source["title"],
             "author":source["author"],
             "summary":source["summary"],
-            "version":"1.0.0",
+            "version":version,
             "base":"red",
             "seal":"sealed+",
             "shell":source["shell"],
@@ -145,7 +169,8 @@ jobs:
             "tags":[
               "cart","bundle","red","kanto","kaizo","908 pokemon","dramaless",
               "voxel","dynamic difficulty","second starter","shiny starters",
-              "philosopher stones","quests","quality of life","cart-aware saves"
+              "philosopher stones","greater stones","alchemy journal","quests",
+              "quality of life","cart-aware saves"
             ],
             "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
             "github":"DuskPromised/gen1recomp-mod-index",
@@ -153,11 +178,12 @@ jobs:
             "mods":source["mods"],
             "load_order":source["load_order"],
             "description_url":"data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
+            "versions_url":"data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
             "latest":{
-              "version":"1.0.0","name":"1.0.0","prerelease":False,
+              "version":version,"name":version,"prerelease":False,
               "zip":{
                 "name":cart.name,
-                "url":"https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart",
+                "url":f"{url_base}/{cart.name}",
                 "size":len(body),
                 "sha256":hashlib.sha256(body).hexdigest()
               }
@@ -167,23 +193,75 @@ jobs:
           }
           Path("carts/red_earth_philosophers_stones.index.json").write_text(
             json.dumps(meta,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+
+          def semver_key(v):
+              return tuple(int(x) for x in v.split("."))
+
+          versions=[]
+          pattern=re.compile(r"^red_earth_philosophers_stones-(\d+\.\d+\.\d+)\.g1rcart$")
+          for path in folder.glob("red_earth_philosophers_stones-*.g1rcart"):
+              match=pattern.match(path.name)
+              if not match: continue
+              v=match.group(1)
+              raw=path.read_bytes()
+              versions.append({
+                "version":v,
+                "name":path.name,
+                "url":f"{url_base}/{path.name}",
+                "size":len(raw),
+                "sha256":hashlib.sha256(raw).hexdigest(),
+              })
+          versions.sort(key=lambda row: semver_key(row["version"]), reverse=True)
+
+          known={row["version"] for row in versions}
+          assert version in known, (version,known)
+          assert "1.0.0" in known, "v1.0.0 archive must remain downloadable"
+          archive={
+            "schema_version":1,
+            "cart_id":source["id"],
+            "title":source["title"],
+            "latest":version,
+            "versions":versions,
+          }
+          (folder/"versions.json").write_text(
+            json.dumps(archive,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+
           print("cart bytes:",len(body))
           print("cart sha256:",hashlib.sha256(body).hexdigest())
+          print("archived versions:",", ".join(row["version"] for row in versions))
           PY
 
-      - name: Commit Philosopher Stones v1.0.0
+      - name: Verify version archive
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source=json.load(open("cart_source/red_earth_philosophers_stones/cart.json",encoding="utf-8"))
+          archive=json.load(open("site/data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",encoding="utf-8"))
+          versions=[row["version"] for row in archive["versions"]]
+          assert archive["latest"]==source["version"]
+          assert source["version"] in versions
+          assert "1.0.0" in versions
+          assert len(versions)==len(set(versions))
+          for row in archive["versions"]:
+              assert Path("site/data/carts/DuskPromised@red_earth_philosophers_stones",row["name"]).is_file()
+          print("VERSION ARCHIVE PASS:", versions)
+          PY
+
+      - name: Commit cart release
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             "cart_source/red_earth_philosophers_stones/label.png" \
             "site/data/carts/DuskPromised@red_earth_philosophers_stones/thumbnail.jpg" \
-            "site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart" \
+            "site/data/carts/DuskPromised@red_earth_philosophers_stones/"*.g1rcart \
+            "site/data/carts/DuskPromised@red_earth_philosophers_stones/versions.json" \
             "carts/red_earth_philosophers_stones.index.json"
           if git diff --cached --quiet; then
-            echo "Philosopher Stones v1.0.0 already published."
+            echo "Cart $CART_VERSION already published."
           else
-            git commit -m "Publish Red Earth Philosopher Stones v1.0.0"
+            git commit -m "Publish Red Earth Philosopher Stones v$CART_VERSION"
             git pull --rebase origin main
             git push
           fi

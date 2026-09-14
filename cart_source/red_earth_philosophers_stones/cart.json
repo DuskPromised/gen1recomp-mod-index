@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Pokémon Red Earth: The Philosopher's Stones",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Kaizo Kanto with 908 Pokémon, Dramaless voxels, scaling battles, two shiny starters, relic stones, quests, and QOL.",
+  "summary": "Kaizo Kanto with 908 Pokémon, Dramaless voxels, scaling battles, two shiny starters, discoverable alchemical relics, quests, and QOL.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -157,8 +157,8 @@
       "id": "philosopher_stones",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.0",
-      "sha256": "2a6dbe0044e834f146df6ec995885d927fb39224e562ed4ef9f8b9538b442239"
+      "version": "1.1.0",
+      "sha256": "b62e8eb02c983b6aa4c0e28e62b8eb00b6aec502ae3202ea81bbe3be0a5836e0"
     },
     {
       "id": "quest_system",
