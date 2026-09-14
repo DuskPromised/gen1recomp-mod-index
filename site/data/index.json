@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-14T01:29:10.800082+00:00",
+  "generated_at": "2026-09-14T01:32:54.286781+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12106,8 +12106,8 @@
       "id": "red_earth_philosophers_stones",
       "title": "Pokémon Red Earth: The Philosopher's Stones",
       "author": "Adam M. Aguilera",
-      "summary": "Kaizo Kanto with 908 Pokémon, Dramaless voxels, scaling battles, two shiny starters, relic stones, quests, and QOL.",
-      "version": "1.0.0",
+      "summary": "Kaizo Kanto: 908 Pokémon, Dramaless voxels, scaling battles, two shiny starters, Greater Stones, quests, and QOL.",
+      "version": "1.0.2",
       "base": "red",
       "seal": "sealed+",
       "shell": "#8f1d2c",
@@ -12125,6 +12125,8 @@
         "second starter",
         "shiny starters",
         "philosopher stones",
+        "greater stones",
+        "alchemy journal",
         "quests",
         "quality of life",
         "cart-aware saves"
@@ -12278,8 +12280,8 @@
           "id": "philosopher_stones",
           "source": "github",
           "repo": "DuskPromised/gen1recomp-mod-index",
-          "version": "1.0.0",
-          "sha256": "2a6dbe0044e834f146df6ec995885d927fb39224e562ed4ef9f8b9538b442239"
+          "version": "1.1.0",
+          "sha256": "b62e8eb02c983b6aa4c0e28e62b8eb00b6aec502ae3202ea81bbe3be0a5836e0"
         },
         {
           "id": "quest_system",
@@ -12384,15 +12386,16 @@
         "whispers_beneath_cerulean"
       ],
       "description_url": "data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
+      "versions_url": "data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
       "latest": {
-        "version": "1.0.0",
-        "name": "1.0.0",
+        "version": "1.0.2",
+        "name": "1.0.2",
         "prerelease": false,
         "zip": {
-          "name": "red_earth_philosophers_stones-1.0.0.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.0.g1rcart",
-          "size": 225531,
-          "sha256": "4d350f4c679ca79c997fd428adf6286712a49894630b917ccf707dee9a00563f"
+          "name": "red_earth_philosophers_stones-1.0.2.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.2.g1rcart",
+          "size": 225529,
+          "sha256": "cf3641ffdf258fdbbd5cc127d73bd3b2fbba2c05e3ae5bd6b31bfc2e2a5972cc"
         }
       },
       "update_check": "ok",
