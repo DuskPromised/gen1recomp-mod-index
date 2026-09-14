@@ -1,4 +1,4 @@
--- Red Earth Kaizo Bridge v1.0.2
+-- Red Earth Kaizo Bridge v1.0.3
 -- Compatibility layer for Pokémon Red Earth: The Philosopher's Stones.
 -- Keeps Allgen Kaizo authoritative for species, encounters, trainer teams and AI,
 -- then adds: upward-only dynamic difficulty, a regional second starter, and
@@ -110,6 +110,30 @@ return function(mod)
 
   local function gameNow()
     return mod.game
+  end
+
+  -- GenRecomp's gift flow stores the internal species id in
+  -- ctx.pendingPokemonName, then the next text box prefers that id over the
+  -- display name. Vanilla ids are also their names, so the leak is invisible
+  -- there; namespaced custom species such as IRR_PSYDREN expose the namespace
+  -- in the nickname prompt. Normalize only that pending text value through the
+  -- registered species display name. This leaves the actual species/save id
+  -- untouched.
+  do
+    local Commands=require("src.script.Commands")
+    if not Commands.__redEarthDisplayNamePatch then
+      local originalShowText=Commands.show_text
+      Commands.show_text=function(ctx,textId,subs,extraOpts)
+        local pending=ctx and ctx.pendingPokemonName
+        local data=ctx and ctx.game and ctx.game.data
+        local def=data and data.pokemon and pending and data.pokemon[pending]
+        if def and type(def.name)=="string" and def.name~="" then
+          ctx.pendingPokemonName=def.name
+        end
+        return originalShowText(ctx,textId,subs,extraOpts)
+      end
+      Commands.__redEarthDisplayNamePatch=true
+    end
   end
 
   local function region(game)
@@ -261,11 +285,15 @@ return function(mod)
       and ctx.overworld.map.id == "OAKS_LAB"
     local game = (ctx and ctx.game) or gameNow()
 
-    -- Allgen Kaizo swaps the species correctly, but the original Oak text row
-    -- can still arrive carrying the Kanto placeholder in RAM. Rewrite both the
-    -- player's receipt and the rival's receipt here so KALOS water says
-    -- FROAKIE, never SQUIRTLE, and the same rule holds for every region.
-    if inOakLab and name == "show_text" and type(args)=="table"
+    -- Allgen Kaizo swaps the species correctly, but its original Oak text row
+    -- can still arrive carrying the Kanto placeholder in RAM. Rewrite only
+    -- upstream/base starter text through the companion region. Bridge-authored
+    -- final-ball text already carries the player's newly selected species and
+    -- must NOT be remapped through the companion region (the v1.0.2 CHESPIN
+    -- label / BULBASAUR gift mismatch).
+    local bridgeAuthored=ctx and ctx.source and ctx.source.modId==mod.id
+    if inOakLab and not bridgeAuthored
+       and name == "show_text" and type(args)=="table"
        and (args[1]=="_OaksLabReceivedMonText"
             or args[1]=="_OaksLabRivalReceivedMonText")
        and type(args[2])=="table" and BALL_ELEMENT_BY_SPECIES[args[2].RAM] then
@@ -418,6 +446,6 @@ return function(mod)
     return
   end)
 
-  mod.exports.version = "1.0.2"
+  mod.exports.version = "1.0.3"
   mod.exports.regions = REGIONS
 end

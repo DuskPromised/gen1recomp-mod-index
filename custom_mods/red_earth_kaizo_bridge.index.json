@@ -3,7 +3,7 @@
   "id": "red_earth_kaizo_bridge",
   "title": "Red Earth Kaizo Bridge",
   "author": "Adam M. Aguilera",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "categories": [
     "GAMEPLAY"
   ],
@@ -38,9 +38,9 @@
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "github": "DuskPromised/gen1recomp-mod-index",
   "license": "MIT",
-  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.2.zip",
-  "source_zip": "red_earth_kaizo_bridge-1.0.2.zip",
-  "summary": "Allgen Kaizo compatibility bridge with regional rival continuity, corrected Oak starter names, shiny Oak gifts, an optional final-ball region reselect, and upward-only dynamic trainer/wild scaling.",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.3.zip",
+  "source_zip": "red_earth_kaizo_bridge-1.0.3.zip",
+  "summary": "Allgen Kaizo compatibility bridge with regional rival continuity, correct Oak names for both companion and optional final-ball choices, clean custom-species nickname prompts, shiny gifts, and upward-only dynamic scaling.",
   "source_scope": "DuskPromised original mod",
   "update_check": "off"
 }

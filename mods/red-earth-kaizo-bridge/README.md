@@ -29,3 +29,11 @@ This mod is intentionally incompatible with the old Kanto-only Take the Last Sta
 - Touching that final ball now opens the region selector again. The ball keeps its grass/fire/water element, but the player can choose a **different region** for the optional extra starter.
 - The player can simply leave after Psydren + the conventional companion; the final ball is never forced.
 - Final-ball starters continue through the same Gen-II-compatible shiny-DV gift hook when SHINY STARTERS is enabled.
+
+
+## v1.0.3
+
+- Fixes the optional final-ball receipt using the **companion region's** name after the player deliberately chose a different region. A Kanto grass choice now says **BULBASAUR**, not CHESPIN, while still granting Bulbasaur.
+- Keeps the original companion/rival placeholder rewrite intact, so a Kalos water companion/rival still displays **FROAKIE** instead of SQUIRTLE.
+- Cleans custom-species gift text by translating GenRecomp's pending internal species id through the registered display name before nickname/received text. The player now sees **PSYDREN**, not the internal namespace **IRR_PSYDREN**.
+- Species ids, saves, starter selection, shininess, rival continuity, battle art, followers, and difficulty rules are unchanged.
