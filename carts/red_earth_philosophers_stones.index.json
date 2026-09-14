@@ -3,8 +3,8 @@
   "id": "red_earth_philosophers_stones",
   "title": "Pokémon Red Earth: The Philosopher's Stones",
   "author": "Adam M. Aguilera",
-  "summary": "Kaizo Kanto: 908 Pokémon, Dramaless voxels, scaling battles, two shiny starters, Greater Stones, quests, and QOL.",
-  "version": "1.0.2",
+  "summary": "Kaizo Kanto with Irregular starter line, Dramaless voxels, scaling battles, Greater Stones, quests, and QOL.",
+  "version": "1.0.3",
   "base": "red",
   "seal": "sealed+",
   "shell": "#8f1d2c",
@@ -181,6 +181,13 @@
       "sha256": "b62e8eb02c983b6aa4c0e28e62b8eb00b6aec502ae3202ea81bbe3be0a5836e0"
     },
     {
+      "id": "irregular_origin",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "1.0.1",
+      "sha256": "92b1aa69dde6f90bcd09a79d065ca5f083f5aaafbc23beada4133e2a42210195"
+    },
+    {
       "id": "quest_system",
       "source": "github",
       "repo": "FAFF0x/gen1recomp",
@@ -271,6 +278,7 @@
     "overworld_wild_spawns",
     "red_earth_kaizo_bridge",
     "philosopher_stones",
+    "irregular_origin",
     "quest_system",
     "ashes_of_cinnabar",
     "echoes_beyond_the_fog",
@@ -285,14 +293,14 @@
   "description_url": "data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
   "versions_url": "data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
   "latest": {
-    "version": "1.0.2",
-    "name": "1.0.2",
+    "version": "1.0.3",
+    "name": "1.0.3",
     "prerelease": false,
     "zip": {
-      "name": "red_earth_philosophers_stones-1.0.2.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.2.g1rcart",
-      "size": 225529,
-      "sha256": "cf3641ffdf258fdbbd5cc127d73bd3b2fbba2c05e3ae5bd6b31bfc2e2a5972cc"
+      "name": "red_earth_philosophers_stones-1.0.3.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.3.g1rcart",
+      "size": 225804,
+      "sha256": "07766c7f17979db2e80e38380daa19100ae4a74199db2ca2d74b54302e2e5a88"
     }
   },
   "update_check": "ok",
