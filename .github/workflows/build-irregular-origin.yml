@@ -6,6 +6,7 @@ on:
     branches: ["main"]
     paths:
       - "mods/irregular-origin/**"
+      - "custom_mods/irregular_origin.index.json"
       - ".github/workflows/build-irregular-origin.yml"
 
 permissions:
@@ -28,6 +29,8 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           from PIL import Image
+          import struct, zlib
+
           root=Path("mods/irregular-origin/assets")
           expected={}
           for stem in ("psydren","vesperis","solipsdion"):
@@ -38,17 +41,61 @@ jobs:
                   expected[f"{stem}_icon{shiny}.png"]=(16,32)
                   expected[f"{stem}_follower{shiny}.png"]=(16,96)
           assert len(expected)==30
-          for name,size in expected.items():
+
+          PNG_SIG=b"\x89PNG\r\n\x1a\n"
+
+          def check_png_bytes(data,label):
+              assert data.startswith(PNG_SIG), f"{label}: invalid PNG signature"
+              pos=8
+              saw_iend=False
+              while pos < len(data):
+                  assert pos+12 <= len(data), f"{label}: truncated PNG chunk header"
+                  length=struct.unpack(">I",data[pos:pos+4])[0]
+                  ctype=data[pos+4:pos+8]
+                  end=pos+12+length
+                  assert end <= len(data), f"{label}: truncated {ctype!r} chunk"
+                  payload=data[pos+8:pos+8+length]
+                  stored=struct.unpack(">I",data[pos+8+length:pos+12+length])[0]
+                  actual=zlib.crc32(ctype)
+                  actual=zlib.crc32(payload,actual) & 0xffffffff
+                  assert stored==actual, f"{label}: CRC mismatch in {ctype.decode('latin1')}"
+                  pos=end
+                  if ctype==b"IEND":
+                      saw_iend=True
+                      break
+              assert saw_iend, f"{label}: missing IEND"
+              assert pos==len(data), f"{label}: trailing bytes after IEND"
+
+          def nonempty_frames(im,name):
+              rgba=im.convert("RGBA")
+              alpha=rgba.getchannel("A")
+              assert alpha.getbbox() is not None, f"{name}: fully transparent"
+              if "_icon" in name:
+                  frames=[alpha.crop((0,0,16,16)),alpha.crop((0,16,16,32))]
+                  assert all(f.getbbox() is not None for f in frames), f"{name}: blank icon frame"
+              if "_follower" in name:
+                  frames=[alpha.crop((0,i*16,16,(i+1)*16)) for i in range(6)]
+                  assert all(f.getbbox() is not None for f in frames), f"{name}: blank follower frame"
+
+          for name,size in sorted(expected.items()):
               path=root/name
               assert path.is_file() and path.stat().st_size>100, path
+              data=path.read_bytes()
+              check_png_bytes(data,str(path))
               with Image.open(path) as im:
                   im.verify()
               with Image.open(path) as im:
+                  im.load()
                   assert im.size==size, (path,im.size,size)
-                  rgba=im.convert("RGBA")
-                  alpha=rgba.getchannel("A")
-                  assert alpha.getbbox() is not None, f"{path}: empty alpha"
-          print("IRREGULAR ORIGIN: 30 AUTHORED SPRITES PASS")
+                  nonempty_frames(im,name)
+
+          actual={p.name for p in root.glob("*.png")}
+          assert actual==set(expected), (
+              "unexpected asset set",
+              sorted(actual-set(expected)),
+              sorted(set(expected)-actual),
+          )
+          print("IRREGULAR ORIGIN: 30 AUTHORED PNGs + ALL FRAMES PASS")
           PY
 
       - name: Syntax and content audit
@@ -59,14 +106,20 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
+
           root=Path("mods/irregular-origin")
           m=json.loads((root/"manifest.json").read_text())
           idx=json.loads(Path("custom_mods/irregular_origin.index.json").read_text())
           src=(root/"main.lua").read_text()
-          assert m["id"]=="irregular_origin" and m["version"]=="1.0.6"
-          assert idx["version"]=="1.0.6"
+
+          assert m["id"]=="irregular_origin" and m["version"]=="1.0.7"
+          assert idx["version"]=="1.0.7"
+          assert idx["source_zip"]=="irregular_origin-1.0.7.zip"
+          assert idx["downloadURL"].endswith("/irregular_origin-1.0.7.zip")
           assert idx.get("optional_dependencies")==m.get("optional_dependencies")
           assert set(idx.get("optional_integrations",[]))=={"overworld_wild_spawns","DRAMALESS_SHAPE"}
+          assert 'mod.exports.version="1.0.7"' in src
+
           for needle in [
             "IRR_PSYDREN","IRR_VESPERIS","IRR_SOLIPSDION",
             "IRR_SOVEREIGN_RAGE","IRR_SERAPHS_VERDICT",
@@ -75,24 +128,38 @@ jobs:
             "pokemon.sprite","pokemon.icon","frontShiny","backShiny",
             "menuShiny","iconShiny","followerShiny","overworld_wild_spawns"
           ]:
-            assert needle in src, needle
+              assert needle in src, needle
+
+          expected=[]
           for stem in ("psydren","vesperis","solipsdion"):
-              assert f'assets/{stem}_back.png' in src
-              assert f'assets/{stem}_front_shiny.png' in src
-              assert f'assets/{stem}_follower_shiny.png' in src
-          print("IRREGULAR ORIGIN LUA/AUDIT PASS")
+              for shiny in ("","_shiny"):
+                  for kind in ("front","back","menu","icon","follower"):
+                      expected.append(f"assets/{stem}_{kind}{shiny}.png")
+          assert len(expected)==30
+          for asset in expected:
+              assert asset in src, asset
+
+          print("IRREGULAR ORIGIN LUA/METADATA/AUTO-ROUTING AUDIT PASS")
           PY
 
-      - name: Package deterministic ZIP
+      - name: Package and byte-verify deterministic ZIP
         run: |
           mkdir -p "site/data/mods/DuskPromised@irregular_origin"
           python - <<'PY'
-          import hashlib,zipfile
+          import hashlib, io, json, struct, zipfile, zlib
           from pathlib import Path
+          from PIL import Image
+
           src=Path("mods/irregular-origin")
-          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.6.zip")
+          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.7.zip")
           files=["main.lua","manifest.json","README.md","LICENSE"]
-          files += [str(p.relative_to(src)) for p in sorted((src/"assets").glob("*.png"))]
+          pngs=[str(p.relative_to(src)) for p in sorted((src/"assets").glob("*.png"))]
+          assert len(pngs)==30, len(pngs)
+          files += pngs
+
+          if out.exists():
+              out.unlink()
+
           with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
               for name in files:
                   info=zipfile.ZipInfo("irregular_origin/"+name)
@@ -100,24 +167,73 @@ jobs:
                   info.compress_type=zipfile.ZIP_DEFLATED
                   info.external_attr=0o100644<<16
                   z.writestr(info,(src/name).read_bytes())
+
+          PNG_SIG=b"\x89PNG\r\n\x1a\n"
+          def check_png(data,label):
+              assert data.startswith(PNG_SIG), f"{label}: invalid PNG signature"
+              pos=8
+              saw_iend=False
+              while pos < len(data):
+                  assert pos+12 <= len(data), f"{label}: truncated chunk header"
+                  length=struct.unpack(">I",data[pos:pos+4])[0]
+                  ctype=data[pos+4:pos+8]
+                  end=pos+12+length
+                  assert end <= len(data), f"{label}: truncated chunk"
+                  payload=data[pos+8:pos+8+length]
+                  stored=struct.unpack(">I",data[pos+8+length:pos+12+length])[0]
+                  actual=zlib.crc32(ctype)
+                  actual=zlib.crc32(payload,actual) & 0xffffffff
+                  assert stored==actual, f"{label}: PNG CRC mismatch in {ctype!r}"
+                  pos=end
+                  if ctype==b"IEND":
+                      saw_iend=True
+                      break
+              assert saw_iend and pos==len(data), f"{label}: malformed PNG ending"
+
+          expected_names={"irregular_origin/"+name for name in files}
+          with zipfile.ZipFile(out,"r") as z:
+              assert z.testzip() is None, "ZIP CRC failure"
+              assert set(z.namelist())==expected_names, (
+                  "ZIP member mismatch",
+                  sorted(set(z.namelist())-expected_names),
+                  sorted(expected_names-set(z.namelist())),
+              )
+              for name in files:
+                  arc="irregular_origin/"+name
+                  packed=z.read(arc)
+                  source=(src/name).read_bytes()
+                  assert packed==source, f"{name}: packaged bytes differ from source"
+                  assert hashlib.sha256(packed).digest()==hashlib.sha256(source).digest()
+                  if name.endswith(".png"):
+                      check_png(packed,arc)
+                      with Image.open(io.BytesIO(packed)) as im:
+                          im.verify()
+                      with Image.open(io.BytesIO(packed)) as im:
+                          im.load()
+              packed_manifest=json.loads(z.read("irregular_origin/manifest.json"))
+              assert packed_manifest["id"]=="irregular_origin"
+              assert packed_manifest["version"]=="1.0.7"
+              packed_main=z.read("irregular_origin/main.lua").decode("utf-8")
+              assert 'mod.exports.version="1.0.7"' in packed_main
+
           body=out.read_bytes()
           sha=hashlib.sha256(body).hexdigest()
-          Path("custom_mods/irregular_origin.sha256").write_text(sha+"  "+out.name+"\n")
-          print("sha256:",sha,"bytes:",len(body))
+          assert len(body)>10000
+          Path("custom_mods/irregular_origin.sha256").write_text(
+              sha+"  "+out.name+"\n")
+          print("IRREGULAR ORIGIN PACKAGE PASS")
+          print("sha256:",sha,"bytes:",len(body),"members:",len(files))
           PY
 
-      - name: Commit packaged mod
+      - name: Commit verified packaged mod
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f \
-            "mods/irregular-origin/assets/"*.png \
-            "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.6.zip" \
-            "custom_mods/irregular_origin.sha256"
+          git add -f             "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.7.zip"             "custom_mods/irregular_origin.sha256"
           if git diff --cached --quiet; then
-            echo "Irregular Origin archive already current."
+            echo "Irregular Origin v1.0.7 archive already current."
           else
-            git commit -m "Publish Irregular Origin v1.0.6"
+            git commit -m "Publish Irregular Origin v1.0.7 verified package"
             git pull --rebase origin main
             git push
           fi

@@ -34,7 +34,7 @@ The line can bind stones normally, but its hidden Irregular resonance adds modes
 
 ## Art status
 
-v1.0.6 carries the production art pass for the entire Irregular line. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
+v1.0.7 carries the production art pass for the entire Irregular line with a hardened corruption-checking release pipeline. Each species now ships separate authored **normal and shiny** assets for battle front, battle back, menu portrait, party icon, and follower presentation.
 
 - Battle front/back and menu portraits: 64×64 true-color PNGs
 - Party icons: engine-native 16×32 two-frame sheets
@@ -100,3 +100,13 @@ Corrected the registered Psychic type id to the engine/Kaizo `PSYCHIC` registry 
 - Compatibility is verified against the currently released **Wilds of Kanto v2.1.9** provider API and **Dramaless Shape v2.0.4**.
 - Keeps the complete 30-file normal/shiny production art set and the Dramaless-aware front/back shiny routing introduced in v1.0.5.
 - Publishes a new immutable v1.0.6 package rather than overwriting the already-published v1.0.5 archive.
+
+
+### v1.0.7
+
+- Rebuilt the release from the already-clean v1.0.6 source art instead of retransferring or regenerating the artwork.
+- Hardened CI with explicit PNG signature/chunk/CRC validation in addition to Pillow decode checks.
+- Verifies every expected frame sheet is non-empty: two party-icon frames and all six follower frames for normal and shiny variants.
+- Verifies the packaged ZIP after creation with ZIP CRC testing, exact file-list checks, byte-for-byte source/package comparisons, PNG re-validation from inside the archive, and manifest/version checks.
+- The release is blocked before publication if any sprite byte, PNG chunk, frame sheet, ZIP member, or package metadata is corrupted or missing.
+- Publishes a new immutable v1.0.7 archive; v1.0.6 remains unchanged for rollback.
