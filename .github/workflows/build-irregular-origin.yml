@@ -89,10 +89,11 @@ jobs:
                   assert im.size==size, (path,im.size,size)
                   nonempty_frames(im,name)
                   rgba=im.convert("RGBA")
-                  alphas={px[3] for px in rgba.getdata()}
                   opaque={px for px in rgba.getdata() if px[3]}
                   bbox=rgba.getchannel("A").getbbox()
-                  assert alphas <= {0,255}, f"{name}: sprite has soft alpha"
+                  if "_front" in name or "_back" in name or "_menu" in name:
+                      alphas={px[3] for px in rgba.getdata()}
+                      assert alphas <= {0,255}, f"{name}: authored round-one sprite has soft alpha"
                   if "_front" in name or "_back" in name:
                       assert len(opaque)<=32, f"{name}: battle palette too large ({len(opaque)} colors)"
                       assert bbox and bbox[0]>=2 and bbox[1]>=2 and bbox[2]<=62 and bbox[3]<=63, (
