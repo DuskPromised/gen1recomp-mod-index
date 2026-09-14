@@ -1,16 +1,18 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-13T23:53:53.226366+00:00",
+  "generated_at": "2026-09-14T01:06:52.666794+00:00",
   "categories": [
     "ART",
     "AUDIO",
     "BALANCE",
     "CONTENT",
     "GAMEPLAY",
+    "GRAPHICS",
     "LIBRARY",
     "MECHANIC",
     "OPTIONAL",
     "OTHER",
+    "OVERHAUL",
     "QOL",
     "QUALITY_OF_LIFE",
     "QUEST",
@@ -2159,6 +2161,51 @@
       "conflicts": []
     },
     {
+      "folder": "artyrambles@DRAMALESS_SHAPE",
+      "id": "DRAMALESS_SHAPE",
+      "title": "Dramaless Shape",
+      "author": "artyrambles",
+      "version": "2.0.4",
+      "categories": [
+        "GRAPHICS"
+      ],
+      "tags": [
+        "voxel",
+        "3d",
+        "battle",
+        "diorama",
+        "mobile"
+      ],
+      "api": 2,
+      "profile": "content",
+      "game_version": "0.0.0-dev || >=0.1.86 <2.0.0",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "STADIUM_BATTLE_FX@>=2.0.0 <3.0.0"
+      ],
+      "conflicts": [
+        "DRAMATIC_SHAPE",
+        "TERRARIUM",
+        "BATTLE_ART_VOXEL_FORK",
+        "potato_voxel",
+        "STADIUM_BATTLE_FX@<2.0.0"
+      ],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/artyrambles/DRAMALESS_SHAPE",
+      "github": "artyrambles/DRAMALESS_SHAPE",
+      "license": "MIT",
+      "downloadURL": "https://github.com/artyrambles/DRAMALESS_SHAPE/releases/download/v2.0.4/DRAMALESS_SHAPE-2.0.4.zip",
+      "source_zip": "DRAMALESS_SHAPE-2.0.4.zip",
+      "summary": "Voxel Kanto with native 2D battle cards staged in the 3D world, without Stadium-model battle dependencies.",
+      "source_scope": "upstream release",
+      "update_check": "off",
+      "optional_integrations": []
+    },
+    {
       "folder": "MFRTechConsult@DRAMATIC_SKY_RIDE",
       "id": "DRAMATIC_SKY_RIDE",
       "title": "Dramatic Sky Ride",
@@ -3263,6 +3310,43 @@
       "experimental": false,
       "update_check": "off",
       "source_scope": "Required external dependency"
+    },
+    {
+      "folder": "AyeBathingApe@gen1_kaizo",
+      "id": "gen1_kaizo",
+      "title": "Gen1 Recomp Allgen Kaizo",
+      "author": "AyeBathingApe",
+      "version": "0.8.3",
+      "categories": [
+        "MECHANIC",
+        "OVERHAUL"
+      ],
+      "tags": [
+        "kaizo",
+        "all generations",
+        "908 pokemon",
+        "difficulty",
+        "trainer ai",
+        "mega evolution"
+      ],
+      "api": 2,
+      "profile": "overhaul",
+      "game_version": ">=0.0.0-0 <2.0.0",
+      "permissions": [],
+      "dependencies": [],
+      "optional_dependencies": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/AyeBathingApe/gen1recomp-allgen-kaizo",
+      "github": "AyeBathingApe/gen1recomp-allgen-kaizo",
+      "license": "MIT",
+      "downloadURL": "https://github.com/AyeBathingApe/gen1recomp-allgen-kaizo/releases/download/v0.8.3/gen1-recomp-allgen-kaizo-0.8.3.zip",
+      "source_zip": "gen1-recomp-allgen-kaizo-0.8.3.zip",
+      "summary": "All-gen Kaizo overhaul: ~908 species, modern types and moves, six-mon trainers, competitive AI, Megas, and expanded wild pools.",
+      "source_scope": "upstream release",
+      "update_check": "off",
+      "optional_integrations": []
     },
     {
       "folder": "Wild@gen151",
@@ -7316,6 +7400,45 @@
       ]
     },
     {
+      "folder": "DuskPromised@philosopher_stones",
+      "id": "philosopher_stones",
+      "title": "Philosopher Stones",
+      "author": "Adam M. Aguilera",
+      "version": "1.0.0",
+      "categories": [
+        "GAMEPLAY"
+      ],
+      "tags": [
+        "relic",
+        "stone",
+        "held power",
+        "battle",
+        "badge reward"
+      ],
+      "api": 2,
+      "profile": "content",
+      "game_version": ">=0.2.21 <2.0.0",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [],
+      "optional_dependencies": [
+        "gen1_kaizo@>=0.8.3 <1.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+      "github": "DuskPromised/gen1recomp-mod-index",
+      "license": "MIT",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@philosopher_stones/philosopher_stones-1.0.0.zip",
+      "source_zip": "philosopher_stones-1.0.0.zip",
+      "summary": "Four badge-awakened relic stones that bind to Pokemon and grant offensive, defensive, regeneration, or accuracy powers.",
+      "source_scope": "DuskPromised original mod",
+      "update_check": "off"
+    },
+    {
       "folder": "ShaneMcGovernIE@gen1_font_replacer",
       "id": "gen1_font_replacer",
       "title": "PixelGen1 Font",
@@ -8520,6 +8643,52 @@
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": []
+    },
+    {
+      "folder": "DuskPromised@red_earth_kaizo_bridge",
+      "id": "red_earth_kaizo_bridge",
+      "title": "Red Earth Kaizo Bridge",
+      "author": "Adam M. Aguilera",
+      "version": "1.0.0",
+      "categories": [
+        "GAMEPLAY"
+      ],
+      "tags": [
+        "kaizo",
+        "compatibility",
+        "second starter",
+        "shiny starter",
+        "difficulty",
+        "level scaling"
+      ],
+      "api": 2,
+      "profile": "content",
+      "game_version": ">=0.2.21 <2.0.0",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "gen1_kaizo@>=0.8.3 <1.0.0"
+      ],
+      "optional_dependencies": [
+        "overworld_wild_spawns@>=2.1.9 <3.0.0"
+      ],
+      "optional_integrations": [],
+      "conflicts": [
+        "take_last_starter",
+        "shiny_starters_gifts",
+        "level_match_mod"
+      ],
+      "affects_link": false,
+      "experimental": false,
+      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+      "github": "DuskPromised/gen1recomp-mod-index",
+      "license": "MIT",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.0.zip",
+      "source_zip": "red_earth_kaizo_bridge-1.0.0.zip",
+      "summary": "Allgen Kaizo compatibility bridge with regional second starter, shiny Oak gifts, and upward-only dynamic trainer/wild scaling.",
+      "source_scope": "DuskPromised original mod",
+      "update_check": "off"
     },
     {
       "folder": "FAFF0x@repel_reuse_prompt",
