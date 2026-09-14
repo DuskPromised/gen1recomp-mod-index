@@ -1,5 +1,5 @@
 name: Deploy GitHub Pages
-# Publishes the current repository state and verifies the live Red Earth version.
+# Publishes the current repository state and verifies every cart version in the live feed.
 on:
   push:
     branches: ["main"]
@@ -27,16 +27,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify checked-out Red Earth feed is current
+      - name: Verify checked-out cart feed is current
         run: |
           python - <<'PY'
           import json
+          from pathlib import Path
           feed=json.load(open("site/data/index.json", encoding="utf-8"))
-          meta=json.load(open("carts/red_earth.index.json", encoding="utf-8"))
-          cart=next(c for c in feed.get("carts", []) if c.get("id")=="red_earth")
-          assert cart["version"] == meta["version"], (cart["version"], meta["version"])
-          assert cart["latest"]["version"] == meta["latest"]["version"], (cart["latest"], meta["latest"])
-          print("checked-out Red Earth:", cart["version"])
+          by_id={c["id"]:c for c in feed.get("carts", [])}
+          metas=[]
+          for path in sorted(Path("carts").glob("*.index.json")):
+              meta=json.load(open(path, encoding="utf-8"))
+              if meta.get("update_check")=="ok":
+                  metas.append(meta)
+          assert metas, "no published cart metadata"
+          for meta in metas:
+              cid=meta["id"]
+              assert cid in by_id, f"{cid} missing from generated feed"
+              cart=by_id[cid]
+              assert cart["version"]==meta["version"], (cid,cart["version"],meta["version"])
+              assert cart["latest"]["version"]==meta["latest"]["version"], (cid,cart["latest"],meta["latest"])
+              print("checked-out cart:", cid, cart["version"])
           PY
 
       - uses: actions/configure-pages@v5
@@ -50,28 +60,30 @@ jobs:
       - name: Verify published index feed
         run: |
           url="${{ steps.deployment.outputs.page_url }}data/index.json"
-          expected="$(python - <<'PY'
+          python - <<'PY' > /tmp/expected-carts.json
           import json
           d=json.load(open("site/data/index.json", encoding="utf-8"))
-          c=next(c for c in d.get("carts", []) if c.get("id")=="red_earth")
-          print(c["version"])
+          print(json.dumps({c["id"]:c["version"] for c in d.get("carts", [])}, sort_keys=True))
           PY
-          )"
-          echo "Checking $url for Red Earth $expected"
+          echo "Checking $url against every checked-out cart version"
           for attempt in 1 2 3 4 5 6 7 8 9 10 11 12; do
             if curl -fsSL -H 'Cache-Control: no-cache' "$url?verify=$GITHUB_RUN_ID-$attempt" -o /tmp/index.json; then
-              if EXPECTED="$expected" python - <<'PY'
-          import json, os, sys
-          with open("/tmp/index.json", "r", encoding="utf-8") as f:
+              if python - <<'PY'
+          import json, sys
+          expected=json.load(open("/tmp/expected-carts.json", encoding="utf-8"))
+          with open("/tmp/index.json","r",encoding="utf-8") as f:
               d=json.load(f)
           assert d.get("schema_version")==1
-          assert isinstance(d.get("mods"), list) and len(d["mods"]) > 0
-          cart=next(c for c in d.get("carts", []) if c.get("id")=="red_earth")
-          expected=os.environ["EXPECTED"]
-          if cart.get("version") != expected:
-              print("public Red Earth still", cart.get("version"), "expected", expected)
+          assert isinstance(d.get("mods"),list) and len(d["mods"])>0
+          live={c["id"]:c["version"] for c in d.get("carts",[])}
+          bad=[]
+          for cid,ver in expected.items():
+              if live.get(cid)!=ver:
+                  bad.append((cid,live.get(cid),ver))
+          if bad:
+              print("public cart version mismatches:", bad)
               sys.exit(2)
-          print("public Red Earth OK:", cart["version"])
+          print("public carts OK:", ", ".join(f"{cid} {ver}" for cid,ver in sorted(expected.items())))
           PY
               then
                 exit 0
@@ -79,5 +91,5 @@ jobs:
             fi
             sleep 5
           done
-          echo "Published Red Earth version did not match checked-out feed."
+          echo "Published cart versions did not match the checked-out feed."
           exit 1
