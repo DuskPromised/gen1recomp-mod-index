@@ -8,6 +8,7 @@ on:
     paths:
       - "tools/sync_index.py"
       - "carts/**"
+      - "custom_mods/**"
       - ".github/workflows/sync.yml"
 permissions:
   contents: write

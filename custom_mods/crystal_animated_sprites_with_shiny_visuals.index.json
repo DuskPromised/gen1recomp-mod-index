@@ -1,0 +1,33 @@
+{
+  "folder": "distilledorion-sketch@crystal_animated_sprites_with_shiny_visuals",
+  "id": "crystal_animated_sprites_with_shiny_visuals",
+  "title": "Crystal Animated Sprites with Shiny Visuals",
+  "author": "distilledorion-sketch",
+  "version": "2.0.3",
+  "categories": [
+    "ART"
+  ],
+  "tags": [
+    "crystal",
+    "animated sprites",
+    "battle sprites",
+    "shiny",
+    "gen 2",
+    "pixel art"
+  ],
+  "game_version": ">=0.1.33 <2.0.0",
+  "dependencies": [],
+  "optional_integrations": [
+    "DRAMALESS_SHAPE"
+  ],
+  "conflicts": [],
+  "affects_link": false,
+  "experimental": false,
+  "repo": "https://github.com/distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals",
+  "github": "distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals",
+  "downloadURL": "https://raw.githubusercontent.com/distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals/main/crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip",
+  "source_zip": "crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip",
+  "summary": "Crystal-style animated enemy fronts, normal/shiny player backs, Gen 2 shiny reveal visuals and sparkle audio, with pixel-perfect tile-aligned battle artwork.",
+  "source_scope": "Upstream fixed ZIP",
+  "update_check": "off"
+}
