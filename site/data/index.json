@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-14T16:28:39.251752+00:00",
+  "generated_at": "2026-09-14T16:29:47.404421+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12196,7 +12196,7 @@
       "title": "Pokémon Red Earth: The Philosopher's Stones",
       "author": "Adam M. Aguilera",
       "summary": "Kaizo Kanto with Irregular starter line, Dramaless voxels, scaling battles, Greater Stones, quests, and QOL.",
-      "version": "1.0.8",
+      "version": "1.0.9",
       "base": "red",
       "seal": "sealed+",
       "shell": "#8f1d2c",
@@ -12377,8 +12377,8 @@
           "id": "red_earth_kaizo_bridge",
           "source": "github",
           "repo": "DuskPromised/gen1recomp-mod-index",
-          "version": "1.0.2",
-          "sha256": "fd3097eb7c49f624df4bdce9c32e644e0633858950727024b454944126f512e0",
+          "version": "1.0.3",
+          "sha256": "2a771d6e466c59c02fd05ace3920a281d7055861e44f9047a8bc11e24f0414a3",
           "options": {
             "dynamic_wilds": true,
             "dynamic_trainers": true,
@@ -12493,14 +12493,14 @@
       "description_url": "data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
       "versions_url": "data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
       "latest": {
-        "version": "1.0.8",
-        "name": "1.0.8",
+        "version": "1.0.9",
+        "name": "1.0.9",
         "prerelease": false,
         "zip": {
-          "name": "red_earth_philosophers_stones-1.0.8.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.8.g1rcart",
+          "name": "red_earth_philosophers_stones-1.0.9.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.9.g1rcart",
           "size": 226171,
-          "sha256": "60ec03ce9018a7ec8ed1e741d289bb2cafbfe797e38cbcc7193836ac36e20f62"
+          "sha256": "5f4e20191e66cd4af95a14964ba186256aad37d81cdb2b02a98e0629842c1cfb"
         }
       },
       "update_check": "ok",
