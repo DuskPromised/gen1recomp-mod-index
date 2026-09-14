@@ -1,4 +1,4 @@
--- Irregular Origin v1.0.3
+-- Irregular Origin v1.0.4
 -- Custom three-stage starter line for Pokémon Red Earth: The Philosopher's Stones.
 -- Psydren is received before Oak's normal regional companion choice.
 
@@ -19,6 +19,42 @@ local IRREGULAR={
   [IDS.PSYDREN]=true,[IDS.VESPERIS]=true,[IDS.SOLIPSDION]=true,
 }
 
+-- Production art map. Normal and shiny are deliberately separate authored
+-- assets; shiny selection is resolved per individual at runtime.
+local ART_FILES={
+  [IDS.PSYDREN]={
+    normal={front="psydren_front.png",back="psydren_back.png",menu="psydren_menu.png",
+      icon="psydren_icon.png",follower="psydren_follower.png"},
+    shiny={front="psydren_front_shiny.png",back="psydren_back_shiny.png",
+      menu="psydren_menu_shiny.png",icon="psydren_icon_shiny.png",
+      follower="psydren_follower_shiny.png"},
+  },
+  [IDS.VESPERIS]={
+    normal={front="vesperis_front.png",back="vesperis_back.png",menu="vesperis_menu.png",
+      icon="vesperis_icon.png",follower="vesperis_follower.png"},
+    shiny={front="vesperis_front_shiny.png",back="vesperis_back_shiny.png",
+      menu="vesperis_menu_shiny.png",icon="vesperis_icon_shiny.png",
+      follower="vesperis_follower_shiny.png"},
+  },
+  [IDS.SOLIPSDION]={
+    normal={front="solipsdion_front.png",back="solipsdion_back.png",
+      menu="solipsdion_menu.png",icon="solipsdion_icon.png",
+      follower="solipsdion_follower.png"},
+    shiny={front="solipsdion_front_shiny.png",back="solipsdion_back_shiny.png",
+      menu="solipsdion_menu_shiny.png",icon="solipsdion_icon_shiny.png",
+      follower="solipsdion_follower_shiny.png"},
+  },
+}
+local SHINY_ATTACK_DVS={ [2]=true,[3]=true,[6]=true,[7]=true,[10]=true,[11]=true,[14]=true,[15]=true }
+
+local function irregularIsShiny(mon)
+  if not mon then return false end
+  if mon.shiny==true or mon.isShiny==true then return true end
+  local d=mon.dvs
+  return d and d.defense==10 and d.speed==10 and d.special==10
+    and SHINY_ATTACK_DVS[d.attack]==true or false
+end
+
 local function hash(text)
   local h=0
   text=tostring(text or "")
@@ -32,6 +68,13 @@ return function(mod)
   if not (pokemon and moves) then
     mod.log:warn("pokemon/moves registry unavailable; Irregular Origin skipped")
     return
+  end
+
+  local function artPath(species,variant,kind)
+    local row=ART_FILES[species]
+    row=row and row[variant]
+    local name=row and row[kind]
+    return name and (mod.path.."/assets/"..name) or nil
   end
 
   local function existingMove(...)
@@ -99,10 +142,10 @@ return function(mod)
       {level=7,move=waterGun},{level=11,move=hypnosis},{level=14,move=bubbleBeam},
     },
     evolutions={{method="LEVEL",level=16,species=IDS.VESPERIS}},
-    spriteFront=mod.path.."/assets/psydren_front.png",
-    spriteBack=mod.path.."/assets/psydren_front.png",
+    spriteFront=artPath(IDS.PSYDREN,"normal","front"),
+    spriteBack=artPath(IDS.PSYDREN,"normal","back"),
     frontSize=7,trueColor=true,battleScaleFront=1.0,battleScaleBack=1.0,
-    icon={image=mod.path.."/assets/psydren_icon.png",frames=2},
+    icon={image=artPath(IDS.PSYDREN,"normal","icon"),frames=2},
     cry="MEW",
     dexEntry={kind="ABYSSAL SEED",heightFt=2,heightIn=4,weight=18.5,
       text="An aquatic anomaly that drifts between dreams and the sea.",
@@ -119,10 +162,10 @@ return function(mod)
       {level=25,move=confuseRay},{level=29,move=recover},{level=33,move=dreamEater},
     },
     evolutions={{method="LEVEL",level=36,species=IDS.SOLIPSDION}},
-    spriteFront=mod.path.."/assets/vesperis_front.png",
-    spriteBack=mod.path.."/assets/vesperis_front.png",
+    spriteFront=artPath(IDS.VESPERIS,"normal","front"),
+    spriteBack=artPath(IDS.VESPERIS,"normal","back"),
     frontSize=7,trueColor=true,battleScaleFront=1.0,battleScaleBack=1.0,
-    icon={image=mod.path.."/assets/vesperis_icon.png",frames=2},
+    icon={image=artPath(IDS.VESPERIS,"normal","icon"),frames=2},
     cry="HAUNTER",
     dexEntry={kind="GRAVEKEEPER STORM",heightFt=4,heightIn=11,weight=71.0,
       text="Its first body dissolves into a violent psychic wraith.",
@@ -140,10 +183,10 @@ return function(mod)
       {level=65,move=psychic},{level=75,move="IRR_SERAPHS_VERDICT"},
     },
     evolutions={},
-    spriteFront=mod.path.."/assets/solipsdion_front.png",
-    spriteBack=mod.path.."/assets/solipsdion_front.png",
+    spriteFront=artPath(IDS.SOLIPSDION,"normal","front"),
+    spriteBack=artPath(IDS.SOLIPSDION,"normal","back"),
     frontSize=7,trueColor=true,battleScaleFront=1.0,battleScaleBack=1.0,
-    icon={image=mod.path.."/assets/solipsdion_icon.png",frames=2},
+    icon={image=artPath(IDS.SOLIPSDION,"normal","icon"),frames=2},
     cry="MEWTWO",
     dexEntry={kind="SOVEREIGN APEX",heightFt=7,heightIn=2,weight=269.0,
       text="Seven wings surround a body shaped by repeated transmutation.",
@@ -153,6 +196,42 @@ return function(mod)
   if mod.content.constants then
     mod.content.constants:patch("dexSize",d3)
   end
+
+  -- Every battle/summary image load passes through pokemon.sprite. Route the
+  -- Irregular line to its authored shiny sheet without mutating the frozen
+  -- species registry or relying on a palette swap.
+  mod.hooks:wrap("pokemon.sprite",function(next,path,ctx)
+    local result=next(path,ctx)
+    if not (ctx and IRREGULAR[ctx.species]) then return result end
+    local variant=irregularIsShiny(ctx.mon) and "shiny" or "normal"
+    local kind
+    if ctx.kind=="summary" or ctx.kind=="box" then
+      kind="menu"
+    elseif ctx.side=="back" then
+      kind="back"
+    else
+      kind="front"
+    end
+    local chosen=artPath(ctx.species,variant,kind)
+    if chosen then
+      ctx.trueColor=true
+      return chosen
+    end
+    return result
+  end,120)
+
+  -- Party/menu icons have their own sanctioned runtime seam.
+  mod.hooks:wrap("pokemon.icon",function(next,path,ctx)
+    local result=next(path,ctx)
+    if not (ctx and IRREGULAR[ctx.species]) then return result end
+    local variant=irregularIsShiny(ctx.mon) and "shiny" or "normal"
+    local chosen=artPath(ctx.species,variant,"icon")
+    if chosen then
+      ctx.trueColor=true
+      return chosen
+    end
+    return result
+  end,120)
 
   local function isIrregular(mon)
     return mon and IRREGULAR[mon.species] == true
@@ -244,6 +323,69 @@ return function(mod)
       source={modId=mod.id,strict=true,mapId="OAKS_LAB",hook="world.talk"},
     })
     return
+  end)
+
+  -- Wilds already owns follower rendering. At game.ready (after all mods have
+  -- loaded), wrap its Pokédex fallback provider so custom Irregular species use
+  -- our dedicated six-frame walker sheets while every other species delegates
+  -- to Wilds unchanged.
+  local wildsArtInstalled=false
+  local function installWildsArt(game)
+    if wildsArtInstalled then return end
+    local wilds=mod:find("overworld_wild_spawns")
+    local ex=wilds and wilds.exports
+    if not (ex and type(ex.getSpriteProvider)=="function"
+        and type(ex.registerSpriteProvider)=="function") then return end
+    local base=ex.getSpriteProvider("pokedex")
+    if not (base and type(base.resolve)=="function") then return end
+
+    local function irregularSpeciesKey(speciesId,g)
+      if IRREGULAR[speciesId] then return speciesId end
+      local dex=tonumber(speciesId)
+      local rows=g and g.data and g.data.pokemon
+      if dex and type(rows)=="table" then
+        for id,def in pairs(rows) do
+          if IRREGULAR[id] and tonumber(def and def.dex)==dex then return id end
+        end
+      end
+      return nil
+    end
+
+    local provider={
+      id="pokedex",builtin=true,modId=mod.id,
+      isAvailable=function() return true,"Irregular art + Pokédex fallback" end,
+      resolve=function(_,speciesId,variant,g)
+        local species=irregularSpeciesKey(speciesId,g)
+        if species then
+          local want=(variant=="shiny" or variant==true) and "shiny" or "normal"
+          local art=ART_FILES[species][want]
+          return {
+            id="SPRITE_"..species.."_"..want,
+            image=mod.path.."/assets/"..art.follower,
+            frames=6,walker=true,trueColor=true,
+            frameWidth=16,frameHeight=16,anchorX=8,anchorY=16,
+          },{
+            usedVariant=want,providerMod=mod.id,
+            bodyRenderer="NATIVE_SPRITE_RENDERER",
+          },nil
+        end
+        return base.resolve(base,speciesId,variant,g)
+      end,
+    }
+    local ok,err=ex.registerSpriteProvider("pokedex",provider)
+    if ok~=false then
+      wildsArtInstalled=true
+      mod.log:info("Irregular production follower art installed")
+      if type(ex.refreshAllEntitySprites)=="function" then
+        pcall(ex.refreshAllEntitySprites,game)
+      end
+    else
+      mod.log:warn("Irregular follower art provider failed: %s",tostring(err))
+    end
+  end
+
+  mod.events:on("game.ready",function(ev)
+    installWildsArt((ev and ev.game) or mod.game)
   end)
 
   local function stone(mon) return mon and mon.philosopherStone end
@@ -354,7 +496,7 @@ return function(mod)
     game.stack:push(mod.ui.TextBox.new(game,msg:gsub("{RAM}",name)))
   end)
 
-  mod.exports.version="1.0.3"
+  mod.exports.version="1.0.4"
   mod.exports.species=IDS
   mod.exports.isIrregular=isIrregular
 end
