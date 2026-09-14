@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-14T03:57:44.294854+00:00",
+  "generated_at": "2026-09-14T15:02:17.360724+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -58,10 +58,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 425,
-        "recent": 37,
-        "window_days": 4,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 431,
+        "recent": 43,
+        "window_days": 5,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -106,10 +106,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 313,
-        "recent": 107,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 314,
+        "recent": 108,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -152,10 +152,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 7670,
-        "recent": 1893,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 7691,
+        "recent": 1914,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -197,10 +197,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 699,
-        "recent": 255,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 700,
+        "recent": 256,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -276,10 +276,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 241,
-        "recent": 45,
-        "window_days": 4,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 249,
+        "recent": 53,
+        "window_days": 5,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -337,10 +337,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 554,
-        "recent": 175,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 559,
+        "recent": 180,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -453,10 +453,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1165,
-        "recent": 363,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1170,
+        "recent": 368,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -498,10 +498,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 373,
-        "recent": 133,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 374,
+        "recent": 134,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -554,10 +554,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 946,
-        "recent": 403,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 949,
+        "recent": 406,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -623,23 +623,23 @@
       "thumbnail": "data/mods/EnterPlayerOne@BATTLE_CINEMATICS/thumbnail.jpg",
       "description_url": "data/mods/EnterPlayerOne@BATTLE_CINEMATICS/description.md",
       "latest": {
-        "version": "1.4.1",
-        "tag": "v1.4.1",
-        "name": "Battle Cinematics v1.4.1 — Desktop PiP Dragg & Prism Sprite Facing",
+        "version": "1.4.2",
+        "tag": "v1.4.2",
+        "name": "Battle Cinematics v1.4.2 - Live Colosseum PiP & Phenac Approach",
         "prerelease": false,
-        "published_at": "2026-09-13T19:39:27Z",
+        "published_at": "2026-09-14T00:53:27Z",
         "zip": {
-          "name": "BATTLE_CINEMATICS-1.4.1.zip",
-          "url": "https://github.com/EnterPlayerOne/Battle-Cinematics-Stadium-Camera/releases/download/v1.4.1/BATTLE_CINEMATICS-1.4.1.zip",
-          "size": 323758
+          "name": "BATTLE_CINEMATICS-1.4.2.zip",
+          "url": "https://github.com/EnterPlayerOne/Battle-Cinematics-Stadium-Camera/releases/download/v1.4.2/BATTLE_CINEMATICS-1.4.2.zip",
+          "size": 327675
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 19005,
-        "recent": 8120,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 19189,
+        "recent": 8304,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -691,10 +691,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 35,
-        "recent": 25,
-        "window_days": 4,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 43,
+        "recent": 33,
+        "window_days": 5,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -754,10 +754,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 936,
-        "recent": 523,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 945,
+        "recent": 532,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -804,10 +804,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 7067,
-        "recent": 1482,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 7087,
+        "recent": 1502,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -863,10 +863,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 138,
-        "recent": 121,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 140,
+        "recent": 123,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -918,10 +918,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4131,
-        "recent": 1940,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 4154,
+        "recent": 1963,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -975,10 +975,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 550,
-        "recent": 253,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 552,
+        "recent": 255,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1017,23 +1017,23 @@
       "thumbnail": "data/mods/Code-Grub@bills_pc_plus/thumbnail.png",
       "description_url": "data/mods/Code-Grub@bills_pc_plus/description.md",
       "latest": {
-        "version": "0.15.1",
-        "tag": "v0.15.1",
-        "name": "Bill's PC Plus 0.15.1",
+        "version": "0.15.4",
+        "tag": "v0.15.4",
+        "name": "Bill's PC Plus 0.15.4",
         "prerelease": false,
-        "published_at": "2026-09-11T15:25:35Z",
+        "published_at": "2026-09-14T06:16:57Z",
         "zip": {
-          "name": "bills_pc_plus-0.15.1.zip",
-          "url": "https://github.com/Code-Grub/bills-pc-plus/releases/download/v0.15.1/bills_pc_plus-0.15.1.zip",
-          "size": 50366
+          "name": "bills_pc_plus-0.15.4.zip",
+          "url": "https://github.com/Code-Grub/bills-pc-plus/releases/download/v0.15.4/bills_pc_plus-0.15.4.zip",
+          "size": 55952
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 556,
-        "recent": 528,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 593,
+        "recent": 565,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1091,10 +1091,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3046,
-        "recent": 1168,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 3052,
+        "recent": 1174,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1136,10 +1136,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 351,
-        "recent": 326,
-        "window_days": 20,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 353,
+        "recent": 328,
+        "window_days": 21,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1185,10 +1185,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3980,
-        "recent": 703,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 3987,
+        "recent": 710,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1229,10 +1229,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1226,
-        "recent": 321,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1230,
+        "recent": 325,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1275,10 +1275,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 522,
-        "recent": 255,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 524,
+        "recent": 257,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1343,10 +1343,10 @@
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
-        "total": 710,
-        "recent": 690,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 720,
+        "recent": 700,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1397,10 +1397,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 663,
-        "recent": 320,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 665,
+        "recent": 322,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1446,10 +1446,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5903,
-        "recent": 1224,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 5918,
+        "recent": 1239,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1504,10 +1504,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 78,
-        "recent": 49,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 84,
+        "recent": 55,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1552,10 +1552,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6046,
-        "recent": 1285,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 6058,
+        "recent": 1297,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1603,10 +1603,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1332,
-        "recent": 381,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1335,
+        "recent": 384,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1711,10 +1711,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1692,
-        "recent": 464,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1696,
+        "recent": 468,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1768,10 +1768,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 289,
-        "recent": 59,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 290,
+        "recent": 60,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1825,10 +1825,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2453,
-        "recent": 858,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2458,
+        "recent": 863,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1877,10 +1877,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 775,
-        "recent": 266,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 776,
+        "recent": 267,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1931,10 +1931,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1015,
-        "recent": 338,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1016,
+        "recent": 339,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1985,10 +1985,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2117,
-        "recent": 643,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2119,
+        "recent": 645,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2041,8 +2041,8 @@
       "downloads": {
         "total": 163,
         "recent": 71,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2093,10 +2093,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 601,
-        "recent": 380,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 606,
+        "recent": 385,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2149,10 +2149,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1569,
-        "recent": 726,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1573,
+        "recent": 730,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2263,10 +2263,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5984,
-        "recent": 1462,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 5999,
+        "recent": 1477,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2308,10 +2308,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 222,
-        "recent": 51,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 223,
+        "recent": 52,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2382,10 +2382,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 323,
-        "recent": 255,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 325,
+        "recent": 257,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2462,10 +2462,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6366,
-        "recent": 1464,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 6390,
+        "recent": 1488,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2516,10 +2516,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 476,
-        "recent": 284,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 478,
+        "recent": 286,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2567,10 +2567,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 28275,
-        "recent": 10055,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 28361,
+        "recent": 10141,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2653,10 +2653,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 128,
-        "recent": 41,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 131,
+        "recent": 44,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2705,10 +2705,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 297,
-        "recent": 149,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 298,
+        "recent": 150,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2747,10 +2747,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 257,
-        "recent": 247,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 266,
+        "recent": 256,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2784,10 +2784,10 @@
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
-        "total": 685,
-        "recent": 659,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 697,
+        "recent": 671,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2833,10 +2833,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 13156,
-        "recent": 2727,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 13184,
+        "recent": 2755,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2887,10 +2887,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8826,
-        "recent": 3070,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 8936,
+        "recent": 3180,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2980,23 +2980,23 @@
       "thumbnail": null,
       "description_url": "data/mods/Tekky@g9-battle-engine/description.md",
       "latest": {
-        "version": "1.2.3",
-        "tag": "v1.2.3",
-        "name": "1.2.3",
+        "version": "4.0.4",
+        "tag": "v4.0.4",
+        "name": "Crash fix",
         "prerelease": false,
-        "published_at": "2026-08-20T10:12:30Z",
+        "published_at": "2026-09-14T00:47:45Z",
         "zip": {
-          "name": "g9-engine.zip",
-          "url": "https://github.com/tectorifter/Gen9Dex/releases/download/v1.2.3/g9-engine.zip",
-          "size": 330431
+          "name": "g9-battle-engine.zip",
+          "url": "https://github.com/tectorifter/Gen9Dex/releases/download/v4.0.4/g9-battle-engine.zip",
+          "size": 891727
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 574,
-        "recent": 510,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 606,
+        "recent": 542,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3051,10 +3051,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6531,
-        "recent": 1720,
-        "window_days": 16,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 6598,
+        "recent": 1787,
+        "window_days": 17,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3107,10 +3107,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 91,
-        "recent": 81,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 98,
+        "recent": 88,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3164,10 +3164,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1509,
-        "recent": 872,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1518,
+        "recent": 881,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3218,10 +3218,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 34599,
-        "recent": 15200,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 34708,
+        "recent": 15309,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3274,10 +3274,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3251,
-        "recent": 1679,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 3264,
+        "recent": 1692,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3384,23 +3384,23 @@
       "thumbnail": "data/mods/Wild@gen151/thumbnail.png",
       "description_url": "data/mods/Wild@gen151/description.md",
       "latest": {
-        "version": "1.7.0",
-        "tag": "v1.7.0",
-        "name": "1.7.0",
+        "version": "1.8.0",
+        "tag": "v1.8.0",
+        "name": "1.8.0",
         "prerelease": false,
-        "published_at": "2026-09-11T22:58:27Z",
+        "published_at": "2026-09-14T00:51:14Z",
         "zip": {
-          "name": "gen151-1.7.0.zip",
-          "url": "https://github.com/wild1walker/Gen151/releases/download/v1.7.0/gen151-1.7.0.zip",
-          "size": 131287
+          "name": "gen151-1.8.0.zip",
+          "url": "https://github.com/wild1walker/Gen151/releases/download/v1.8.0/gen151-1.8.0.zip",
+          "size": 133020
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 298,
-        "recent": 232,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 320,
+        "recent": 254,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3442,23 +3442,23 @@
       "thumbnail": "data/mods/Wild@gen1arena/thumbnail.png",
       "description_url": "data/mods/Wild@gen1arena/description.md",
       "latest": {
-        "version": "0.26.0",
-        "tag": "v0.26.0",
-        "name": "0.26.0",
+        "version": "0.34.0",
+        "tag": "v0.34.0",
+        "name": "0.34.0",
         "prerelease": false,
-        "published_at": "2026-09-11T22:31:25Z",
+        "published_at": "2026-09-14T03:21:46Z",
         "zip": {
-          "name": "gen1arena-0.26.0.zip",
-          "url": "https://github.com/wild1walker/Gen1Arena/releases/download/v0.26.0/gen1arena-0.26.0.zip",
-          "size": 1238080
+          "name": "gen1arena-0.34.0.zip",
+          "url": "https://github.com/wild1walker/Gen1Arena/releases/download/v0.34.0/gen1arena-0.34.0.zip",
+          "size": 1243822
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 861,
-        "recent": 403,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 902,
+        "recent": 444,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3510,10 +3510,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 135,
-        "recent": 78,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 137,
+        "recent": 80,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3570,10 +3570,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 521,
-        "recent": 447,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 526,
+        "recent": 452,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3628,10 +3628,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 221,
-        "recent": 148,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 224,
+        "recent": 151,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3684,10 +3684,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2355,
-        "recent": 1414,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2367,
+        "recent": 1426,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3746,10 +3746,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 185,
-        "recent": 105,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 186,
+        "recent": 106,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3811,10 +3811,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 251,
-        "recent": 147,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 257,
+        "recent": 153,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3871,10 +3871,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 435,
-        "recent": 272,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 441,
+        "recent": 278,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3929,10 +3929,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 238,
-        "recent": 119,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 240,
+        "recent": 121,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3985,10 +3985,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 780,
-        "recent": 347,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 785,
+        "recent": 352,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4049,10 +4049,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 322,
-        "recent": 170,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 329,
+        "recent": 177,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4109,10 +4109,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 162,
-        "recent": 105,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 165,
+        "recent": 108,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4154,10 +4154,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 16182,
-        "recent": 1853,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 16215,
+        "recent": 1886,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4217,10 +4217,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 203,
-        "recent": 119,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 205,
+        "recent": 121,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4266,10 +4266,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2739,
-        "recent": 1109,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2753,
+        "recent": 1123,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4327,10 +4327,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 104,
-        "recent": 68,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 107,
+        "recent": 71,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4387,10 +4387,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 142,
-        "recent": 79,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 145,
+        "recent": 82,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4446,10 +4446,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 114,
-        "recent": 63,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 116,
+        "recent": 65,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4496,23 +4496,23 @@
       "thumbnail": "data/mods/Wild@gen1_wild_qol/thumbnail.png",
       "description_url": "data/mods/Wild@gen1_wild_qol/description.md",
       "latest": {
-        "version": "1.32.2",
-        "tag": "v1.32.2",
-        "name": "1.32.2",
+        "version": "1.33.0",
+        "tag": "v1.33.0",
+        "name": "1.33.0",
         "prerelease": false,
-        "published_at": "2026-09-08T04:53:47Z",
+        "published_at": "2026-09-14T00:55:23Z",
         "zip": {
-          "name": "gen1_wild_qol-1.32.2.zip",
-          "url": "https://github.com/wild1walker/Gen1WildQOL/releases/download/v1.32.2/gen1_wild_qol-1.32.2.zip",
-          "size": 896941
+          "name": "gen1_wild_qol-1.33.0.zip",
+          "url": "https://github.com/wild1walker/Gen1WildQOL/releases/download/v1.33.0/gen1_wild_qol-1.33.0.zip",
+          "size": 893570
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1802,
-        "recent": 1282,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1890,
+        "recent": 1370,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4558,23 +4558,23 @@
       "thumbnail": "data/mods/Wild@gen1_wild_ui/thumbnail.png",
       "description_url": "data/mods/Wild@gen1_wild_ui/description.md",
       "latest": {
-        "version": "1.33.0",
-        "tag": "v1.33.0",
-        "name": "1.33.0",
+        "version": "1.41.0",
+        "tag": "v1.41.0",
+        "name": "1.41.0",
         "prerelease": false,
-        "published_at": "2026-09-11T22:40:01Z",
+        "published_at": "2026-09-14T03:24:07Z",
         "zip": {
-          "name": "gen1_wild_ui-1.33.0.zip",
-          "url": "https://github.com/wild1walker/Gen1WildUI/releases/download/v1.33.0/gen1_wild_ui-1.33.0.zip",
-          "size": 1949248
+          "name": "gen1_wild_ui-1.41.0.zip",
+          "url": "https://github.com/wild1walker/Gen1WildUI/releases/download/v1.41.0/gen1_wild_ui-1.41.0.zip",
+          "size": 1958064
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1863,
-        "recent": 1312,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1966,
+        "recent": 1415,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4614,10 +4614,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 105,
-        "recent": 95,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 107,
+        "recent": 97,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4661,10 +4661,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 268,
-        "recent": 158,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 269,
+        "recent": 159,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4721,8 +4721,8 @@
       "downloads": {
         "total": 40,
         "recent": 15,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4774,10 +4774,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4885,
-        "recent": 1100,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 4890,
+        "recent": 1105,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4860,10 +4860,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 254,
-        "recent": 168,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 255,
+        "recent": 169,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4909,10 +4909,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1676,
-        "recent": 412,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1678,
+        "recent": 414,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4997,8 +4997,8 @@
       "downloads": {
         "total": 112,
         "recent": 40,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5037,10 +5037,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 79,
-        "recent": 68,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 81,
+        "recent": 70,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5079,10 +5079,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 74,
-        "recent": 40,
-        "window_days": 4,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 76,
+        "recent": 42,
+        "window_days": 5,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5095,7 +5095,7 @@
       "id": "irregular_origin",
       "title": "Irregular Origin",
       "author": "Adam M. Aguilera",
-      "version": "1.0.3",
+      "version": "1.0.5",
       "categories": [
         "GAMEPLAY",
         "CONTENT"
@@ -5119,10 +5119,6 @@
       "dependencies": [
         "gen1_kaizo@>=0.8.3 <1.0.0"
       ],
-      "optional_dependencies": [
-        "red_earth_kaizo_bridge@>=1.0.0 <2.0.0",
-        "philosopher_stones@>=1.1.0 <2.0.0"
-      ],
       "optional_integrations": [],
       "conflicts": [
         "take_last_starter",
@@ -5133,11 +5129,12 @@
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "github": "DuskPromised/gen1recomp-mod-index",
       "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.3.zip",
-      "source_zip": "irregular_origin-1.0.3.zip",
-      "summary": "Adds Psydren → Vesperis → Solipsdion, custom signature moves, shiny Irregular origin, stone resonance, and a Dramaless-safe Confusion visual.",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.5.zip",
+      "source_zip": "irregular_origin-1.0.5.zip",
+      "summary": "Adds Psydren → Vesperis → Solipsdion with dedicated normal/shiny 2D battle-card, menu, party, and follower art, Wilds/Dramaless billboard compatibility, signature moves, shiny Irregular origin, and stone resonance.",
       "source_scope": "DuskPromised original mod",
-      "update_check": "off"
+      "update_check": "off",
+      "optional_dependencies": []
     },
     {
       "folder": "inmento@item_randomizer",
@@ -5187,10 +5184,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 215,
-        "recent": 139,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 216,
+        "recent": 140,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5265,10 +5262,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 310,
-        "recent": 60,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 311,
+        "recent": 61,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5394,10 +5391,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8620,
-        "recent": 1657,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 8655,
+        "recent": 1692,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5441,23 +5438,23 @@
       "thumbnail": null,
       "description_url": "data/mods/campavao@battle_royale/description.md",
       "latest": {
-        "version": "0.50.1",
-        "tag": "v0.50.1",
-        "name": "v0.50.1 — a flight cannot be interrupted",
+        "version": "0.51.0",
+        "tag": "v0.51.0",
+        "name": "v0.51.0 — LOBBIES",
         "prerelease": false,
-        "published_at": "2026-09-11T22:35:35Z",
+        "published_at": "2026-09-14T03:19:08Z",
         "zip": {
-          "name": "battle_royale-v0.50.1.zip",
-          "url": "https://github.com/campavao/kanto-battle-royale/releases/download/v0.50.1/battle_royale-v0.50.1.zip",
-          "size": 352556
+          "name": "battle_royale-v0.51.0.zip",
+          "url": "https://github.com/campavao/kanto-battle-royale/releases/download/v0.51.0/battle_royale-v0.51.0.zip",
+          "size": 365250
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 863,
-        "recent": 712,
-        "window_days": 16,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 873,
+        "recent": 722,
+        "window_days": 17,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5496,10 +5493,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2002,
-        "recent": 538,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2005,
+        "recent": 541,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5557,10 +5554,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 698,
-        "recent": 447,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 707,
+        "recent": 456,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5610,10 +5607,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2994,
-        "recent": 1404,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 3013,
+        "recent": 1423,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5675,10 +5672,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 17882,
-        "recent": 10231,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 18027,
+        "recent": 10376,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5732,10 +5729,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2655,
-        "recent": 1169,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2664,
+        "recent": 1178,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5788,10 +5785,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 32,
-        "recent": 25,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 34,
+        "recent": 27,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5822,10 +5819,10 @@
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
-        "total": 65,
-        "recent": 42,
-        "window_days": 4,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 69,
+        "recent": 46,
+        "window_days": 5,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5875,10 +5872,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1391,
-        "recent": 963,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1401,
+        "recent": 973,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5932,10 +5929,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1036,
-        "recent": 461,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1043,
+        "recent": 468,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6025,10 +6022,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2290,
-        "recent": 1122,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2307,
+        "recent": 1139,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6118,10 +6115,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1505,
-        "recent": 727,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1515,
+        "recent": 737,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6171,10 +6168,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 849,
-        "recent": 634,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 867,
+        "recent": 652,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6227,10 +6224,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 14267,
-        "recent": 3505,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 14302,
+        "recent": 3540,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6291,10 +6288,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5608,
-        "recent": 2231,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 5636,
+        "recent": 2259,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6353,10 +6350,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2135,
-        "recent": 1572,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2159,
+        "recent": 1596,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6383,8 +6380,8 @@
       "downloads": {
         "total": 77,
         "recent": 50,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6469,8 +6466,8 @@
       "downloads": {
         "total": 990,
         "recent": 212,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6529,10 +6526,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 16,
-        "recent": 8,
-        "window_days": 4,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 17,
+        "recent": 9,
+        "window_days": 5,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6582,10 +6579,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 848,
-        "recent": 547,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 853,
+        "recent": 552,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6692,10 +6689,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5197,
-        "recent": 2283,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 5215,
+        "recent": 2301,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6806,10 +6803,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1659,
-        "recent": 402,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1663,
+        "recent": 406,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6856,10 +6853,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 956,
-        "recent": 881,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 968,
+        "recent": 893,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6906,10 +6903,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 690,
-        "recent": 638,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 699,
+        "recent": 647,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6956,10 +6953,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 913,
-        "recent": 846,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 925,
+        "recent": 858,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7006,10 +7003,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 86,
-        "recent": 36,
-        "window_days": 4,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 95,
+        "recent": 45,
+        "window_days": 5,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7204,8 +7201,8 @@
       "downloads": {
         "total": 136,
         "recent": 84,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7259,10 +7256,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5346,
-        "recent": 2181,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 5368,
+        "recent": 2203,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7306,10 +7303,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2125,
-        "recent": 901,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2136,
+        "recent": 912,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7368,10 +7365,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 739,
-        "recent": 129,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 747,
+        "recent": 137,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7403,8 +7400,8 @@
       "downloads": {
         "total": 0,
         "recent": 0,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7532,10 +7529,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 194,
-        "recent": 163,
-        "window_days": 20,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 195,
+        "recent": 164,
+        "window_days": 21,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7587,10 +7584,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1162,
-        "recent": 255,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1163,
+        "recent": 256,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7677,10 +7674,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2488,
-        "recent": 767,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2501,
+        "recent": 780,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7732,10 +7729,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 939,
-        "recent": 397,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 942,
+        "recent": 400,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7782,10 +7779,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 836,
-        "recent": 367,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 846,
+        "recent": 377,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7834,10 +7831,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3163,
-        "recent": 683,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 3167,
+        "recent": 687,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7889,10 +7886,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 145,
-        "recent": 121,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 146,
+        "recent": 122,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7980,10 +7977,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 370,
-        "recent": 369,
-        "window_days": 16,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 375,
+        "recent": 374,
+        "window_days": 17,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8015,8 +8012,8 @@
       "downloads": {
         "total": 0,
         "recent": 0,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8064,10 +8061,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1832,
-        "recent": 1505,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1866,
+        "recent": 1539,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8125,10 +8122,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 19877,
-        "recent": 12833,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 20003,
+        "recent": 12959,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8175,10 +8172,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 18458,
-        "recent": 7330,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 18562,
+        "recent": 7434,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8223,10 +8220,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 60057,
-        "recent": 11991,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 60213,
+        "recent": 12147,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8269,10 +8266,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1170,
-        "recent": 699,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1179,
+        "recent": 708,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8365,8 +8362,8 @@
       "downloads": {
         "total": 344,
         "recent": 94,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8426,8 +8423,8 @@
       "downloads": {
         "total": 111,
         "recent": 82,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8471,10 +8468,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5848,
-        "recent": 1123,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 5864,
+        "recent": 1139,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8527,10 +8524,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 630,
-        "recent": 307,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 631,
+        "recent": 308,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8588,10 +8585,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5843,
-        "recent": 2257,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 5858,
+        "recent": 2272,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8627,10 +8624,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 167,
-        "recent": 66,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 168,
+        "recent": 67,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8687,10 +8684,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1110,
-        "recent": 592,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1119,
+        "recent": 601,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8852,10 +8849,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 322,
-        "recent": 63,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 327,
+        "recent": 68,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8943,10 +8940,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 771,
-        "recent": 722,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 776,
+        "recent": 727,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8993,10 +8990,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8448,
-        "recent": 1493,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 8456,
+        "recent": 1501,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9046,10 +9043,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 19156,
-        "recent": 7437,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 19263,
+        "recent": 7544,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9102,10 +9099,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 91,
-        "recent": 37,
-        "window_days": 4,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 93,
+        "recent": 39,
+        "window_days": 5,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9159,10 +9156,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 399,
-        "recent": 231,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 400,
+        "recent": 232,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9217,8 +9214,8 @@
       "downloads": {
         "total": 480,
         "recent": 250,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9275,10 +9272,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 176,
-        "recent": 146,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 178,
+        "recent": 148,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9338,10 +9335,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 100,
-        "recent": 85,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 102,
+        "recent": 87,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9391,10 +9388,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1704,
-        "recent": 717,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1709,
+        "recent": 722,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9441,10 +9438,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 16080,
-        "recent": 4149,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 16125,
+        "recent": 4194,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9494,10 +9491,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 790,
-        "recent": 606,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 799,
+        "recent": 615,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9546,10 +9543,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 517,
-        "recent": 287,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 519,
+        "recent": 289,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9597,8 +9594,8 @@
       "downloads": {
         "total": 259,
         "recent": 100,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9640,8 +9637,8 @@
       "downloads": {
         "total": 0,
         "recent": 0,
-        "window_days": 16,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 17,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9697,10 +9694,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 170,
-        "recent": 152,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 172,
+        "recent": 154,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9742,10 +9739,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 140,
-        "recent": 84,
-        "window_days": 16,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 145,
+        "recent": 89,
+        "window_days": 17,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9802,10 +9799,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 681,
-        "recent": 453,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 691,
+        "recent": 463,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9854,10 +9851,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 10382,
-        "recent": 3436,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 10407,
+        "recent": 3461,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9939,10 +9936,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 596,
-        "recent": 163,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 598,
+        "recent": 165,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10070,10 +10067,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 9954,
-        "recent": 3811,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 9990,
+        "recent": 3847,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10352,8 +10349,8 @@
       "downloads": {
         "total": 296,
         "recent": 172,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10395,10 +10392,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 141,
-        "recent": 82,
-        "window_days": 8,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 146,
+        "recent": 87,
+        "window_days": 9,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10452,10 +10449,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1655,
-        "recent": 242,
-        "window_days": 11,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1671,
+        "recent": 258,
+        "window_days": 12,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10529,10 +10526,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 292,
-        "recent": 139,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 296,
+        "recent": 143,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10583,10 +10580,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1043,
-        "recent": 544,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1053,
+        "recent": 554,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10633,8 +10630,8 @@
       "downloads": {
         "total": 157,
         "recent": 61,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10698,10 +10695,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 66,
-        "recent": 59,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 67,
+        "recent": 60,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10747,10 +10744,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 9308,
-        "recent": 3144,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 9379,
+        "recent": 3215,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10793,10 +10790,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 285,
-        "recent": 284,
-        "window_days": 16,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 295,
+        "recent": 294,
+        "window_days": 17,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10841,10 +10838,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1106,
-        "recent": 571,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1113,
+        "recent": 578,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10905,10 +10902,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2779,
-        "recent": 786,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2791,
+        "recent": 798,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10955,10 +10952,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 15845,
-        "recent": 4397,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 15907,
+        "recent": 4459,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11039,10 +11036,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 19492,
-        "recent": 7285,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 19606,
+        "recent": 7399,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11090,10 +11087,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8118,
-        "recent": 1441,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 8131,
+        "recent": 1454,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11130,23 +11127,23 @@
       "thumbnail": null,
       "description_url": "data/mods/ShaneMcGovernIE@useful_marts/description.md",
       "latest": {
-        "version": "1.0.3",
-        "tag": "v1.0.3",
-        "name": "1.0.3",
+        "version": "1.1.0",
+        "tag": "v1.1.0",
+        "name": "1.1.0",
         "prerelease": false,
-        "published_at": "2026-09-09T10:34:39Z",
+        "published_at": "2026-09-13T21:02:11Z",
         "zip": {
-          "name": "useful_marts-1.0.3.zip",
-          "url": "https://github.com/ShaneMcGovernIE/useful-marts/releases/download/v1.0.3/useful_marts-1.0.3.zip",
-          "size": 6664
+          "name": "useful_marts-1.1.0.zip",
+          "url": "https://github.com/ShaneMcGovernIE/useful-marts/releases/download/v1.1.0/useful_marts-1.1.0.zip",
+          "size": 7827
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2855,
-        "recent": 1144,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2915,
+        "recent": 1204,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11194,10 +11191,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 9934,
-        "recent": 1930,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 9958,
+        "recent": 1954,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11251,10 +11248,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 223,
-        "recent": 174,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 227,
+        "recent": 178,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11298,10 +11295,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4315,
-        "recent": 643,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 4324,
+        "recent": 652,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11357,10 +11354,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2226,
-        "recent": 1013,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 2232,
+        "recent": 1019,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11425,10 +11422,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5568,
-        "recent": 3225,
-        "window_days": 18,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 5635,
+        "recent": 3292,
+        "window_days": 19,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11481,10 +11478,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 117,
-        "recent": 85,
-        "window_days": 23,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 119,
+        "recent": 87,
+        "window_days": 24,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11568,10 +11565,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1646,
-        "recent": 261,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 1648,
+        "recent": 263,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11618,10 +11615,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 13264,
-        "recent": 3243,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 13301,
+        "recent": 3280,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11673,10 +11670,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 12058,
-        "recent": 3935,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 12197,
+        "recent": 4074,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11730,10 +11727,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 76936,
-        "recent": 20743,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 77139,
+        "recent": 20946,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11781,10 +11778,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6815,
-        "recent": 1948,
-        "window_days": 26,
-        "as_of": "2026-09-13T20:30:57.408Z"
+        "total": 6824,
+        "recent": 1957,
+        "window_days": 27,
+        "as_of": "2026-09-14T12:14:06.362Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
