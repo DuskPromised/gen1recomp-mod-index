@@ -46,7 +46,7 @@ jobs:
           ids=[m["id"] for m in pins]
           active=set(ids)
 
-          assert cart["version"]=="1.0.6", cart["version"]
+          assert cart["version"]=="1.0.7", cart["version"]
           assert len(ids)==len(set(ids)), "duplicate mod ids"
           assert cart["load_order"]==ids, "load_order must match pin order"
 
@@ -106,11 +106,15 @@ jobs:
           assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
 
           irregular=next(m for m in pins if m["id"]=="irregular_origin")
-          assert irregular["version"]=="1.0.6", irregular
+          assert irregular["version"]=="1.0.7", irregular
           assert irregular["repo"]=="DuskPromised/gen1recomp-mod-index"
-          assert irregular["sha256"]=="383ef3129684852be95a73a573ed8dc33b0ee2e1413a6e64af907e8ec51a16b6"
+          assert irregular["sha256"]=="37ad54f3597f2cbf9fe24a840d1c80a70259786a5951cd16c7ddb41e7d1a7785"
           irregular_meta=by_id["irregular_origin"]
-          assert irregular_meta.get("version")=="1.0.6"
+          assert irregular_meta.get("version")=="1.0.7"
+          assert irregular_meta.get("source_zip")=="irregular_origin-1.0.7.zip"
+          assert irregular_meta.get("downloadURL","").endswith("/irregular_origin-1.0.7.zip")
+          irregular_sha=Path("custom_mods/irregular_origin.sha256").read_text().split()[0]
+          assert irregular["sha256"]==irregular_sha, (irregular["sha256"],irregular_sha)
           assert irregular_meta.get("optional_dependencies")==[
               "red_earth_kaizo_bridge@>=1.0.0 <2.0.0",
               "philosopher_stones@>=1.1.0 <2.0.0",
