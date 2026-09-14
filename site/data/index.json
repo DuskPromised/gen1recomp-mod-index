@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-14T16:29:47.404421+00:00",
+  "generated_at": "2026-09-14T18:30:45.970316+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -5132,7 +5132,7 @@
       "id": "irregular_origin",
       "title": "Irregular Origin",
       "author": "Adam M. Aguilera",
-      "version": "1.0.8",
+      "version": "1.0.9",
       "categories": [
         "GAMEPLAY",
         "CONTENT"
@@ -5169,9 +5169,9 @@
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "github": "DuskPromised/gen1recomp-mod-index",
       "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.8.zip",
-      "source_zip": "irregular_origin-1.0.8.zip",
-      "summary": "Adds Psydren → Vesperis → Solipsdion with dedicated normal/shiny Crystal-style pixel battle fronts/backs, correct player-back/enemy-front orientation, menu/party/follower art, distinct psychic Confusion visuals, Wilds/Dramaless compatibility, and stone resonance.",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.9.zip",
+      "source_zip": "irregular_origin-1.0.9.zip",
+      "summary": "Round-one finished sprite pass for Psydren → Vesperis → Solipsdion: full-body Pokémon-native normal/shiny battle fronts, true player-side back sprites, compact full-body menu art, preserved party/follower sprites, Confusion psychic visuals, and Philosopher Stone resonance.",
       "source_scope": "DuskPromised original mod",
       "update_check": "off",
       "optional_dependencies": [
