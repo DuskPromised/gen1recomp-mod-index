@@ -1,5 +1,6 @@
 name: Deploy GitHub Pages
 # Publishes the current repository state and verifies every cart version in the live feed.
+# redeploy-anchor: philosopher-stones-v1.0.5
 on:
   push:
     branches: ["main"]
