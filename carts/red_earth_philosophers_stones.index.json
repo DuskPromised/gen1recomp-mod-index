@@ -4,7 +4,7 @@
   "title": "Pokémon Red Earth: The Philosopher's Stones",
   "author": "Adam M. Aguilera",
   "summary": "Kaizo Kanto with Irregular starter line, Dramaless voxels, scaling battles, Greater Stones, quests, and QOL.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "base": "red",
   "seal": "sealed+",
   "shell": "#8f1d2c",
@@ -184,8 +184,8 @@
       "id": "irregular_origin",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.1",
-      "sha256": "92b1aa69dde6f90bcd09a79d065ca5f083f5aaafbc23beada4133e2a42210195"
+      "version": "1.0.2",
+      "sha256": "d9502f5538efe164ade25a727a1603f21052c906ff698bbff7892944cbf35ce0"
     },
     {
       "id": "quest_system",
@@ -293,14 +293,14 @@
   "description_url": "data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
   "versions_url": "data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
   "latest": {
-    "version": "1.0.3",
-    "name": "1.0.3",
+    "version": "1.0.4",
+    "name": "1.0.4",
     "prerelease": false,
     "zip": {
-      "name": "red_earth_philosophers_stones-1.0.3.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.3.g1rcart",
+      "name": "red_earth_philosophers_stones-1.0.4.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.0.4.g1rcart",
       "size": 225804,
-      "sha256": "07766c7f17979db2e80e38380daa19100ae4a74199db2ca2d74b54302e2e5a88"
+      "sha256": "d8d8cec69486b26ac80b75d2bc8efcc50f5228bee2b87295a3864ef4931f871f"
     }
   },
   "update_check": "ok",
