@@ -1,4 +1,4 @@
--- Red Earth Kaizo Bridge v1.0.0
+-- Red Earth Kaizo Bridge v1.0.1
 -- Compatibility layer for Pokémon Red Earth: The Philosopher's Stones.
 -- Keeps Allgen Kaizo authoritative for species, encounters, trainer teams and AI,
 -- then adds: upward-only dynamic difficulty, a regional second starter, and
@@ -7,13 +7,54 @@
 local Stats = require("src.pokemon.Stats")
 
 local REGIONS = {
-  { label="KANTO",  grass="BULBASAUR", fire="CHARMANDER", water="SQUIRTLE" },
-  { label="JOHTO",  grass="CHIKORITA", fire="CYNDAQUIL",  water="TOTODILE" },
-  { label="HOENN",  grass="TREECKO",   fire="TORCHIC",    water="MUDKIP" },
-  { label="SINNOH", grass="TURTWIG",   fire="CHIMCHAR",   water="PIPLUP" },
-  { label="UNOVA",  grass="SNIVY",     fire="TEPIG",      water="OSHAWOTT" },
-  { label="KALOS",  grass="CHESPIN",   fire="FENNEKIN",   water="FROAKIE" },
-  { label="ALOLA",  grass="ROWLET",    fire="LITTEN",     water="POPPLIO" },
+  { label="KANTO",
+    grass="BULBASAUR", fire="CHARMANDER", water="SQUIRTLE",
+    grassLine={"BULBASAUR","IVYSAUR","VENUSAUR"},
+    fireLine={"CHARMANDER","CHARMELEON","CHARIZARD"},
+    waterLine={"SQUIRTLE","WARTORTLE","BLASTOISE"} },
+  { label="JOHTO",
+    grass="CHIKORITA", fire="CYNDAQUIL", water="TOTODILE",
+    grassLine={"CHIKORITA","BAYLEEF","MEGANIUM"},
+    fireLine={"CYNDAQUIL","QUILAVA","TYPHLOSION"},
+    waterLine={"TOTODILE","CROCONAW","FERALIGATR"} },
+  { label="HOENN",
+    grass="TREECKO", fire="TORCHIC", water="MUDKIP",
+    grassLine={"TREECKO","GROVYLE","SCEPTILE"},
+    fireLine={"TORCHIC","COMBUSKEN","BLAZIKEN"},
+    waterLine={"MUDKIP","MARSHTOMP","SWAMPERT"} },
+  { label="SINNOH",
+    grass="TURTWIG", fire="CHIMCHAR", water="PIPLUP",
+    grassLine={"TURTWIG","GROTLE","TORTERRA"},
+    fireLine={"CHIMCHAR","MONFERNO","INFERNAPE"},
+    waterLine={"PIPLUP","PRINPLUP","EMPOLEON"} },
+  { label="UNOVA",
+    grass="SNIVY", fire="TEPIG", water="OSHAWOTT",
+    grassLine={"SNIVY","SERVINE","SERPERIOR"},
+    fireLine={"TEPIG","PIGNITE","EMBOAR"},
+    waterLine={"OSHAWOTT","DEWOTT","SAMUROTT"} },
+  { label="KALOS",
+    grass="CHESPIN", fire="FENNEKIN", water="FROAKIE",
+    grassLine={"CHESPIN","QUILLADIN","CHESNAUGHT"},
+    fireLine={"FENNEKIN","BRAIXEN","DELPHOX"},
+    waterLine={"FROAKIE","FROGADIER","GRENINJA"} },
+  { label="ALOLA",
+    grass="ROWLET", fire="LITTEN", water="POPPLIO",
+    grassLine={"ROWLET","DARTRIX","DECIDUEYE"},
+    fireLine={"LITTEN","TORRACAT","INCINEROAR"},
+    waterLine={"POPPLIO","BRIONNE","PRIMARINA"} },
+}
+
+local ALL_REGIONAL_STARTERS = {}
+for _, r in ipairs(REGIONS) do
+  ALL_REGIONAL_STARTERS[r.grass]=true
+  ALL_REGIONAL_STARTERS[r.fire]=true
+  ALL_REGIONAL_STARTERS[r.water]=true
+end
+
+local KANTO_RIVAL_LINE = {
+  BULBASAUR={"grass",1}, IVYSAUR={"grass",2}, VENUSAUR={"grass",3},
+  CHARMANDER={"fire",1}, CHARMELEON={"fire",2}, CHARIZARD={"fire",3},
+  SQUIRTLE={"water",1}, WARTORTLE={"water",2}, BLASTOISE={"water",3},
 }
 
 local BALLS = {
@@ -76,9 +117,22 @@ return function(mod)
     return REGIONS[n], n
   end
 
-  local function isRegionalStarter(game, species)
+  local function isRegionalStarter(_, species)
+    return ALL_REGIONAL_STARTERS[species] == true
+  end
+
+  local function regionalRivalSpecies(game, species)
+    local slot = KANTO_RIVAL_LINE[species]
+    if not slot then return species end
     local r = region(game)
-    return r and (species == r.grass or species == r.fire or species == r.water)
+    if not r then return species end
+    local line = r[slot[1].."Line"]
+    local replacement = line and line[slot[2]]
+    if replacement and game and game.data and game.data.pokemon
+       and game.data.pokemon[replacement] then
+      return replacement
+    end
+    return species
   end
 
   local function strongestHealthy(game)
@@ -210,14 +264,36 @@ return function(mod)
   -- Kaizo levels are never lowered, preserving late-game floors.
   mod.hooks:wrap("trainer.party", function(next, trainerClass, partyIndex, party)
     local out = next(trainerClass, partyIndex, party)
-    if not opt("dynamic_trainers", true) or type(out) ~= "table" or #out == 0 then
-      return out
-    end
+    if type(out) ~= "table" or #out == 0 then return out end
     local game = gameNow()
+
+    -- Kaizo intentionally keeps the rival's starter line Kanto so vanilla
+    -- party-index logic stays intact. Red Earth preserves that reliable index
+    -- choice, then swaps only the species line to the player's selected region.
+    -- Example: fire-ball Fennekin => vanilla counter Squirtle => Froakie.
+    if tostring(trainerClass):find("RIVAL", 1, true) then
+      local rewritten = {}
+      for i, member in ipairs(out) do
+        local copy = {}
+        for k,v in pairs(member) do copy[k]=v end
+        local replacement = regionalRivalSpecies(game, copy.species)
+        if replacement ~= copy.species then
+          copy.species = replacement
+          -- Do not carry a Kanto starter's authored/competitive move list onto
+          -- a different regional evolution. Let the replacement's learnset win.
+          copy.moves = nil
+        end
+        rewritten[i] = copy
+      end
+      out = rewritten
+    end
+
+    if not opt("dynamic_trainers", true) then return out end
     local top = strongestHealthy(game)
     if top <= 0 then return out end
 
-    -- Preserve Kaizo's intentionally vanilla first Oak-lab rival battle.
+    -- Preserve the authored Lv5 Oak battle level while still allowing the
+    -- regional species rewrite above.
     local flags = game and game.save and game.save.flags or {}
     local mapId = game and game.overworld and game.overworld.map and game.overworld.map.id
     if tostring(trainerClass):find("RIVAL1", 1, true)
@@ -254,6 +330,10 @@ return function(mod)
         and flags and flags.EVENT_GOT_STARTER and ball) then
       return next(ow, target)
     end
+    -- Irregular Origin already gives the player Psydren before the one
+    -- conventional companion choice. In that route a third starter would be
+    -- an accidental overlap, so the leftover-ball feature is disabled.
+    if flags.MOD_IRREGULAR_ORIGIN_PSYDREN then return next(ow, target) end
     if flags[CLAIMED_FLAG] then return next(ow, target) end
 
     local r = region(game)
@@ -286,6 +366,6 @@ return function(mod)
     return
   end)
 
-  mod.exports.version = "1.0.0"
+  mod.exports.version = "1.0.1"
   mod.exports.regions = REGIONS
 end

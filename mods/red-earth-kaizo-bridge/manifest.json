@@ -1,7 +1,7 @@
 {
   "id": "red_earth_kaizo_bridge",
   "name": "Red Earth Kaizo Bridge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -24,5 +24,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Compatibility bridge for Red Earth Kaizo: regional second starter, guaranteed shiny Oak gifts, and upward-only dynamic trainer/wild scaling."
+  "description": "Compatibility bridge for Red Earth Kaizo: regional rival starter continuity, shiny Oak gifts, optional leftover starter, and upward-only dynamic trainer/wild scaling."
 }
