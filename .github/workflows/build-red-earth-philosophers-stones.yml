@@ -82,7 +82,7 @@ jobs:
           ids=[m["id"] for m in pins]
           active=set(ids)
 
-          assert cart["version"]=="1.0.8", cart["version"]
+          assert cart["version"]=="1.0.9", cart["version"]
           assert len(ids)==len(set(ids)), "duplicate mod ids"
           assert cart["load_order"]==ids, "load_order must match pin order"
 
@@ -135,10 +135,10 @@ jobs:
               "/crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip")
 
           bridge=next(m for m in pins if m["id"]=="red_earth_kaizo_bridge")
-          assert bridge["version"]=="1.0.2", bridge
-          assert bridge["sha256"]=="fd3097eb7c49f624df4bdce9c32e644e0633858950727024b454944126f512e0"
+          assert bridge["version"]=="1.0.3", bridge
+          assert bridge["sha256"]=="2a771d6e466c59c02fd05ace3920a281d7055861e44f9047a8bc11e24f0414a3"
           bridge_meta=by_id["red_earth_kaizo_bridge"]
-          assert bridge_meta.get("version")=="1.0.2", bridge_meta.get("version")
+          assert bridge_meta.get("version")=="1.0.3", bridge_meta.get("version")
           bopts=bridge.get("options",{})
           assert bopts.get("dynamic_wilds") is True
           assert bopts.get("dynamic_trainers") is True
