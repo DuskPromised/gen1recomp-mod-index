@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Pokémon Red Earth: The Philosopher's Stones",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
   "summary": "Kaizo Kanto with Irregular starter line, Dramaless voxels, scaling battles, Greater Stones, quests, and QOL.",
@@ -144,8 +144,8 @@
       "id": "irregular_origin",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.3",
-      "sha256": "ee07c4f148b4dc80ba238dbfd68f1ab5f972a75ef9b8ea9e5d88d0233306df3c"
+      "version": "1.0.6",
+      "sha256": "383ef3129684852be95a73a573ed8dc33b0ee2e1413a6e64af907e8ec51a16b6"
     },
     {
       "id": "overworld_wild_spawns",

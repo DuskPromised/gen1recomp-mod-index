@@ -46,7 +46,7 @@ jobs:
           ids=[m["id"] for m in pins]
           active=set(ids)
 
-          assert cart["version"]=="1.0.5", cart["version"]
+          assert cart["version"]=="1.0.6", cart["version"]
           assert len(ids)==len(set(ids)), "duplicate mod ids"
           assert cart["load_order"]==ids, "load_order must match pin order"
 
@@ -106,11 +106,21 @@ jobs:
           assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
 
           irregular=next(m for m in pins if m["id"]=="irregular_origin")
-          assert irregular["version"]=="1.0.3", irregular
+          assert irregular["version"]=="1.0.6", irregular
           assert irregular["repo"]=="DuskPromised/gen1recomp-mod-index"
-          assert irregular["sha256"]=="ee07c4f148b4dc80ba238dbfd68f1ab5f972a75ef9b8ea9e5d88d0233306df3c"
+          assert irregular["sha256"]=="383ef3129684852be95a73a573ed8dc33b0ee2e1413a6e64af907e8ec51a16b6"
           irregular_meta=by_id["irregular_origin"]
-          assert irregular_meta.get("version")=="1.0.3"
+          assert irregular_meta.get("version")=="1.0.6"
+          assert irregular_meta.get("optional_dependencies")==[
+              "red_earth_kaizo_bridge@>=1.0.0 <2.0.0",
+              "philosopher_stones@>=1.1.0 <2.0.0",
+          ], irregular_meta.get("optional_dependencies")
+          assert set(irregular_meta.get("optional_integrations",[]))=={
+              "overworld_wild_spawns","DRAMALESS_SHAPE"
+          }, irregular_meta.get("optional_integrations")
+          wilds=next(m for m in pins if m["id"]=="overworld_wild_spawns")
+          assert wilds["version"]=="2.1.9", wilds
+          assert wilds["sha256"]=="0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
           assert ids.index("philosopher_stones") < ids.index("irregular_origin"), \
               "Irregular Origin must load after Philosopher Stones for resonance wrapping"
 

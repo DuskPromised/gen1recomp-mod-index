@@ -31,7 +31,7 @@ Use the Pokémon party submenu's **STONE** entry to bind or remove a relic. A ph
 - **Allgen Kaizo v0.8.3** supplies the expanded ~908-species roster, modernized type/move ecosystem, six-Pokémon trainer teams, competitive movesets and AI, boss Megas, and expanded Kanto encounter pools.
 - **Dramaless Shape v2.0.4** replaces Battle Art Voxel Fork. It keeps voxel Kanto while using native 2D battle cards and avoids the Battle Art rendering path.
 - **Wilds of Kanto v2.1.9** supplies visible overworld Pokémon and party followers, with fallback rendering for species that do not have dedicated walker sheets.
-- **Red Earth Kaizo Bridge v1.0.0** leaves Kaizo's authored level floors intact while dynamically raising wild Pokémon to approximately **-2 to +1** of the strongest healthy party Pokémon and trainers to **+0 to +2**. It never scales a stronger authored encounter downward.
+- **Red Earth Kaizo Bridge v1.0.1** leaves Kaizo's authored level floors intact while dynamically raising wild Pokémon to approximately **-2 to +1** of the strongest healthy party Pokémon and trainers to **+0 to +2**. It never scales a stronger authored encounter downward.
 
 ## Oak's Lab
 
@@ -56,7 +56,7 @@ The machine-readable `versions.json` in that folder records each released versio
 
 ## Irregular Origin
 
-**Irregular Origin v1.0.1** adds a new three-stage species line created specifically for this cart:
+**Irregular Origin v1.0.6** adds a new three-stage species line created specifically for this cart:
 
 - **Psydren** — Psychic / Water — the Abyssal Seed
 - **Vesperis** — Psychic / Ghost — the Gravekeeper's Storm
@@ -68,7 +68,7 @@ Psydren evolves at level 16 and Vesperis at level 36. Solipsdion learns two cust
 
 The entire line has hidden **Irregular Resonance** with Philosopher Stones. It gains modest secondary effects from bound stones, unique resonance dialogue in the party menu, and atmospheric reactions near Greater Stone discovery sites. The red core visible through the evolutionary line is deliberately tied to the larger alchemical mystery.
 
-v1.0.1 uses the approved concept-poster pixel artwork as the first functional battle/icon set. Dedicated rear-facing and follower sheets can be upgraded later without changing species IDs or save compatibility.
+v1.0.6 ships the completed production sprite pack: distinct normal/shiny front battle art, rear battle art, summary/dex portraits, two-frame party icons, and six-frame follower sheets for all three stages. The sprites remain true-color 2D art because Dramaless Shape projects native Pokémon pictures as camera-facing 3D billboards inside its voxel arena. Solipsdion's pearl/lilac/gold form is the normal design; the ruby-ascended form is the shiny.
 
 
 ## v1.0.4 — Irregular art hotfix
@@ -83,3 +83,14 @@ Irregular Origin is pinned to v1.0.2. Psydren's malformed battle PNG was rebuilt
 - **Irregular Origin v1.0.3** keeps Confusion's Psychic gameplay but replaces its scanline-warp battle animation with a Dramaless-safe particle animation.
 - Irregular Origin now loads before Wilds of Kanto so Wilds can see the custom species during sprite registration. This should improve follower fallback consistency; final dedicated walk-cycle art is still a later visual pass.
 - Existing saves are never stripped of Pokémon. If an earlier test save already received the accidental third starter, it will remain there.
+
+
+## v1.0.6 — Production Irregular art
+
+- **Irregular Origin v1.0.6** replaces the old functional concept set with the complete normal/shiny production art pack for Psydren, Vesperis, and Solipsdion.
+- Every one of the 30 authored PNG assets is decode-verified and dimension-checked in CI before the mod package can publish.
+- Dramaless Shape remains on **v2.0.4**. The Pokémon art correctly stays **2D**: Dramaless renders those cards as 3D world billboards, so converting the custom species to 3D models would be the wrong asset path for this renderer.
+- Wilds of Kanto remains on the released **v2.1.9** build and receives the Irregular line's dedicated 16×96 six-frame follower sheets through its public sprite-provider API.
+- Shiny routing now follows the live Pokémon instance in battle, summary/dex, party icons, and followers. Dramaless' BACK SPRITES option composes with that routing rather than replacing the authored shiny.
+- Solipsdion's normal form is the pearl/lilac/gold sovereign design; its ruby-ascended form is reserved for the shiny. Its seven-wing canon remains **2 flight wings + 4 hand-wings + 1 crown wing**.
+- Cart v1.0.6 pins the exact Irregular Origin v1.0.6 package SHA-256; prior cart archives remain available unchanged.
