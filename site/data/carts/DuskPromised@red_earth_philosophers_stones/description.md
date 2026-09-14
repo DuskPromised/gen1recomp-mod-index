@@ -69,3 +69,8 @@ Psydren evolves at level 16 and Vesperis at level 36. Solipsdion learns two cust
 The entire line has hidden **Irregular Resonance** with Philosopher Stones. It gains modest secondary effects from bound stones, unique resonance dialogue in the party menu, and atmospheric reactions near Greater Stone discovery sites. The red core visible through the evolutionary line is deliberately tied to the larger alchemical mystery.
 
 v1.0.1 uses the approved concept-poster pixel artwork as the first functional battle/icon set. Dedicated rear-facing and follower sheets can be upgraded later without changing species IDs or save compatibility.
+
+
+## v1.0.4 — Irregular art hotfix
+
+Irregular Origin is pinned to v1.0.2. Psydren's malformed battle PNG was rebuilt from verified source art, all Irregular party icons were normalized to GenRecomp's 16x32 two-frame layout, and CI now verifies PNG decoding plus dimensions before publishing. This fixes the Oak rival battle/switch-in crash and the broken Psydren party-menu icon. Wilds follower fallback remains functional; dedicated six-frame follower art is a later visual upgrade.

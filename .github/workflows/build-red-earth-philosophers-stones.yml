@@ -46,7 +46,7 @@ jobs:
           ids=[m["id"] for m in pins]
           active=set(ids)
 
-          assert cart["version"]=="1.0.3", cart["version"]
+          assert cart["version"]=="1.0.4", cart["version"]
           assert len(ids)==len(set(ids)), "duplicate mod ids"
           assert cart["load_order"]==ids, "load_order must match pin order"
 
@@ -100,11 +100,11 @@ jobs:
           assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
 
           irregular=next(m for m in pins if m["id"]=="irregular_origin")
-          assert irregular["version"]=="1.0.1", irregular
+          assert irregular["version"]=="1.0.2", irregular
           assert irregular["repo"]=="DuskPromised/gen1recomp-mod-index"
-          assert irregular["sha256"]=="92b1aa69dde6f90bcd09a79d065ca5f083f5aaafbc23beada4133e2a42210195"
+          assert irregular["sha256"]=="d9502f5538efe164ade25a727a1603f21052c906ff698bbff7892944cbf35ce0"
           irregular_meta=by_id["irregular_origin"]
-          assert irregular_meta.get("version")=="1.0.1"
+          assert irregular_meta.get("version")=="1.0.2"
           assert ids.index("philosopher_stones") < ids.index("irregular_origin"), \
               "Irregular Origin must load after Philosopher Stones for resonance wrapping"
 
