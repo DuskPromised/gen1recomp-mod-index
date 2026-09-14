@@ -34,25 +34,35 @@ jobs:
           manifest=json.loads((root/"manifest.json").read_text())
           src=(root/"main.lua").read_text()
           assert manifest["id"]=="philosopher_stones"
-          assert manifest["version"]=="1.0.0"
+          assert manifest["version"]=="1.1.0"
           for needle in [
-              'PHILOSOPHER_RUBY','PHILOSOPHER_SAPPHIRE','PHILOSOPHER_EMERALD',
-              'PHILOSOPHER_AMETHYST','battle.damage','battle.accuracy',
-              'battle.turn_ended','ui.party.submenu','map.entered'
+              "PHILOSOPHER_RUBY","PHILOSOPHER_SAPPHIRE","PHILOSOPHER_EMERALD",
+              "PHILOSOPHER_AMETHYST","PHILOSOPHER_OBSIDIAN","PHILOSOPHER_SOLAR",
+              "PHILOSOPHER_MOON","PHILOSOPHER_TEMPEST","battle.damage",
+              "battle.accuracy","battle.status_inflicted","battle.turn_ended",
+              "ui.party.submenu","ui.start_menu.items","ALCHEMY JOURNAL",
+              'map_scripts:register("MT_MOON_B2F"',
+              'map_scripts:register("POKEMON_TOWER_7F"',
+              'map_scripts:register("POKEMON_MANSION_B1F"',
+              'map_scripts:register("POWER_PLANT"'
           ]:
               assert needle in src, needle
-          assert 'philosopherStone' in src
-          print("PHILOSOPHER STONES AUDIT PASS")
+          assert "philosopherStone" in src
+          assert "EVENT_BEAT_GHOST_MAROWAK" in src
+          assert "EVENT_BEAT_ZAPDOS" in src
+          assert "VOLCANOBADGE" in src
+          assert "MOON_STONE" in src
+          print("PHILOSOPHER STONES v1.1.0 AUDIT PASS")
           PY
 
-      - name: Package deterministic v1.0.0 ZIP
+      - name: Package deterministic v1.1.0 ZIP
         run: |
           mkdir -p "site/data/mods/DuskPromised@philosopher_stones"
           python - <<'PY'
           import hashlib, zipfile
           from pathlib import Path
           src=Path("mods/philosopher-stones")
-          out=Path("site/data/mods/DuskPromised@philosopher_stones/philosopher_stones-1.0.0.zip")
+          out=Path("site/data/mods/DuskPromised@philosopher_stones/philosopher_stones-1.1.0.zip")
           files=["main.lua","manifest.json","README.md","LICENSE"]
           with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
               for name in files:
@@ -73,12 +83,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f \
-            "site/data/mods/DuskPromised@philosopher_stones/philosopher_stones-1.0.0.zip" \
+            "site/data/mods/DuskPromised@philosopher_stones/philosopher_stones-1.1.0.zip" \
             "custom_mods/philosopher_stones.sha256"
           if git diff --cached --quiet; then
-            echo "Philosopher Stones archive already current."
+            echo "Philosopher Stones v1.1.0 archive already current."
           else
-            git commit -m "Publish Philosopher Stones v1.0.0"
+            git commit -m "Publish Philosopher Stones v1.1.0"
             git pull --rebase origin main
             git push
           fi

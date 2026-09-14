@@ -1,7 +1,7 @@
 {
   "id": "philosopher_stones",
   "name": "Philosopher Stones",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -18,5 +18,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Four badge-awakened relic stones that bind to Pokemon and grant damage, defense, regeneration, or accuracy powers."
+  "description": "Lesser and Greater Philosopher Stones: eight bindable relics, four exploration discoveries, battle powers, and an Alchemy Journal."
 }

@@ -3,7 +3,7 @@
   "id": "philosopher_stones",
   "title": "Philosopher Stones",
   "author": "Adam M. Aguilera",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "categories": [
     "GAMEPLAY"
   ],
@@ -12,7 +12,10 @@
     "stone",
     "held power",
     "battle",
-    "badge reward"
+    "badge reward",
+    "greater stones",
+    "alchemy",
+    "exploration"
   ],
   "api": 2,
   "profile": "content",
@@ -31,9 +34,9 @@
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "github": "DuskPromised/gen1recomp-mod-index",
   "license": "MIT",
-  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@philosopher_stones/philosopher_stones-1.0.0.zip",
-  "source_zip": "philosopher_stones-1.0.0.zip",
-  "summary": "Four badge-awakened relic stones that bind to Pokemon and grant offensive, defensive, regeneration, or accuracy powers.",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@philosopher_stones/philosopher_stones-1.1.0.zip",
+  "source_zip": "philosopher_stones-1.1.0.zip",
+  "summary": "Eight bindable relic stones: four badge-awakened Lesser Stones plus four exploration-earned Greater Stones with an Alchemy Journal.",
   "source_scope": "DuskPromised original mod",
   "update_check": "off"
 }
