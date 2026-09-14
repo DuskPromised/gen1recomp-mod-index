@@ -1,4 +1,4 @@
--- Red Earth Kaizo Bridge v1.0.1
+-- Red Earth Kaizo Bridge v1.0.2
 -- Compatibility layer for Pokémon Red Earth: The Philosopher's Stones.
 -- Keeps Allgen Kaizo authoritative for species, encounters, trainer teams and AI,
 -- then adds: upward-only dynamic difficulty, a regional second starter, and
@@ -70,6 +70,9 @@ local BALLS = {
 }
 
 local CLAIMED_FLAG = "MOD_RED_EARTH_KAIZO_SECOND_STARTER"
+local BALL_ELEMENT_BY_SPECIES = {
+  BULBASAUR="grass", CHARMANDER="fire", SQUIRTLE="water",
+}
 local SHINY_ATK = { 2, 3, 6, 7, 10, 11, 14, 15 }
 
 local function hash(text)
@@ -91,7 +94,7 @@ return function(mod)
     },
     {
       key="second_starter", type="toggle", label="SECOND STARTER", default=true,
-      help="After the rival picks, Oak's remaining ball gives the matching starter from your chosen region.",
+      help="After the rival picks, touching Oak's remaining ball lets you choose a region for that ball's element.",
     },
     {
       key="shiny_starters", type="toggle", label="SHINY STARTERS", default=true,
@@ -119,6 +122,18 @@ return function(mod)
 
   local function isRegionalStarter(_, species)
     return ALL_REGIONAL_STARTERS[species] == true
+  end
+
+  local function regionalSpeciesForVanilla(game, species)
+    local element=BALL_ELEMENT_BY_SPECIES[species]
+    if not element then return species end
+    local r=region(game)
+    local replacement=r and r[element]
+    if replacement and game and game.data and game.data.pokemon
+       and game.data.pokemon[replacement] then
+      return replacement
+    end
+    return species
   end
 
   local function regionalRivalSpecies(game, species)
@@ -244,11 +259,28 @@ return function(mod)
 
     local inOakLab = ctx and ctx.overworld and ctx.overworld.map
       and ctx.overworld.map.id == "OAKS_LAB"
+    local game = (ctx and ctx.game) or gameNow()
+
+    -- Allgen Kaizo swaps the species correctly, but the original Oak text row
+    -- can still arrive carrying the Kanto placeholder in RAM. Rewrite both the
+    -- player's receipt and the rival's receipt here so KALOS water says
+    -- FROAKIE, never SQUIRTLE, and the same rule holds for every region.
+    if inOakLab and name == "show_text" and type(args)=="table"
+       and (args[1]=="_OaksLabReceivedMonText"
+            or args[1]=="_OaksLabRivalReceivedMonText")
+       and type(args[2])=="table" and BALL_ELEMENT_BY_SPECIES[args[2].RAM] then
+      local rewritten=copyArgs(args)
+      local ram={}
+      for k,v in pairs(args[2]) do ram[k]=v end
+      ram.RAM=regionalSpeciesForVanilla(game,args[2].RAM)
+      rewritten[2]=ram
+      return next(ctx,name,rewritten,...)
+    end
+
     if name ~= "give_pokemon" or not inOakLab or not opt("shiny_starters", true) then
       return next(ctx, name, args, ...)
     end
 
-    local game = (ctx and ctx.game) or gameNow()
     local save = (ctx and ctx.save) or (game and game.save)
     local seen = snapshotMons(save)
     local result = next(ctx, name, args, ...)
@@ -316,8 +348,12 @@ return function(mod)
     return scaled
   end)
 
-  -- Replace only the surviving Oak-lab ball after the first choice. The
-  -- chosen Kaizo region is read from save.modData.gen1_kaizo.starter_gen.
+  -- The surviving Oak-lab ball is optional: the player can simply walk out
+  -- after the normal companion. If they touch it, it becomes a one-time
+  -- "last ball" choice and asks for a region AGAIN. The remaining ball keeps
+  -- its element (grass/fire/water), but the second region is independent of
+  -- the companion region. This intentionally works with Irregular Origin:
+  -- Psydren + companion + optional final-ball starter is the authored route.
   mod.hooks:wrap("world.talk", function(next, ow, target)
     if not opt("second_starter", true) then return next(ow, target) end
     local game = gameNow()
@@ -330,42 +366,58 @@ return function(mod)
         and flags and flags.EVENT_GOT_STARTER and ball) then
       return next(ow, target)
     end
-    -- Irregular Origin already gives the player Psydren before the one
-    -- conventional companion choice. In that route a third starter would be
-    -- an accidental overlap, so the leftover-ball feature is disabled.
-    if flags.MOD_IRREGULAR_ORIGIN_PSYDREN then return next(ow, target) end
     if flags[CLAIMED_FLAG] then return next(ow, target) end
 
-    local r = region(game)
-    local species = r and r[ball.element]
-    if not species or not (game.data and game.data.pokemon and game.data.pokemon[species]) then
-      return next(ow, target)
+    local available={}
+    for _,r in ipairs(REGIONS) do
+      local species=r[ball.element]
+      if species and game.data and game.data.pokemon
+         and game.data.pokemon[species] then
+        available[#available+1]=r
+      end
+    end
+    if #available==0 then return next(ow,target) end
+
+    target.frozen=true
+    local function done() if target then target.frozen=false end end
+
+    local function giveRegion(r)
+      local species=r[ball.element]
+      if mod.save then mod.save:set("last_starter_region",r.label) end
+      ow.runner:run({
+        { "show_text", "The last POKéMON\nis {RAM}!", { RAM=species } },
+        { "ask", "Take it with you?" },
+        { "jump_if_false", "end" },
+        { "text_sound", "Get_Key_Item" },
+        { "show_text", "_OaksLabReceivedMonText", { RAM=species } },
+        { "give_pokemon", species, 5 },
+        { "jump_if_false", "no_room" },
+        { "hide_object", "OAKS_LAB", ball.object },
+        { "set_flag", CLAIMED_FLAG },
+        { "show_text", "OAK: An unusual team.\nTake good care of\vthem all!" },
+        { "jump", "end" },
+        { "label", "no_room" },
+        { "show_text", "There's no room for\nanother POKéMON!" },
+        { "label", "end" },
+      }, {
+        npc=target,onDone=done,
+        source={modId=mod.id,strict=true,mapId="OAKS_LAB",hook="world.talk"},
+      })
     end
 
-    target.frozen = true
-    local function done() if target then target.frozen=false end end
-    ow.runner:run({
-      { "show_text", "The last POKéMON\nis {RAM}!", { RAM=species } },
-      { "ask", "Take it with you?" },
-      { "jump_if_false", "end" },
-      { "text_sound", "Get_Key_Item" },
-      { "show_text", "_OaksLabReceivedMonText", { RAM=species } },
-      { "give_pokemon", species, 5 },
-      { "jump_if_false", "no_room" },
-      { "hide_object", "OAKS_LAB", ball.object },
-      { "set_flag", CLAIMED_FLAG },
-      { "show_text", "Take good care of\nboth POKéMON!" },
-      { "jump", "end" },
-      { "label", "no_room" },
-      { "show_text", "There's no room for\nanother POKéMON!" },
-      { "label", "end" },
-    }, {
-      npc=target, onDone=done,
-      source={ modId=mod.id, strict=true, mapId="OAKS_LAB", hook="world.talk" },
-    })
+    local items={}
+    for i,r in ipairs(available) do
+      local choice=r
+      items[i]={label=choice.label,onSelect=function() giveRegion(choice) end}
+    end
+    local menu=mod.ui.Menu.new(game,items,
+      {cancelable=false,tx=1,ty=0,tw=8})
+    game.stack:push(mod.ui.TextBox.new(game,
+      "One POKé BALL\nremains.\fIts element is fixed,\nbut its origin isn't.\fChoose another\nregion?",
+      function() game.stack:push(menu) end))
     return
   end)
 
-  mod.exports.version = "1.0.1"
+  mod.exports.version = "1.0.2"
   mod.exports.regions = REGIONS
 end

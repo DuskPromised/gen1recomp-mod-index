@@ -20,3 +20,12 @@ This mod is intentionally incompatible with the old Kanto-only Take the Last Sta
 - Oak's first rival battle keeps its authored level while still using the regional counter species.
 - The optional leftover-ball second starter automatically disables when Irregular Origin has already given Psydren, preventing an unintended third starter.
 - Regional shiny detection now recognizes all seven supported starter trios directly rather than depending on a single region lookup.
+
+
+## v1.0.2
+
+- Fixes the Oak receipt-text leak where a correctly granted Froakie could still be announced as **SQUIRTLE**. Player and rival receipt text now resolve through the selected region.
+- Restores the optional remaining Poké Ball for the Irregular route instead of disabling it after Psydren.
+- Touching that final ball now opens the region selector again. The ball keeps its grass/fire/water element, but the player can choose a **different region** for the optional extra starter.
+- The player can simply leave after Psydren + the conventional companion; the final ball is never forced.
+- Final-ball starters continue through the same Gen-II-compatible shiny-DV gift hook when SHINY STARTERS is enabled.
