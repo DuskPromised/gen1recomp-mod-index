@@ -1,4 +1,4 @@
-# Red Earth Regional Shiny Art
+# Red Earth Regional Shiny Art v1.0.1
 
 A separate visual layer for **Pokémon Red Earth: The Irregular and The Philosopher Stones**.
 
@@ -16,3 +16,7 @@ A separate visual layer for **Pokémon Red Earth: The Irregular and The Philosop
 - Sparkle/SFX presentation. That remains the shiny FX layer.
 
 Battle/summary assets are normalized from the pinned PokeAPI sprite set with nearest-neighbor-only processing. The Fennekin-line follower source is the pinned PokéWilds overworld sprite set.
+
+## Wilds provider-chain compatibility
+
+Wilds' public `followers` style resolves through `followers_ex → pokemmo → pokedex`. v1.0.1 wraps every available provider in that chain for Fennekin/Braixen/Delphox, so an earlier normal-art provider cannot mask the dedicated Red Earth shiny walker.
