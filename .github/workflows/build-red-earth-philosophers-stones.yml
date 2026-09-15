@@ -1,4 +1,4 @@
-name: Build Red Earth Philosopher Stones cart
+name: Build Red Earth Irregular + Philosopher Stones cart
 
 on:
   workflow_dispatch:
@@ -6,6 +6,9 @@ on:
     branches: ["main"]
     paths:
       - "cart_source/red_earth_philosophers_stones/**"
+      - "custom_mods/red_earth_irregular.index.json"
+      - "custom_mods/red_earth_irregular.sha256"
+      - "site/data/mods/DuskPromised@red_earth_irregular/**"
       - ".github/workflows/build-red-earth-philosophers-stones.yml"
 
 permissions:
@@ -13,200 +16,60 @@ permissions:
   actions: write
 
 concurrency:
-  group: red-earth-philosophers-stones-cart-build
+  group: red-earth-irregular-cart-build
   cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Read cart version
-        run: |
-          version="$(python - <<'PY'
-          import json
-          print(json.load(open("cart_source/red_earth_philosophers_stones/cart.json", encoding="utf-8"))["version"])
-          PY
-          )"
-          echo "CART_VERSION=$version" >> "$GITHUB_ENV"
-          echo "Building cart version $version"
-
-      - name: Resolve and lock Crystal Animated Sprites v2.0.3
-        run: |
-          curl -fsSL \
-            "https://raw.githubusercontent.com/distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals/main/crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip" \
-            -o /tmp/crystal_sprites.zip
-          python - <<'PY'
-          import hashlib,json,zipfile
-          from pathlib import Path
-
-          archive=Path("/tmp/crystal_sprites.zip")
-          raw=archive.read_bytes()
-          digest=hashlib.sha256(raw).hexdigest()
-          assert len(raw)>1_000_000, len(raw)
-
-          with zipfile.ZipFile(archive) as z:
-              assert z.testzip() is None, "Crystal sprite ZIP CRC failure"
-              manifests=[n for n in z.namelist() if n.endswith("/manifest.json") or n=="manifest.json"]
-              assert len(manifests)==1, manifests
-              manifest=json.loads(z.read(manifests[0]))
-              assert manifest.get("id")=="crystal_animated_sprites_with_shiny_visuals", manifest
-              assert manifest.get("version")=="2.0.3", manifest.get("version")
-
-          path=Path("cart_source/red_earth_philosophers_stones/cart.json")
-          cart=json.loads(path.read_text())
-          pin=next(m for m in cart["mods"] if m["id"]=="crystal_animated_sprites_with_shiny_visuals")
-          expected=pin.get("sha256")
-          if expected=="0"*64:
-              pin["sha256"]=digest
-              path.write_text(json.dumps(cart,indent=2,ensure_ascii=False)+"\n")
-              print("Locked Crystal v2.0.3 SHA-256:",digest)
-          else:
-              assert expected==digest, (expected,digest)
-              print("Crystal v2.0.3 immutable SHA-256 verified:",digest)
-          Path("/tmp/crystal_sprites.sha256").write_text(digest+"\n")
-          PY
-
-      - name: Audit Philosopher Stones dependencies and overlaps
+      - name: Audit unified cart and defaults
         run: |
           python - <<'PY'
-          import json
+          import hashlib, json
           from pathlib import Path
 
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          index=json.loads(Path("site/data/index.json").read_text())
-          by_id={m["id"]:m for m in index.get("mods",[])}
-          pins=cart["mods"]
-          ids=[m["id"] for m in pins]
+          assert cart["title"]=="Red Earth: The Irregular and The Philosopher Stones"
+          assert cart["version"]=="1.1.0"
+          ids=[m["id"] for m in cart["mods"]]
+          assert ids==cart["load_order"]
+          assert len(ids)==len(set(ids))
+
           active=set(ids)
+          assert "red_earth_irregular" in active
+          for old in [
+              "irregular_origin","philosopher_stones","red_earth_kaizo_bridge",
+              "leaf_avatar","SHINY_POKEMON","FOLLOWERS_EX","PokePCFollowers_VoxelMerge"
+          ]:
+              assert old not in active, old
 
-          assert cart["version"]=="1.0.10", cart["version"]
-          assert len(ids)==len(set(ids)), "duplicate mod ids"
-          assert cart["load_order"]==ids, "load_order must match pin order"
+          voxel=next(m for m in cart["mods"] if m["id"]=="DRAMALESS_SHAPE")
+          assert voxel.get("options",{}).get("renderDistanceSetting")==64
 
-          def dep_id(spec): return spec.split("@",1)[0]
-          missing=[]
-          conflicts=[]
-          for pin in pins:
-              assert pin["id"] in by_id, f"{pin['id']} missing from live index"
-              meta=by_id[pin["id"]]
-              for dep in meta.get("dependencies",[]):
-                  if dep_id(dep) not in active: missing.append((pin["id"],dep))
-              for con in meta.get("conflicts",[]):
-                  if dep_id(con) in active: conflicts.append((pin["id"],con))
-          assert not missing, f"missing dependencies: {missing}"
-          assert not conflicts, f"declared conflicts: {conflicts}"
+          wilds=next(m for m in cart["mods"] if m["id"]=="overworld_wild_spawns")
+          w=wilds.get("options",{})
+          assert w.get("sprite_style")=="followers"
+          assert w.get("follow_control")=="trainer"
+          assert w.get("follower_count")==1
+          assert w.get("trainer_trail") is False
 
-          required={
-            "gen1_kaizo","DRAMALESS_SHAPE","overworld_wild_spawns",
-            "red_earth_kaizo_bridge","philosopher_stones","irregular_origin","MULTI_SAVE_SLOTS",
-            "crystal_animated_sprites_with_shiny_visuals",
-            "quest_system","advanced_box_system","modern_bag"
-          }
-          assert required <= active, required-active
+          irr=next(m for m in cart["mods"] if m["id"]=="red_earth_irregular")
+          assert irr["version"]=="1.0.0"
+          expected="caaf84cf9ed9b5b49bd77cabf2a02b697758b76eb9ee4251bb7d3feac446e114"
+          assert irr["sha256"]==expected
 
-          omitted={
-            "BATTLE_ART_VOXEL_FORK","DRAMATIC_SHAPE","TERRARIUM","potato_voxel",
-            "gen151","pokedex_plus","moves_manager","move_learn_stats",
-            "mew_mirage","shiny_starters_gifts","take_last_starter",
-            "SHINY_POKEMON","kanto_achievements","eevee_three_stones","crystal_onix",
-            "level_match_mod","overworld_encounters"
-          }
-          assert not (omitted & active), f"overlap mods present: {sorted(omitted & active)}"
+          meta=json.loads(Path("custom_mods/red_earth_irregular.index.json").read_text())
+          assert meta["title"]=="Red Earth: The Irregular and The Philosopher Stones"
+          assert meta["version"]=="1.0.0"
+          assert meta["sha256"]==expected
 
-          kaizo=next(m for m in pins if m["id"]=="gen1_kaizo")
-          assert kaizo["version"]=="0.8.3"
-          assert kaizo.get("options",{}).get("battle")=="static", \
-              "Kaizo native scaling must stay static; bridge owns upward-only dynamic scaling"
-
-          dramaless=next(m for m in pins if m["id"]=="DRAMALESS_SHAPE")
-          assert dramaless["version"]=="2.0.4"
-
-          crystal=next(m for m in pins if m["id"]=="crystal_animated_sprites_with_shiny_visuals")
-          assert crystal["version"]=="2.0.3", crystal
-          assert crystal["repo"]=="distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals"
-          crystal_sha=Path("/tmp/crystal_sprites.sha256").read_text().strip()
-          assert crystal["sha256"]==crystal_sha, (crystal["sha256"],crystal_sha)
-          crystal_meta=by_id["crystal_animated_sprites_with_shiny_visuals"]
-          assert crystal_meta.get("version")=="2.0.3", crystal_meta.get("version")
-          assert crystal_meta.get("downloadURL","").endswith(
-              "/crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip")
-
-          bridge=next(m for m in pins if m["id"]=="red_earth_kaizo_bridge")
-          assert bridge["version"]=="1.0.3", bridge
-          assert bridge["sha256"]=="2a771d6e466c59c02fd05ace3920a281d7055861e44f9047a8bc11e24f0414a3"
-          bridge_meta=by_id["red_earth_kaizo_bridge"]
-          assert bridge_meta.get("version")=="1.0.3", bridge_meta.get("version")
-          bopts=bridge.get("options",{})
-          assert bopts.get("dynamic_wilds") is True
-          assert bopts.get("dynamic_trainers") is True
-          assert bopts.get("shiny_starters") is True
-          assert bopts.get("second_starter") is True, \
-              "Irregular route intentionally keeps the optional final-ball region reselect"
-
-          stones=next(m for m in pins if m["id"]=="philosopher_stones")
-          assert stones["version"]=="1.1.0", stones
-          assert stones["repo"]=="DuskPromised/gen1recomp-mod-index"
-          assert stones["sha256"]=="b62e8eb02c983b6aa4c0e28e62b8eb00b6aec502ae3202ea81bbe3be0a5836e0"
-          stone_meta=by_id["philosopher_stones"]
-          assert stone_meta.get("version")=="1.1.0", stone_meta.get("version")
-
-          irregular=next(m for m in pins if m["id"]=="irregular_origin")
-          assert irregular["version"]=="1.0.9", irregular
-          assert irregular["repo"]=="DuskPromised/gen1recomp-mod-index"
-          assert irregular["sha256"]=="c49626c2db8367fbe4c3fe6b9ba91f1a359de35940351885d01925a6f2fbaf6a"
-          irregular_meta=by_id["irregular_origin"]
-          assert irregular_meta.get("version")=="1.0.9"
-          assert irregular_meta.get("source_zip")=="irregular_origin-1.0.9.zip"
-          assert irregular_meta.get("downloadURL","").endswith("/irregular_origin-1.0.9.zip")
-          irregular_sha=Path("custom_mods/irregular_origin.sha256").read_text().split()[0]
-          assert irregular["sha256"]==irregular_sha, (irregular["sha256"],irregular_sha)
-          assert irregular_meta.get("optional_dependencies")==[
-              "red_earth_kaizo_bridge@>=1.0.0 <2.0.0",
-              "philosopher_stones@>=1.1.0 <2.0.0",
-          ], irregular_meta.get("optional_dependencies")
-          assert set(irregular_meta.get("optional_integrations",[]))=={
-              "overworld_wild_spawns","DRAMALESS_SHAPE"
-          }, irregular_meta.get("optional_integrations")
-          wilds=next(m for m in pins if m["id"]=="overworld_wild_spawns")
-          assert wilds["version"]=="2.1.9", wilds
-          assert wilds["sha256"]=="0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
-          assert ids.index("philosopher_stones") < ids.index("irregular_origin"), \
-              "Irregular Origin must load after Philosopher Stones for resonance wrapping"
-
-          multi=next(m for m in pins if m["id"]=="MULTI_SAVE_SLOTS")
-          assert multi["version"]=="1.0.1"
-          assert multi["repo"]=="DuskPromised/gen1recomp-mod-index"
-
-          menus=next(m for m in pins if m["id"]=="gen1-better-menus")
-          opts=menus.get("options",{})
-          assert opts.get("modern_pc_ui") is False
-          assert opts.get("modern_bag_ui") is False
-          assert opts.get("modern_party_ui") is True
-          assert opts.get("modern_battle_ui")=="mod"
-
-          assert ids.index("DRAMALESS_SHAPE") < ids.index("crystal_animated_sprites_with_shiny_visuals")
-          assert ids.index("crystal_animated_sprites_with_shiny_visuals") < ids.index("irregular_origin")
-          assert ids.index("gen1_kaizo") < ids.index("philosopher_stones")
-          assert ids.index("philosopher_stones") < ids.index("irregular_origin")
-          assert ids.index("irregular_origin") < ids.index("overworld_wild_spawns"),               "Wilds must load after Irregular species registration for follower sprites"
-          assert ids.index("overworld_wild_spawns") < ids.index("red_earth_kaizo_bridge")
-          print(f"AUDIT PASS: {len(ids)} mods, Irregular Origin + Greater Stones pinned, no missing dependencies or declared conflicts")
-          PY
-
-      - name: Build clean 256px cart label
-        run: |
-          python -m pip install --quiet pillow
-          python - <<'PY'
-          from PIL import Image
-          from pathlib import Path
-          src=Path("site/data/carts/DuskPromised@red_earth_philosophers_stones/thumbnail.jpg")
-          dst=Path("cart_source/red_earth_philosophers_stones/label.png")
-          im=Image.open(src).convert("RGB").resize((256,256),Image.Resampling.LANCZOS)
-          im.save(dst,"PNG",optimize=True)
-          print("label:",dst.stat().st_size,"bytes")
+          archive=Path("site/data/mods/DuskPromised@red_earth_irregular/red_earth_irregular-1.0.0.zip")
+          assert archive.is_file(), "unified mod archive has not been published yet"
+          assert hashlib.sha256(archive.read_bytes()).hexdigest()==expected
+          print("UNIFIED CART AUDIT PASS:",len(ids),"mods")
           PY
 
       - name: Fetch official cartkit
@@ -215,26 +78,23 @@ jobs:
 
       - name: Pack cart
         run: |
-          python /tmp/cartkit.py pack cart_source/red_earth_philosophers_stones \
-            -o "/tmp/red_earth_philosophers_stones-$CART_VERSION.g1rcart"
+          version="$(python -c 'import json; print(json.load(open("cart_source/red_earth_philosophers_stones/cart.json"))["version"])')"
+          echo "CART_VERSION=$version" >> "$GITHUB_ENV"
+          python /tmp/cartkit.py pack cart_source/red_earth_philosophers_stones             -o "/tmp/red_earth_philosophers_stones-$version.g1rcart"
 
-      - name: Publish cart, metadata, and version archive
+      - name: Publish cart metadata and version archive
         run: |
           mkdir -p "site/data/carts/DuskPromised@red_earth_philosophers_stones"
-          cp "/tmp/red_earth_philosophers_stones-$CART_VERSION.g1rcart" \
-            "site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-$CART_VERSION.g1rcart"
+          cp "/tmp/red_earth_philosophers_stones-$CART_VERSION.g1rcart"             "site/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-$CART_VERSION.g1rcart"
           python - <<'PY'
           import hashlib,json,re
           from pathlib import Path
-
-          source_path=Path("cart_source/red_earth_philosophers_stones/cart.json")
-          source=json.loads(source_path.read_text(encoding="utf-8"))
+          source=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
           version=source["version"]
           folder=Path("site/data/carts/DuskPromised@red_earth_philosophers_stones")
           cart=folder/f"red_earth_philosophers_stones-{version}.g1rcart"
-          body=cart.read_bytes()
-          url_base="https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones"
-
+          raw=cart.read_bytes()
+          base="https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones"
           meta={
             "folder":"DuskPromised@red_earth_philosophers_stones",
             "id":source["id"],
@@ -246,12 +106,7 @@ jobs:
             "seal":"sealed+",
             "shell":source["shell"],
             "finish":source["finish"],
-            "tags":[
-              "cart","bundle","red","kanto","kaizo","908 pokemon","dramaless",
-              "voxel","dynamic difficulty","second starter","shiny starters",
-              "philosopher stones","greater stones","alchemy journal","quests",
-              "quality of life","cart-aware saves"
-            ],
+            "tags":["cart","bundle","red","kaizo","custom pokemon","shiny starters","philosopher stone","aetheric transmutation","human ansem","melony","followers","quests"],
             "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
             "github":"DuskPromised/gen1recomp-mod-index",
             "automatic_version_check":False,
@@ -259,95 +114,44 @@ jobs:
             "load_order":source["load_order"],
             "description_url":"data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
             "versions_url":"data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
-            "latest":{
-              "version":version,"name":version,"prerelease":False,
-              "zip":{
-                "name":cart.name,
-                "url":f"{url_base}/{cart.name}",
-                "size":len(body),
-                "sha256":hashlib.sha256(body).hexdigest()
-              }
-            },
+            "latest":{"version":version,"name":version,"prerelease":False,"zip":{
+              "name":cart.name,"url":f"{base}/{cart.name}",
+              "size":len(raw),"sha256":hashlib.sha256(raw).hexdigest()}},
             "update_check":"ok",
             "thumbnail":"data/carts/DuskPromised@red_earth_philosophers_stones/thumbnail.jpg"
           }
           Path("carts/red_earth_philosophers_stones.index.json").write_text(
-            json.dumps(meta,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-
-          def semver_key(v):
-              return tuple(int(x) for x in v.split("."))
-
+              json.dumps(meta,indent=2,ensure_ascii=False)+"\n")
+          pat=re.compile(r"^red_earth_philosophers_stones-(\d+\.\d+\.\d+)\.g1rcart$")
           versions=[]
-          pattern=re.compile(r"^red_earth_philosophers_stones-(\d+\.\d+\.\d+)\.g1rcart$")
-          for path in folder.glob("red_earth_philosophers_stones-*.g1rcart"):
-              match=pattern.match(path.name)
-              if not match: continue
-              v=match.group(1)
-              raw=path.read_bytes()
-              versions.append({
-                "version":v,
-                "name":path.name,
-                "url":f"{url_base}/{path.name}",
-                "size":len(raw),
-                "sha256":hashlib.sha256(raw).hexdigest(),
-              })
-          versions.sort(key=lambda row: semver_key(row["version"]), reverse=True)
-
-          known={row["version"] for row in versions}
-          assert version in known, (version,known)
-          assert "1.0.0" in known, "v1.0.0 archive must remain downloadable"
-          archive={
-            "schema_version":1,
-            "cart_id":source["id"],
-            "title":source["title"],
-            "latest":version,
-            "versions":versions,
-          }
-          (folder/"versions.json").write_text(
-            json.dumps(archive,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-
-          print("cart bytes:",len(body))
-          print("cart sha256:",hashlib.sha256(body).hexdigest())
-          print("archived versions:",", ".join(row["version"] for row in versions))
-          PY
-
-      - name: Verify version archive
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          source=json.load(open("cart_source/red_earth_philosophers_stones/cart.json",encoding="utf-8"))
-          archive=json.load(open("site/data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",encoding="utf-8"))
-          versions=[row["version"] for row in archive["versions"]]
-          assert archive["latest"]==source["version"]
-          assert source["version"] in versions
-          assert "1.0.0" in versions
-          assert len(versions)==len(set(versions))
-          for row in archive["versions"]:
-              assert Path("site/data/carts/DuskPromised@red_earth_philosophers_stones",row["name"]).is_file()
-          print("VERSION ARCHIVE PASS:", versions)
+          for p in folder.glob("red_earth_philosophers_stones-*.g1rcart"):
+              m=pat.match(p.name)
+              if not m: continue
+              b=p.read_bytes()
+              versions.append({"version":m.group(1),"name":p.name,"url":f"{base}/{p.name}",
+                               "size":len(b),"sha256":hashlib.sha256(b).hexdigest()})
+          versions.sort(key=lambda x:tuple(map(int,x["version"].split("."))),reverse=True)
+          (folder/"versions.json").write_text(json.dumps({
+              "schema_version":1,"cart_id":source["id"],"title":source["title"],
+              "latest":version,"versions":versions
+          },indent=2,ensure_ascii=False)+"\n")
+          print("CART PASS",version,len(raw),hashlib.sha256(raw).hexdigest())
           PY
 
       - name: Commit cart release
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
-            "cart_source/red_earth_philosophers_stones/cart.json" \
-            "cart_source/red_earth_philosophers_stones/label.png" \
-            "site/data/carts/DuskPromised@red_earth_philosophers_stones/thumbnail.jpg" \
-            "site/data/carts/DuskPromised@red_earth_philosophers_stones/"*.g1rcart \
-            "site/data/carts/DuskPromised@red_earth_philosophers_stones/versions.json" \
-            "carts/red_earth_philosophers_stones.index.json"
+          git add             "cart_source/red_earth_philosophers_stones/cart.json"             "site/data/carts/DuskPromised@red_earth_philosophers_stones/"*.g1rcart             "site/data/carts/DuskPromised@red_earth_philosophers_stones/versions.json"             "carts/red_earth_philosophers_stones.index.json"
           if git diff --cached --quiet; then
-            echo "Cart $CART_VERSION already published."
+            echo "Cart already current."
           else
-            git commit -m "Publish Red Earth Philosopher Stones v$CART_VERSION"
+            git commit -m "Publish Red Earth: The Irregular and The Philosopher Stones v$CART_VERSION"
             git pull --rebase origin main
             git push
           fi
 
-      - name: Refresh combined Gen 1 index
+      - name: Refresh combined index
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh workflow run sync.yml --ref main
