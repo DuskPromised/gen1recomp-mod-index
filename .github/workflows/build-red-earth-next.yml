@@ -118,8 +118,7 @@ jobs:
           body = cart_path.read_bytes()
 
           for key in ("title","author","summary","version","base","seal","speeds",
-                      "shell","finish","tags","repo","automatic_version_check",
-                      "game_version","mods","load_order"):
+                      "shell","finish","mods","load_order"):
               if key in source:
                   meta[key] = source[key]
 
