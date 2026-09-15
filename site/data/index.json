@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T19:46:05.918165+00:00",
+  "generated_at": "2026-09-15T19:48:04.654763+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -8836,7 +8836,7 @@
       "id": "red_earth_regional_shiny_art",
       "title": "Red Earth Regional Shiny Art",
       "author": "Adam M. Aguilera",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "categories": [
         "VISUAL",
         "COMPATIBILITY"
@@ -8847,7 +8847,8 @@
         "starter",
         "fennekin",
         "treecko",
-        "sprite"
+        "sprite",
+        "pose matched"
       ],
       "api": 2,
       "profile": "content",
@@ -8865,11 +8866,11 @@
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "github": "DuskPromised/gen1recomp-mod-index",
       "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.1.zip",
-      "source_zip": "red_earth_regional_shiny_art-1.0.1.zip",
-      "sha256": "0488849afd40321deb12ea242632a8bce56e72a7112fdcc7bb85be813c36fa7e",
-      "summary": "Dedicated shiny battle/summary/icon art for every regional starter family used by Red Earth, plus proper Fennekin-line shiny follower walkers.",
-      "source_scope": "Red Earth integration using pinned community sprite sources",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.2.zip",
+      "source_zip": "red_earth_regional_shiny_art-1.0.2.zip",
+      "sha256": "47c88e83d2ecc8de0c459e5307db167d58d9e5eaf8d4c5013894bc1270edb969",
+      "summary": "Pose-matched shiny front/back/icon art for every Red Earth regional starter family, plus dedicated Fennekin-line follower walkers.",
+      "source_scope": "Kaizo pose-preserving Red Earth integration using pinned official/community color references",
       "update_check": "off",
       "optional_dependencies": [],
       "optional_integrations": [],
