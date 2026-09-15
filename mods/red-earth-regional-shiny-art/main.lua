@@ -1,4 +1,4 @@
--- Red Earth Regional Shiny Art v1.0.3
+-- Red Earth Regional Shiny Art v1.0.4
 -- Separate presentation layer. Shiny state remains owned by Red Earth Shiny Bridge.
 -- Irregular-line authored sprites remain owned by Irregular Origin.
 
@@ -109,7 +109,7 @@ return function(mod)
   end
 
   local function installPartyIconOverride()
-    if PartyMenu._redEarthRegionalShinyArtV103 == PartyMenu.drawIcon then
+    if PartyMenu._redEarthRegionalShinyArtV104 == PartyMenu.drawIcon then
       return true
     end
     local inner = PartyMenu.drawIcon
@@ -150,7 +150,7 @@ return function(mod)
       return inner(game, mon, x, y, selected, counter, forceAlt)
     end
     PartyMenu.drawIcon = wrapped
-    PartyMenu._redEarthRegionalShinyArtV103 = wrapped
+    PartyMenu._redEarthRegionalShinyArtV104 = wrapped
     return true
   end
 
@@ -314,6 +314,6 @@ return function(mod)
   end)
   pcall(installFollowerProviders, mod.game)
 
-  mod.exports.version = "1.0.3"
+  mod.exports.version = "1.0.4"
   mod.exports.starterDex = STARTER_DEX
 end
