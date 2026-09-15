@@ -74,6 +74,14 @@ jobs:
           def fetch(url,path):
               subprocess.run(["curl","-fL","--retry","3","-sS",url,"-o",str(path)],check=True)
 
+          def fetch_optional(url,path):
+              result=subprocess.run(["curl","-fL","--retry","2","-sS",url,"-o",str(path)])
+              if result.returncode != 0:
+                  try: path.unlink()
+                  except FileNotFoundError: pass
+                  return False
+              return True
+
           def alpha_bbox(im):
               return im.convert("RGBA").getchannel("A").getbbox()
 
@@ -143,17 +151,34 @@ jobs:
               kb=raw/f"{dex}-kaizo-back.png"
               nf=raw/f"{dex}-ref-front-normal.png"
               sf=raw/f"{dex}-ref-front-shiny.png"
-              nb=raw/f"{dex}-ref-back-normal.png"
-              sb=raw/f"{dex}-ref-back-shiny.png"
-              fetch(f"https://raw.githubusercontent.com/AyeBathingApe/gen1recomp-allgen-kaizo/{kaizo}/gen/battlers/{dex}.png",kf)
-              fetch(f"https://raw.githubusercontent.com/AyeBathingApe/gen1recomp-allgen-kaizo/{kaizo}/gen/battlers/{dex}b.png",kb)
+              sb=raw/f"{dex}-fallback-back-shiny.png"
+
+              # Keep the v1.0.1 canonical shiny art as a safe fallback for
+              # species Kaizo does not replace (notably early-generation
+              # starters).  Where Kaizo DOES ship its own battler, recolor
+              # that exact pose instead of importing PokeAPI's alternate pose.
               fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/{dex}.png",nf)
               fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/shiny/{dex}.png",sf)
-              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/back/{dex}.png",nb)
               fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/back/shiny/{dex}.png",sb)
 
-              front=apply_pose_matched_shiny(Image.open(kf),Image.open(nf),Image.open(sf))
-              back=apply_pose_matched_shiny(Image.open(kb),Image.open(nb),Image.open(sb))
+              has_kf=fetch_optional(
+                  f"https://raw.githubusercontent.com/AyeBathingApe/gen1recomp-allgen-kaizo/{kaizo}/gen/battlers/{dex}.png",kf)
+              has_kb=fetch_optional(
+                  f"https://raw.githubusercontent.com/AyeBathingApe/gen1recomp-allgen-kaizo/{kaizo}/gen/battlers/{dex}b.png",kb)
+
+              if has_kf:
+                  front=apply_pose_matched_shiny(Image.open(kf),Image.open(nf),Image.open(sf))
+              else:
+                  front=fit_card(Image.open(sf),56)
+
+              if has_kb:
+                  # The official normal→shiny FRONT pair supplies the color
+                  # transform; applying that transform to Kaizo's BACK keeps
+                  # Kaizo's authored back pose while retaining shiny colors.
+                  back=apply_pose_matched_shiny(Image.open(kb),Image.open(nf),Image.open(sf))
+              else:
+                  back=fit_card(Image.open(sb),56)
+
               if front.size != (56,56): front=fit_card(front,56)
               if back.size != (56,56): back=fit_card(back,56)
               front.save(out/"assets/battlers"/f"{dex:03d}_front_shiny.png",optimize=True)
