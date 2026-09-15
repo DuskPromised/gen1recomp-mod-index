@@ -1,7 +1,7 @@
 {
   "id": "red_earth_shiny_fx_bridge",
   "name": "Red Earth Shiny FX Bridge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -24,5 +24,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Small Red Earth compatibility layer that anchors SHINY_POKEMON overworld sparkles to the actual Wilds follower instead of a stale trainer/player-control flag."
+  "description": "Small Red Earth compatibility layer that forces Trainer-control shiny sparkles onto the actual Wilds follower entity and clears stale player-control targets."
 }
