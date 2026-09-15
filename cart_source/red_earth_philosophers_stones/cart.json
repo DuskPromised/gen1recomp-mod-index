@@ -1,11 +1,11 @@
 {
   "schema": 1,
   "id": "red_earth_philosophers_stones",
-  "title": "Red Earth: The Irregular and The Philosopher Stones",
+  "title": "Red Earth: Irregular and The Philosopher Stones",
   "version": "1.1.0",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Kaizo Kanto with Psydren → Vesperis → Solipsdion, three genuine shiny starters, the one-bound Philosopher's Stone and Aetheric Transmutation, Human Ansem, a male/Melony rival choice, authored followers, quests, and QOL.",
+  "summary": "Irregular shiny starter line, Philosopher's Stone transmutation, Ansem/Melony, voxel Kanto, followers, quests.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
