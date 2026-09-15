@@ -2,12 +2,6 @@ name: Build Red Earth split-mod recovery cart
 
 on:
   workflow_dispatch:
-  push:
-    branches: ["main"]
-    paths:
-      - "custom_mods/red_earth_irregular_upgrade.sha256"
-      - "site/data/mods/DuskPromised@red_earth_irregular_upgrade/**"
-      - ".github/workflows/build-red-earth-philosophers-stones.yml"
 
 permissions:
   contents: write
@@ -29,7 +23,7 @@ jobs:
           import json
           from pathlib import Path
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          assert cart["version"]=="1.2.1"
+          assert cart["version"]=="1.2.2"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
           assert len(ids)==len(set(ids))
@@ -43,12 +37,14 @@ jobs:
             "red_earth_irregular_upgrade":"1.0.0",
             "overworld_wild_spawns":"2.1.9",
             "red_earth_kaizo_bridge":"1.0.3",
+            "red_earth_shiny_bridge":"1.0.0",
           }
           for mid,version in required.items():
               m=next((x for x in cart["mods"] if x["id"]==mid),None)
               assert m is not None, mid
               assert m["version"]==version,(mid,m["version"],version)
           assert "red_earth_irregular" not in ids
+          assert ids.index("red_earth_shiny_bridge") == ids.index("red_earth_kaizo_bridge") + 1
           assert ids.index("red_earth_irregular_upgrade") == ids.index("irregular_origin") + 1
           patch=next(m for m in cart["mods"] if m["id"]=="red_earth_irregular_upgrade")
           expected_patch_sha="e320c30845e5d6559527f942cf47bc055a43716fa99655fb30c6721fa9f9b96b"
@@ -66,13 +62,23 @@ jobs:
           assert w.get("follow_control")=="trainer"
           assert w.get("follower_count")==1
           assert w.get("trainer_trail") is False
+          shiny=next(m for m in cart["mods"] if m["id"]=="red_earth_shiny_bridge")
+          shiny_sha="fe63e1b7ee0e8bb18767ac4c29bb850c845ea368c5f21d9ef8fe32f8cb7569ee"
+          assert shiny["sha256"]==shiny_sha
+          shiny_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_bridge/red_earth_shiny_bridge-1.0.0.zip")
+          assert shiny_archive.is_file(), "Shiny Bridge archive is not published yet"
+          assert hashlib.sha256(shiny_archive.read_bytes()).hexdigest()==shiny_sha
+          shiny_meta=json.loads(Path("custom_mods/red_earth_shiny_bridge.index.json").read_text())
+          assert shiny_meta["sha256"]==shiny_sha
+          assert shiny_meta["version"]=="1.0.0"
+
           bridge=next(m for m in cart["mods"] if m["id"]=="red_earth_kaizo_bridge")
           b=bridge.get("options",{})
           assert b.get("dynamic_wilds") is True
           assert b.get("dynamic_trainers") is True
           assert b.get("second_starter") is True
           assert b.get("shiny_starters") is True
-          print("SPLIT STACK + IRREGULAR UPGRADE AUDIT PASS:",len(ids),"mods")
+          print("SPLIT STACK + IRREGULAR + SHINY BRIDGE AUDIT PASS:",len(ids),"mods")
           PY
 
       - name: Fetch official cartkit
@@ -103,13 +109,13 @@ jobs:
             "id":source["id"],
             "title":public_title,
             "author":source["author"],
-            "summary":"Known-good v1.0.10 split stack plus separate Irregular Upgrade layer.",
+            "summary":"Known-good split stack plus separate Irregular Upgrade and Shiny Bridge layers.",
             "version":version,
             "base":"red",
             "seal":"sealed+",
             "shell":source["shell"],
             "finish":source["finish"],
-            "tags":["cart","bundle","red","kaizo","split mods","custom pokemon","philosopher stone","irregular upgrade","recovery"],
+            "tags":["cart","bundle","red","kaizo","split mods","custom pokemon","philosopher stone","irregular upgrade","shiny bridge","recovery"],
             "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
             "github":"DuskPromised/gen1recomp-mod-index",
             "automatic_version_check":False,
