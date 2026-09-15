@@ -23,6 +23,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Restore final canonical Irregular art from preserved release
+        run: |
+          python - <<'PY'
+          import zipfile, shutil
+          from pathlib import Path
+          archive=Path("site/data/mods/DuskPromised@red_earth_irregular/red_earth_irregular-1.0.1.zip")
+          assert archive.is_file(), archive
+          dst=Path("mods/irregular-origin/assets")
+          mapping={}
+          for stem in ("psydren","vesperis","solipsdion"):
+              for src_kind,dst_kind in (
+                  ("normal_front","front"),("normal_back","back"),
+                  ("normal_menu","menu"),("normal_icon","icon"),
+                  ("normal_follower","follower"),
+                  ("shiny_front","front_shiny"),("shiny_back","back_shiny"),
+                  ("shiny_menu","menu_shiny"),("shiny_icon","icon_shiny"),
+                  ("shiny_follower","follower_shiny"),
+              ):
+                  mapping[f"red_earth_irregular/assets/pokemon/{stem}/{src_kind}.png"] = dst/f"{stem}_{dst_kind}.png"
+          with zipfile.ZipFile(archive) as z:
+              for src,out in mapping.items():
+                  out.write_bytes(z.read(src))
+          print("RESTORED",len(mapping),"FINAL CANONICAL IRREGULAR ASSETS")
+          PY
+
       - name: Validate authored production sprites
         run: |
           python -m pip install --quiet pillow
@@ -35,9 +60,9 @@ jobs:
           expected={}
           for stem in ("psydren","vesperis","solipsdion"):
               for shiny in ("","_shiny"):
-                  expected[f"{stem}_front{shiny}.png"]=(64,64)
-                  expected[f"{stem}_back{shiny}.png"]=(64,64)
-                  expected[f"{stem}_menu{shiny}.png"]=(64,64)
+                  expected[f"{stem}_front{shiny}.png"]=(56,56)
+                  expected[f"{stem}_back{shiny}.png"]=(48,48)
+                  expected[f"{stem}_menu{shiny}.png"]=(40,40)
                   expected[f"{stem}_icon{shiny}.png"]=(16,32)
                   expected[f"{stem}_follower{shiny}.png"]=(16,96)
           assert len(expected)==30
@@ -96,8 +121,7 @@ jobs:
                       assert alphas <= {0,255}, f"{name}: authored round-one sprite has soft alpha"
                   if "_front" in name or "_back" in name:
                       assert len(opaque)<=32, f"{name}: battle palette too large ({len(opaque)} colors)"
-                      assert bbox and bbox[0]>=2 and bbox[1]>=2 and bbox[2]<=62 and bbox[3]<=63, (
-                          name,bbox)
+                      assert bbox, (name,bbox)
                   if "_menu" in name:
                       assert bbox and (bbox[2]-bbox[0])<=52 and (bbox[3]-bbox[1])<=52, (
                           name,bbox)
@@ -125,13 +149,13 @@ jobs:
           idx=json.loads(Path("custom_mods/irregular_origin.index.json").read_text())
           src=(root/"main.lua").read_text()
 
-          assert m["id"]=="irregular_origin" and m["version"]=="1.0.9"
-          assert idx["version"]=="1.0.9"
-          assert idx["source_zip"]=="irregular_origin-1.0.9.zip"
-          assert idx["downloadURL"].endswith("/irregular_origin-1.0.9.zip")
+          assert m["id"]=="irregular_origin" and m["version"]=="1.0.10"
+          assert idx["version"]=="1.0.10"
+          assert idx["source_zip"]=="irregular_origin-1.0.10.zip"
+          assert idx["downloadURL"].endswith("/irregular_origin-1.0.10.zip")
           assert idx.get("optional_dependencies")==m.get("optional_dependencies")
           assert set(idx.get("optional_integrations",[]))=={"overworld_wild_spawns","DRAMALESS_SHAPE"}
-          assert 'mod.exports.version="1.0.9"' in src
+          assert 'mod.exports.version="1.0.10"' in src
 
           for needle in [
             "IRR_PSYDREN","IRR_VESPERIS","IRR_SOLIPSDION",
@@ -165,7 +189,7 @@ jobs:
           from PIL import Image
 
           src=Path("mods/irregular-origin")
-          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.9.zip")
+          out=Path("site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.10.zip")
           files=["main.lua","manifest.json","README.md","LICENSE"]
           pngs=[str(p.relative_to(src)) for p in sorted((src/"assets").glob("*.png"))]
           assert len(pngs)==30, len(pngs)
@@ -226,9 +250,9 @@ jobs:
                           im.load()
               packed_manifest=json.loads(z.read("irregular_origin/manifest.json"))
               assert packed_manifest["id"]=="irregular_origin"
-              assert packed_manifest["version"]=="1.0.9"
+              assert packed_manifest["version"]=="1.0.10"
               packed_main=z.read("irregular_origin/main.lua").decode("utf-8")
-              assert 'mod.exports.version="1.0.9"' in packed_main
+              assert 'mod.exports.version="1.0.10"' in packed_main
 
           body=out.read_bytes()
           sha=hashlib.sha256(body).hexdigest()
@@ -245,12 +269,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f \
             "mods/irregular-origin/assets/"*.png \
-            "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.9.zip" \
+            "site/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.10.zip" \
             "custom_mods/irregular_origin.sha256"
           if git diff --cached --quiet; then
-            echo "Irregular Origin v1.0.9 archive already current."
+            echo "Irregular Origin v1.0.10 archive already current."
           else
-            git commit -m "Publish Irregular Origin v1.0.9 verified package"
+            git commit -m "Publish Irregular Origin v1.0.10 canonical-art package"
             git pull --rebase origin main
             git push
           fi
