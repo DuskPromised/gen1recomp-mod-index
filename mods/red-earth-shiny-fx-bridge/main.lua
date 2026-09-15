@@ -1,4 +1,4 @@
--- Red Earth Shiny FX Bridge v1.0.4
+-- Red Earth Shiny FX Bridge v1.0.5
 -- Presentation-only shiny compatibility layer.
 -- Owns subtle Red Earth battle/follower sparkles and party-list marker while
 -- leaving shiny state, shiny art, species, starters and evolution untouched.
@@ -113,21 +113,16 @@ return function(mod)
     return true
   end
 
-  -- Dramatic Shape does NOT place follower billboards from pose()'s visual
-  -- origin.  Its actor card is centred on the entity's CELL and pivoted at
-  -- the feet: world (px+8, py+8), with the sprite frame extending upward.
-  -- Returning the exact billboard ground anchor + frame geometry lets the FX
-  -- project that same point and then move to the visual centre in SCREEN
-  -- space.  This avoids the direction-dependent ahead/behind drift caused by
-  -- feeding visual Y offsets back through the 3D ground-plane projector.
+  -- Match Wilds' own Dramatic Shape emergency-overlay registration point.
+  -- Wilds projects (entity.px+8, entity.py+16), then translates the normal
+  -- 2D entity draw into that projected location. Reusing the same anchor
+  -- prevents direction-dependent drift because we no longer derive the FX
+  -- point from pose(), facing, or a guessed billboard centre.
   local function followerAnchor(npc)
     if not npc then return nil end
     local px, py = tonumber(npc.px), tonumber(npc.py)
     if not (px and py) then return nil end
-    local def = (npc.sprite and npc.sprite.def) or npc.spriteDef or {}
-    local fw = tonumber(def.frameWidth) or 16
-    local fh = tonumber(def.frameHeight) or 16
-    return px + 8, py + 8, fw, fh
+    return px + 8, py + 16, px, py
   end
 
   local function begin(key, duration, loopInterval)
@@ -194,10 +189,10 @@ return function(mod)
       if not npc or seen[npc] or not npc.pokepcShiny then return end
       if not (npc.pokepcTrailer or npc.wildsFollower) then return end
       seen[npc] = true
-      local x,y,fw,fh = followerAnchor(npc)
-      if not x then return end
+      local wx,wy,px,py = followerAnchor(npc)
+      if not wx then return end
       out[#out+1] = {
-        wx=x, wy=y, fw=fw, fh=fh,
+        wx=wx, wy=wy, px=px, py=py,
         key="red_earth_follow:"..tostring(npc.pokepcTrailerId or npc.id or npc),
         seed=(npc.wildsFollowerSlot or 1) + 7,
       }
@@ -207,39 +202,32 @@ return function(mod)
     return out
   end
 
-  local function projectedPixelScale(project, wx, wy, sx, sy)
-    -- The billboard is authored face-on, so one horizontal world pixel is a
-    -- stable measure of one sprite pixel at this depth.  Measuring it through
-    -- the SAME projector is more reliable than guessing from camera/facing.
-    local x2,y2 = project(wx + 1, wy)
-    if not x2 then return 1 end
-    local dx,dy = x2 - sx, y2 - sy
-    local q = math.sqrt(dx*dx + dy*dy)
-    if q ~= q or q <= 0 then return 1 end
-    return math.max(0.20, math.min(8.0, q))
-  end
-
-  local function drawProjectedFollowers(project, scale, _, ow)
-    if not (project and ow and love and love.graphics) then return false end
+  local function drawProjectedFollowers(project, scale, cam, ow)
+    if not (project and cam and ow and love and love.graphics) then return false end
     local any=false
-    local canvasScale = tonumber(scale) or 1
-    if canvasScale <= 0 then canvasScale = 1 end
+    local drawScale = tonumber(scale) or 1
+    if drawScale <= 0 then drawScale = 1 end
+    local camX, camY = tonumber(cam.x) or 0, tonumber(cam.y) or 0
+
     for _,t in ipairs(followerTargets(ow)) do
       local p=progress(t.key, FOLLOW_DUR, FOLLOW_INTERVAL)
       if p then
         local sx, sy = project(t.wx, t.wy)
         if sx then
-          local pxScale = projectedPixelScale(project, t.wx, t.wy, sx, sy)
-          -- SpriteBillboards is centred horizontally on the cell and grows
-          -- UP from the feet pivot, so the visual centre is half a frame
-          -- above the projected ground point. Do this AFTER projection.
-          local cx = sx / canvasScale
-          local cy = (sy - (t.fh or 16) * 0.5 * pxScale) / canvasScale
-          local logical = pxScale / canvasScale
-          local sparkleScale = math.max(0.72, math.min(1.18, logical))
+          -- This is the exact transform Wilds uses when it spatially overlays
+          -- an entity in Dramatic Shape. Draw the sparkle at the stock 2D
+          -- follower shiny centre (px+8, py) INSIDE that same transform.
+          local fx, fy = t.wx - camX, t.wy - camY
+          local localCx = t.px + 8 - camX
+          local localCy = t.py - camY
+
           love.graphics.push()
-          love.graphics.scale(canvasScale, canvasScale)
-          drawSubtleBurst(cx, cy, p, sparkleScale, t.seed)
+          love.graphics.scale(drawScale, drawScale)
+          love.graphics.translate(
+            sx / drawScale - fx,
+            sy / drawScale - fy
+          )
+          drawSubtleBurst(localCx, localCy, p, 1.0, t.seed)
           love.graphics.pop()
           any=true
         end
@@ -253,7 +241,7 @@ return function(mod)
     if not ok or not Pipelines or type(Pipelines.drawWorld) ~= "function" then
       return false
     end
-    if Pipelines._redEarthShinyFxV104 == Pipelines.drawWorld then return true end
+    if Pipelines._redEarthShinyFxV105 == Pipelines.drawWorld then return true end
     local inner = Pipelines.drawWorld
     local function wrapped(id, ctx)
       pcall(sanitizeFollowerFxState, ctx and ctx.state)
@@ -269,7 +257,7 @@ return function(mod)
       return inner(id, ctx)
     end
     Pipelines.drawWorld = wrapped
-    Pipelines._redEarthShinyFxV104 = wrapped
+    Pipelines._redEarthShinyFxV105 = wrapped
     return true
   end
 
@@ -347,7 +335,7 @@ return function(mod)
   pcall(installWorldFx)
   pcall(installPartyMarker)
 
-  mod.exports.version = "1.0.4"
+  mod.exports.version = "1.0.5"
   mod.exports.sanitizeFollowerFxState = sanitizeFollowerFxState
   mod.exports.followerAnchor = followerAnchor
   mod.exports.clearedStalePlayerFlags = function() return lastCleared end
