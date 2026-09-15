@@ -1,7 +1,7 @@
 {
   "id": "irregular_origin",
   "name": "Irregular Origin",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -24,5 +24,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Adds Psydren, Vesperis, and Solipsdion with a round-one Pokémon-native sprite authenticity pass: full-body normal/shiny fronts, true back views, compact full-body menu art, preserved party/follower sprites, distinct psychic Confusion visuals, Wilds/Dramaless compatibility, shiny Irregular origin, and Philosopher Stone resonance."
+  "description": "Adds Psydren, Vesperis, and Solipsdion on the v1.0.10 split foundation, using the final canonical normal/shiny sprites, native-chain battle routing, shiny Irregular origin, Wilds followers, Pokédex acquisition preview, and Philosopher Stone resonance."
 }
