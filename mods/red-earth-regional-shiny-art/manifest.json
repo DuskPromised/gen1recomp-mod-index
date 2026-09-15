@@ -1,7 +1,7 @@
 {
   "id": "red_earth_regional_shiny_art",
   "name": "Red Earth Regional Shiny Art",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -21,5 +21,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Dedicated shiny art layer for Red Earth regional starters: pose-matched Kaizo battle sprites at original canvas size, safe true-color shiny party icons, and Fennekin-line follower walkers."
+  "description": "Regional shiny presentation layer with canonical Treecko-line shiny battle cards, safe true-color party icons, and dedicated Fennekin-line follower walkers."
 }
