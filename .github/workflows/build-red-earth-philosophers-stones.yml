@@ -32,7 +32,7 @@ jobs:
           from pathlib import Path
 
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          assert cart["title"]=="Red Earth: The Irregular and The Philosopher Stones"
+          assert cart["title"]=="Red Earth: Irregular and The Philosopher Stones"
           assert cart["version"]=="1.1.0"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
@@ -98,7 +98,7 @@ jobs:
           meta={
             "folder":"DuskPromised@red_earth_philosophers_stones",
             "id":source["id"],
-            "title":source["title"],
+            "title":"Red Earth: The Irregular and The Philosopher Stones",
             "author":source["author"],
             "summary":source["summary"],
             "version":version,
@@ -132,7 +132,7 @@ jobs:
                                "size":len(b),"sha256":hashlib.sha256(b).hexdigest()})
           versions.sort(key=lambda x:tuple(map(int,x["version"].split("."))),reverse=True)
           (folder/"versions.json").write_text(json.dumps({
-              "schema_version":1,"cart_id":source["id"],"title":source["title"],
+              "schema_version":1,"cart_id":source["id"],"title":"Red Earth: The Irregular and The Philosopher Stones",
               "latest":version,"versions":versions
           },indent=2,ensure_ascii=False)+"\n")
           print("CART PASS",version,len(raw),hashlib.sha256(raw).hexdigest())
