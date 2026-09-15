@@ -34,7 +34,7 @@ jobs:
           manifest=json.loads((root/"manifest.json").read_text())
           src=(root/"main.lua").read_text()
           assert manifest["id"]=="red_earth_kaizo_bridge"
-          assert manifest["version"]=="1.0.3"
+          assert manifest["version"]=="1.0.4"
           assert "gen1_kaizo@>=0.8.3 <1.0.0" in manifest["dependencies"]
           for needle in [
               'encounter.species','trainer.party','script.command','world.talk',
@@ -49,6 +49,7 @@ jobs:
           assert 'last_starter_region' in src
           assert '_OaksLabReceivedMonText' in src and '_OaksLabRivalReceivedMonText' in src
           assert 'Choose another\\nregion?' in src
+          assert '"push_screen", "DexEntryMenu", { species=species, forceOwned=true }' in src
           assert 'FROAKIE' in src and 'FROGADIER' in src and 'GRENINJA' in src
           assert '__redEarthDisplayNamePatch' in src
           assert 'ctx.pendingPokemonName=def.name' in src
@@ -57,14 +58,14 @@ jobs:
           print("RED EARTH KAIZO BRIDGE AUDIT PASS")
           PY
 
-      - name: Package deterministic v1.0.3 ZIP
+      - name: Package deterministic v1.0.4 ZIP
         run: |
           mkdir -p "site/data/mods/DuskPromised@red_earth_kaizo_bridge"
           python - <<'PY'
           import hashlib, zipfile
           from pathlib import Path
           src=Path("mods/red-earth-kaizo-bridge")
-          out=Path("site/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.3.zip")
+          out=Path("site/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.4.zip")
           files=["main.lua","manifest.json","README.md","LICENSE"]
           with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
               for name in files:
@@ -85,12 +86,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f \
-            "site/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.3.zip" \
+            "site/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.4.zip" \
             "custom_mods/red_earth_kaizo_bridge.sha256"
           if git diff --cached --quiet; then
             echo "Red Earth Kaizo Bridge archive already current."
           else
-            git commit -m "Publish Red Earth Kaizo Bridge v1.0.3"
+            git commit -m "Publish Red Earth Kaizo Bridge v1.0.4"
             git pull --rebase origin main
             git push
           fi
