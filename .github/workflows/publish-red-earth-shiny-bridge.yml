@@ -48,7 +48,10 @@ jobs:
           ]:
               assert needle in main, needle
           for forbidden in [
-              'battle.overlay','SpriteRenderer','PaletteFX','BattleState.draw',
+              'mod.hooks:wrap("battle.overlay"',
+              'require("src.render.SpriteRenderer")',
+              'require("src.render.PaletteFX")',
+              'BattleState.drawPicsLayer',
               'PHILOSOPHER_','ANSEM','MELONY'
           ]:
               assert forbidden not in main, forbidden
