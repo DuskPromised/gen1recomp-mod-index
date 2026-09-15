@@ -20,7 +20,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      VERSION: "1.0.0"
+      VERSION: "1.0.1"
       POKEAPI_COMMIT: "2ecb4eeacd5a1718621fc30f12772e3f60d830b9"
       POKEWILDS_COMMIT: "83133ed40be8b7c7dff5f9058eef16dd8916be6a"
     steps:
@@ -37,7 +37,7 @@ jobs:
           root=Path("mods/red-earth-regional-shiny-art")
           m=json.loads((root/"manifest.json").read_text())
           assert m["id"]=="red_earth_regional_shiny_art"
-          assert m["version"]=="1.0.0"
+          assert m["version"]=="1.0.1"
           main=(root/"main.lua").read_text()
           for needle in [
               '"pokemon.sprite"',
@@ -47,6 +47,9 @@ jobs:
               "PRIMARINA=730",
               "FENNEKIN_FOLLOWER",
               "registerSpriteProvider",
+              '"followers_ex"',
+              '"pokemmo"',
+              '"pokedex"',
           ]:
               assert needle in main, needle
           print("REGIONAL SHINY ART SOURCE AUDIT PASS")
@@ -167,7 +170,7 @@ jobs:
           from pathlib import Path
           src=Path("mods/red-earth-regional-shiny-art")
           generated=Path("/tmp/redart")
-          out=Path("/tmp/red_earth_regional_shiny_art-1.0.0.zip")
+          out=Path("/tmp/red_earth_regional_shiny_art-1.0.1.zip")
           files=[]
           for name in ("manifest.json","main.lua","README.md"):
               files.append((src/name, "red_earth_regional_shiny_art/"+name))
@@ -189,7 +192,7 @@ jobs:
           python - <<'PY'
           import json, shutil
           from pathlib import Path
-          version="1.0.0"
+          version="1.0.1"
           sha=Path("/tmp/art.sha").read_text().strip()
           folder=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art")
           folder.mkdir(parents=True,exist_ok=True)
