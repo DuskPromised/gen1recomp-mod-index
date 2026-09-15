@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T21:37:11.056425+00:00",
+  "generated_at": "2026-09-15T21:56:56.881364+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -8979,7 +8979,7 @@
       "license": "MIT",
       "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.4.zip",
       "source_zip": "red_earth_regional_shiny_art-1.0.4.zip",
-      "sha256": "8fee860181bbefae80970764395de10c599e49f001b1eb62cec05d8bf09359cc",
+      "sha256": "2c4f3f9b71088b5097efc14a806dcd55b341c946e88a48bf3b790d0b759d7b7e",
       "summary": "Pose-matched regional shiny art with canonical 56x56 Treecko-line shiny cards, safe true-color party icons, and Fennekin-line walkers.",
       "source_scope": "Kaizo pose-preserving Red Earth integration using pinned official/community color references",
       "update_check": "off",
