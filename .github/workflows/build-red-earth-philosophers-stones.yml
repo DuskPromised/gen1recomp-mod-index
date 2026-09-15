@@ -5,10 +5,8 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "cart_source/red_earth_philosophers_stones/**"
-      - "mods/irregular-origin/**"
-      - "mods/philosopher-stones/**"
-      - "mods/red-earth-kaizo-bridge/**"
+      - "custom_mods/red_earth_irregular_upgrade.sha256"
+      - "site/data/mods/DuskPromised@red_earth_irregular_upgrade/**"
       - ".github/workflows/build-red-earth-philosophers-stones.yml"
 
 permissions:
@@ -31,7 +29,7 @@ jobs:
           import json
           from pathlib import Path
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          assert cart["version"]=="1.2.0"
+          assert cart["version"]=="1.2.1"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
           assert len(ids)==len(set(ids))
@@ -42,6 +40,7 @@ jobs:
             "leaf_avatar":"2.0.0",
             "philosopher_stones":"1.1.0",
             "irregular_origin":"1.0.9",
+            "red_earth_irregular_upgrade":"1.0.0",
             "overworld_wild_spawns":"2.1.9",
             "red_earth_kaizo_bridge":"1.0.3",
           }
@@ -50,6 +49,14 @@ jobs:
               assert m is not None, mid
               assert m["version"]==version,(mid,m["version"],version)
           assert "red_earth_irregular" not in ids
+          assert ids.index("red_earth_irregular_upgrade") == ids.index("irregular_origin") + 1
+          patch=next(m for m in cart["mods"] if m["id"]=="red_earth_irregular_upgrade")
+          expected_patch_sha="e320c30845e5d6559527f942cf47bc055a43716fa99655fb30c6721fa9f9b96b"
+          assert patch["sha256"]==expected_patch_sha
+          archive=Path("site/data/mods/DuskPromised@red_earth_irregular_upgrade/red_earth_irregular_upgrade-1.0.0.zip")
+          assert archive.is_file(), "Irregular Upgrade archive is not published yet"
+          import hashlib
+          assert hashlib.sha256(archive.read_bytes()).hexdigest()==expected_patch_sha
 
           voxel=next(m for m in cart["mods"] if m["id"]=="DRAMALESS_SHAPE")
           assert voxel.get("options",{}).get("renderDistanceSetting")==64
@@ -65,7 +72,7 @@ jobs:
           assert b.get("dynamic_trainers") is True
           assert b.get("second_starter") is True
           assert b.get("shiny_starters") is True
-          print("SPLIT STACK AUDIT PASS:",len(ids),"mods")
+          print("SPLIT STACK + IRREGULAR UPGRADE AUDIT PASS:",len(ids),"mods")
           PY
 
       - name: Fetch official cartkit
@@ -96,13 +103,13 @@ jobs:
             "id":source["id"],
             "title":public_title,
             "author":source["author"],
-            "summary":"Recovery build restored from known-good v1.0.10 split-mod stack.",
+            "summary":"Known-good v1.0.10 split stack plus separate Irregular Upgrade layer.",
             "version":version,
             "base":"red",
             "seal":"sealed+",
             "shell":source["shell"],
             "finish":source["finish"],
-            "tags":["cart","bundle","red","kaizo","split mods","custom pokemon","philosopher stone","recovery"],
+            "tags":["cart","bundle","red","kaizo","split mods","custom pokemon","philosopher stone","irregular upgrade","recovery"],
             "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
             "github":"DuskPromised/gen1recomp-mod-index",
             "automatic_version_check":False,
