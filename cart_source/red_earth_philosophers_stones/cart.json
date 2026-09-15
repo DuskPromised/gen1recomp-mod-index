@@ -5,7 +5,7 @@
   "version": "1.2.4",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Known-good split stack plus Irregular Upgrade, guaranteed shiny state, regional starter shiny art, and corrected follower sparkle targeting.",
+  "summary": "Split stack with guaranteed shinies, regional shiny art, and corrected follower sparkle targeting.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
