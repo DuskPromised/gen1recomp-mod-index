@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T20:45:43.954722+00:00",
+  "generated_at": "2026-09-15T20:46:23.275880+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -8737,6 +8737,51 @@
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": []
+    },
+    {
+      "folder": "DuskPromised@red_earth_dramaless_battle_bridge",
+      "id": "red_earth_dramaless_battle_bridge",
+      "title": "Red Earth Dramaless Battle Bridge",
+      "author": "Adam M. Aguilera",
+      "version": "1.0.0",
+      "categories": [
+        "COMPATIBILITY"
+      ],
+      "tags": [
+        "red earth",
+        "dramaless",
+        "voxel",
+        "battle",
+        "back sprite",
+        "scale",
+        "bridge"
+      ],
+      "api": 2,
+      "profile": "content",
+      "game_version": ">=0.2.21 <2.0.0",
+      "dependencies": [
+        "DRAMALESS_SHAPE@>=2.0.4 <3.0.0"
+      ],
+      "optional_dependencies": [
+        "red_earth_regional_shiny_art@>=1.0.3 <2.0.0",
+        "irregular_origin@>=1.0.9 <2.0.0"
+      ],
+      "conflicts": [
+        "red_earth_irregular"
+      ],
+      "affects_link": true,
+      "experimental": false,
+      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+      "github": "DuskPromised/gen1recomp-mod-index",
+      "license": "MIT",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_dramaless_battle_bridge/red_earth_dramaless_battle_bridge-1.0.0.zip",
+      "source_zip": "red_earth_dramaless_battle_bridge-1.0.0.zip",
+      "sha256": "9f6b4d48b3ba6672a6b97aa21a17afb5b72a738b5f09118478e056f8c1cedc0d",
+      "summary": "Restores native player-back sprite scale and grounding for Red Earth starter families inside Dramaless voxel-card capture.",
+      "source_scope": "DuskPromised original compatibility patch",
+      "update_check": "off",
+      "optional_integrations": [],
+      "permissions": []
     },
     {
       "folder": "DuskPromised@red_earth_irregular_upgrade",
