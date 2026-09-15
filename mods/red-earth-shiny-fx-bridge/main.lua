@@ -1,13 +1,11 @@
--- Red Earth Shiny FX Bridge v1.0.2
+-- Red Earth Shiny FX Bridge v1.0.3
 -- Presentation-only shiny compatibility layer.
 -- Owns subtle Red Earth battle/follower sparkles and party-list marker while
 -- leaving shiny state, shiny art, species, starters and evolution untouched.
 
 local Stats = require("src.pokemon.Stats")
 local Game = require("src.core.Game")
-local PartyMenu = require("src.ui.PartyMenu")
 local Sound = require("src.core.Sound")
-local PaletteFX = require("src.render.PaletteFX")
 
 local PLAYER_MON_IDS = {
   SPRITE_PLAYER_POKEMON = true,
@@ -32,20 +30,6 @@ local function isShiny(mon)
   return Stats.isShiny and Stats.isShiny(mon.dvs) or false
 end
 
-local function drawMiniStar(x, y)
-  if not (love and love.graphics) then return end
-  local g = love.graphics
-  local prev = { g.getColor() }
-  g.setColor(0.05, 0.05, 0.05, 1)
-  g.rectangle("fill", x + 1, y, 1, 3)
-  g.rectangle("fill", x, y + 1, 3, 1)
-  g.setColor(1, 1, 0.72, 1)
-  g.rectangle("fill", x + 1, y + 1, 1, 1)
-  g.setColor(prev[1] or 1, prev[2] or 1, prev[3] or 1, prev[4] or 1)
-  if PaletteFX and PaletteFX.markTrueColor then
-    PaletteFX.markTrueColor(x, y, 3, 3)
-  end
-end
 
 return function(mod)
   local lastCleared = 0
@@ -129,9 +113,12 @@ return function(mod)
     return true
   end
 
-  -- Exact VISUAL position, not the logical trail cell. Wilds' pose() already
-  -- contains current interpolation/hop/facing, which is why this fixes the
-  -- old vertical drift while the follower is moving up/down.
+  -- Wilds/Gen1Recomp pose() returns the sprite's VISUAL world-pixel origin.
+  -- Stock follower drawing places the sprite at (px-camX, py-camY-4), then
+  -- the stock shiny effect centers at x+8,y+4.  Therefore the correct world
+  -- anchor is (px+8, py), NOT py+6/py+8.  The old extra Y offset happened to
+  -- look fine sideways but projected ahead/behind the follower when moving
+  -- vertically in Dramatic Shape.
   local function followerAnchor(npc)
     if not npc then return nil end
     local px, py
@@ -145,11 +132,11 @@ return function(mod)
     py = py or tonumber(npc.py)
     if not (px and py) then return nil end
     local def = (npc.sprite and npc.sprite.def) or npc.spriteDef or {}
-    local fw = tonumber(def.frameWidth) or 16
-    local fh = tonumber(def.frameHeight) or 16
-    local ax = tonumber(def.anchorX) or math.floor(fw / 2)
-    local ay = tonumber(def.anchorY) or (fh - 1)
-    return px + ax, py + math.max(3, ay - math.floor(fh * 0.48))
+    local ax = tonumber(def.anchorX) or 8
+    -- anchorX remains useful for variable-width follower cards; Y must stay
+    -- on poseY because that is the same visual centerline used by the stock
+    -- 2D follower sparkle after its -4 draw offset.
+    return px + ax, py
   end
 
   local function begin(key, duration, loopInterval)
@@ -275,22 +262,6 @@ return function(mod)
     return true
   end
 
-  -- BetterParty calls PartyMenu.drawIcon even though it owns the widescreen
-  -- presentation. Adding the tiny mark here makes the party LIST agree with
-  -- the summary/battle shiny marker.
-  local function installPartyMarker()
-    if PartyMenu._redEarthShinyFxMarkerV102 == PartyMenu.drawIcon then return true end
-    local inner = PartyMenu.drawIcon
-    local function wrapped(game, mon, x, y, selected, counter, forceAlt)
-      local a,b,c = inner(game, mon, x, y, selected, counter, forceAlt)
-      if isShiny(mon) then drawMiniStar(math.floor(x+13), math.floor(y+1)) end
-      return a,b,c
-    end
-    PartyMenu.drawIcon = wrapped
-    PartyMenu._redEarthShinyFxMarkerV102 = wrapped
-    return true
-  end
-
   local function battleReady(battle, isEnemy)
     if not battle then return false end
     if (battle.introSlide or 0) > 0 then return false end
@@ -365,7 +336,7 @@ return function(mod)
   pcall(installWorldFx)
   pcall(installPartyMarker)
 
-  mod.exports.version = "1.0.2"
+  mod.exports.version = "1.0.3"
   mod.exports.sanitizeFollowerFxState = sanitizeFollowerFxState
   mod.exports.followerAnchor = followerAnchor
   mod.exports.clearedStalePlayerFlags = function() return lastCleared end
