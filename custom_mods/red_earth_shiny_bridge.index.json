@@ -38,7 +38,7 @@
   "license": "MIT",
   "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_shiny_bridge/red_earth_shiny_bridge-1.0.0.zip",
   "source_zip": "red_earth_shiny_bridge-1.0.0.zip",
-  "sha256": "PENDING_PUBLISH",
+  "sha256": "fe63e1b7ee0e8bb18767ac4c29bb850c845ea368c5f21d9ef8fe32f8cb7569ee",
   "summary": "Separate shiny-state bridge: guarantees genuine shiny Psydren, Oak companion and final regional starter, preserves shiny identity through evolution/save/load, and leaves presentation to Crystal/Wilds.",
   "source_scope": "DuskPromised original patch mod",
   "update_check": "off"
