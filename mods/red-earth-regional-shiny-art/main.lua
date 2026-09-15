@@ -1,6 +1,9 @@
--- Red Earth Regional Shiny Art v1.0.4
--- Separate presentation layer. Shiny state remains owned by Red Earth Shiny Bridge.
--- Irregular-line authored sprites remain owned by Irregular Origin.
+-- Red Earth Regional Shiny Art v1.0.5
+-- Presentation-only regional shiny art.
+-- Shiny state is read from the Pokemon itself; this works with either the
+-- split v1.0.10 stack or the unified Red Earth Irregular owner.
+-- IMPORTANT: shiny paths are fed back through the normal pokemon.sprite
+-- chain instead of returned as terminal flat images.
 
 local Stats = require("src.pokemon.Stats")
 local PartyMenu = require("src.ui.PartyMenu")
@@ -62,20 +65,24 @@ return function(mod)
   -- Regional starter battle / summary art. Only shiny individuals are
   -- intercepted; normal art remains entirely owned by Allgen Kaizo.
   mod.hooks:wrap("pokemon.sprite", function(next, path, ctx)
-    local resolved = next(path, ctx)
+    ctx = ctx or {}
     local species = speciesOf(ctx)
     local dex = species and STARTER_DEX[species]
-    if not dex or not isShiny(ctx and ctx.mon) then
-      return resolved
+    if not dex or not isShiny(ctx.mon) then
+      return next(path, ctx)
     end
 
     ctx.trueColor = true
     local root = mod.path .. "/assets/battlers/" .. padDex(dex)
-    if ctx.side == "back" then
-      return root .. "_back_shiny.png"
-    end
-    -- Enemy/front, summary, dex and menu all use the front shiny portrait.
-    return root .. "_front_shiny.png"
+    local chosen = (ctx.side == "back")
+      and (root .. "_back_shiny.png")
+      or  (root .. "_front_shiny.png")
+
+    -- v1.0.4 returned the PNG here, terminating the sprite hook chain. That
+    -- made Dramaless treat the replacement as a pasted card and caused scale /
+    -- grounding regressions. Feed the selected shiny asset THROUGH the native
+    -- chain so the battle renderer still owns scale, grounding and animation.
+    return next(chosen, ctx)
   end, 150)
 
   -- Two-frame 16x32 true-color shiny icons derived from the same canonical
@@ -109,7 +116,7 @@ return function(mod)
   end
 
   local function installPartyIconOverride()
-    if PartyMenu._redEarthRegionalShinyArtV104 == PartyMenu.drawIcon then
+    if PartyMenu._redEarthRegionalShinyArtV105 == PartyMenu.drawIcon then
       return true
     end
     local inner = PartyMenu.drawIcon
@@ -314,6 +321,6 @@ return function(mod)
   end)
   pcall(installFollowerProviders, mod.game)
 
-  mod.exports.version = "1.0.4"
+  mod.exports.version = "1.0.5"
   mod.exports.starterDex = STARTER_DEX
 end
