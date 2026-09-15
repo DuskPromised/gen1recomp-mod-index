@@ -3,8 +3,8 @@
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: The Irregular and The Philosopher Stones",
   "author": "Adam M. Aguilera",
-  "summary": "Recovery build restored from known-good v1.0.10 split-mod stack.",
-  "version": "1.2.0",
+  "summary": "Known-good v1.0.10 split stack plus separate Irregular Upgrade layer.",
+  "version": "1.2.1",
   "base": "red",
   "seal": "sealed+",
   "shell": "#8f1d2c",
@@ -17,6 +17,7 @@
     "split mods",
     "custom pokemon",
     "philosopher stone",
+    "irregular upgrade",
     "recovery"
   ],
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
@@ -169,6 +170,13 @@
       "sha256": "c49626c2db8367fbe4c3fe6b9ba91f1a359de35940351885d01925a6f2fbaf6a"
     },
     {
+      "id": "red_earth_irregular_upgrade",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "1.0.0",
+      "sha256": "e320c30845e5d6559527f942cf47bc055a43716fa99655fb30c6721fa9f9b96b"
+    },
+    {
       "id": "overworld_wild_spawns",
       "source": "github",
       "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
@@ -285,6 +293,7 @@
     "leaf_avatar",
     "philosopher_stones",
     "irregular_origin",
+    "red_earth_irregular_upgrade",
     "overworld_wild_spawns",
     "red_earth_kaizo_bridge",
     "quest_system",
@@ -301,14 +310,14 @@
   "description_url": "data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
   "versions_url": "data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
   "latest": {
-    "version": "1.2.0",
-    "name": "1.2.0",
+    "version": "1.2.1",
+    "name": "1.2.1",
     "prerelease": false,
     "zip": {
-      "name": "red_earth_philosophers_stones-1.2.0.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.0.g1rcart",
-      "size": 226372,
-      "sha256": "bf104f79aeea9596b773fd744d42b9af9890f5813633e30a2ccb041bd8b502b2"
+      "name": "red_earth_philosophers_stones-1.2.1.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.1.g1rcart",
+      "size": 226677,
+      "sha256": "04c80ca74647ff853540fbfd0769a763a6d8eaceb2bf6f3ea75deddb75530f42"
     }
   },
   "update_check": "ok",
