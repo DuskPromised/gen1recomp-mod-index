@@ -20,7 +20,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      VERSION: "1.0.2"
+      VERSION: "1.0.3"
       POKEAPI_COMMIT: "2ecb4eeacd5a1718621fc30f12772e3f60d830b9"
       POKEWILDS_COMMIT: "83133ed40be8b7c7dff5f9058eef16dd8916be6a"
       KAIZO_COMMIT: "df8a0336f625df2a524d6efcb2544c81e50852ae"
@@ -38,7 +38,7 @@ jobs:
           root=Path("mods/red-earth-regional-shiny-art")
           m=json.loads((root/"manifest.json").read_text())
           assert m["id"]=="red_earth_regional_shiny_art"
-          assert m["version"]=="1.0.2"
+          assert m["version"]=="1.0.3"
           main=(root/"main.lua").read_text()
           for needle in [
               '"pokemon.sprite"',
@@ -179,12 +179,21 @@ jobs:
               else:
                   back=fit_card(Image.open(sb),56)
 
-              if front.size != (56,56): front=fit_card(front,56)
-              if back.size != (56,56): back=fit_card(back,56)
-              front.save(out/"assets/battlers"/f"{dex:03d}_front_shiny.png",optimize=True)
-              back.save(out/"assets/battlers"/f"{dex:03d}_back_shiny.png",optimize=True)
+              # IMPORTANT: preserve Kaizo's source canvas exactly. v1.0.2
+              # force-fit Kaizo battlers into 56x56 and visibly shrank them.
+              # Only fallback PokeAPI art is normalized to 56x56.
+              if has_kf:
+                  final_front=front
+              else:
+                  final_front=fit_card(front,56)
+              if has_kb:
+                  final_back=back
+              else:
+                  final_back=fit_card(back,56)
+              final_front.save(out/"assets/battlers"/f"{dex:03d}_front_shiny.png",optimize=True)
+              final_back.save(out/"assets/battlers"/f"{dex:03d}_back_shiny.png",optimize=True)
 
-              icon=fit_card(front,16)
+              icon=fit_card(final_front,16)
               sheet=Image.new("RGBA",(16,32),(0,0,0,0))
               sheet.paste(icon,(0,0),icon)
               sheet.paste(icon,(0,16),icon)
@@ -251,7 +260,7 @@ jobs:
           from pathlib import Path
           src=Path("mods/red-earth-regional-shiny-art")
           generated=Path("/tmp/redart")
-          out=Path("/tmp/red_earth_regional_shiny_art-1.0.2.zip")
+          out=Path("/tmp/red_earth_regional_shiny_art-1.0.3.zip")
           files=[]
           for name in ("manifest.json","main.lua","README.md"):
               files.append((src/name, "red_earth_regional_shiny_art/"+name))
@@ -273,7 +282,7 @@ jobs:
           python - <<'PY'
           import json, shutil
           from pathlib import Path
-          version="1.0.2"
+          version="1.0.3"
           sha=Path("/tmp/art.sha").read_text().strip()
           folder=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art")
           folder.mkdir(parents=True,exist_ok=True)
@@ -304,7 +313,7 @@ jobs:
             "downloadURL":f"https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/{archive}",
             "source_zip":archive,
             "sha256":sha,
-            "summary":"Pose-matched shiny front/back/icon art for every Red Earth regional starter family, plus dedicated Fennekin-line follower walkers.",
+            "summary":"Pose-matched shiny front/back art at original Kaizo canvas size, safe true-color party icons, and dedicated Fennekin-line follower walkers.",
             "source_scope":"Kaizo pose-preserving Red Earth integration using pinned official/community color references",
             "update_check":"off"
           }
