@@ -5,7 +5,7 @@
   "version": "1.2.8",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Split stack with fixed shiny party icons, billboard-centred follower sparkle, and Dramaless back-sprite scale/grounding compatibility.",
+  "summary": "Split stack with fixed shiny icons, centred follower FX, and Dramaless back-sprite scale/grounding bridge.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
