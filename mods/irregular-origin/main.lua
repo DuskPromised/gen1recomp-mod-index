@@ -1,4 +1,4 @@
--- Irregular Origin v1.0.9
+-- Irregular Origin v1.0.10
 -- Custom three-stage starter line for Pokémon Red Earth: The Philosopher's Stones.
 -- Psydren is received before Oak's normal regional companion choice.
 
@@ -230,15 +230,19 @@ return function(mod)
     local art=artFor(ctx)
     if not art then return next(path,ctx) end
     ctx.trueColor=true
-    local result=next(path,ctx)
     local shiny=isVisualShiny(ctx.mon)
-    if ctx.kind=="summary" or ctx.kind=="dex" or ctx.kind=="menu" then
-      return shiny and art.menuShiny or art.menu
+    local chosen
+    if ctx.kind=="summary" or ctx.kind=="dex" or ctx.kind=="menu" or ctx.kind=="box" then
+      chosen=shiny and art.menuShiny or art.menu
+    elseif ctx.side=="back" then
+      chosen=shiny and art.backShiny or art.back
+    else
+      chosen=shiny and art.frontShiny or art.front
     end
-    if ctx.side=="back" then
-      return shiny and art.backShiny or art.back
-    end
-    return shiny and art.frontShiny or art.front
+    -- Do not terminate the hook chain with a PNG path. Passing the authored
+    -- sprite through next() keeps the native battle renderer authoritative for
+    -- scale, grounding, animation/capture and Dramaless presentation.
+    return next(chosen,ctx)
   end,125)
 
   -- Party icons are separate two-frame 16x32 sheets, also with authored
@@ -247,8 +251,8 @@ return function(mod)
     local art=artFor(ctx)
     if not art then return next(path,ctx) end
     ctx.trueColor=true
-    local result=next(path,ctx)
-    return isVisualShiny(ctx.mon) and art.iconShiny or art.icon
+    local chosen=isVisualShiny(ctx.mon) and art.iconShiny or art.icon
+    return next(chosen,ctx)
   end,125)
 
   -- Wilds of Kanto owns follower rendering. When it is installed, wrap only
@@ -387,6 +391,7 @@ return function(mod)
       {"show_text","OAK: Wait.\nBefore you choose..."},
       {"show_text","This one isn't from\nany region I know.\fIt was found where\nrecords end."},
       {"show_text","It is unlike any\nPOKéMON we've ever\nstudied.\fI'll leave the rest\nto you."},
+      {"push_screen","DexEntryMenu",{species=IDS.PSYDREN,forceOwned=true}},
       {"text_sound","Get_Key_Item"},
       {"show_text","{RAM} was entrusted\nto you!",{RAM="PSYDREN"}},
       {"give_pokemon",IDS.PSYDREN,5},
@@ -512,7 +517,7 @@ return function(mod)
     game.stack:push(mod.ui.TextBox.new(game,msg:gsub("{RAM}",name)))
   end)
 
-  mod.exports.version="1.0.9"
+  mod.exports.version="1.0.10"
   mod.exports.species=IDS
   mod.exports.isIrregular=isIrregular
 end
