@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_next",
   "title": "Red Earth NEXT — Gate 0",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Gate 0 foundation test: Allgen Kaizo, PotatoVoxel, Wilds of Kanto, and Performance Monitor only.",
+  "summary": "Gate 0 persistence test: Kaizo + PotatoVoxel + Wilds + Performance Monitor, with renderer/Wilds settings left user-persistent.",
   "shell": "#5A1E24",
   "finish": "holo",
   "label": "label.png",
@@ -30,47 +30,14 @@
       "source": "github",
       "repo": "ShaneMcGovernIE/potato_voxel",
       "version": "1.9.6",
-      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
-      "options": {
-        "renderScale": 75,
-        "water": "off",
-        "aa": 0,
-        "curve": 0,
-        "grid": false,
-        "battles": false,
-        "battleBack": false,
-        "shadows": false,
-        "shadowQuality": 512
-      }
+      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846"
     },
     {
       "id": "overworld_wild_spawns",
       "source": "github",
       "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
       "version": "2.1.9",
-      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd",
-      "options": {
-        "enabled": true,
-        "sprite_style": "followers",
-        "sprite_fade": "solid",
-        "follow_control": "trainer",
-        "trainer_trail": false,
-        "follower_count": 1,
-        "spawn_density": "low",
-        "random_encounters": true,
-        "water_spawns": "classic_encounters",
-        "cave_spawns": "reachable",
-        "town_pokemon": false,
-        "pokemon_grass_render_mode": "immersed",
-        "wild_silhouettes": "off",
-        "overworld_catching": false,
-        "catch_hud_size": 0,
-        "enable_idle": true,
-        "enable_wander": true,
-        "enable_aggressive": true,
-        "enable_hidden": true,
-        "dev_overlay": false
-      }
+      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
     },
     {
       "id": "performance_monitor",
