@@ -1,4 +1,4 @@
--- Red Earth Dramaless Battle Bridge v1.0.0
+-- Red Earth Dramaless Battle Bridge v1.0.1
 -- Narrow compatibility patch for DRAMALESS_SHAPE 2.0.x native battle cards.
 --
 -- Dramaless intentionally captures its 160x144 world cards at 1x. That is
@@ -6,7 +6,7 @@
 -- starter pipeline supplies real player BACK sprites. Gen1Recomp renders back
 -- sprites at 2x by default and keeps their feet grounded. During Dramaless'
 -- synchronous capture this bridge restores ONLY the engine's normal back-pic
--- scale resolver for the Red Earth starter families, while leaving Dramaless'
+-- scale resolver for the authored Irregular starter line, while leaving Dramaless'
 -- camera/card renderer and every other species untouched.
 
 local BattleState = require("src.battle.BattleState")
@@ -14,18 +14,9 @@ local ENGINE_RESOLVE = BattleState.resolveBattleScale
 local unpack = table.unpack or unpack
 
 local TARGET = {
-  PSYDREN=true, VESPERIS=true, SOLIPSDION=true,
-  FENNEKIN=true, BRAIXEN=true, DELPHOX=true,
-
-  BULBASAUR=true, IVYSAUR=true, VENUSAUR=true,
-  CHIKORITA=true, BAYLEEF=true, MEGANIUM=true,
-  TREECKO=true, GROVYLE=true, SCEPTILE=true,
-  TURTWIG=true, GROTLE=true, TORTERRA=true,
-  SNIVY=true, SERVINE=true, SERPERIOR=true,
-  CHESPIN=true, QUILLADIN=true, CHESNAUGHT=true,
-  ROWLET=true, DARTRIX=true, DECIDUEYE=true,
-  GROOKEY=true, THWACKEY=true, RILLABOOM=true,
-  SPRIGATITO=true, FLORAGATO=true, MEOWSCARADA=true,
+  IRR_PSYDREN=true,
+  IRR_VESPERIS=true,
+  IRR_SOLIPSDION=true,
 }
 
 return function(mod)
@@ -128,7 +119,7 @@ return function(mod)
 
   pcall(patchProvider)
 
-  mod.exports.version = "1.0.0"
+  mod.exports.version = "1.0.1"
   mod.exports.targetSpecies = TARGET
   mod.exports.providerPatched = function() return providerPatched end
   mod.exports.captureCount = function() return captures end
