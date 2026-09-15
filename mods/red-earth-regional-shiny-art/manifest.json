@@ -1,7 +1,7 @@
 {
   "id": "red_earth_regional_shiny_art",
   "name": "Red Earth Regional Shiny Art",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -21,5 +21,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Dedicated shiny front/back/summary/icon routing for Red Earth's regional starter lines, plus authored Fennekin-line shiny follower sheets. Does not own shiny state or Irregular-line artwork."
+  "description": "Dedicated shiny front/back/summary/icon routing for Red Earth's regional starter lines, with Fennekin-line shiny follower sheets forced through the full Wilds followers provider chain. Does not own shiny state or Irregular-line artwork."
 }
