@@ -1,7 +1,7 @@
 {
   "id": "red_earth_shiny_fx_bridge",
   "name": "Red Earth Shiny FX Bridge",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -24,5 +24,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Red Earth shiny presentation compatibility layer: subtle battle sparkle/SFX, pose-anchored Wilds follower sparkle, BetterParty shiny marker, and stale trainer-target cleanup."
+  "description": "Red Earth shiny presentation layer: subtle battle sparkle/SFX and exact pose-anchored Wilds follower sparkle with stale trainer-target cleanup; party icon coloring remains owned by Regional Shiny Art."
 }
