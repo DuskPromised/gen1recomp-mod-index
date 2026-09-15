@@ -2,6 +2,11 @@ name: Build Red Earth split-mod recovery cart
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "cart_source/red_earth_philosophers_stones/**"
+      - ".github/workflows/build-red-earth-philosophers-stones.yml"
 
 permissions:
   contents: write
