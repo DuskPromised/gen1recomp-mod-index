@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Pokémon Red Earth: The Philosopher's Stones",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Kaizo Kanto with Irregular starter line, Dramaless voxels, scaling battles, Greater Stones, quests, and QOL.",
+  "summary": "Kaizo Kanto with the unified Irregular starter line, three genuine shiny starters, Philosopher's Stone transmutation, authored followers, rival choice, quests, and QOL.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -141,20 +141,6 @@
       "sha256": "9dee1d07187405625d404c668b4d1c62479a333839a6f71ee9a9ae4cd21db507"
     },
     {
-      "id": "philosopher_stones",
-      "source": "github",
-      "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.1.0",
-      "sha256": "b62e8eb02c983b6aa4c0e28e62b8eb00b6aec502ae3202ea81bbe3be0a5836e0"
-    },
-    {
-      "id": "irregular_origin",
-      "source": "github",
-      "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.9",
-      "sha256": "c49626c2db8367fbe4c3fe6b9ba91f1a359de35940351885d01925a6f2fbaf6a"
-    },
-    {
       "id": "overworld_wild_spawns",
       "source": "github",
       "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
@@ -162,17 +148,11 @@
       "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
     },
     {
-      "id": "red_earth_kaizo_bridge",
+      "id": "red_earth_irregular",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.3",
-      "sha256": "2a771d6e466c59c02fd05ace3920a281d7055861e44f9047a8bc11e24f0414a3",
-      "options": {
-        "dynamic_wilds": true,
-        "dynamic_trainers": true,
-        "second_starter": true,
-        "shiny_starters": true
-      }
+      "version": "1.0.0",
+      "sha256": "dbb12066c7d5276cffb568b53e03188adc4a9ad1bd131193495f63345bd01dcb"
     },
     {
       "id": "quest_system",
@@ -263,10 +243,8 @@
     "RUN_MODE",
     "MULTI_SAVE_SLOTS",
     "leaf_avatar",
-    "philosopher_stones",
-    "irregular_origin",
     "overworld_wild_spawns",
-    "red_earth_kaizo_bridge",
+    "red_earth_irregular",
     "quest_system",
     "ashes_of_cinnabar",
     "echoes_beyond_the_fog",
