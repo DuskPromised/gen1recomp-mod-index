@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T18:55:39.335214+00:00",
+  "generated_at": "2026-09-15T19:46:05.918165+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -8927,7 +8927,7 @@
       "id": "red_earth_shiny_fx_bridge",
       "title": "Red Earth Shiny FX Bridge",
       "author": "Adam M. Aguilera",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "categories": [
         "COMPATIBILITY",
         "VISUAL"
@@ -8959,10 +8959,10 @@
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "github": "DuskPromised/gen1recomp-mod-index",
       "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.1.zip",
-      "source_zip": "red_earth_shiny_fx_bridge-1.0.1.zip",
-      "sha256": "ddbc5ed492a57e176d36b9838b0a4d7513626a845c5b1781638f3b0b5c42ffa7",
-      "summary": "Corrects SHINY_POKEMON voxel follower sparkle targeting so the effect follows the actual shiny Wilds trailer instead of a stale trainer/player-control anchor.",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.2.zip",
+      "source_zip": "red_earth_shiny_fx_bridge-1.0.2.zip",
+      "sha256": "fa949b051c64d7bf1756eba0d5d2ae1715c142faaba8427fdd9c56d6b848efec",
+      "summary": "Subtle Red Earth shiny battle/Follower FX with pose-accurate Wilds anchoring and BetterParty shiny marker; also clears stale trainer/player targets.",
       "source_scope": "DuskPromised original compatibility patch",
       "update_check": "off",
       "optional_integrations": [],
