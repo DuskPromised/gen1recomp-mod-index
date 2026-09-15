@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: Irregular and The Philosopher Stones",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Split stack with guaranteed shinies, full regional shiny art routing, and corrected follower sparkle targeting.",
+  "summary": "Split stack with pose-matched regional shinies, BetterParty shiny icons, and subtle pose-anchored shiny effects.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -49,7 +49,7 @@
         "enabled": true,
         "shiny_rate": "off",
         "recolor": false,
-        "sparkles": true,
+        "sparkles": false,
         "debug_ow": false
       }
     },
@@ -215,15 +215,15 @@
       "id": "red_earth_regional_shiny_art",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.1",
-      "sha256": "0488849afd40321deb12ea242632a8bce56e72a7112fdcc7bb85be813c36fa7e"
+      "version": "1.0.2",
+      "sha256": "47c88e83d2ecc8de0c459e5307db167d58d9e5eaf8d4c5013894bc1270edb969"
     },
     {
       "id": "red_earth_shiny_fx_bridge",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.1",
-      "sha256": "ddbc5ed492a57e176d36b9838b0a4d7513626a845c5b1781638f3b0b5c42ffa7"
+      "version": "1.0.2",
+      "sha256": "fa949b051c64d7bf1756eba0d5d2ae1715c142faaba8427fdd9c56d6b848efec"
     },
     {
       "id": "quest_system",
