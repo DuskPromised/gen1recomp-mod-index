@@ -4,7 +4,7 @@
   "title": "Red Earth NEXT — Gate 0",
   "author": "Adam M. Aguilera",
   "version": "0.0.2",
-  "summary": "Gate 0 persistence test: Kaizo + PotatoVoxel + Wilds + Performance Monitor, with renderer/Wilds settings left user-persistent.",
+  "summary": "Gate 0 persistence test: Kaizo + PotatoVoxel + Wilds + Monitor, with renderer and Wilds settings user-persistent.",
   "base": "red",
   "seal": "sealed+",
   "speeds": [
