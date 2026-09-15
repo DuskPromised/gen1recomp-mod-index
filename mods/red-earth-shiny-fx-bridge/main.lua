@@ -1,4 +1,4 @@
--- Red Earth Shiny FX Bridge v1.0.0
+-- Red Earth Shiny FX Bridge v1.0.1
 -- Keeps the upstream SHINY_POKEMON renderer intact, but corrects the Wilds
 -- follower target state before its voxel sparkle pass runs.
 
@@ -25,35 +25,83 @@ return function(mod)
     return game and (game.overworld or game.world) or candidate
   end
 
+  local function trainerControlMode()
+    local okFind, wilds = pcall(function()
+      return type(mod.find) == "function"
+        and mod:find("overworld_wild_spawns") or nil
+    end)
+    local opts = okFind and wilds and wilds.options
+    if not opts then return false end
+    local ok, value = pcall(function()
+      if type(opts.get) == "function" then
+        return opts:get("follow_control")
+      end
+    end)
+    return ok and tostring(value or ""):lower() == "trainer"
+  end
+
+  local function clearStalePlayerPokemonFlag(player)
+    if not player or not player._pokepcAsPokemon then return false end
+
+    -- In Red Earth's locked Wilds configuration Control=Trainer, the visible
+    -- player is always the trainer and the Pokemon is a separate trailer.
+    -- Therefore _pokepcAsPokemon is unambiguously stale and must never be a
+    -- sparkle target, even when a renderer rebuild leaves sprite.def.id nil.
+    if trainerControlMode() then
+      player._pokepcAsPokemon = nil
+      player._pokepcControlSpecies = nil
+      player._pokepcShiny = nil
+      lastCleared = lastCleared + 1
+      return true
+    end
+
+    local id = player.sprite and player.sprite.def and player.sprite.def.id
+    if id and not PLAYER_MON_IDS[id] then
+      player._pokepcAsPokemon = nil
+      player._pokepcControlSpecies = nil
+      player._pokepcShiny = nil
+      lastCleared = lastCleared + 1
+      return true
+    end
+    return false
+  end
+
+  local function syncFollowerEntity(npc)
+    if not (npc and npc.pokepcMon
+        and (npc.pokepcTrailer or npc.wildsFollower)) then
+      return false
+    end
+    local shiny = isShiny(npc.pokepcMon)
+    npc.pokepcShiny = shiny and true or false
+    if npc.sprite and npc.sprite.def then
+      npc.sprite.def.pokepcShiny = shiny and true or false
+    end
+    if npc.spriteDef then
+      npc.spriteDef.pokepcShiny = shiny and true or false
+    end
+    return true
+  end
+
   local function sanitizeFollowerFxState(candidate)
     local ow = liveOverworld(candidate)
     if not ow then return false end
 
-    local player = ow.player
-    if player and player._pokepcAsPokemon then
-      local id = player.sprite and player.sprite.def and player.sprite.def.id
-      -- Wilds uses _pokepcAsPokemon only when the trainer body has actually
-      -- been replaced by the controlled Pokemon. If the trainer sprite is
-      -- visible again, a stale flag makes SHINY_POKEMON project the sparkle
-      -- burst onto RED instead of the follower behind him.
-      if id and not PLAYER_MON_IDS[id] then
-        player._pokepcAsPokemon = nil
-        player._pokepcControlSpecies = nil
-        player._pokepcShiny = nil
-        lastCleared = lastCleared + 1
+    clearStalePlayerPokemonFlag(ow.player)
+
+    -- Reassert shiny state on the actual Wilds follower entity in BOTH lists.
+    -- Wilds may keep the same trailer in pokepcTrailers and entities, while
+    -- SHINY_POKEMON's voxel target collector reads ow.entities.
+    local seen = {}
+    for _, npc in ipairs(ow.pokepcTrailers or {}) do
+      if npc and not seen[npc] then
+        seen[npc] = true
+        syncFollowerEntity(npc)
       end
     end
-
-    -- Reassert the individual shiny state on the actual Wilds trailers.
-    -- SHINY_POKEMON's projected FX pass keys from pokepcTrailer +
-    -- pokepcShiny, so this makes the follower the authoritative target.
-    for _, npc in ipairs(ow.pokepcTrailers or {}) do
-      if npc and npc.pokepcMon then
-        local shiny = isShiny(npc.pokepcMon)
-        npc.pokepcShiny = shiny and true or false
-        if npc.sprite and npc.sprite.def then
-          npc.sprite.def.pokepcShiny = shiny and true or false
-        end
+    for _, npc in ipairs(ow.entities or {}) do
+      if npc and not seen[npc] then
+        seen[npc] = true
+        syncFollowerEntity(npc)
       end
     end
     return true
@@ -97,7 +145,7 @@ return function(mod)
   pcall(sanitizeFollowerFxState, mod.game and mod.game.overworld)
   pcall(installDrawGuard)
 
-  mod.exports.version = "1.0.0"
+  mod.exports.version = "1.0.1"
   mod.exports.sanitizeFollowerFxState = sanitizeFollowerFxState
   mod.exports.clearedStalePlayerFlags = function() return lastCleared end
 end
