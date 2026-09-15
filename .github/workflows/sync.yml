@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
   actions: write
+
+concurrency:
+  group: genrecomp-index-sync
+  cancel-in-progress: false
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -41,16 +45,29 @@ jobs:
           print("validated",len(ids),"entries")
           PY
       - name: Commit verified changes
+        env:
+          SOURCE_REPO: FAFF0x/gen1recomp
+          GENERATION: gen1
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "genrecomp-index-bot"
           git config user.email "actions@users.noreply.github.com"
+
+          # A cart/mod publisher may advance main while this workflow is
+          # generating the feed. Rebase conflicts in generated JSON are not
+          # useful; if main moved, regenerate from the new tip and then commit.
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            git reset --hard origin/main
+            python tools/sync_index.py
+          fi
+
           git add site/data/index.json site/data/provenance.json VALIDATION.md
           if git diff --cached --quiet; then
             echo "Index already current."
           else
             git commit -m "Sync FAFF0x Gen 1 mod index"
-            git pull --rebase origin main
-            git push
+            git push origin HEAD:main
           fi
 
       - name: Deploy refreshed Pages
