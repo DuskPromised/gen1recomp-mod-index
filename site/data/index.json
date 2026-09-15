@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T22:00:42.640162+00:00",
+  "generated_at": "2026-09-15T22:54:50.463882+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12551,6 +12551,108 @@
       },
       "update_check": "ok",
       "thumbnail": "data/carts/DuskPromised@red_earth/thumbnail.jpg"
+    },
+    {
+      "folder": "DuskPromised@red_earth_next",
+      "id": "red_earth_next",
+      "title": "Red Earth NEXT — Gate 0",
+      "author": "Adam M. Aguilera",
+      "version": "0.0.1",
+      "summary": "Gate 0 foundation test: Allgen Kaizo, PotatoVoxel, Wilds of Kanto, and Performance Monitor only.",
+      "base": "red",
+      "seal": "sealed+",
+      "speeds": [
+        1
+      ],
+      "shell": "#5A1E24",
+      "finish": "holo",
+      "tags": [
+        "red earth",
+        "gate 0",
+        "kaizo",
+        "voxel",
+        "wilds",
+        "performance",
+        "development",
+        "foundation"
+      ],
+      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+      "automatic_version_check": false,
+      "game_version": ">=0.1.51 <2.0.0",
+      "mods": [
+        {
+          "id": "gen1_kaizo",
+          "source": "github",
+          "repo": "AyeBathingApe/gen1recomp-allgen-kaizo",
+          "version": "0.8.3",
+          "sha256": "99fff33b12764496e185bc5e0c5397f0c6670f439830e54e866fd8fa82813ad2",
+          "options": {
+            "battle": "static"
+          }
+        },
+        {
+          "id": "potato_voxel",
+          "source": "github",
+          "repo": "ShaneMcGovernIE/potato_voxel",
+          "version": "1.9.6",
+          "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
+          "options": {
+            "renderScale": 75,
+            "water": "off",
+            "aa": 0,
+            "curve": 0,
+            "grid": false,
+            "battles": false,
+            "battleBack": false,
+            "shadows": false,
+            "shadowQuality": 512
+          }
+        },
+        {
+          "id": "overworld_wild_spawns",
+          "source": "github",
+          "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
+          "version": "2.1.9",
+          "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd",
+          "options": {
+            "enabled": true,
+            "sprite_style": "followers",
+            "sprite_fade": "solid",
+            "follow_control": "trainer",
+            "trainer_trail": false,
+            "follower_count": 1,
+            "spawn_density": "low",
+            "random_encounters": true,
+            "water_spawns": "classic_encounters",
+            "cave_spawns": "reachable",
+            "town_pokemon": false,
+            "pokemon_grass_render_mode": "immersed",
+            "wild_silhouettes": "off",
+            "overworld_catching": false,
+            "catch_hud_size": 0,
+            "enable_idle": true,
+            "enable_wander": true,
+            "enable_aggressive": true,
+            "enable_hidden": true,
+            "dev_overlay": false
+          }
+        },
+        {
+          "id": "performance_monitor",
+          "source": "github",
+          "repo": "notquiteog/performance_monitor",
+          "version": "1.4.1",
+          "sha256": "34688ca51894ab68e4f6dad51e5ce3a0bc8c17913a45eb3d0ddb318560412379"
+        }
+      ],
+      "load_order": [
+        "gen1_kaizo",
+        "potato_voxel",
+        "overworld_wild_spawns",
+        "performance_monitor"
+      ],
+      "update_check": "pending",
+      "thumbnail": "data/carts/DuskPromised@red_earth_next/thumbnail.jpg"
     },
     {
       "folder": "DuskPromised@red_earth_philosophers_stones",
