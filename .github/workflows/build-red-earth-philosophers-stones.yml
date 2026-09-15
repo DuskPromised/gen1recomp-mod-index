@@ -33,7 +33,7 @@ jobs:
 
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
           assert cart["title"]=="Red Earth: Irregular and The Philosopher Stones"
-          assert cart["version"]=="1.1.0"
+          assert cart["version"]=="1.1.1"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
           assert len(ids)==len(set(ids))
@@ -57,16 +57,18 @@ jobs:
           assert w.get("trainer_trail") is False
 
           irr=next(m for m in cart["mods"] if m["id"]=="red_earth_irregular")
-          assert irr["version"]=="1.0.0"
-          expected="caaf84cf9ed9b5b49bd77cabf2a02b697758b76eb9ee4251bb7d3feac446e114"
+          assert irr["version"]=="1.0.1"
+          expected="b32d13e91c6976a73d42ecbf829cf54810ca1858629b756eb572d5f6497ee0aa"
           assert irr["sha256"]==expected
+          assert irr.get("options",{}).get("dynamic_wilds") is True
+          assert irr.get("options",{}).get("dynamic_trainers") is True
 
           meta=json.loads(Path("custom_mods/red_earth_irregular.index.json").read_text())
           assert meta["title"]=="Red Earth: The Irregular and The Philosopher Stones"
-          assert meta["version"]=="1.0.0"
+          assert meta["version"]=="1.0.1"
           assert meta["sha256"]==expected
 
-          archive=Path("site/data/mods/DuskPromised@red_earth_irregular/red_earth_irregular-1.0.0.zip")
+          archive=Path("site/data/mods/DuskPromised@red_earth_irregular/red_earth_irregular-1.0.1.zip")
           assert archive.is_file(), "unified mod archive has not been published yet"
           assert hashlib.sha256(archive.read_bytes()).hexdigest()==expected
           print("UNIFIED CART AUDIT PASS:",len(ids),"mods")
