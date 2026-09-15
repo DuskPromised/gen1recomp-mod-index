@@ -1,7 +1,7 @@
 {
   "id": "red_earth_kaizo_bridge",
   "name": "Red Earth Kaizo Bridge",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -24,5 +24,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Compatibility bridge for Red Earth Kaizo: regional rival continuity, correct companion/final-ball Oak names, clean custom-species display names, shiny Oak gifts, optional choose-a-new-region final starter ball, and upward-only dynamic trainer/wild scaling."
+  "description": "Compatibility bridge for the v1.0.10 Red Earth split foundation: regional rival continuity, correct Oak names, genuine shiny Oak gifts, Pokédex preview for the optional final-ball starter, and upward-only dynamic trainer/wild scaling."
 }
