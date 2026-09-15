@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T23:38:42.723435+00:00",
+  "generated_at": "2026-09-15T23:39:04.465805+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12202,7 +12202,7 @@
       "title": "Red Earth NEXT — Gate 0",
       "author": "Adam M. Aguilera",
       "version": "0.0.2",
-      "summary": "Gate 0 persistence test: Kaizo + PotatoVoxel + Wilds + Performance Monitor, with renderer/Wilds settings left user-persistent.",
+      "summary": "Gate 0 persistence test: Kaizo + PotatoVoxel + Wilds + Monitor, with renderer and Wilds settings user-persistent.",
       "base": "red",
       "seal": "sealed+",
       "speeds": [
