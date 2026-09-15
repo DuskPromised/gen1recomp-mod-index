@@ -1,7 +1,7 @@
 {
   "id": "red_earth_regional_shiny_art",
   "name": "Red Earth Regional Shiny Art",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -21,5 +21,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Dedicated shiny front/back/summary/icon routing for Red Earth's regional starter lines, with Fennekin-line shiny follower sheets forced through the full Wilds followers provider chain. Does not own shiny state or Irregular-line artwork."
+  "description": "Dedicated shiny art layer for Red Earth regional starters: pose-matched Kaizo battle sprites, shiny party icons, and Fennekin-line follower walkers. Shiny state remains owned by Red Earth Shiny Bridge."
 }
