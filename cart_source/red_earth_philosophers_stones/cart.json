@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: Irregular and The Philosopher Stones",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Known-good split stack plus separate Irregular Upgrade and Shiny Bridge layers.",
+  "summary": "Known-good split stack plus Irregular Upgrade, guaranteed shiny state, and dedicated shiny FX/indicator support.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -38,6 +38,20 @@
       "repo": "distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals",
       "version": "2.0.3",
       "sha256": "3d2874917f03a42cbf96d0d7e1b5c19bde09a5405fe12559ac241af017155689"
+    },
+    {
+      "id": "SHINY_POKEMON",
+      "source": "github",
+      "repo": "masterwebx/gen1recomp-shiny-pokemon",
+      "version": "1.0.1",
+      "sha256": "90d2be6fcec1383bb9beec5df9038308b68fa903eb179840b344c7b6e48ccb59",
+      "options": {
+        "enabled": true,
+        "shiny_rate": "off",
+        "recolor": false,
+        "sparkles": true,
+        "debug_ow": false
+      }
     },
     {
       "id": "gen1-better-menus",
@@ -272,6 +286,7 @@
     "gen1_kaizo",
     "DRAMALESS_SHAPE",
     "crystal_animated_sprites_with_shiny_visuals",
+    "SHINY_POKEMON",
     "gen1-better-menus",
     "new_item_icons",
     "advanced_box_system",
