@@ -3,7 +3,7 @@
   "id": "red_earth_regional_shiny_art",
   "title": "Red Earth Regional Shiny Art",
   "author": "Adam M. Aguilera",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "categories": [
     "VISUAL",
     "COMPATIBILITY"
@@ -21,22 +21,23 @@
   "profile": "content",
   "game_version": ">=0.2.21 <2.0.0",
   "dependencies": [
+    "gen1_kaizo@>=0.8.3 <1.0.0"
+  ],
+  "optional_dependencies": [
+    "overworld_wild_spawns@>=2.1.9 <3.0.0",
     "red_earth_shiny_bridge@>=1.0.0 <2.0.0",
-    "gen1_kaizo@>=0.8.3 <1.0.0",
-    "overworld_wild_spawns@>=2.1.9 <3.0.0"
+    "red_earth_irregular@>=1.0.1 <2.0.0"
   ],
-  "conflicts": [
-    "red_earth_irregular"
-  ],
+  "conflicts": [],
   "affects_link": true,
   "experimental": false,
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "github": "DuskPromised/gen1recomp-mod-index",
   "license": "MIT",
-  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.4.zip",
-  "source_zip": "red_earth_regional_shiny_art-1.0.4.zip",
-  "sha256": "2c4f3f9b71088b5097efc14a806dcd55b341c946e88a48bf3b790d0b759d7b7e",
-  "summary": "Pose-matched regional shiny art with canonical 56x56 Treecko-line shiny cards, safe true-color party icons, and Fennekin-line walkers.",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.5.zip",
+  "source_zip": "red_earth_regional_shiny_art-1.0.5.zip",
+  "sha256": "b1f591cb3643173bb39e45046a8b7d423d15982bb421d9add3f1a50494aa434b",
+  "summary": "Regional shiny art routed through the native sprite chain, with canonical Treecko-line shiny cards, party icons, and Fennekin-line walkers.",
   "source_scope": "Kaizo pose-preserving Red Earth integration using pinned official/community color references",
   "update_check": "off"
 }
