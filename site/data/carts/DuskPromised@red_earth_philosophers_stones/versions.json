@@ -2,8 +2,15 @@
   "schema_version": 1,
   "cart_id": "red_earth_philosophers_stones",
   "title": "Red Earth: The Irregular and The Philosopher Stones",
-  "latest": "1.2.2",
+  "latest": "1.2.3",
   "versions": [
+    {
+      "version": "1.2.3",
+      "name": "red_earth_philosophers_stones-1.2.3.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.3.g1rcart",
+      "size": 227459,
+      "sha256": "ea3932a0133a788183c457906c1fc78dff4ce1656ffebc44bdd53aa79455a093"
+    },
     {
       "version": "1.2.2",
       "name": "red_earth_philosophers_stones-1.2.2.g1rcart",
