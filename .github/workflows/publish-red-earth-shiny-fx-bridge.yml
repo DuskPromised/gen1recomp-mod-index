@@ -20,7 +20,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      VERSION: "1.0.1"
+      VERSION: "1.0.2"
     steps:
       - uses: actions/checkout@v4
 
@@ -32,7 +32,7 @@ jobs:
           root=Path("mods/red-earth-shiny-fx-bridge")
           m=json.loads((root/"manifest.json").read_text())
           assert m["id"]=="red_earth_shiny_fx_bridge"
-          assert m["version"]=="1.0.1"
+          assert m["version"]=="1.0.2"
           main=(root/"main.lua").read_text()
           for needle in [
               "_pokepcAsPokemon",
@@ -42,6 +42,10 @@ jobs:
               "Stats.isShiny",
               "trainerControlMode",
               "ow.entities",
+              "npc.pose",
+              "drawSubtleBurst",
+              "PartyMenu.drawIcon",
+              '"battle.overlay"',
           ]:
               assert needle in main, needle
           for forbidden in ["pokemon.sprite", "pokemon.icon", "give_pokemon"]:
@@ -55,7 +59,7 @@ jobs:
           import hashlib, zipfile
           from pathlib import Path
           src=Path("mods/red-earth-shiny-fx-bridge")
-          out=Path("/tmp/red_earth_shiny_fx_bridge-1.0.1.zip")
+          out=Path("/tmp/red_earth_shiny_fx_bridge-1.0.2.zip")
           with zipfile.ZipFile(out,"w",zipfile.ZIP_DEFLATED) as z:
               for name in ("manifest.json","main.lua","README.md"):
                   info=zipfile.ZipInfo("red_earth_shiny_fx_bridge/"+name,date_time=(1980,1,1,0,0,0))
@@ -71,7 +75,7 @@ jobs:
           python - <<'PY'
           import json, shutil
           from pathlib import Path
-          version="1.0.1"
+          version="1.0.2"
           sha=Path("/tmp/fx.sha").read_text().strip()
           folder=Path("site/data/mods/DuskPromised@red_earth_shiny_fx_bridge")
           folder.mkdir(parents=True,exist_ok=True)
@@ -103,7 +107,7 @@ jobs:
             "downloadURL":f"https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_shiny_fx_bridge/{archive}",
             "source_zip":archive,
             "sha256":sha,
-            "summary":"Corrects SHINY_POKEMON voxel follower sparkle targeting so the effect follows the actual shiny Wilds trailer instead of a stale trainer/player-control anchor.",
+            "summary":"Subtle Red Earth shiny battle/Follower FX with pose-accurate Wilds anchoring and BetterParty shiny marker; also clears stale trainer/player targets.",
             "source_scope":"DuskPromised original compatibility patch",
             "update_check":"off"
           }
