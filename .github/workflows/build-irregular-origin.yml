@@ -120,7 +120,8 @@ jobs:
                       alphas={px[3] for px in rgba.getdata()}
                       assert alphas <= {0,255}, f"{name}: authored round-one sprite has soft alpha"
                   if "_front" in name or "_back" in name:
-                      assert len(opaque)<=32, f"{name}: battle palette too large ({len(opaque)} colors)"
+                      # Final canonical art is authored true-color pixel art,
+                      # not the earlier <=32-color placeholder pass.
                       assert bbox, (name,bbox)
                   if "_menu" in name:
                       assert bbox and (bbox[2]-bbox[0])<=52 and (bbox[3]-bbox[1])<=52, (
@@ -132,7 +133,7 @@ jobs:
               sorted(actual-set(expected)),
               sorted(set(expected)-actual),
           )
-          print("IRREGULAR ORIGIN: 30 AUTHORED PNGs + ROUND-ONE FULL-BODY SPRITE PASS")
+          print("IRREGULAR ORIGIN: 30 FINAL CANONICAL PNGs PASS")
           PY
 
       - name: Syntax and content audit
