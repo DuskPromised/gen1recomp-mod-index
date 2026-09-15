@@ -1,4 +1,4 @@
--- Red Earth Kaizo Bridge v1.0.3
+-- Red Earth Kaizo Bridge v1.0.4
 -- Compatibility layer for Pokémon Red Earth: The Philosopher's Stones.
 -- Keeps Allgen Kaizo authoritative for species, encounters, trainer teams and AI,
 -- then adds: upward-only dynamic difficulty, a regional second starter, and
@@ -414,6 +414,7 @@ return function(mod)
       if mod.save then mod.save:set("last_starter_region",r.label) end
       ow.runner:run({
         { "show_text", "The last POKéMON\nis {RAM}!", { RAM=species } },
+        { "push_screen", "DexEntryMenu", { species=species, forceOwned=true } },
         { "ask", "Take it with you?" },
         { "jump_if_false", "end" },
         { "text_sound", "Get_Key_Item" },
@@ -446,6 +447,6 @@ return function(mod)
     return
   end)
 
-  mod.exports.version = "1.0.3"
+  mod.exports.version = "1.0.4"
   mod.exports.regions = REGIONS
 end
