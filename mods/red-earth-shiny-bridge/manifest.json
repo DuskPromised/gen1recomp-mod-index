@@ -1,0 +1,29 @@
+{
+  "id": "red_earth_shiny_bridge",
+  "name": "Red Earth Shiny Bridge",
+  "version": "1.0.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GAMEPLAY",
+  "game_version": ">=0.2.21 <2.0.0",
+  "priority": 240,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "irregular_origin@>=1.0.9 <2.0.0",
+    "red_earth_kaizo_bridge@>=1.0.3 <2.0.0",
+    "crystal_animated_sprites_with_shiny_visuals@>=2.0.3 <3.0.0",
+    "overworld_wild_spawns@>=2.1.9 <3.0.0"
+  ],
+  "optional_dependencies": [
+    "red_earth_irregular_upgrade@>=1.0.0 <2.0.0"
+  ],
+  "conflicts": [
+    "red_earth_irregular"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Non-rendering shiny-state bridge for Red Earth. Guarantees Psydren, the Oak companion, and the optional regional starter are genuine Gen-2 DV shinies, preserves shiny identity through evolution/save/load, and leaves battle/follower presentation to Crystal Animated Sprites and Wilds."
+}
