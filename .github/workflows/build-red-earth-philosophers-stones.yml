@@ -23,7 +23,7 @@ jobs:
           import json
           from pathlib import Path
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          assert cart["version"]=="1.2.2"
+          assert cart["version"]=="1.2.3"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
           assert len(ids)==len(set(ids))
@@ -31,6 +31,7 @@ jobs:
             "gen1_kaizo":"0.8.3",
             "DRAMALESS_SHAPE":"2.0.4",
             "crystal_animated_sprites_with_shiny_visuals":"2.0.3",
+            "SHINY_POKEMON":"1.0.1",
             "leaf_avatar":"2.0.0",
             "philosopher_stones":"1.1.0",
             "irregular_origin":"1.0.9",
@@ -44,6 +45,14 @@ jobs:
               assert m is not None, mid
               assert m["version"]==version,(mid,m["version"],version)
           assert "red_earth_irregular" not in ids
+          shinyfx=next(m for m in cart["mods"] if m["id"]=="SHINY_POKEMON")
+          assert shinyfx["sha256"]=="90d2be6fcec1383bb9beec5df9038308b68fa903eb179840b344c7b6e48ccb59"
+          so=shinyfx.get("options",{})
+          assert so.get("enabled") is True
+          assert so.get("shiny_rate")=="off"
+          assert so.get("recolor") is False
+          assert so.get("sparkles") is True
+          assert so.get("debug_ow") is False
           assert ids.index("red_earth_shiny_bridge") == ids.index("red_earth_kaizo_bridge") + 1
           assert ids.index("red_earth_irregular_upgrade") == ids.index("irregular_origin") + 1
           patch=next(m for m in cart["mods"] if m["id"]=="red_earth_irregular_upgrade")
@@ -78,7 +87,7 @@ jobs:
           assert b.get("dynamic_trainers") is True
           assert b.get("second_starter") is True
           assert b.get("shiny_starters") is True
-          print("SPLIT STACK + IRREGULAR + SHINY BRIDGE AUDIT PASS:",len(ids),"mods")
+          print("SPLIT STACK + IRREGULAR + SHINY STATE + FX AUDIT PASS:",len(ids),"mods")
           PY
 
       - name: Fetch official cartkit
@@ -109,7 +118,7 @@ jobs:
             "id":source["id"],
             "title":public_title,
             "author":source["author"],
-            "summary":"Known-good split stack plus separate Irregular Upgrade and Shiny Bridge layers.",
+            "summary":"Known-good split stack plus Irregular Upgrade, guaranteed shiny state, and dedicated shiny FX/indicator support.",
             "version":version,
             "base":"red",
             "seal":"sealed+",
