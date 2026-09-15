@@ -62,6 +62,15 @@ Awakened, Stone-bound Solipsdion keeps Psychic as its primary type while its sec
 
 Active battle weather overrides map attunement. **Seraph's Verdict** follows the current secondary type.
 
+## Kaizo dynamic difficulty
+
+The former Red Earth Kaizo Bridge scaling is integrated directly into the unified mod and is **enabled on first launch**.
+
+- **Dynamic Wilds: ON** — wild encounters target the strongest healthy party Pokémon at **-2 to +1**, but authored encounters that are already stronger are never lowered.
+- **Dynamic Trainers: ON** — Kaizo trainer levels target the strongest healthy party Pokémon at **+0 to +2**, while Allgen Kaizo keeps control of team composition, competitive movesets, boss design and AI.
+- The scripted level-5 Oak rival tutorial battle stays at its authored level. Scaling begins immediately afterward.
+- Both switches remain editable in Mod Options.
+
 ## Follower and voxel defaults
 
 Red Earth ships with these editable defaults:
