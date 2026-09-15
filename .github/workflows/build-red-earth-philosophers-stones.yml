@@ -28,7 +28,7 @@ jobs:
           import json
           from pathlib import Path
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          assert cart["version"]=="1.2.8"
+          assert cart["version"]=="1.2.9"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
           assert len(ids)==len(set(ids))
@@ -44,9 +44,9 @@ jobs:
             "overworld_wild_spawns":"2.1.9",
             "red_earth_kaizo_bridge":"1.0.3",
             "red_earth_shiny_bridge":"1.0.0",
-            "red_earth_regional_shiny_art":"1.0.3",
-            "red_earth_shiny_fx_bridge":"1.0.4",
-            "red_earth_dramaless_battle_bridge":"1.0.0",
+            "red_earth_regional_shiny_art":"1.0.4",
+            "red_earth_shiny_fx_bridge":"1.0.5",
+            "red_earth_dramaless_battle_bridge":"1.0.1",
           }
           for mid,version in required.items():
               m=next((x for x in cart["mods"] if x["id"]==mid),None)
@@ -65,25 +65,33 @@ jobs:
           assert ids.index("red_earth_regional_shiny_art") == ids.index("red_earth_shiny_bridge") + 1
           assert ids.index("red_earth_shiny_fx_bridge") == ids.index("red_earth_regional_shiny_art") + 1
           regional=next(m for m in cart["mods"] if m["id"]=="red_earth_regional_shiny_art")
-          regional_sha="4b91dab55200ff8fae7d85de96e872c0ac7094817ba24474b039a86a88a45fcd"
+          regional_sha="8fee860181bbefae80970764395de10c599e49f001b1eb62cec05d8bf09359cc"
           assert regional["sha256"]==regional_sha
-          regional_archive=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.3.zip")
+          regional_archive=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.4.zip")
           assert regional_archive.is_file(), "Regional Shiny Art archive is not published"
           import hashlib
           assert hashlib.sha256(regional_archive.read_bytes()).hexdigest()==regional_sha
           fxbridge=next(m for m in cart["mods"] if m["id"]=="red_earth_shiny_fx_bridge")
-          fx_sha="aee714548970d204e938b3cd439c25f0a23acda07d6c1ad5da6807b32bc142ca"
+          fx_sha="37974a6183e6cb31b26da5876185e03506d92762b3c9616399bb34f7e81f7544"
           assert fxbridge["sha256"]==fx_sha
-          fx_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.4.zip")
+          fx_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.5.zip")
           assert fx_archive.is_file(), "Shiny FX Bridge archive is not published"
           assert hashlib.sha256(fx_archive.read_bytes()).hexdigest()==fx_sha
           assert ids.index("red_earth_dramaless_battle_bridge") == ids.index("red_earth_shiny_fx_bridge") + 1
           dbridge=next(m for m in cart["mods"] if m["id"]=="red_earth_dramaless_battle_bridge")
-          dbridge_sha="9f6b4d48b3ba6672a6b97aa21a17afb5b72a738b5f09118478e056f8c1cedc0d"
+          dbridge_sha="bb192df74db1b4127a57f2b42ccdf6619a9a7f30f595bc3ea3e2daa6a65a7148"
           assert dbridge["sha256"]==dbridge_sha
-          dbridge_archive=Path("site/data/mods/DuskPromised@red_earth_dramaless_battle_bridge/red_earth_dramaless_battle_bridge-1.0.0.zip")
+          dbridge_archive=Path("site/data/mods/DuskPromised@red_earth_dramaless_battle_bridge/red_earth_dramaless_battle_bridge-1.0.1.zip")
           assert dbridge_archive.is_file(), "Dramaless Battle Bridge archive is not published"
           assert hashlib.sha256(dbridge_archive.read_bytes()).hexdigest()==dbridge_sha
+          dbridge_source=Path("mods/red-earth-dramaless-battle-bridge/main.lua").read_text()
+          assert "IRR_PSYDREN=true" in dbridge_source
+          assert "FENNEKIN=true" not in dbridge_source
+          assert "TREECKO=true" not in dbridge_source
+          fx_source=Path("mods/red-earth-shiny-fx-bridge/main.lua").read_text()
+          assert "return px + 8, py + 16, px, py" in fx_source
+          regional_wf=Path(".github/workflows/publish-red-earth-regional-shiny-art.yml").read_text()
+          assert "treecko_line = dex in (252,253,254)" in regional_wf
 
           assert ids.index("red_earth_irregular_upgrade") == ids.index("irregular_origin") + 1
           patch=next(m for m in cart["mods"] if m["id"]=="red_earth_irregular_upgrade")
@@ -118,7 +126,7 @@ jobs:
           assert b.get("dynamic_trainers") is True
           assert b.get("second_starter") is True
           assert b.get("shiny_starters") is True
-          print("SPLIT STACK + SAFE PARTY ICONS + BILLBOARD-CENTRED FOLLOWER FX + DRAMALESS BACK SCALE AUDIT PASS:",len(ids),"mods")
+          print("SPLIT STACK + TREECKO SHINY + WILDS-ANCHORED FOLLOWER FX + CUSTOM-ONLY BATTLE SCALE AUDIT PASS:",len(ids),"mods")
           PY
 
       - name: Fetch official cartkit
@@ -149,7 +157,7 @@ jobs:
             "id":source["id"],
             "title":public_title,
             "author":source["author"],
-            "summary":"Known-good split stack plus safe shiny party icons, billboard-centred follower sparkle, and Dramaless back-sprite scale/grounding compatibility.",
+            "summary":"Red Earth split stack with regional battle scale fix, canonical Treecko shiny art, and Wilds-anchored follower sparkle.",
             "version":version,
             "base":"red",
             "seal":"sealed+",
