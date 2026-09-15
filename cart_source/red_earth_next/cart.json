@@ -1,30 +1,19 @@
 {
+  "schema": 1,
   "id": "red_earth_next",
   "title": "Red Earth NEXT — Gate 0",
-  "author": "Adam M. Aguilera",
   "version": "0.0.1",
+  "author": "Adam M. Aguilera",
+  "repo": "DuskPromised/gen1recomp-mod-index",
   "summary": "Gate 0 foundation test: Allgen Kaizo, PotatoVoxel, Wilds of Kanto, and Performance Monitor only.",
+  "shell": "#5A1E24",
+  "finish": "holo",
+  "label": "label.png",
   "base": "red",
   "seal": "sealed+",
   "speeds": [
     1
   ],
-  "shell": "#5A1E24",
-  "finish": "holo",
-  "tags": [
-    "red earth",
-    "gate 0",
-    "kaizo",
-    "voxel",
-    "wilds",
-    "performance",
-    "development",
-    "foundation"
-  ],
-  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
-  "github": "DuskPromised/gen1recomp-mod-index",
-  "automatic_version_check": false,
-  "game_version": ">=0.1.51 <2.0.0",
   "mods": [
     {
       "id": "gen1_kaizo",
