@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: Irregular and The Philosopher Stones",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Split stack with pose-matched regional shinies, BetterParty shiny icons, and subtle pose-anchored shiny effects.",
+  "summary": "Split stack with original-size pose-matched regional shinies, safe shiny party icons, and exact pose-anchored subtle shiny effects.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -215,15 +215,15 @@
       "id": "red_earth_regional_shiny_art",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.2",
-      "sha256": "47c88e83d2ecc8de0c459e5307db167d58d9e5eaf8d4c5013894bc1270edb969"
+      "version": "1.0.3",
+      "sha256": "4b91dab55200ff8fae7d85de96e872c0ac7094817ba24474b039a86a88a45fcd"
     },
     {
       "id": "red_earth_shiny_fx_bridge",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.2",
-      "sha256": "fa949b051c64d7bf1756eba0d5d2ae1715c142faaba8427fdd9c56d6b848efec"
+      "version": "1.0.3",
+      "sha256": "563c9aaaeffa3dcf17d3ceae2289810813352ed3e6c459ef771e877eabe11316"
     },
     {
       "id": "quest_system",
