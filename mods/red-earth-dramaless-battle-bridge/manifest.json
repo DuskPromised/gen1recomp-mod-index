@@ -1,0 +1,27 @@
+{
+  "id": "red_earth_dramaless_battle_bridge",
+  "name": "Red Earth Dramaless Battle Bridge",
+  "version": "1.0.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "COMPATIBILITY",
+  "game_version": ">=0.2.21 <2.0.0",
+  "priority": 270,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "DRAMALESS_SHAPE@>=2.0.4 <3.0.0"
+  ],
+  "optional_dependencies": [
+    "red_earth_regional_shiny_art@>=1.0.3 <2.0.0",
+    "irregular_origin@>=1.0.9 <2.0.0"
+  ],
+  "conflicts": [
+    "red_earth_irregular"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Compatibility bridge that restores Gen1Recomp player-back battle scaling for Red Earth starter families inside Dramaless voxel-card capture without modifying Dramaless itself."
+}
