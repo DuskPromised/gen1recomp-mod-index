@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: Irregular and The Philosopher Stones",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Split stack with safe shiny party icons, original regional sprite scale, and exact follower-anchored shiny effects.",
+  "summary": "Split stack with fixed shiny party icons, billboard-centred follower sparkle, and Dramaless back-sprite scale/grounding compatibility.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -222,8 +222,15 @@
       "id": "red_earth_shiny_fx_bridge",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.3",
-      "sha256": "563c9aaaeffa3dcf17d3ceae2289810813352ed3e6c459ef771e877eabe11316"
+      "version": "1.0.4",
+      "sha256": "aee714548970d204e938b3cd439c25f0a23acda07d6c1ad5da6807b32bc142ca"
+    },
+    {
+      "id": "red_earth_dramaless_battle_bridge",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "1.0.0",
+      "sha256": "9f6b4d48b3ba6672a6b97aa21a17afb5b72a738b5f09118478e056f8c1cedc0d"
     },
     {
       "id": "quest_system",
@@ -323,6 +330,7 @@
     "red_earth_shiny_bridge",
     "red_earth_regional_shiny_art",
     "red_earth_shiny_fx_bridge",
+    "red_earth_dramaless_battle_bridge",
     "quest_system",
     "ashes_of_cinnabar",
     "echoes_beyond_the_fog",
