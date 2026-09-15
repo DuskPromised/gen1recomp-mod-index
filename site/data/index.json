@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T22:54:50.463882+00:00",
+  "generated_at": "2026-09-15T22:55:32.711479+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12651,8 +12651,19 @@
         "overworld_wild_spawns",
         "performance_monitor"
       ],
-      "update_check": "pending",
-      "thumbnail": "data/carts/DuskPromised@red_earth_next/thumbnail.jpg"
+      "update_check": "ok",
+      "thumbnail": "data/carts/DuskPromised@red_earth_next/thumbnail.jpg",
+      "latest": {
+        "version": "0.0.1",
+        "name": "0.0.1",
+        "prerelease": true,
+        "zip": {
+          "name": "red_earth_next-0.0.1.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.1.g1rcart",
+          "size": 219498,
+          "sha256": "745d889278000b1386532c8bce5c82609c9761526a3801c8583115bd334faaa0"
+        }
+      }
     },
     {
       "folder": "DuskPromised@red_earth_philosophers_stones",
