@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: Irregular and The Philosopher Stones",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Split stack with fixed shiny icons, centred follower FX, and Dramaless back-sprite scale/grounding bridge.",
+  "summary": "Fixes regional battle sprite scale, Treecko shiny art, and shiny follower anchoring.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -215,22 +215,22 @@
       "id": "red_earth_regional_shiny_art",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.3",
-      "sha256": "4b91dab55200ff8fae7d85de96e872c0ac7094817ba24474b039a86a88a45fcd"
+      "version": "1.0.4",
+      "sha256": "8fee860181bbefae80970764395de10c599e49f001b1eb62cec05d8bf09359cc"
     },
     {
       "id": "red_earth_shiny_fx_bridge",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.4",
-      "sha256": "aee714548970d204e938b3cd439c25f0a23acda07d6c1ad5da6807b32bc142ca"
+      "version": "1.0.5",
+      "sha256": "37974a6183e6cb31b26da5876185e03506d92762b3c9616399bb34f7e81f7544"
     },
     {
       "id": "red_earth_dramaless_battle_bridge",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.0",
-      "sha256": "9f6b4d48b3ba6672a6b97aa21a17afb5b72a738b5f09118478e056f8c1cedc0d"
+      "version": "1.0.1",
+      "sha256": "bb192df74db1b4127a57f2b42ccdf6619a9a7f30f595bc3ea3e2daa6a65a7148"
     },
     {
       "id": "quest_system",
