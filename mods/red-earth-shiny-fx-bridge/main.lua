@@ -1,4 +1,4 @@
--- Red Earth Shiny FX Bridge v1.0.3
+-- Red Earth Shiny FX Bridge v1.0.4
 -- Presentation-only shiny compatibility layer.
 -- Owns subtle Red Earth battle/follower sparkles and party-list marker while
 -- leaving shiny state, shiny art, species, starters and evolution untouched.
@@ -113,30 +113,21 @@ return function(mod)
     return true
   end
 
-  -- Wilds/Gen1Recomp pose() returns the sprite's VISUAL world-pixel origin.
-  -- Stock follower drawing places the sprite at (px-camX, py-camY-4), then
-  -- the stock shiny effect centers at x+8,y+4.  Therefore the correct world
-  -- anchor is (px+8, py), NOT py+6/py+8.  The old extra Y offset happened to
-  -- look fine sideways but projected ahead/behind the follower when moving
-  -- vertically in Dramatic Shape.
+  -- Dramatic Shape does NOT place follower billboards from pose()'s visual
+  -- origin.  Its actor card is centred on the entity's CELL and pivoted at
+  -- the feet: world (px+8, py+8), with the sprite frame extending upward.
+  -- Returning the exact billboard ground anchor + frame geometry lets the FX
+  -- project that same point and then move to the visual centre in SCREEN
+  -- space.  This avoids the direction-dependent ahead/behind drift caused by
+  -- feeding visual Y offsets back through the 3D ground-plane projector.
   local function followerAnchor(npc)
     if not npc then return nil end
-    local px, py
-    if type(npc.pose) == "function" then
-      local ok, _, x, y = pcall(npc.pose, npc)
-      if ok and tonumber(x) and tonumber(y) then
-        px, py = tonumber(x), tonumber(y)
-      end
-    end
-    px = px or tonumber(npc.px)
-    py = py or tonumber(npc.py)
+    local px, py = tonumber(npc.px), tonumber(npc.py)
     if not (px and py) then return nil end
     local def = (npc.sprite and npc.sprite.def) or npc.spriteDef or {}
-    local ax = tonumber(def.anchorX) or 8
-    -- anchorX remains useful for variable-width follower cards; Y must stay
-    -- on poseY because that is the same visual centerline used by the stock
-    -- 2D follower sparkle after its -4 draw offset.
-    return px + ax, py
+    local fw = tonumber(def.frameWidth) or 16
+    local fh = tonumber(def.frameHeight) or 16
+    return px + 8, py + 8, fw, fh
   end
 
   local function begin(key, duration, loopInterval)
@@ -203,10 +194,10 @@ return function(mod)
       if not npc or seen[npc] or not npc.pokepcShiny then return end
       if not (npc.pokepcTrailer or npc.wildsFollower) then return end
       seen[npc] = true
-      local x,y = followerAnchor(npc)
+      local x,y,fw,fh = followerAnchor(npc)
       if not x then return end
       out[#out+1] = {
-        wx=x, wy=y,
+        wx=x, wy=y, fw=fw, fh=fh,
         key="red_earth_follow:"..tostring(npc.pokepcTrailerId or npc.id or npc),
         seed=(npc.wildsFollowerSlot or 1) + 7,
       }
@@ -216,19 +207,39 @@ return function(mod)
     return out
   end
 
-  local function drawProjectedFollowers(project, scale, cam, ow)
-    if not (project and cam and ow and love and love.graphics) then return false end
+  local function projectedPixelScale(project, wx, wy, sx, sy)
+    -- The billboard is authored face-on, so one horizontal world pixel is a
+    -- stable measure of one sprite pixel at this depth.  Measuring it through
+    -- the SAME projector is more reliable than guessing from camera/facing.
+    local x2,y2 = project(wx + 1, wy)
+    if not x2 then return 1 end
+    local dx,dy = x2 - sx, y2 - sy
+    local q = math.sqrt(dx*dx + dy*dy)
+    if q ~= q or q <= 0 then return 1 end
+    return math.max(0.20, math.min(8.0, q))
+  end
+
+  local function drawProjectedFollowers(project, scale, _, ow)
+    if not (project and ow and love and love.graphics) then return false end
     local any=false
+    local canvasScale = tonumber(scale) or 1
+    if canvasScale <= 0 then canvasScale = 1 end
     for _,t in ipairs(followerTargets(ow)) do
       local p=progress(t.key, FOLLOW_DUR, FOLLOW_INTERVAL)
       if p then
         local sx, sy = project(t.wx, t.wy)
         if sx then
-          local fxw, fyw = t.wx - cam.x, t.wy - cam.y
+          local pxScale = projectedPixelScale(project, t.wx, t.wy, sx, sy)
+          -- SpriteBillboards is centred horizontally on the cell and grows
+          -- UP from the feet pivot, so the visual centre is half a frame
+          -- above the projected ground point. Do this AFTER projection.
+          local cx = sx / canvasScale
+          local cy = (sy - (t.fh or 16) * 0.5 * pxScale) / canvasScale
+          local logical = pxScale / canvasScale
+          local sparkleScale = math.max(0.72, math.min(1.18, logical))
           love.graphics.push()
-          love.graphics.scale(scale or 1, scale or 1)
-          love.graphics.translate(sx/(scale or 1)-fxw, sy/(scale or 1)-fyw)
-          drawSubtleBurst(fxw, fyw, p, 1.0, t.seed)
+          love.graphics.scale(canvasScale, canvasScale)
+          drawSubtleBurst(cx, cy, p, sparkleScale, t.seed)
           love.graphics.pop()
           any=true
         end
@@ -242,7 +253,7 @@ return function(mod)
     if not ok or not Pipelines or type(Pipelines.drawWorld) ~= "function" then
       return false
     end
-    if Pipelines._redEarthShinyFxV102 == Pipelines.drawWorld then return true end
+    if Pipelines._redEarthShinyFxV104 == Pipelines.drawWorld then return true end
     local inner = Pipelines.drawWorld
     local function wrapped(id, ctx)
       pcall(sanitizeFollowerFxState, ctx and ctx.state)
@@ -258,7 +269,7 @@ return function(mod)
       return inner(id, ctx)
     end
     Pipelines.drawWorld = wrapped
-    Pipelines._redEarthShinyFxV102 = wrapped
+    Pipelines._redEarthShinyFxV104 = wrapped
     return true
   end
 
@@ -336,7 +347,7 @@ return function(mod)
   pcall(installWorldFx)
   pcall(installPartyMarker)
 
-  mod.exports.version = "1.0.3"
+  mod.exports.version = "1.0.4"
   mod.exports.sanitizeFollowerFxState = sanitizeFollowerFxState
   mod.exports.followerAnchor = followerAnchor
   mod.exports.clearedStalePlayerFlags = function() return lastCleared end
