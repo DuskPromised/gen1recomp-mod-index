@@ -3,8 +3,8 @@
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: The Irregular and The Philosopher Stones",
   "author": "Adam M. Aguilera",
-  "summary": "Known-good split stack plus hardened regional shiny art routing and corrected follower sparkle targeting.",
-  "version": "1.2.5",
+  "summary": "Known-good split stack plus pose-matched regional shiny art, BetterParty shiny icons, and subtle pose-anchored shiny effects.",
+  "version": "1.2.6",
   "base": "red",
   "seal": "sealed+",
   "shell": "#8f1d2c",
@@ -62,7 +62,7 @@
         "enabled": true,
         "shiny_rate": "off",
         "recolor": false,
-        "sparkles": true,
+        "sparkles": false,
         "debug_ow": false
       }
     },
@@ -228,15 +228,15 @@
       "id": "red_earth_regional_shiny_art",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.1",
-      "sha256": "0488849afd40321deb12ea242632a8bce56e72a7112fdcc7bb85be813c36fa7e"
+      "version": "1.0.2",
+      "sha256": "47c88e83d2ecc8de0c459e5307db167d58d9e5eaf8d4c5013894bc1270edb969"
     },
     {
       "id": "red_earth_shiny_fx_bridge",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "1.0.1",
-      "sha256": "ddbc5ed492a57e176d36b9838b0a4d7513626a845c5b1781638f3b0b5c42ffa7"
+      "version": "1.0.2",
+      "sha256": "fa949b051c64d7bf1756eba0d5d2ae1715c142faaba8427fdd9c56d6b848efec"
     },
     {
       "id": "quest_system",
@@ -350,14 +350,14 @@
   "description_url": "data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
   "versions_url": "data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
   "latest": {
-    "version": "1.2.5",
-    "name": "1.2.5",
+    "version": "1.2.6",
+    "name": "1.2.6",
     "prerelease": false,
     "zip": {
-      "name": "red_earth_philosophers_stones-1.2.5.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.5.g1rcart",
-      "size": 228062,
-      "sha256": "f85ae36c6b21ec610d853acfa3532470e1267cbc9e5f084d171312287683c8a1"
+      "name": "red_earth_philosophers_stones-1.2.6.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.6.g1rcart",
+      "size": 228064,
+      "sha256": "10403b50f18f6515fbc10cc6681ff9ae4e44b4ccdf9ecf6e7054f004eaa75f40"
     }
   },
   "update_check": "ok",
