@@ -6,6 +6,9 @@ on:
     branches: ["main"]
     paths:
       - "cart_source/red_earth_philosophers_stones/**"
+      - "mods/irregular-origin/**"
+      - "mods/philosopher-stones/**"
+      - "mods/red-earth-kaizo-bridge/**"
       - ".github/workflows/build-red-earth-philosophers-stones.yml"
 
 permissions:
@@ -28,7 +31,7 @@ jobs:
           import json
           from pathlib import Path
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          assert cart["version"]=="1.2.9"
+          assert cart["version"]=="1.3.0"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
           assert len(ids)==len(set(ids))
@@ -36,71 +39,19 @@ jobs:
             "gen1_kaizo":"0.8.3",
             "DRAMALESS_SHAPE":"2.0.4",
             "crystal_animated_sprites_with_shiny_visuals":"2.0.3",
-            "SHINY_POKEMON":"1.0.1",
             "leaf_avatar":"2.0.0",
             "philosopher_stones":"1.1.0",
             "irregular_origin":"1.0.9",
-            "red_earth_irregular_upgrade":"1.0.0",
             "overworld_wild_spawns":"2.1.9",
             "red_earth_kaizo_bridge":"1.0.3",
-            "red_earth_shiny_bridge":"1.0.0",
-            "red_earth_regional_shiny_art":"1.0.4",
-            "red_earth_shiny_fx_bridge":"1.0.5",
-            "red_earth_dramaless_battle_bridge":"1.0.1",
           }
           for mid,version in required.items():
               m=next((x for x in cart["mods"] if x["id"]==mid),None)
               assert m is not None, mid
               assert m["version"]==version,(mid,m["version"],version)
           assert "red_earth_irregular" not in ids
-          shinyfx=next(m for m in cart["mods"] if m["id"]=="SHINY_POKEMON")
-          assert shinyfx["sha256"]=="90d2be6fcec1383bb9beec5df9038308b68fa903eb179840b344c7b6e48ccb59"
-          so=shinyfx.get("options",{})
-          assert so.get("enabled") is True
-          assert so.get("shiny_rate")=="off"
-          assert so.get("recolor") is False
-          assert so.get("sparkles") is False
-          assert so.get("debug_ow") is False
-          assert ids.index("red_earth_shiny_bridge") == ids.index("red_earth_kaizo_bridge") + 1
-          assert ids.index("red_earth_regional_shiny_art") == ids.index("red_earth_shiny_bridge") + 1
-          assert ids.index("red_earth_shiny_fx_bridge") == ids.index("red_earth_regional_shiny_art") + 1
-          regional=next(m for m in cart["mods"] if m["id"]=="red_earth_regional_shiny_art")
-          regional_sha="8fee860181bbefae80970764395de10c599e49f001b1eb62cec05d8bf09359cc"
-          assert regional["sha256"]==regional_sha
-          regional_archive=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.4.zip")
-          assert regional_archive.is_file(), "Regional Shiny Art archive is not published"
-          import hashlib
-          assert hashlib.sha256(regional_archive.read_bytes()).hexdigest()==regional_sha
-          fxbridge=next(m for m in cart["mods"] if m["id"]=="red_earth_shiny_fx_bridge")
-          fx_sha="37974a6183e6cb31b26da5876185e03506d92762b3c9616399bb34f7e81f7544"
-          assert fxbridge["sha256"]==fx_sha
-          fx_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.5.zip")
-          assert fx_archive.is_file(), "Shiny FX Bridge archive is not published"
-          assert hashlib.sha256(fx_archive.read_bytes()).hexdigest()==fx_sha
-          assert ids.index("red_earth_dramaless_battle_bridge") == ids.index("red_earth_shiny_fx_bridge") + 1
-          dbridge=next(m for m in cart["mods"] if m["id"]=="red_earth_dramaless_battle_bridge")
-          dbridge_sha="bb192df74db1b4127a57f2b42ccdf6619a9a7f30f595bc3ea3e2daa6a65a7148"
-          assert dbridge["sha256"]==dbridge_sha
-          dbridge_archive=Path("site/data/mods/DuskPromised@red_earth_dramaless_battle_bridge/red_earth_dramaless_battle_bridge-1.0.1.zip")
-          assert dbridge_archive.is_file(), "Dramaless Battle Bridge archive is not published"
-          assert hashlib.sha256(dbridge_archive.read_bytes()).hexdigest()==dbridge_sha
-          dbridge_source=Path("mods/red-earth-dramaless-battle-bridge/main.lua").read_text()
-          assert "IRR_PSYDREN=true" in dbridge_source
-          assert "FENNEKIN=true" not in dbridge_source
-          assert "TREECKO=true" not in dbridge_source
-          fx_source=Path("mods/red-earth-shiny-fx-bridge/main.lua").read_text()
-          assert "return px + 8, py + 16, px, py" in fx_source
-          regional_wf=Path(".github/workflows/publish-red-earth-regional-shiny-art.yml").read_text()
-          assert "treecko_line = dex in (252,253,254)" in regional_wf
-
-          assert ids.index("red_earth_irregular_upgrade") == ids.index("irregular_origin") + 1
-          patch=next(m for m in cart["mods"] if m["id"]=="red_earth_irregular_upgrade")
-          expected_patch_sha="e320c30845e5d6559527f942cf47bc055a43716fa99655fb30c6721fa9f9b96b"
-          assert patch["sha256"]==expected_patch_sha
-          archive=Path("site/data/mods/DuskPromised@red_earth_irregular_upgrade/red_earth_irregular_upgrade-1.0.0.zip")
-          assert archive.is_file(), "Irregular Upgrade archive is not published yet"
-          import hashlib
-          assert hashlib.sha256(archive.read_bytes()).hexdigest()==expected_patch_sha
+          forbidden={"SHINY_POKEMON","red_earth_irregular_upgrade","red_earth_shiny_bridge","red_earth_regional_shiny_art","red_earth_shiny_fx_bridge","red_earth_dramaless_battle_bridge"}
+          assert forbidden.isdisjoint(ids), sorted(forbidden.intersection(ids))
 
           voxel=next(m for m in cart["mods"] if m["id"]=="DRAMALESS_SHAPE")
           assert voxel.get("options",{}).get("renderDistanceSetting")==64
@@ -110,23 +61,13 @@ jobs:
           assert w.get("follow_control")=="trainer"
           assert w.get("follower_count")==1
           assert w.get("trainer_trail") is False
-          shiny=next(m for m in cart["mods"] if m["id"]=="red_earth_shiny_bridge")
-          shiny_sha="fe63e1b7ee0e8bb18767ac4c29bb850c845ea368c5f21d9ef8fe32f8cb7569ee"
-          assert shiny["sha256"]==shiny_sha
-          shiny_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_bridge/red_earth_shiny_bridge-1.0.0.zip")
-          assert shiny_archive.is_file(), "Shiny Bridge archive is not published yet"
-          assert hashlib.sha256(shiny_archive.read_bytes()).hexdigest()==shiny_sha
-          shiny_meta=json.loads(Path("custom_mods/red_earth_shiny_bridge.index.json").read_text())
-          assert shiny_meta["sha256"]==shiny_sha
-          assert shiny_meta["version"]=="1.0.0"
-
           bridge=next(m for m in cart["mods"] if m["id"]=="red_earth_kaizo_bridge")
           b=bridge.get("options",{})
           assert b.get("dynamic_wilds") is True
           assert b.get("dynamic_trainers") is True
           assert b.get("second_starter") is True
           assert b.get("shiny_starters") is True
-          print("SPLIT STACK + TREECKO SHINY + WILDS-ANCHORED FOLLOWER FX + CUSTOM-ONLY BATTLE SCALE AUDIT PASS:",len(ids),"mods")
+          print("SPLIT STACK AUDIT PASS:",len(ids),"mods")
           PY
 
       - name: Fetch official cartkit
@@ -157,13 +98,13 @@ jobs:
             "id":source["id"],
             "title":public_title,
             "author":source["author"],
-            "summary":"Red Earth split stack with regional battle scale fix, canonical Treecko shiny art, and Wilds-anchored follower sparkle.",
+            "summary":"TEST 1: clean rebuild from known-good v1.0.10 split stack; native shiny/rendering paths only.",
             "version":version,
             "base":"red",
             "seal":"sealed+",
             "shell":source["shell"],
             "finish":source["finish"],
-            "tags":["cart","bundle","red","kaizo","split mods","custom pokemon","philosopher stone","irregular upgrade","shiny bridge","recovery"],
+            "tags":["cart","bundle","red","kaizo","split mods","custom pokemon","philosopher stone","recovery"],
             "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
             "github":"DuskPromised/gen1recomp-mod-index",
             "automatic_version_check":False,
@@ -191,7 +132,7 @@ jobs:
               "schema_version":1,"cart_id":source["id"],"title":public_title,
               "latest":version,"versions":versions
           },indent=2,ensure_ascii=False)+"\n")
-          print("RECOVERY CART PASS",version,len(raw),hashlib.sha256(raw).hexdigest())
+          print("CLEAN REBUILD TEST 1 PASS",version,len(raw),hashlib.sha256(raw).hexdigest())
           PY
 
       - name: Commit recovery cart release
@@ -202,7 +143,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Recovery cart already current."
           else
-            git commit -m "Publish Red Earth split-mod recovery v$CART_VERSION"
+            git commit -m "Publish Red Earth clean rebuild test v$CART_VERSION"
             git pull --rebase origin main
             git push
           fi
