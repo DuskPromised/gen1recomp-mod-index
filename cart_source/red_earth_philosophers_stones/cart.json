@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: Irregular and The Philosopher Stones",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Known-good v1.0.10 split stack plus separate Irregular Upgrade layer.",
+  "summary": "Known-good split stack plus separate Irregular Upgrade and Shiny Bridge layers.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -191,6 +191,13 @@
       }
     },
     {
+      "id": "red_earth_shiny_bridge",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "1.0.0",
+      "sha256": "fe63e1b7ee0e8bb18767ac4c29bb850c845ea368c5f21d9ef8fe32f8cb7569ee"
+    },
+    {
       "id": "quest_system",
       "source": "github",
       "repo": "FAFF0x/gen1recomp",
@@ -284,6 +291,7 @@
     "red_earth_irregular_upgrade",
     "overworld_wild_spawns",
     "red_earth_kaizo_bridge",
+    "red_earth_shiny_bridge",
     "quest_system",
     "ashes_of_cinnabar",
     "echoes_beyond_the_fog",
