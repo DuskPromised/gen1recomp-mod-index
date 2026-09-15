@@ -28,7 +28,7 @@ jobs:
           import json
           from pathlib import Path
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          assert cart["version"]=="1.2.7"
+          assert cart["version"]=="1.2.8"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
           assert len(ids)==len(set(ids))
@@ -45,7 +45,8 @@ jobs:
             "red_earth_kaizo_bridge":"1.0.3",
             "red_earth_shiny_bridge":"1.0.0",
             "red_earth_regional_shiny_art":"1.0.3",
-            "red_earth_shiny_fx_bridge":"1.0.3",
+            "red_earth_shiny_fx_bridge":"1.0.4",
+            "red_earth_dramaless_battle_bridge":"1.0.0",
           }
           for mid,version in required.items():
               m=next((x for x in cart["mods"] if x["id"]==mid),None)
@@ -71,11 +72,19 @@ jobs:
           import hashlib
           assert hashlib.sha256(regional_archive.read_bytes()).hexdigest()==regional_sha
           fxbridge=next(m for m in cart["mods"] if m["id"]=="red_earth_shiny_fx_bridge")
-          fx_sha="563c9aaaeffa3dcf17d3ceae2289810813352ed3e6c459ef771e877eabe11316"
+          fx_sha="aee714548970d204e938b3cd439c25f0a23acda07d6c1ad5da6807b32bc142ca"
           assert fxbridge["sha256"]==fx_sha
-          fx_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.3.zip")
+          fx_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.4.zip")
           assert fx_archive.is_file(), "Shiny FX Bridge archive is not published"
           assert hashlib.sha256(fx_archive.read_bytes()).hexdigest()==fx_sha
+          assert ids.index("red_earth_dramaless_battle_bridge") == ids.index("red_earth_shiny_fx_bridge") + 1
+          dbridge=next(m for m in cart["mods"] if m["id"]=="red_earth_dramaless_battle_bridge")
+          dbridge_sha="9f6b4d48b3ba6672a6b97aa21a17afb5b72a738b5f09118478e056f8c1cedc0d"
+          assert dbridge["sha256"]==dbridge_sha
+          dbridge_archive=Path("site/data/mods/DuskPromised@red_earth_dramaless_battle_bridge/red_earth_dramaless_battle_bridge-1.0.0.zip")
+          assert dbridge_archive.is_file(), "Dramaless Battle Bridge archive is not published"
+          assert hashlib.sha256(dbridge_archive.read_bytes()).hexdigest()==dbridge_sha
+
           assert ids.index("red_earth_irregular_upgrade") == ids.index("irregular_origin") + 1
           patch=next(m for m in cart["mods"] if m["id"]=="red_earth_irregular_upgrade")
           expected_patch_sha="e320c30845e5d6559527f942cf47bc055a43716fa99655fb30c6721fa9f9b96b"
@@ -109,7 +118,7 @@ jobs:
           assert b.get("dynamic_trainers") is True
           assert b.get("second_starter") is True
           assert b.get("shiny_starters") is True
-          print("SPLIT STACK + SAFE PARTY ICONS + ORIGINAL SPRITE SCALE + EXACT FOLLOWER FX AUDIT PASS:",len(ids),"mods")
+          print("SPLIT STACK + SAFE PARTY ICONS + BILLBOARD-CENTRED FOLLOWER FX + DRAMALESS BACK SCALE AUDIT PASS:",len(ids),"mods")
           PY
 
       - name: Fetch official cartkit
@@ -140,7 +149,7 @@ jobs:
             "id":source["id"],
             "title":public_title,
             "author":source["author"],
-            "summary":"Known-good split stack plus safe shiny party icons, original regional sprite scale, and exact follower-anchored shiny effects.",
+            "summary":"Known-good split stack plus safe shiny party icons, billboard-centred follower sparkle, and Dramaless back-sprite scale/grounding compatibility.",
             "version":version,
             "base":"red",
             "seal":"sealed+",
