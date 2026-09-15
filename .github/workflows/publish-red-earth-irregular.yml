@@ -52,6 +52,15 @@ jobs:
                   "red_earth_irregular/assets/pokemon/solipsdion/shiny_front.png",
               ]:
                   assert needle in names, needle
+              main=z.read("red_earth_irregular/main.lua").decode("utf-8")
+              assert 'key = "dynamic_wilds"' in main
+              assert 'key = "dynamic_trainers"' in main
+              assert 'default = true' in main
+              assert 'mod.hooks:wrap("encounter.species"' in main
+              assert 'mod.hooks:wrap("script.command"' in main
+              assert 'mod.hooks:wrap("trainer.party"' in main
+              assert 'top + plus' in main
+              assert 'top + off' in main
           print("RELEASE ARCHIVE PASS")
           PY
 
