@@ -1,3 +1,12 @@
+## v1.2.5 shiny routing hardening
+
+This remains a split-mod build.
+
+- **Regional Shiny Art 1.0.1** intercepts the full Wilds `followers` provider chain (`followers_ex → pokemmo → pokedex`) for Fennekin/Braixen/Delphox, preventing an earlier normal-art provider from masking the dedicated shiny walker.
+- **Shiny FX Bridge 1.0.1** treats Wilds **Control = Trainer** as authoritative: the visible trainer is never used as the shiny follower target, and the real follower entity is re-tagged from its Pokémon object's shiny state immediately before rendering.
+- Explicit shiny front/back/summary/icon art remains available for every Kanto-through-Alola starter family used by the current selector.
+- Shiny odds remain unchanged because **SHINY RATE = OFF**.
+
 ## Shiny presentation ownership
 
 Red Earth keeps shiny **state**, shiny **art**, and shiny **effects** as separate mods.
