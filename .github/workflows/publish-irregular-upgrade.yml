@@ -1,0 +1,90 @@
+name: Publish Irregular Upgrade
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "custom_mods/red_earth_irregular_upgrade.index.json"
+      - ".github/workflows/publish-irregular-upgrade.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: irregular-upgrade-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: "1.0.0"
+      EXPECTED_SHA256: "e320c30845e5d6559527f942cf47bc055a43716fa99655fb30c6721fa9f9b96b"
+      SOURCE_URL: "https://at.adobe.com/nBsy1t9M9xVYNU72"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download exact patch package
+        run: |
+          curl -fL --retry 4 --retry-delay 2 "$SOURCE_URL" -o /tmp/irregular_upgrade.zip
+          test "$(sha256sum /tmp/irregular_upgrade.zip | awk '{print $1}')" = "$EXPECTED_SHA256"
+
+      - name: Audit separate patch
+        run: |
+          python - <<'PY'
+          import json, zipfile
+          p="/tmp/irregular_upgrade.zip"
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              root="red_earth_irregular_upgrade-1.0.0/"
+              manifest=json.loads(z.read(root+"manifest.json"))
+              assert manifest["id"]=="red_earth_irregular_upgrade"
+              assert manifest["version"]=="1.0.0"
+              assert "irregular_origin@>=1.0.9 <2.0.0" in manifest["dependencies"]
+              main=z.read(root+"main.lua").decode("utf-8")
+              assert 'mod.hooks:wrap("pokemon.sprite"' in main
+              assert 'mod.hooks:wrap("pokemon.icon"' in main
+              assert 'mod.hooks:wrap("battle.damage"' in main
+              assert 'mod.hooks:wrap("battle.turn_order"' in main
+              assert 'redEarthNature = "MODEST"' in main
+              assert 'distanceReady' in main
+              assert 'SOLIPSDION' in main and 'reignActive' in main
+              assert "PHILOSOPHER_" not in main
+              assert "ANSEM" not in main
+              assert "MELONY" not in main
+              for species in ("psydren","vesperis","solipsdion"):
+                  for f in ("normal_front.png","normal_back.png","normal_menu.png","normal_icon.png",
+                            "normal_follower.png","shiny_front.png","shiny_back.png","shiny_menu.png",
+                            "shiny_icon.png","shiny_follower.png"):
+                      assert root+f"assets/pokemon/{species}/{f}" in z.namelist()
+          print("IRREGULAR UPGRADE AUDIT PASS")
+          PY
+
+      - name: Publish patch archive
+        run: |
+          out="site/data/mods/DuskPromised@red_earth_irregular_upgrade"
+          mkdir -p "$out"
+          cp /tmp/irregular_upgrade.zip "$out/red_earth_irregular_upgrade-$VERSION.zip"
+          printf "%s  red_earth_irregular_upgrade-%s.zip\n" "$EXPECTED_SHA256" "$VERSION" > custom_mods/red_earth_irregular_upgrade.sha256
+
+      - name: Commit patch archive
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f             "site/data/mods/DuskPromised@red_earth_irregular_upgrade/red_earth_irregular_upgrade-$VERSION.zip"             "custom_mods/red_earth_irregular_upgrade.sha256"
+          if git diff --cached --quiet; then
+            echo "Patch archive already published."
+          else
+            git commit -m "Publish Irregular Upgrade v$VERSION"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh index and recovery cart
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run sync.yml --ref main
+          gh workflow run build-red-earth-philosophers-stones.yml --ref main
