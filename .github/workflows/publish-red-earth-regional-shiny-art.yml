@@ -20,9 +20,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      VERSION: "1.0.1"
+      VERSION: "1.0.2"
       POKEAPI_COMMIT: "2ecb4eeacd5a1718621fc30f12772e3f60d830b9"
       POKEWILDS_COMMIT: "83133ed40be8b7c7dff5f9058eef16dd8916be6a"
+      KAIZO_COMMIT: "df8a0336f625df2a524d6efcb2544c81e50852ae"
     steps:
       - uses: actions/checkout@v4
 
@@ -37,34 +38,34 @@ jobs:
           root=Path("mods/red-earth-regional-shiny-art")
           m=json.loads((root/"manifest.json").read_text())
           assert m["id"]=="red_earth_regional_shiny_art"
-          assert m["version"]=="1.0.1"
+          assert m["version"]=="1.0.2"
           main=(root/"main.lua").read_text()
           for needle in [
               '"pokemon.sprite"',
               '"pokemon.icon"',
+              "installPartyIconOverride",
               "TREECKO=252",
               "FENNEKIN=653",
               "PRIMARINA=730",
               "FENNEKIN_FOLLOWER",
               "registerSpriteProvider",
-              '"followers_ex"',
-              '"pokemmo"',
-              '"pokedex"',
           ]:
               assert needle in main, needle
           print("REGIONAL SHINY ART SOURCE AUDIT PASS")
           PY
 
-      - name: Fetch and normalize canonical shiny art
+      - name: Build pose-matched shiny battlers and follower art
         run: |
           mkdir -p /tmp/redart/assets/battlers /tmp/redart/assets/icons /tmp/redart/assets/followers /tmp/raw
           python - <<'PY'
           import os, subprocess
+          from collections import Counter, defaultdict
           from pathlib import Path
           from PIL import Image
 
           pokeapi=os.environ["POKEAPI_COMMIT"]
           pokewilds=os.environ["POKEWILDS_COMMIT"]
+          kaizo=os.environ["KAIZO_COMMIT"]
           out=Path("/tmp/redart")
           raw=Path("/tmp/raw")
 
@@ -73,41 +74,99 @@ jobs:
           def fetch(url,path):
               subprocess.run(["curl","-fL","--retry","3","-sS",url,"-o",str(path)],check=True)
 
-          def bbox(im):
-              return im.getchannel("A").getbbox()
+          def alpha_bbox(im):
+              return im.convert("RGBA").getchannel("A").getbbox()
 
           def fit_card(im,size):
               im=im.convert("RGBA")
-              b=bbox(im)
+              b=alpha_bbox(im)
               card=Image.new("RGBA",(size,size),(0,0,0,0))
               if not b:
                   return card
               crop=im.crop(b)
-              w,h=crop.size
-              scale=min(1.0,size/max(1,w),size/max(1,h))
+              scale=min(1.0,size/max(1,crop.width),size/max(1,crop.height))
               if scale < 0.999:
-                  crop=crop.resize((max(1,round(w*scale)),max(1,round(h*scale))),Image.Resampling.NEAREST)
+                  crop=crop.resize((max(1,round(crop.width*scale)),max(1,round(crop.height*scale))),Image.Resampling.NEAREST)
               x=(size-crop.width)//2
               y=size-crop.height
               card.paste(crop,(x,y),crop)
               return card
 
+          def build_color_map(normal_ref, shiny_ref):
+              n=normal_ref.convert("RGBA")
+              s=shiny_ref.convert("RGBA")
+              if n.size != s.size:
+                  s=s.resize(n.size,Image.Resampling.NEAREST)
+              pairs=defaultdict(Counter)
+              for npix,spix in zip(n.getdata(),s.getdata()):
+                  if npix[3] < 16 or spix[3] < 16:
+                      continue
+                  pairs[npix[:3]][spix[:3]] += 1
+              mapping={k:v.most_common(1)[0][0] for k,v in pairs.items() if v}
+              if not mapping:
+                  raise RuntimeError("empty shiny palette mapping")
+              return mapping
+
+          def apply_pose_matched_shiny(target, normal_ref, shiny_ref):
+              target=target.convert("RGBA")
+              mapping=build_color_map(normal_ref,shiny_ref)
+              source_colors=list(mapping.keys())
+              cache={}
+              def nearest(rgb):
+                  if rgb in mapping:
+                      return mapping[rgb]
+                  if rgb in cache:
+                      return cache[rgb]
+                  # weighted RGB distance keeps luminance/outlines stable while
+                  # allowing the official shiny reference to supply hue changes.
+                  r,g,b=rgb
+                  best=min(source_colors,key=lambda c:
+                      3*(r-c[0])**2 + 4*(g-c[1])**2 + 2*(b-c[2])**2)
+                  cache[rgb]=mapping[best]
+                  return cache[rgb]
+              data=[]
+              for p in target.getdata():
+                  if p[3] == 0:
+                      data.append(p)
+                  else:
+                      nr,ng,nb=nearest(p[:3])
+                      data.append((nr,ng,nb,p[3]))
+              outim=Image.new("RGBA",target.size,(0,0,0,0))
+              outim.putdata(data)
+              return outim
+
           for dex in ids:
-              front=raw/f"{dex}-front.png"
-              back=raw/f"{dex}-back.png"
-              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/shiny/{dex}.png",front)
-              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/back/shiny/{dex}.png",back)
-              f=fit_card(Image.open(front),56)
-              b=fit_card(Image.open(back),56)
-              f.save(out/"assets/battlers"/f"{dex:03d}_front_shiny.png",optimize=True)
-              b.save(out/"assets/battlers"/f"{dex:03d}_back_shiny.png",optimize=True)
-              icon=fit_card(Image.open(front),16)
+              # Preserve AllGen Kaizo's exact pose/silhouette.  PokeAPI's
+              # normal+shiny pair is used only as the official color transfer
+              # reference; its alternate pose never enters the shipped asset.
+              kf=raw/f"{dex}-kaizo-front.png"
+              kb=raw/f"{dex}-kaizo-back.png"
+              nf=raw/f"{dex}-ref-front-normal.png"
+              sf=raw/f"{dex}-ref-front-shiny.png"
+              nb=raw/f"{dex}-ref-back-normal.png"
+              sb=raw/f"{dex}-ref-back-shiny.png"
+              fetch(f"https://raw.githubusercontent.com/AyeBathingApe/gen1recomp-allgen-kaizo/{kaizo}/gen/battlers/{dex}.png",kf)
+              fetch(f"https://raw.githubusercontent.com/AyeBathingApe/gen1recomp-allgen-kaizo/{kaizo}/gen/battlers/{dex}b.png",kb)
+              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/{dex}.png",nf)
+              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/shiny/{dex}.png",sf)
+              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/back/{dex}.png",nb)
+              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/back/shiny/{dex}.png",sb)
+
+              front=apply_pose_matched_shiny(Image.open(kf),Image.open(nf),Image.open(sf))
+              back=apply_pose_matched_shiny(Image.open(kb),Image.open(nb),Image.open(sb))
+              if front.size != (56,56): front=fit_card(front,56)
+              if back.size != (56,56): back=fit_card(back,56)
+              front.save(out/"assets/battlers"/f"{dex:03d}_front_shiny.png",optimize=True)
+              back.save(out/"assets/battlers"/f"{dex:03d}_back_shiny.png",optimize=True)
+
+              icon=fit_card(front,16)
               sheet=Image.new("RGBA",(16,32),(0,0,0,0))
               sheet.paste(icon,(0,0),icon)
               sheet.paste(icon,(0,16),icon)
               sheet.save(out/"assets/icons"/f"{dex:03d}_shiny.png",optimize=True)
 
-          # PokeWilds gives the Kalos companion line proper directional OW art.
+          # Fennekin line needs dedicated land follower walkers; earlier
+          # starters already have normal/shiny directional sheets in Wilds.
           fennekin_line={653:"fennekin",654:"braixen",655:"delphox"}
 
           def visible_bounds(im):
@@ -118,12 +177,9 @@ jobs:
 
           def build_walker(src_path):
               src=Image.open(src_path).convert("RGBA")
-              print("OW SOURCE",src_path.name,src.size)
               if src.width % 4 or src.height % 4:
                   raise RuntimeError(f"unexpected PokeWilds grid {src.size}")
               tw,th=src.width//4,src.height//4
-              # Standard follower layout: rows down,left,right,up; columns
-              # idle / idle-bob / walk / walk-bob.
               specs=[(0,0),(0,3),(0,1),(2,0),(2,3),(2,1)]
               tiles=[crop_tile(src,c,r,tw,th) for c,r in specs]
               boxes=[visible_bounds(t) for t in tiles]
@@ -160,7 +216,7 @@ jobs:
                   assert sheet.size==(16,96)
                   sheet.save(out/"assets/followers"/f"{dex:03d}_{variant}.png",optimize=True)
 
-          print("BUILT",len(ids),"starter species shiny battle/icon sets + Fennekin line walkers")
+          print("BUILT",len(ids),"pose-matched shiny battlers/icons + Fennekin walkers")
           PY
 
       - name: Build deterministic mod ZIP
@@ -170,7 +226,7 @@ jobs:
           from pathlib import Path
           src=Path("mods/red-earth-regional-shiny-art")
           generated=Path("/tmp/redart")
-          out=Path("/tmp/red_earth_regional_shiny_art-1.0.1.zip")
+          out=Path("/tmp/red_earth_regional_shiny_art-1.0.2.zip")
           files=[]
           for name in ("manifest.json","main.lua","README.md"):
               files.append((src/name, "red_earth_regional_shiny_art/"+name))
@@ -192,7 +248,7 @@ jobs:
           python - <<'PY'
           import json, shutil
           from pathlib import Path
-          version="1.0.1"
+          version="1.0.2"
           sha=Path("/tmp/art.sha").read_text().strip()
           folder=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art")
           folder.mkdir(parents=True,exist_ok=True)
@@ -205,7 +261,7 @@ jobs:
             "author":"Adam M. Aguilera",
             "version":version,
             "categories":["VISUAL","COMPATIBILITY"],
-            "tags":["red earth","shiny","starter","fennekin","treecko","sprite"],
+            "tags":["red earth","shiny","starter","fennekin","treecko","sprite","pose matched"],
             "api":2,
             "profile":"content",
             "game_version":">=0.2.21 <2.0.0",
@@ -223,8 +279,8 @@ jobs:
             "downloadURL":f"https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/{archive}",
             "source_zip":archive,
             "sha256":sha,
-            "summary":"Dedicated shiny battle/summary/icon art for every regional starter family used by Red Earth, plus proper Fennekin-line shiny follower walkers.",
-            "source_scope":"Red Earth integration using pinned community sprite sources",
+            "summary":"Pose-matched shiny front/back/icon art for every Red Earth regional starter family, plus dedicated Fennekin-line follower walkers.",
+            "source_scope":"Kaizo pose-preserving Red Earth integration using pinned official/community color references",
             "update_check":"off"
           }
           Path("custom_mods/red_earth_regional_shiny_art.index.json").write_text(json.dumps(meta,indent=2)+"\n")
@@ -236,7 +292,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f             "site/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-$VERSION.zip"             "custom_mods/red_earth_regional_shiny_art.index.json"             "custom_mods/red_earth_regional_shiny_art.sha256"
+          git add -f \
+            "site/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-$VERSION.zip" \
+            "custom_mods/red_earth_regional_shiny_art.index.json" \
+            "custom_mods/red_earth_regional_shiny_art.sha256"
           if git diff --cached --quiet; then
             echo "Regional Shiny Art already current."
           else
