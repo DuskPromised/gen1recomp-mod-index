@@ -1,7 +1,7 @@
 {
   "id": "red_earth_regional_shiny_art",
   "name": "Red Earth Regional Shiny Art",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -10,16 +10,17 @@
   "priority": 245,
   "author": "Adam M. Aguilera",
   "dependencies": [
-    "red_earth_shiny_bridge@>=1.0.0 <2.0.0",
-    "gen1_kaizo@>=0.8.3 <1.0.0",
-    "overworld_wild_spawns@>=2.1.9 <3.0.0"
+    "gen1_kaizo@>=0.8.3 <1.0.0"
   ],
-  "conflicts": [
-    "red_earth_irregular"
-  ],
+  "conflicts": [],
   "permissions": [
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Regional shiny presentation layer with canonical Treecko-line shiny battle cards, safe true-color party icons, and dedicated Fennekin-line follower walkers."
+  "description": "Regional shiny art routed through the native sprite chain, with canonical Treecko-line shiny battle art, shiny party icons, and Fennekin-line walkers.",
+  "optional_dependencies": [
+    "overworld_wild_spawns@>=2.1.9 <3.0.0",
+    "red_earth_shiny_bridge@>=1.0.0 <2.0.0",
+    "red_earth_irregular@>=1.0.1 <2.0.0"
+  ]
 }
