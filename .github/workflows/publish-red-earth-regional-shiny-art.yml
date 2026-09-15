@@ -1,0 +1,248 @@
+name: Publish Red Earth Regional Shiny Art
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "mods/red-earth-regional-shiny-art/**"
+      - ".github/workflows/publish-red-earth-regional-shiny-art.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: red-earth-regional-shiny-art-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: "1.0.0"
+      POKEAPI_COMMIT: "2ecb4eeacd5a1718621fc30f12772e3f60d830b9"
+      POKEWILDS_COMMIT: "83133ed40be8b7c7dff5f9058eef16dd8916be6a"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install image tooling
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Audit source
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("mods/red-earth-regional-shiny-art")
+          m=json.loads((root/"manifest.json").read_text())
+          assert m["id"]=="red_earth_regional_shiny_art"
+          assert m["version"]=="1.0.0"
+          main=(root/"main.lua").read_text()
+          for needle in [
+              '"pokemon.sprite"',
+              '"pokemon.icon"',
+              "TREECKO=252",
+              "FENNEKIN=653",
+              "PRIMARINA=730",
+              "FENNEKIN_FOLLOWER",
+              "registerSpriteProvider",
+          ]:
+              assert needle in main, needle
+          print("REGIONAL SHINY ART SOURCE AUDIT PASS")
+          PY
+
+      - name: Fetch and normalize canonical shiny art
+        run: |
+          mkdir -p /tmp/redart/assets/battlers /tmp/redart/assets/icons /tmp/redart/assets/followers /tmp/raw
+          python - <<'PY'
+          import os, subprocess
+          from pathlib import Path
+          from PIL import Image
+
+          pokeapi=os.environ["POKEAPI_COMMIT"]
+          pokewilds=os.environ["POKEWILDS_COMMIT"]
+          out=Path("/tmp/redart")
+          raw=Path("/tmp/raw")
+
+          ids=list(range(1,10))+list(range(152,161))+list(range(252,261))+list(range(387,396))+list(range(495,504))+list(range(650,659))+list(range(722,731))
+
+          def fetch(url,path):
+              subprocess.run(["curl","-fL","--retry","3","-sS",url,"-o",str(path)],check=True)
+
+          def bbox(im):
+              return im.getchannel("A").getbbox()
+
+          def fit_card(im,size):
+              im=im.convert("RGBA")
+              b=bbox(im)
+              card=Image.new("RGBA",(size,size),(0,0,0,0))
+              if not b:
+                  return card
+              crop=im.crop(b)
+              w,h=crop.size
+              scale=min(1.0,size/max(1,w),size/max(1,h))
+              if scale < 0.999:
+                  crop=crop.resize((max(1,round(w*scale)),max(1,round(h*scale))),Image.Resampling.NEAREST)
+              x=(size-crop.width)//2
+              y=size-crop.height
+              card.paste(crop,(x,y),crop)
+              return card
+
+          for dex in ids:
+              front=raw/f"{dex}-front.png"
+              back=raw/f"{dex}-back.png"
+              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/shiny/{dex}.png",front)
+              fetch(f"https://raw.githubusercontent.com/PokeAPI/sprites/{pokeapi}/sprites/pokemon/back/shiny/{dex}.png",back)
+              f=fit_card(Image.open(front),56)
+              b=fit_card(Image.open(back),56)
+              f.save(out/"assets/battlers"/f"{dex:03d}_front_shiny.png",optimize=True)
+              b.save(out/"assets/battlers"/f"{dex:03d}_back_shiny.png",optimize=True)
+              icon=fit_card(Image.open(front),16)
+              sheet=Image.new("RGBA",(16,32),(0,0,0,0))
+              sheet.paste(icon,(0,0),icon)
+              sheet.paste(icon,(0,16),icon)
+              sheet.save(out/"assets/icons"/f"{dex:03d}_shiny.png",optimize=True)
+
+          # PokeWilds gives the Kalos companion line proper directional OW art.
+          fennekin_line={653:"fennekin",654:"braixen",655:"delphox"}
+
+          def visible_bounds(im):
+              return im.convert("RGBA").getchannel("A").getbbox()
+
+          def crop_tile(src,col,row,tw,th):
+              return src.crop((col*tw,row*th,(col+1)*tw,(row+1)*th)).convert("RGBA")
+
+          def build_walker(src_path):
+              src=Image.open(src_path).convert("RGBA")
+              print("OW SOURCE",src_path.name,src.size)
+              if src.width % 4 or src.height % 4:
+                  raise RuntimeError(f"unexpected PokeWilds grid {src.size}")
+              tw,th=src.width//4,src.height//4
+              # Standard follower layout: rows down,left,right,up; columns
+              # idle / idle-bob / walk / walk-bob.
+              specs=[(0,0),(0,3),(0,1),(2,0),(2,3),(2,1)]
+              tiles=[crop_tile(src,c,r,tw,th) for c,r in specs]
+              boxes=[visible_bounds(t) for t in tiles]
+              if not any(boxes):
+                  raise RuntimeError("empty follower sheet")
+              left=min(b[0] for b in boxes if b); top=min(b[1] for b in boxes if b)
+              right=max(b[2] for b in boxes if b); bottom=max(b[3] for b in boxes if b)
+              cw=max(1,right-left); ch=max(1,bottom-top)
+              scale=min(16/cw,16/ch,1.0)
+              union_w=max(1,min(16,round(cw*scale)))
+              union_h=max(1,min(16,round(ch*scale)))
+              ox=(16-union_w)//2; oy=16-union_h
+              sheet=Image.new("RGBA",(16,96),(0,0,0,0))
+              for i,(tile,b) in enumerate(zip(tiles,boxes)):
+                  card=Image.new("RGBA",(16,16),(0,0,0,0))
+                  if b:
+                      fl,ft,fr,fb=b
+                      piece=tile.crop(b)
+                      nw=max(1,min(16,round(piece.width*scale)))
+                      nh=max(1,min(16,round(piece.height*scale)))
+                      if (nw,nh)!=piece.size:
+                          piece=piece.resize((nw,nh),Image.Resampling.NEAREST)
+                      x=max(0,min(16-nw,ox+round((fl-left)*scale)))
+                      y=max(0,min(16-nh,oy+round((ft-top)*scale)))
+                      card.paste(piece,(x,y),piece)
+                  sheet.paste(card,(0,i*16),card)
+              return sheet
+
+          for dex,name in fennekin_line.items():
+              for variant,remote in [("normal","overworld.png"),("shiny","overworld-shiny.png")]:
+                  p=raw/f"{dex}-{variant}-ow.png"
+                  fetch(f"https://raw.githubusercontent.com/SheerSt/pokewilds/{pokewilds}/pokemon/pokemon/{name}/{remote}",p)
+                  sheet=build_walker(p)
+                  assert sheet.size==(16,96)
+                  sheet.save(out/"assets/followers"/f"{dex:03d}_{variant}.png",optimize=True)
+
+          print("BUILT",len(ids),"starter species shiny battle/icon sets + Fennekin line walkers")
+          PY
+
+      - name: Build deterministic mod ZIP
+        run: |
+          python - <<'PY'
+          import hashlib, zipfile
+          from pathlib import Path
+          src=Path("mods/red-earth-regional-shiny-art")
+          generated=Path("/tmp/redart")
+          out=Path("/tmp/red_earth_regional_shiny_art-1.0.0.zip")
+          files=[]
+          for name in ("manifest.json","main.lua","README.md"):
+              files.append((src/name, "red_earth_regional_shiny_art/"+name))
+          for p in sorted((generated/"assets").rglob("*.png")):
+              rel=p.relative_to(generated).as_posix()
+              files.append((p,"red_earth_regional_shiny_art/"+rel))
+          with zipfile.ZipFile(out,"w",zipfile.ZIP_DEFLATED) as z:
+              for p,arc in files:
+                  info=zipfile.ZipInfo(arc,date_time=(1980,1,1,0,0,0))
+                  info.compress_type=zipfile.ZIP_DEFLATED
+                  z.writestr(info,p.read_bytes())
+          sha=hashlib.sha256(out.read_bytes()).hexdigest()
+          Path("/tmp/art.sha").write_text(sha)
+          print("SHA",sha,"FILES",len(files),"SIZE",out.stat().st_size)
+          PY
+
+      - name: Publish archive and index metadata
+        run: |
+          python - <<'PY'
+          import json, shutil
+          from pathlib import Path
+          version="1.0.0"
+          sha=Path("/tmp/art.sha").read_text().strip()
+          folder=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art")
+          folder.mkdir(parents=True,exist_ok=True)
+          archive=f"red_earth_regional_shiny_art-{version}.zip"
+          shutil.copy2("/tmp/"+archive,folder/archive)
+          meta={
+            "folder":"DuskPromised@red_earth_regional_shiny_art",
+            "id":"red_earth_regional_shiny_art",
+            "title":"Red Earth Regional Shiny Art",
+            "author":"Adam M. Aguilera",
+            "version":version,
+            "categories":["VISUAL","COMPATIBILITY"],
+            "tags":["red earth","shiny","starter","fennekin","treecko","sprite"],
+            "api":2,
+            "profile":"content",
+            "game_version":">=0.2.21 <2.0.0",
+            "dependencies":[
+              "red_earth_shiny_bridge@>=1.0.0 <2.0.0",
+              "gen1_kaizo@>=0.8.3 <1.0.0",
+              "overworld_wild_spawns@>=2.1.9 <3.0.0"
+            ],
+            "conflicts":["red_earth_irregular"],
+            "affects_link":True,
+            "experimental":False,
+            "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
+            "github":"DuskPromised/gen1recomp-mod-index",
+            "license":"MIT",
+            "downloadURL":f"https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/{archive}",
+            "source_zip":archive,
+            "sha256":sha,
+            "summary":"Dedicated shiny battle/summary/icon art for every regional starter family used by Red Earth, plus proper Fennekin-line shiny follower walkers.",
+            "source_scope":"Red Earth integration using pinned community sprite sources",
+            "update_check":"off"
+          }
+          Path("custom_mods/red_earth_regional_shiny_art.index.json").write_text(json.dumps(meta,indent=2)+"\n")
+          Path("custom_mods/red_earth_regional_shiny_art.sha256").write_text(f"{sha}  {archive}\n")
+          print("PUBLISH METADATA",sha)
+          PY
+
+      - name: Commit release
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f             "site/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-$VERSION.zip"             "custom_mods/red_earth_regional_shiny_art.index.json"             "custom_mods/red_earth_regional_shiny_art.sha256"
+          if git diff --cached --quiet; then
+            echo "Regional Shiny Art already current."
+          else
+            git commit -m "Publish Red Earth Regional Shiny Art v$VERSION"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh combined index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run sync.yml --ref main
