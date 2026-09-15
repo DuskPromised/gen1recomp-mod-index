@@ -20,9 +20,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      VERSION: "1.0.0"
-      EXPECTED_SHA256: "caaf84cf9ed9b5b49bd77cabf2a02b697758b76eb9ee4251bb7d3feac446e114"
-      SOURCE_URL: "https://at.adobe.com/fJUjlIBjhxIqVr8L"
+      VERSION: "1.0.1"
+      EXPECTED_SHA256: "b32d13e91c6976a73d42ecbf829cf54810ca1858629b756eb572d5f6497ee0aa"
+      SOURCE_URL: "https://at.adobe.com/1dPPOv9RMTWeRZru"
     steps:
       - uses: actions/checkout@v4
 
@@ -40,7 +40,7 @@ jobs:
               assert z.testzip() is None
               manifest=json.loads(z.read("red_earth_irregular/manifest.json"))
               assert manifest["id"]=="red_earth_irregular"
-              assert manifest["version"]=="1.0.0"
+              assert manifest["version"]=="1.0.1"
               assert manifest["name"]=="Red Earth: The Irregular and The Philosopher Stones"
               names=set(z.namelist())
               for needle in [
