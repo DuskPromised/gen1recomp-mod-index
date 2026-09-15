@@ -1,0 +1,63 @@
+{
+  "folder": "DuskPromised@red_earth_irregular",
+  "id": "red_earth_irregular",
+  "title": "Red Earth: Irregular",
+  "author": "Adam M. Aguilera",
+  "version": "1.0.0",
+  "categories": [
+    "GAMEPLAY",
+    "CONTENT"
+  ],
+  "tags": [
+    "custom pokemon",
+    "starter",
+    "psydren",
+    "vesperis",
+    "solipsdion",
+    "shiny",
+    "philosopher stone",
+    "distance",
+    "solitary reign",
+    "aetheric transmutation",
+    "follower",
+    "human ansem",
+    "melony",
+    "kaizo"
+  ],
+  "api": 2,
+  "profile": "content",
+  "game_version": ">=0.2.24 <2.0.0",
+  "permissions": [
+    "engine_internals"
+  ],
+  "dependencies": [
+    "gen1_kaizo@>=0.8.3 <1.0.0",
+    "overworld_wild_spawns@>=2.1.9 <3.0.0",
+    "crystal_animated_sprites_with_shiny_visuals@>=2.0.3 <3.0.0"
+  ],
+  "optional_dependencies": [
+    "DRAMALESS_SHAPE@>=2.0.4 <3.0.0"
+  ],
+  "optional_integrations": [
+    "DRAMALESS_SHAPE"
+  ],
+  "conflicts": [
+    "irregular_origin",
+    "philosopher_stones",
+    "red_earth_kaizo_bridge",
+    "take_last_starter",
+    "shiny_starters_gifts",
+    "SHINY_POKEMON",
+    "FOLLOWERS_EX"
+  ],
+  "affects_link": true,
+  "experimental": false,
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "license": "MIT",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular/red_earth_irregular-1.0.0.zip",
+  "source_zip": "red_earth_irregular-1.0.0.zip",
+  "summary": "Unified Red Earth content pack: Psydren → Vesperis → Solipsdion, three genuine shiny Oak gifts, authored normal/shiny battle and follower art, Distance, Solitary Reign, one-bound Philosopher's Stone with Aetheric Transmutation, Human Ansem option, and male/Melony rival choice.",
+  "source_scope": "DuskPromised original mod",
+  "update_check": "off"
+}
