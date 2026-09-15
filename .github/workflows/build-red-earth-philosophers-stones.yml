@@ -28,7 +28,7 @@ jobs:
           import json
           from pathlib import Path
           cart=json.loads(Path("cart_source/red_earth_philosophers_stones/cart.json").read_text())
-          assert cart["version"]=="1.2.4"
+          assert cart["version"]=="1.2.5"
           ids=[m["id"] for m in cart["mods"]]
           assert ids==cart["load_order"]
           assert len(ids)==len(set(ids))
@@ -44,8 +44,8 @@ jobs:
             "overworld_wild_spawns":"2.1.9",
             "red_earth_kaizo_bridge":"1.0.3",
             "red_earth_shiny_bridge":"1.0.0",
-            "red_earth_regional_shiny_art":"1.0.0",
-            "red_earth_shiny_fx_bridge":"1.0.0",
+            "red_earth_regional_shiny_art":"1.0.1",
+            "red_earth_shiny_fx_bridge":"1.0.1",
           }
           for mid,version in required.items():
               m=next((x for x in cart["mods"] if x["id"]==mid),None)
@@ -64,16 +64,16 @@ jobs:
           assert ids.index("red_earth_regional_shiny_art") == ids.index("red_earth_shiny_bridge") + 1
           assert ids.index("red_earth_shiny_fx_bridge") == ids.index("red_earth_regional_shiny_art") + 1
           regional=next(m for m in cart["mods"] if m["id"]=="red_earth_regional_shiny_art")
-          regional_sha="eb779eac1f8d94b66f9def9aac19fe49fb66f5ae4275a9a10a9870124c39d28f"
+          regional_sha="0488849afd40321deb12ea242632a8bce56e72a7112fdcc7bb85be813c36fa7e"
           assert regional["sha256"]==regional_sha
-          regional_archive=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.0.zip")
+          regional_archive=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art/red_earth_regional_shiny_art-1.0.1.zip")
           assert regional_archive.is_file(), "Regional Shiny Art archive is not published"
           import hashlib
           assert hashlib.sha256(regional_archive.read_bytes()).hexdigest()==regional_sha
           fxbridge=next(m for m in cart["mods"] if m["id"]=="red_earth_shiny_fx_bridge")
-          fx_sha="209c1a54a20b11922c1c83e2a1e9670b372d40499a07180830b114078ee451e1"
+          fx_sha="ddbc5ed492a57e176d36b9838b0a4d7513626a845c5b1781638f3b0b5c42ffa7"
           assert fxbridge["sha256"]==fx_sha
-          fx_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.0.zip")
+          fx_archive=Path("site/data/mods/DuskPromised@red_earth_shiny_fx_bridge/red_earth_shiny_fx_bridge-1.0.1.zip")
           assert fx_archive.is_file(), "Shiny FX Bridge archive is not published"
           assert hashlib.sha256(fx_archive.read_bytes()).hexdigest()==fx_sha
           assert ids.index("red_earth_irregular_upgrade") == ids.index("irregular_origin") + 1
@@ -109,7 +109,7 @@ jobs:
           assert b.get("dynamic_trainers") is True
           assert b.get("second_starter") is True
           assert b.get("shiny_starters") is True
-          print("SPLIT STACK + IRREGULAR + SHINY ART + FX TARGET AUDIT PASS:",len(ids),"mods")
+          print("SPLIT STACK + HARDENED SHINY ART + FX TARGET AUDIT PASS:",len(ids),"mods")
           PY
 
       - name: Fetch official cartkit
@@ -140,7 +140,7 @@ jobs:
             "id":source["id"],
             "title":public_title,
             "author":source["author"],
-            "summary":"Known-good split stack plus Irregular Upgrade, guaranteed shiny state, regional starter shiny art, and corrected follower sparkle targeting.",
+            "summary":"Known-good split stack plus hardened regional shiny art routing and corrected follower sparkle targeting.",
             "version":version,
             "base":"red",
             "seal":"sealed+",
