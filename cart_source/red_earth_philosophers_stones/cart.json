@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_philosophers_stones",
   "title": "Red Earth: Irregular and The Philosopher Stones",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Recovery build based exactly on known-good v1.0.10 split-mod stack.",
+  "summary": "Known-good v1.0.10 split stack plus separate Irregular Upgrade layer.",
   "shell": "#8f1d2c",
   "finish": "holo",
   "label": "label.png",
@@ -158,6 +158,13 @@
       "sha256": "c49626c2db8367fbe4c3fe6b9ba91f1a359de35940351885d01925a6f2fbaf6a"
     },
     {
+      "id": "red_earth_irregular_upgrade",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "1.0.0",
+      "sha256": "e320c30845e5d6559527f942cf47bc055a43716fa99655fb30c6721fa9f9b96b"
+    },
+    {
       "id": "overworld_wild_spawns",
       "source": "github",
       "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
@@ -274,6 +281,7 @@
     "leaf_avatar",
     "philosopher_stones",
     "irregular_origin",
+    "red_earth_irregular_upgrade",
     "overworld_wild_spawns",
     "red_earth_kaizo_bridge",
     "quest_system",
