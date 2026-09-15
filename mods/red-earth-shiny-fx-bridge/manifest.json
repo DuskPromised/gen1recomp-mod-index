@@ -1,0 +1,28 @@
+{
+  "id": "red_earth_shiny_fx_bridge",
+  "name": "Red Earth Shiny FX Bridge",
+  "version": "1.0.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "COMPATIBILITY",
+  "game_version": ">=0.2.21 <2.0.0",
+  "priority": 260,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "red_earth_shiny_bridge@>=1.0.0 <2.0.0",
+    "SHINY_POKEMON@>=1.0.1 <2.0.0",
+    "overworld_wild_spawns@>=2.1.9 <3.0.0"
+  ],
+  "optional_dependencies": [
+    "DRAMALESS_SHAPE@>=2.0.4 <3.0.0"
+  ],
+  "conflicts": [
+    "red_earth_irregular"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Small Red Earth compatibility layer that anchors SHINY_POKEMON overworld sparkles to the actual Wilds follower instead of a stale trainer/player-control flag."
+}
