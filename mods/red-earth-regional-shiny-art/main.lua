@@ -1,8 +1,9 @@
--- Red Earth Regional Shiny Art v1.0.0
+-- Red Earth Regional Shiny Art v1.0.2
 -- Separate presentation layer. Shiny state remains owned by Red Earth Shiny Bridge.
 -- Irregular-line authored sprites remain owned by Irregular Origin.
 
 local Stats = require("src.pokemon.Stats")
+local PartyMenu = require("src.ui.PartyMenu")
 
 local STARTER_DEX = {
   BULBASAUR=1, IVYSAUR=2, VENUSAUR=3,
@@ -88,6 +89,45 @@ return function(mod)
     ctx.trueColor = true
     return mod.path .. "/assets/icons/" .. padDex(dex) .. "_shiny.png"
   end, 150)
+
+
+  -- BetterParty and the stock party screen both eventually call
+  -- PartyMenu.drawIcon.  Re-seat the shiny icon there as well as through the
+  -- pokemon.icon hook, because presentation mods can cache/replace icon paths
+  -- before our Runtime hook gets a chance to paint the row.
+  local function installPartyIconOverride()
+    if PartyMenu._redEarthRegionalShinyArtV102 == PartyMenu.drawIcon then
+      return true
+    end
+    local inner = PartyMenu.drawIcon
+    local function wrapped(game, mon, x, y, selected, counter, forceAlt)
+      local dex = mon and STARTER_DEX[mon.species]
+      if dex and isShiny(mon) and game and game.data then
+        local icons = game.data.icons
+        if icons then
+          icons.bySpecies = icons.bySpecies or {}
+          local old = icons.bySpecies[mon.species]
+          icons.bySpecies[mon.species] = {
+            image = mod.path .. "/assets/icons/" .. padDex(dex) .. "_shiny.png",
+            frames = 2,
+            trueColor = true,
+          }
+          local ok, a, b, c = pcall(
+            inner, game, mon, x, y, selected, counter, forceAlt
+          )
+          icons.bySpecies[mon.species] = old
+          if not ok then error(a, 0) end
+          return a, b, c
+        end
+      end
+      return inner(game, mon, x, y, selected, counter, forceAlt)
+    end
+    PartyMenu.drawIcon = wrapped
+    PartyMenu._redEarthRegionalShinyArtV102 = wrapped
+    return true
+  end
+
+  installPartyIconOverride()
 
   -- Wilds owns follower rendering. Public style "followers" resolves through
   -- followers_ex -> pokemmo -> pokedex. Wrap every available provider in that
@@ -247,6 +287,6 @@ return function(mod)
   end)
   pcall(installFollowerProviders, mod.game)
 
-  mod.exports.version = "1.0.1"
+  mod.exports.version = "1.0.2"
   mod.exports.starterDex = STARTER_DEX
 end
