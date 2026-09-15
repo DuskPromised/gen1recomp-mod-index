@@ -1,9 +1,11 @@
--- Red Earth Regional Shiny Art v1.0.2
+-- Red Earth Regional Shiny Art v1.0.3
 -- Separate presentation layer. Shiny state remains owned by Red Earth Shiny Bridge.
 -- Irregular-line authored sprites remain owned by Irregular Origin.
 
 local Stats = require("src.pokemon.Stats")
 local PartyMenu = require("src.ui.PartyMenu")
+local Assets = require("src.render.Assets")
+local PaletteFX = require("src.render.PaletteFX")
 
 local STARTER_DEX = {
   BULBASAUR=1, IVYSAUR=2, VENUSAUR=3,
@@ -92,38 +94,63 @@ return function(mod)
 
 
   -- BetterParty and the stock party screen both eventually call
-  -- PartyMenu.drawIcon.  Re-seat the shiny icon there as well as through the
-  -- pokemon.icon hook, because presentation mods can cache/replace icon paths
-  -- before our Runtime hook gets a chance to paint the row.
+  -- PartyMenu.drawIcon.  Draw our packaged shiny icon DIRECTLY for shiny
+  -- regional starters.  Do not mutate game.data.icons.bySpecies: doing that
+  -- temporarily invalidated BetterParty's cached icon lookup and could leave
+  -- a blank row (seen with Fennekin in v1.0.2).
+  local shinyPartyIconCache = {}
+
+  local function shinyPartyIcon(path)
+    local cached = shinyPartyIconCache[path]
+    if cached ~= nil then return cached or nil end
+    local ok, img = pcall(love.graphics.newImage, Assets.resolve(path))
+    shinyPartyIconCache[path] = ok and img or false
+    return ok and img or nil
+  end
+
   local function installPartyIconOverride()
-    if PartyMenu._redEarthRegionalShinyArtV102 == PartyMenu.drawIcon then
+    if PartyMenu._redEarthRegionalShinyArtV103 == PartyMenu.drawIcon then
       return true
     end
     local inner = PartyMenu.drawIcon
     local function wrapped(game, mon, x, y, selected, counter, forceAlt)
       local dex = mon and STARTER_DEX[mon.species]
-      if dex and isShiny(mon) and game and game.data then
-        local icons = game.data.icons
-        if icons then
-          icons.bySpecies = icons.bySpecies or {}
-          local old = icons.bySpecies[mon.species]
-          icons.bySpecies[mon.species] = {
-            image = mod.path .. "/assets/icons/" .. padDex(dex) .. "_shiny.png",
-            frames = 2,
-            trueColor = true,
-          }
-          local ok, a, b, c = pcall(
-            inner, game, mon, x, y, selected, counter, forceAlt
-          )
-          icons.bySpecies[mon.species] = old
-          if not ok then error(a, 0) end
-          return a, b, c
+      if dex and isShiny(mon) and love and love.graphics then
+        local path = mod.path .. "/assets/icons/" .. padDex(dex)
+          .. "_shiny.png"
+        local img = shinyPartyIcon(path)
+        if img then
+          local iw, ih = img:getDimensions()
+          local frame = 0
+          if ih >= 32 then
+            local alt = forceAlt or false
+            if selected and not forceAlt then
+              local maxhp = mon.stats and mon.stats.hp or 1
+              local px = math.floor((mon.hp or 0) * 48 / math.max(1, maxhp))
+              local speed = px >= 27 and 5 or px >= 10 and 16 or 32
+              alt = math.floor((counter or 0) / speed) % 2 == 1
+            end
+            frame = alt and 1 or 0
+          end
+          love.graphics.setColor(1,1,1,1)
+          if ih >= 32 then
+            local quad = love.graphics.newQuad(0, frame * 16, 16, 16, iw, ih)
+            love.graphics.draw(img, quad, x, y)
+          else
+            love.graphics.draw(img, x, y)
+          end
+          if PaletteFX and PaletteFX.markTrueColor then
+            PaletteFX.markTrueColor(x, y, 16, 16)
+          end
+          return true
         end
+        -- Asset failure must never blank a party slot: fall back to the
+        -- normal engine icon rather than returning an empty draw.
       end
       return inner(game, mon, x, y, selected, counter, forceAlt)
     end
     PartyMenu.drawIcon = wrapped
-    PartyMenu._redEarthRegionalShinyArtV102 = wrapped
+    PartyMenu._redEarthRegionalShinyArtV103 = wrapped
     return true
   end
 
@@ -287,6 +314,6 @@ return function(mod)
   end)
   pcall(installFollowerProviders, mod.game)
 
-  mod.exports.version = "1.0.2"
+  mod.exports.version = "1.0.3"
   mod.exports.starterDex = STARTER_DEX
 end
