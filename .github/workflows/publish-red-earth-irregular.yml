@@ -1,0 +1,83 @@
+name: Publish Red Earth Irregular
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "custom_mods/red_earth_irregular.index.json"
+      - ".github/workflows/publish-red-earth-irregular.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: red-earth-irregular-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: "1.0.0"
+      EXPECTED_SHA256: "caaf84cf9ed9b5b49bd77cabf2a02b697758b76eb9ee4251bb7d3feac446e114"
+      SOURCE_URL: "https://at.adobe.com/fJUjlIBjhxIqVr8L"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download verified release candidate
+        run: |
+          curl -fL --retry 4 --retry-delay 2 "$SOURCE_URL" -o /tmp/red_earth_irregular.zip
+          test "$(sha256sum /tmp/red_earth_irregular.zip | awk '{print $1}')" = "$EXPECTED_SHA256"
+
+      - name: Verify archive and manifest
+        run: |
+          python - <<'PY'
+          import json, zipfile, hashlib
+          p="/tmp/red_earth_irregular.zip"
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              manifest=json.loads(z.read("red_earth_irregular/manifest.json"))
+              assert manifest["id"]=="red_earth_irregular"
+              assert manifest["version"]=="1.0.0"
+              assert manifest["name"]=="Red Earth: The Irregular and The Philosopher Stones"
+              names=set(z.namelist())
+              for needle in [
+                  "red_earth_irregular/main.lua",
+                  "red_earth_irregular/assets/player/ansem_overworld.png",
+                  "red_earth_irregular/assets/rival/melony_front.png",
+                  "red_earth_irregular/assets/pokemon/psydren/shiny_front.png",
+                  "red_earth_irregular/assets/pokemon/vesperis/shiny_front.png",
+                  "red_earth_irregular/assets/pokemon/solipsdion/shiny_front.png",
+              ]:
+                  assert needle in names, needle
+          print("RELEASE ARCHIVE PASS")
+          PY
+
+      - name: Publish archive
+        run: |
+          out="site/data/mods/DuskPromised@red_earth_irregular"
+          mkdir -p "$out"
+          cp /tmp/red_earth_irregular.zip "$out/red_earth_irregular-$VERSION.zip"
+          printf "%s  red_earth_irregular-%s.zip\n" "$EXPECTED_SHA256" "$VERSION" > custom_mods/red_earth_irregular.sha256
+
+      - name: Commit verified mod
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f             "site/data/mods/DuskPromised@red_earth_irregular/red_earth_irregular-$VERSION.zip"             "custom_mods/red_earth_irregular.sha256"
+          if git diff --cached --quiet; then
+            echo "Release archive already published."
+          else
+            git commit -m "Publish Red Earth Irregular v$VERSION"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh index and cart
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run sync.yml --ref main
+          gh workflow run build-red-earth-philosophers-stones.yml --ref main
