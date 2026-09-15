@@ -1,3 +1,17 @@
+## Recovery architecture
+
+This cart deliberately stays **split into separate mods**. The known-good v1.0.10 stack remains the foundation.
+
+Current layered ownership:
+- **Irregular Origin 1.0.9** — species registration and working Oak acquisition flow
+- **Red Earth Irregular Upgrade 1.0.0** — final Irregular art, Modest, Distance, Solitary Reign, shiny persistence and Oak speaker labels
+- **Philosopher Stones 1.1.0** — existing working Stone framework only; final Crucible/Second Condition work comes in a later separate layer
+- **Red Earth Kaizo Bridge 1.0.3** — dynamic difficulty, regional companion/third starter, rival continuity and starter shiny flags
+- **Wilds of Kanto 2.1.9** — follower runtime
+- **Leaf Avatar 2.0.0** — existing player selector baseline
+
+No unified `red_earth_irregular` mod is loaded.
+
 # Red Earth: The Irregular and The Philosopher Stones
 
 A unified Red Earth cart built on **Gen1 Recomp Allgen Kaizo**, centered on the Irregular line and the completed Philosopher's Stone system.
