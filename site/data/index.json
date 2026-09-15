@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T16:54:15.027771+00:00",
+  "generated_at": "2026-09-15T18:00:36.398721+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12354,8 +12354,8 @@
       "id": "red_earth_philosophers_stones",
       "title": "Red Earth: The Irregular and The Philosopher Stones",
       "author": "Adam M. Aguilera",
-      "summary": "Known-good split stack plus separate Irregular Upgrade and Shiny Bridge layers.",
-      "version": "1.2.2",
+      "summary": "Known-good split stack plus Irregular Upgrade, guaranteed shiny state, and dedicated shiny FX/indicator support.",
+      "version": "1.2.3",
       "base": "red",
       "seal": "sealed+",
       "shell": "#8f1d2c",
@@ -12402,6 +12402,20 @@
           "repo": "distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals",
           "version": "2.0.3",
           "sha256": "3d2874917f03a42cbf96d0d7e1b5c19bde09a5405fe12559ac241af017155689"
+        },
+        {
+          "id": "SHINY_POKEMON",
+          "source": "github",
+          "repo": "masterwebx/gen1recomp-shiny-pokemon",
+          "version": "1.0.1",
+          "sha256": "90d2be6fcec1383bb9beec5df9038308b68fa903eb179840b344c7b6e48ccb59",
+          "options": {
+            "enabled": true,
+            "shiny_rate": "off",
+            "recolor": false,
+            "sparkles": true,
+            "debug_ow": false
+          }
         },
         {
           "id": "gen1-better-menus",
@@ -12636,6 +12650,7 @@
         "gen1_kaizo",
         "DRAMALESS_SHAPE",
         "crystal_animated_sprites_with_shiny_visuals",
+        "SHINY_POKEMON",
         "gen1-better-menus",
         "new_item_icons",
         "advanced_box_system",
@@ -12670,14 +12685,14 @@
       "description_url": "data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
       "versions_url": "data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
       "latest": {
-        "version": "1.2.2",
-        "name": "1.2.2",
+        "version": "1.2.3",
+        "name": "1.2.3",
         "prerelease": false,
         "zip": {
-          "name": "red_earth_philosophers_stones-1.2.2.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.2.g1rcart",
-          "size": 226980,
-          "sha256": "6c35f2bda460fd94e479e0fd0916b9765001d189a08157efac5b30f678adc518"
+          "name": "red_earth_philosophers_stones-1.2.3.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.3.g1rcart",
+          "size": 227459,
+          "sha256": "ea3932a0133a788183c457906c1fc78dff4ce1656ffebc44bdd53aa79455a093"
         }
       },
       "update_check": "ok",
