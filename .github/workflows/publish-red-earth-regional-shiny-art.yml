@@ -20,7 +20,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      VERSION: "1.0.4"
+      VERSION: "1.0.5"
       POKEAPI_COMMIT: "2ecb4eeacd5a1718621fc30f12772e3f60d830b9"
       POKEWILDS_COMMIT: "83133ed40be8b7c7dff5f9058eef16dd8916be6a"
       KAIZO_COMMIT: "df8a0336f625df2a524d6efcb2544c81e50852ae"
@@ -38,7 +38,7 @@ jobs:
           root=Path("mods/red-earth-regional-shiny-art")
           m=json.loads((root/"manifest.json").read_text())
           assert m["id"]=="red_earth_regional_shiny_art"
-          assert m["version"]=="1.0.4"
+          assert m["version"]=="1.0.5"
           main=(root/"main.lua").read_text()
           for needle in [
               '"pokemon.sprite"',
@@ -273,7 +273,7 @@ jobs:
           from pathlib import Path
           src=Path("mods/red-earth-regional-shiny-art")
           generated=Path("/tmp/redart")
-          out=Path("/tmp/red_earth_regional_shiny_art-1.0.4.zip")
+          out=Path("/tmp/red_earth_regional_shiny_art-1.0.5.zip")
           files=[]
           for name in ("manifest.json","main.lua","README.md"):
               files.append((src/name, "red_earth_regional_shiny_art/"+name))
@@ -295,7 +295,7 @@ jobs:
           python - <<'PY'
           import json, shutil
           from pathlib import Path
-          version="1.0.4"
+          version="1.0.5"
           sha=Path("/tmp/art.sha").read_text().strip()
           folder=Path("site/data/mods/DuskPromised@red_earth_regional_shiny_art")
           folder.mkdir(parents=True,exist_ok=True)
@@ -313,11 +313,14 @@ jobs:
             "profile":"content",
             "game_version":">=0.2.21 <2.0.0",
             "dependencies":[
-              "red_earth_shiny_bridge@>=1.0.0 <2.0.0",
-              "gen1_kaizo@>=0.8.3 <1.0.0",
-              "overworld_wild_spawns@>=2.1.9 <3.0.0"
+              "gen1_kaizo@>=0.8.3 <1.0.0"
             ],
-            "conflicts":["red_earth_irregular"],
+            "optional_dependencies":[
+              "overworld_wild_spawns@>=2.1.9 <3.0.0",
+              "red_earth_shiny_bridge@>=1.0.0 <2.0.0",
+              "red_earth_irregular@>=1.0.1 <2.0.0"
+            ],
+            "conflicts":[],
             "affects_link":True,
             "experimental":False,
             "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
@@ -326,7 +329,7 @@ jobs:
             "downloadURL":f"https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_regional_shiny_art/{archive}",
             "source_zip":archive,
             "sha256":sha,
-            "summary":"Pose-matched regional shiny art with canonical 56x56 Treecko-line shiny cards, safe true-color party icons, and Fennekin-line walkers.",
+            "summary":"Regional shiny art routed through the native sprite chain, with canonical Treecko-line shiny cards, party icons, and Fennekin-line walkers.",
             "source_scope":"Kaizo pose-preserving Red Earth integration using pinned official/community color references",
             "update_check":"off"
           }
