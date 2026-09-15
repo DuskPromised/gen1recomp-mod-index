@@ -1,3 +1,16 @@
+## Shiny presentation ownership
+
+Red Earth keeps shiny **state** and shiny **presentation** separate.
+
+- **Red Earth Shiny Bridge** guarantees the Oak gifts have Gen-2-compatible shiny DVs plus `mon.shiny = true`.
+- **Shiny Pokemon 1.0.1** supplies the missing battle sparkle/SFX, party/summary shiny marker, and looping follower sparkle.
+- `SHINY RATE` is pinned **OFF**, so this renderer does not change ordinary wild shiny odds.
+- `SHINY COLORS` is pinned **OFF** so it cannot recolor Psydren/Vesperis/Solipsdion on top of the authored custom shiny PNGs.
+- `SHINY INTRO` is pinned **ON**.
+- Crystal Animated Sprites remains installed for its existing battle presentation; the new FX layer is present specifically so custom/all-generation shiny gifts are not dependent on Crystal artwork coverage.
+
+The authored Irregular shiny art remains controlled by Red Earth Irregular Upgrade. Standard regional-starter shiny colour assets are a separate visual pass; system shiny state and sparkle behavior do not depend on that art pass.
+
 ## Recovery architecture
 
 This cart deliberately stays **split into separate mods**. The known-good v1.0.10 stack remains the foundation.
