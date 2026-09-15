@@ -1,15 +1,12 @@
 ## Shiny presentation ownership
 
-Red Earth keeps shiny **state** and shiny **presentation** separate.
+Red Earth keeps shiny **state**, shiny **art**, and shiny **effects** as separate mods.
 
-- **Red Earth Shiny Bridge** guarantees the Oak gifts have Gen-2-compatible shiny DVs plus `mon.shiny = true`.
-- **Shiny Pokemon 1.0.1** supplies the missing battle sparkle/SFX, party/summary shiny marker, and looping follower sparkle.
-- `SHINY RATE` is pinned **OFF**, so this renderer does not change ordinary wild shiny odds.
-- `SHINY COLORS` is pinned **OFF** so it cannot recolor Psydren/Vesperis/Solipsdion on top of the authored custom shiny PNGs.
-- `SHINY INTRO` is pinned **ON**.
-- Crystal Animated Sprites remains installed for its existing battle presentation; the new FX layer is present specifically so custom/all-generation shiny gifts are not dependent on Crystal artwork coverage.
-
-The authored Irregular shiny art remains controlled by Red Earth Irregular Upgrade. Standard regional-starter shiny colour assets are a separate visual pass; system shiny state and sparkle behavior do not depend on that art pass.
+- **Red Earth Shiny Bridge** guarantees the three Oak gifts have Gen-2-compatible shiny DVs plus `mon.shiny = true`.
+- **Red Earth Regional Shiny Art** supplies dedicated shiny front/back/summary/icon art for every Kanto-through-Alola starter family in the regional selector. It also supplies proper normal/shiny Fennekin-line follower walkers; Treecko and the <=649 starter families already use Wilds' built-in shiny walker set.
+- **Shiny Pokemon 1.0.1** supplies the shiny name marker and its standard sparkle/SFX renderer. `SHINY RATE` stays **OFF**, `SHINY COLORS` stays **OFF**, and `SHINY INTRO` stays **ON** so it never recolors the authored Irregular PNGs or changes ordinary wild shiny odds.
+- **Red Earth Shiny FX Bridge** fixes the voxel follower target state so the sparkle projects onto the actual shiny follower instead of a stale trainer/player-control anchor.
+- **Irregular Origin / Irregular Upgrade** retain ownership of Psydren, Vesperis and Solipsdion's authored normal/shiny art.
 
 ## Recovery architecture
 
@@ -20,6 +17,8 @@ Current layered ownership:
 - **Red Earth Irregular Upgrade 1.0.0** — final Irregular art, Modest, Distance, Solitary Reign, shiny persistence and Oak speaker labels
 - **Philosopher Stones 1.1.0** — existing working Stone framework only; final Crucible/Second Condition work comes in a later separate layer
 - **Red Earth Kaizo Bridge 1.0.3** — dynamic difficulty, regional companion/third starter, rival continuity and starter shiny flags
+- **Red Earth Regional Shiny Art 1.0.0** — regional starter shiny battle/summary/icon art + Fennekin-line follower art
+- **Red Earth Shiny FX Bridge 1.0.0** — correct voxel follower sparkle targeting
 - **Wilds of Kanto 2.1.9** — follower runtime
 - **Leaf Avatar 2.0.0** — existing player selector baseline
 
