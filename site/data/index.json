@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-15T18:31:04.725392+00:00",
+  "generated_at": "2026-09-15T18:34:01.033705+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12445,8 +12445,8 @@
       "id": "red_earth_philosophers_stones",
       "title": "Red Earth: The Irregular and The Philosopher Stones",
       "author": "Adam M. Aguilera",
-      "summary": "Known-good split stack plus Irregular Upgrade, guaranteed shiny state, and dedicated shiny FX/indicator support.",
-      "version": "1.2.3",
+      "summary": "Known-good split stack plus Irregular Upgrade, guaranteed shiny state, regional starter shiny art, and corrected follower sparkle targeting.",
+      "version": "1.2.4",
       "base": "red",
       "seal": "sealed+",
       "shell": "#8f1d2c",
@@ -12667,6 +12667,20 @@
           "sha256": "fe63e1b7ee0e8bb18767ac4c29bb850c845ea368c5f21d9ef8fe32f8cb7569ee"
         },
         {
+          "id": "red_earth_regional_shiny_art",
+          "source": "github",
+          "repo": "DuskPromised/gen1recomp-mod-index",
+          "version": "1.0.0",
+          "sha256": "eb779eac1f8d94b66f9def9aac19fe49fb66f5ae4275a9a10a9870124c39d28f"
+        },
+        {
+          "id": "red_earth_shiny_fx_bridge",
+          "source": "github",
+          "repo": "DuskPromised/gen1recomp-mod-index",
+          "version": "1.0.0",
+          "sha256": "209c1a54a20b11922c1c83e2a1e9670b372d40499a07180830b114078ee451e1"
+        },
+        {
           "id": "quest_system",
           "source": "github",
           "repo": "FAFF0x/gen1recomp",
@@ -12762,6 +12776,8 @@
         "overworld_wild_spawns",
         "red_earth_kaizo_bridge",
         "red_earth_shiny_bridge",
+        "red_earth_regional_shiny_art",
+        "red_earth_shiny_fx_bridge",
         "quest_system",
         "ashes_of_cinnabar",
         "echoes_beyond_the_fog",
@@ -12776,14 +12792,14 @@
       "description_url": "data/carts/DuskPromised@red_earth_philosophers_stones/description.md",
       "versions_url": "data/carts/DuskPromised@red_earth_philosophers_stones/versions.json",
       "latest": {
-        "version": "1.2.3",
-        "name": "1.2.3",
+        "version": "1.2.4",
+        "name": "1.2.4",
         "prerelease": false,
         "zip": {
-          "name": "red_earth_philosophers_stones-1.2.3.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.3.g1rcart",
-          "size": 227459,
-          "sha256": "ea3932a0133a788183c457906c1fc78dff4ce1656ffebc44bdd53aa79455a093"
+          "name": "red_earth_philosophers_stones-1.2.4.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_philosophers_stones/red_earth_philosophers_stones-1.2.4.g1rcart",
+          "size": 228049,
+          "sha256": "dfcfe5f7766bae7454638c2da80001b0d93b4cc6042c02dffee07d9405d035d7"
         }
       },
       "update_check": "ok",
