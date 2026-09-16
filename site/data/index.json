@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T17:21:30.230712+00:00",
+  "generated_at": "2026-09-16T17:26:03.785934+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12321,7 +12321,8 @@
         "gate 0",
         "baseline",
         "potato voxel",
-        "development"
+        "development",
+        "verified upstream"
       ],
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "automatic_version_check": false,
@@ -12375,7 +12376,19 @@
         "crystal_animated_sprites_with_shiny_visuals",
         "performance_monitor"
       ],
-      "update_check": "off"
+      "update_check": "ok",
+      "latest": {
+        "version": "0.0.1",
+        "name": "0.0.1",
+        "prerelease": true,
+        "zip": {
+          "name": "gate_0a_pristine-0.0.1.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_0a_pristine/gate_0a_pristine-0.0.1.g1rcart",
+          "size": 2910,
+          "sha256": "accd292921595e1aee711bba20125d9ef1d903623560fafe3142533603ce53ee"
+        }
+      },
+      "thumbnail": "data/carts/DuskPromised@gate_0a_pristine/label.png"
     },
     {
       "folder": "DuskPromised@gate_0b_wilds",
@@ -12464,7 +12477,19 @@
         "overworld_wild_spawns",
         "performance_monitor"
       ],
-      "update_check": "off"
+      "update_check": "ok",
+      "latest": {
+        "version": "0.0.1",
+        "name": "0.0.1",
+        "prerelease": true,
+        "zip": {
+          "name": "gate_0b_wilds-0.0.1.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_0b_wilds/gate_0b_wilds-0.0.1.g1rcart",
+          "size": 3325,
+          "sha256": "354f487615169a42bf59f1bc04642b08a3c74054eee978fb9ba2b2b463217f30"
+        }
+      },
+      "thumbnail": "data/carts/DuskPromised@gate_0b_wilds/label.png"
     },
     {
       "folder": "DuskPromised@red_earth_ab_lab",
