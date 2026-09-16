@@ -4,7 +4,7 @@
   "title": "Red Earth Rebuild Lab — Core + Voxel",
   "author": "Adam M. Aguilera",
   "version": "0.1.4",
-  "summary": "Pinned Voxel persistence test: 100% render, FULL water, 2X AA, V-Curve 1, V-Grid/3D-BTL/back sprites/atmos/weather/shadows ON.",
+  "summary": "Pinned Voxel: 100% render, FULL water, 2X AA, curve 1, grid/3D battle/back sprites/atmos/weather/shadows ON.",
   "base": "red",
   "seal": "sealed+",
   "speeds": [
