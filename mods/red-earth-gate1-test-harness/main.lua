@@ -1,4 +1,4 @@
--- Red Earth — Gate 1 Test Harness v0.1.0
+-- Red Earth — Gate 1 Test Harness v0.1.1
 -- TEST-ONLY. Never merge this acquisition behavior into the production core.
 
 local IDS={
@@ -8,15 +8,15 @@ local IDS={
 }
 
 local TESTS={
-  TEXT_OAKSLAB_BULBASAUR_POKE_BALL={
+  TEXT_OAKSLAB_CHARMANDER_POKE_BALL={
     species=IDS.PSYDREN,level=15,flag="MOD_RE_G1_TEST_PSYDREN",
     name="PSYDREN",label="PSYDREN Lv.15",
   },
-  TEXT_OAKSLAB_CHARMANDER_POKE_BALL={
+  TEXT_OAKSLAB_SQUIRTLE_POKE_BALL={
     species=IDS.VESPERIS,level=35,flag="MOD_RE_G1_TEST_VESPERIS",
     name="VESPERIS",label="VESPERIS Lv.35",
   },
-  TEXT_OAKSLAB_SQUIRTLE_POKE_BALL={
+  TEXT_OAKSLAB_BULBASAUR_POKE_BALL={
     species=IDS.SOLIPSDION,level=50,flag="MOD_RE_G1_TEST_SOLIPSDION",
     name="SOLIPSDION",label="SOLIPSDION Lv.50",
   },
@@ -97,6 +97,6 @@ return function(mod)
     return
   end)
 
-  mod.exports.version="0.1.0"
+  mod.exports.version="0.1.1"
   mod.exports.testOnly=true
 end
