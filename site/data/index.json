@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T06:02:50.859503+00:00",
+  "generated_at": "2026-09-16T06:22:23.174952+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12550,8 +12550,8 @@
       "id": "red_earth_rebuild_lab",
       "title": "Red Earth Rebuild Lab — Core + Voxel",
       "author": "Adam M. Aguilera",
-      "version": "0.1.4",
-      "summary": "Pinned Voxel: 100% render, FULL water, 2X AA, curve 1, grid/3D battle/back sprites/atmos/weather/shadows ON.",
+      "version": "0.1.5",
+      "summary": "Wilds gate: same pinned Voxel profile and rebuild, with Wilds ON; Regional Shiny Art remains OFF.",
       "base": "red",
       "seal": "sealed+",
       "speeds": [
@@ -12614,7 +12614,7 @@
           "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
           "version": "2.1.9",
           "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd",
-          "enabled": false,
+          "enabled": true,
           "options": {
             "sprite_style": "followers",
             "follow_control": "trainer",
@@ -12661,14 +12661,14 @@
       ],
       "update_check": "ok",
       "latest": {
-        "version": "0.1.4",
-        "name": "0.1.4",
+        "version": "0.1.5",
+        "name": "0.1.5",
         "prerelease": true,
         "zip": {
-          "name": "red_earth_rebuild_lab-0.1.4.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.4.g1rcart",
-          "size": 220165,
-          "sha256": "f41cff1d8bbdd63e63eafa7c192f4b8ec5f217308e7f8bd98a6488679c45053b"
+          "name": "red_earth_rebuild_lab-0.1.5.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.5.g1rcart",
+          "size": 220153,
+          "sha256": "5103d6fcd0fcc1c1da6249bcb0b94f09ae85315483a99bc713f95dee27a98025"
         }
       },
       "thumbnail": "data/carts/DuskPromised@red_earth_rebuild_lab/thumbnail.jpg"
