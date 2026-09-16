@@ -1,7 +1,7 @@
 {
   "folder": "DuskPromised@red_earth_irregular_core",
   "id": "red_earth_irregular_core",
-  "title": "Red Earth — Gate 1: Irregular Core",
+  "title": "Red Earth \u2014 Gate 1: Irregular Core",
   "author": "Adam M. Aguilera",
   "version": "0.1.2",
   "categories": [
@@ -42,5 +42,6 @@
   "source_zip": "red_earth_irregular_core-0.1.2.zip",
   "summary": "Gate 1.2 standalone Irregular species core: clean PSYDREN/VESPERIS/SOLIPSDION save IDs, corrected Dex data, canonical normal art, and species-specific historical battle scales.",
   "source_scope": "DuskPromised original Gate 1 module",
-  "update_check": "off"
+  "update_check": "off",
+  "sha256": "287f761dc2826b67fb8d1b3ef8364c0333dd3170d6fa4846f5b35df8e8b097b0"
 }

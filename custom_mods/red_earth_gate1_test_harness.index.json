@@ -1,7 +1,7 @@
 {
   "folder": "DuskPromised@red_earth_gate1_test_harness",
   "id": "red_earth_gate1_test_harness",
-  "title": "Red Earth — Gate 1 Test Harness",
+  "title": "Red Earth \u2014 Gate 1 Test Harness",
   "author": "Adam M. Aguilera",
   "version": "0.1.2",
   "categories": [
@@ -42,5 +42,6 @@
   "source_zip": "red_earth_gate1_test_harness-0.1.2.zip",
   "summary": "Gate 1.2 QA harness for the clean PSYDREN/VESPERIS/SOLIPSDION species IDs and corrected stage battle scaling.",
   "source_scope": "DuskPromised original Gate 1 QA tool",
-  "update_check": "off"
+  "update_check": "off",
+  "sha256": "78f5c62ac31abc7057ab0ea723175d0f7c6a9e6a52a8ddd00128256438d62a42"
 }
