@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T04:57:31.141381+00:00",
+  "generated_at": "2026-09-16T05:12:18.033016+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -9125,7 +9125,7 @@
       "id": "red_earth_irregular_rebuild",
       "title": "Red Earth: Irregular — Rebuild Candidate",
       "author": "Adam M. Aguilera",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "categories": [
         "GAMEPLAY",
         "CONTENT",
@@ -9180,10 +9180,10 @@
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "github": "DuskPromised/gen1recomp-mod-index",
       "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_rebuild/red_earth_irregular_rebuild-0.1.2.zip",
-      "source_zip": "red_earth_irregular_rebuild-0.1.2.zip",
-      "sha256": "fd3727045030855bf52f26b1b1c768437526dae1c7be4ec51cb7bbca852c1c3a",
-      "summary": "TEST candidate — Claude reconstruction + audited Wilds metadata fix + direct Oak-ball ownership so Allgen Kaizo cannot pre-empt Psydren.",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_rebuild/red_earth_irregular_rebuild-0.1.3.zip",
+      "source_zip": "red_earth_irregular_rebuild-0.1.3.zip",
+      "sha256": "a63efc97623daa1ff82e3ceb4fb0d80dd66a672b39ad58830228584c9b2d8403",
+      "summary": "TEST candidate — current Gen1Recomp icon-schema fix + direct Oak-ball ownership; no global battle-sprite scaling.",
       "source_scope": "DuskPromised original test candidate",
       "update_check": "off"
     },
@@ -12550,10 +12550,10 @@
       "id": "red_earth_rebuild_lab",
       "title": "Red Earth Rebuild Lab — Core + Voxel",
       "author": "Adam M. Aguilera",
-      "version": "0.1.1",
-      "summary": "Claude rebuild test: Kaizo + PotatoVoxel + Crystal + Irregular v0.1.2; Wilds/Regional Shiny Art omitted.",
+      "version": "0.1.2",
+      "summary": "Clean Claude rebuild test; Wilds and Regional Shiny Art are pinned OFF. Unpinned legacy Red Earth mods cannot load.",
       "base": "red",
-      "seal": "open",
+      "seal": "sealed+",
       "speeds": [
         1
       ],
@@ -12596,11 +12596,33 @@
           "sha256": "3d2874917f03a42cbf96d0d7e1b5c19bde09a5405fe12559ac241af017155689"
         },
         {
+          "id": "overworld_wild_spawns",
+          "source": "github",
+          "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
+          "version": "2.1.9",
+          "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd",
+          "enabled": false,
+          "options": {
+            "sprite_style": "followers",
+            "follow_control": "trainer",
+            "follower_count": 1,
+            "trainer_trail": false
+          }
+        },
+        {
+          "id": "red_earth_regional_shiny_art",
+          "source": "github",
+          "repo": "DuskPromised/gen1recomp-mod-index",
+          "version": "1.0.5",
+          "sha256": "b1f591cb3643173bb39e45046a8b7d423d15982bb421d9add3f1a50494aa434b",
+          "enabled": false
+        },
+        {
           "id": "red_earth_irregular_rebuild",
           "source": "github",
           "repo": "DuskPromised/gen1recomp-mod-index",
-          "version": "0.1.2",
-          "sha256": "fd3727045030855bf52f26b1b1c768437526dae1c7be4ec51cb7bbca852c1c3a",
+          "version": "0.1.3",
+          "sha256": "a63efc97623daa1ff82e3ceb4fb0d80dd66a672b39ad58830228584c9b2d8403",
           "options": {
             "dynamic_wilds": true,
             "dynamic_trainers": true,
@@ -12619,19 +12641,21 @@
         "gen1_kaizo",
         "potato_voxel",
         "crystal_animated_sprites_with_shiny_visuals",
+        "overworld_wild_spawns",
+        "red_earth_regional_shiny_art",
         "red_earth_irregular_rebuild",
         "performance_monitor"
       ],
       "update_check": "ok",
       "latest": {
-        "version": "0.1.1",
-        "name": "0.1.1",
+        "version": "0.1.2",
+        "name": "0.1.2",
         "prerelease": true,
         "zip": {
-          "name": "red_earth_rebuild_lab-0.1.1.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.1.g1rcart",
-          "size": 219035,
-          "sha256": "7b398f819acc240714f92904bbf6ff2de1f3a607b2ca1e788387b5e40a06773e"
+          "name": "red_earth_rebuild_lab-0.1.2.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.2.g1rcart",
+          "size": 219864,
+          "sha256": "89b9c387f7de25def900a36a5acce9844745213d00f6a615b764620439029efc"
         }
       },
       "thumbnail": "data/carts/DuskPromised@red_earth_rebuild_lab/thumbnail.jpg"
