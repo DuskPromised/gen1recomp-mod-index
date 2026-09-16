@@ -1,4 +1,4 @@
--- Red Earth — Gate 1: Irregular Core v0.1.0
+-- Red Earth — Gate 1: Irregular Core v0.1.1
 -- Clean standalone species/data layer built on the verified Gate 0A foundation.
 -- Intentionally NO Oak/starter flow, shiny routing, followers/Wilds, rival/player
 -- overrides, passives, Philosopher's Stone logic, or environment mechanics.
@@ -18,8 +18,9 @@ local IRREGULAR = {
 return function(mod)
   local pokemon = mod.content and mod.content.pokemon
   local moves = mod.content and mod.content.moves
-  if not (pokemon and moves) then
-    mod.log:warn("Red Earth Gate 1: pokemon/moves registry unavailable; core skipped")
+  local text = mod.content and mod.content.text
+  if not (pokemon and moves and text) then
+    mod.log:warn("Red Earth Gate 1: pokemon/moves/text registry unavailable; core skipped")
     return
   end
 
@@ -73,6 +74,15 @@ return function(mod)
     effect="HYPER_BEAM_EFFECT", category="special", anim=beamAnim,
   })
 
+  -- DexEntryMenu resolves dexEntry.text through game.data.text. Register
+  -- dedicated keys so the lower half of the card renders real prose.
+  text:register("IRR_PSYDREN_DEX_TEXT",
+    "An aquatic anomaly\ndrifts between\ndreams and the sea")
+  text:register("IRR_VESPERIS_DEX_TEXT",
+    "A psychic wraith\nsurvives the space\nbetween lives")
+  text:register("IRR_SOLIPSDION_DEX_TEXT",
+    "Seven wings circle\na sovereign shaped\nby transmutation")
+
   local maxDex = 0
   for _, def in pokemon:each() do
     maxDex = math.max(maxDex, tonumber(def.dex) or 0)
@@ -119,9 +129,8 @@ return function(mod)
     icon={image=ART[IDS.PSYDREN].icon,frames=2},
     cry="MEW",
     dexEntry={
-      kind="ABYSSAL SEED",heightFt=2,heightIn=4,weight=18.5,
-      text="An aquatic anomaly that drifts between dreams and the sea.",
-      text2="A crimson light sleeps beneath its calm exterior.",
+      kind="ABYSSAL",heightFt=2,heightIn=4,weight=185,
+      text="IRR_PSYDREN_DEX_TEXT",
     },
   })
 
@@ -146,9 +155,8 @@ return function(mod)
     icon={image=ART[IDS.VESPERIS].icon,frames=2},
     cry="HAUNTER",
     dexEntry={
-      kind="GRAVEKEEPER STORM",heightFt=4,heightIn=11,weight=71.0,
-      text="Its first body dissolves into a violent psychic wraith.",
-      text2="It survives the space between life and death by mastering it.",
+      kind="WRAITH",heightFt=4,heightIn=11,weight=710,
+      text="IRR_VESPERIS_DEX_TEXT",
     },
   })
 
@@ -174,9 +182,8 @@ return function(mod)
     icon={image=ART[IDS.SOLIPSDION].icon,frames=2},
     cry="MEWTWO",
     dexEntry={
-      kind="SOVEREIGN APEX",heightFt=7,heightIn=2,weight=269.0,
-      text="Seven wings surround a body shaped by repeated transmutation.",
-      text2="Its presence bends the boundary between thought and matter.",
+      kind="SOVEREIGN",heightFt=7,heightIn=2,weight=2690,
+      text="IRR_SOLIPSDION_DEX_TEXT",
     },
   })
 
@@ -235,7 +242,7 @@ return function(mod)
     end
   end)
 
-  mod.exports.version = "0.1.0"
+  mod.exports.version = "0.1.1"
   mod.exports.species = IDS
   mod.exports.isIrregular = function(mon)
     return mon and IRREGULAR[mon.species] == true
