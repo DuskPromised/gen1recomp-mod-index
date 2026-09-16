@@ -1,7 +1,7 @@
 {
   "folder": "DuskPromised@red_earth_rebuild_lab",
   "id": "red_earth_rebuild_lab",
-  "title": "Red Earth Rebuild Lab — Core + Voxel",
+  "title": "Red Earth Rebuild Lab \u2014 Core + Voxel",
   "author": "Adam M. Aguilera",
   "version": "0.1.2",
   "summary": "Clean Claude rebuild test; Wilds and Regional Shiny Art are pinned OFF. Unpinned legacy Red Earth mods cannot load.",
@@ -101,14 +101,14 @@
   ],
   "update_check": "ok",
   "latest": {
-    "version": "0.1.1",
-    "name": "0.1.1",
+    "version": "0.1.2",
+    "name": "0.1.2",
     "prerelease": true,
     "zip": {
-      "name": "red_earth_rebuild_lab-0.1.1.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.1.g1rcart",
-      "size": 219035,
-      "sha256": "7b398f819acc240714f92904bbf6ff2de1f3a607b2ca1e788387b5e40a06773e"
+      "name": "red_earth_rebuild_lab-0.1.2.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.2.g1rcart",
+      "size": 219864,
+      "sha256": "89b9c387f7de25def900a36a5acce9844745213d00f6a615b764620439029efc"
     }
   },
   "thumbnail": "data/carts/DuskPromised@red_earth_rebuild_lab/thumbnail.jpg"
