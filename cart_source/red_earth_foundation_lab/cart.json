@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "red_earth_foundation_lab",
   "title": "Red Earth Foundation Lab — Clean",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Fresh Gate 0 A/B cart: Kaizo + PotatoVoxel + Wilds + Performance Monitor only; new cart/save, no Red Earth patches.",
+  "summary": "A/B lab: PotatoVoxel and Wilds ship OFF and can be toggled independently; Kaizo + Performance Monitor stay ON.",
   "shell": "#5A1E24",
   "finish": "holo",
   "label": "label.png",
@@ -30,14 +30,16 @@
       "source": "github",
       "repo": "ShaneMcGovernIE/potato_voxel",
       "version": "1.9.6",
-      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846"
+      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
+      "enabled": false
     },
     {
       "id": "overworld_wild_spawns",
       "source": "github",
       "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
       "version": "2.1.9",
-      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
+      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd",
+      "enabled": false
     },
     {
       "id": "performance_monitor",
