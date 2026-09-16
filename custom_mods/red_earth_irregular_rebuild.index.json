@@ -4,7 +4,11 @@
   "title": "Red Earth: Irregular — Rebuild Candidate",
   "author": "Adam M. Aguilera",
   "version": "0.1.1",
-  "categories": ["GAMEPLAY", "CONTENT", "DEVELOPMENT"],
+  "categories": [
+    "GAMEPLAY",
+    "CONTENT",
+    "DEVELOPMENT"
+  ],
   "tags": [
     "red earth",
     "rebuild",
@@ -23,7 +27,9 @@
   "api": 2,
   "profile": "content",
   "game_version": ">=0.2.24 <2.0.0",
-  "permissions": ["engine_internals"],
+  "permissions": [
+    "engine_internals"
+  ],
   "dependencies": [
     "gen1_kaizo@>=0.8.3 <1.0.0",
     "crystal_animated_sprites_with_shiny_visuals@>=2.0.3 <3.0.0"
@@ -32,7 +38,10 @@
     "DRAMALESS_SHAPE@>=2.0.4 <3.0.0",
     "overworld_wild_spawns@>=2.1.9 <3.0.0"
   ],
-  "optional_integrations": ["DRAMALESS_SHAPE", "overworld_wild_spawns"],
+  "optional_integrations": [
+    "DRAMALESS_SHAPE",
+    "overworld_wild_spawns"
+  ],
   "conflicts": [
     "irregular_origin",
     "philosopher_stones",
@@ -52,7 +61,7 @@
   "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_rebuild/red_earth_irregular_rebuild-0.1.1.zip",
   "source_zip": "red_earth_irregular_rebuild-0.1.1.zip",
   "sha256": "8699930b10735b63e5c11ce8278dcb2125fe17936842e63a9b97dbba7f13278f",
-  "summary": "Experimental clean reconstruction of Red Earth Irregular/Philosopher mechanics. Audited to avoid global battle scaling; Wilds is optional. Regional starter visible shiny art is not a release gate for this test.",
+  "summary": "TEST candidate — clean Red Earth Irregular/Philosopher reconstruction, audited to avoid global battle scaling. Wilds and Regional Shiny Art are intentionally excluded from the first lab cart.",
   "source_scope": "DuskPromised original test candidate",
   "update_check": "off"
 }
