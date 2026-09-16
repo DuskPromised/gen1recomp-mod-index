@@ -22,10 +22,10 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      MOD_VERSION: "0.1.2"
-      CART_VERSION: "0.1.1"
-      EXPECTED_SHA256: "fd3727045030855bf52f26b1b1c768437526dae1c7be4ec51cb7bbca852c1c3a"
-      SOURCE_URL: "https://at.adobe.com/FJoqQoCvdA7RFgxM"
+      MOD_VERSION: "0.1.3"
+      CART_VERSION: "0.1.2"
+      EXPECTED_SHA256: "a63efc97623daa1ff82e3ceb4fb0d80dd66a672b39ad58830228584c9b2d8403"
+      SOURCE_URL: "https://at.adobe.com/QSpONqH0Ieyj1COK"
 
     steps:
       - uses: actions/checkout@v4
@@ -48,7 +48,7 @@ jobs:
               assert not any(n.startswith("__MACOSX/") for n in names)
               manifest=json.loads(z.read("red_earth_irregular_rebuild/manifest.json"))
               assert manifest["id"]=="red_earth_irregular_rebuild"
-              assert manifest["version"]=="0.1.2"
+              assert manifest["version"]=="0.1.3"
               assert manifest["priority"]==1100
               main=z.read("red_earth_irregular_rebuild/main.lua").decode("utf-8")
               assert "_redEarthFollowerMeta" in main
@@ -66,13 +66,15 @@ jobs:
 
           cart=json.loads(Path("cart_source/red_earth_rebuild_lab/cart.json").read_text())
           assert cart["id"]=="red_earth_rebuild_lab"
-          assert cart["version"]=="0.1.1"
-          assert cart["seal"]=="open"
+          assert cart["version"]=="0.1.2"
+          assert cart["seal"]=="sealed+"
           assert cart["speeds"]==[1]
           expected=[
               "gen1_kaizo",
               "potato_voxel",
               "crystal_animated_sprites_with_shiny_visuals",
+              "overworld_wild_spawns",
+              "red_earth_regional_shiny_art",
               "red_earth_irregular_rebuild",
               "performance_monitor",
           ]
@@ -80,12 +82,13 @@ jobs:
           assert ids==expected, (ids, expected)
           assert cart["load_order"]==expected
           by={m["id"]:m for m in cart["mods"]}
-          assert by["red_earth_irregular_rebuild"]["version"]=="0.1.2"
-          assert by["red_earth_irregular_rebuild"]["sha256"]=="fd3727045030855bf52f26b1b1c768437526dae1c7be4ec51cb7bbca852c1c3a"
-          assert "overworld_wild_spawns" not in by
-          assert "red_earth_regional_shiny_art" not in by
+          assert by["red_earth_irregular_rebuild"]["version"]=="0.1.3"
+          assert by["red_earth_irregular_rebuild"]["sha256"]=="a63efc97623daa1ff82e3ceb4fb0d80dd66a672b39ad58830228584c9b2d8403"
+          assert by["overworld_wild_spawns"].get("enabled") is False
+          assert by["red_earth_regional_shiny_art"].get("enabled") is False
           assert "red_earth_irregular" not in by
           assert "irregular_origin" not in by
+          assert "red_earth_voxel_profile_next" not in by
           print("REBUILD LAB AUDIT PASS")
           PY
 
@@ -120,7 +123,7 @@ jobs:
           source=json.loads(Path("cart_source/red_earth_rebuild_lab/cart.json").read_text())
           meta_path=Path("carts/red_earth_rebuild_lab.index.json")
           meta=json.loads(meta_path.read_text())
-          cart_path=Path("site/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.1.g1rcart")
+          cart_path=Path("site/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.2.g1rcart")
           body=cart_path.read_bytes()
 
           for key in ("title","author","summary","version","base","seal","speeds","shell","finish","mods","load_order"):
