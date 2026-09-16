@@ -1,0 +1,270 @@
+name: Build Red Earth Gate 1.2 Fix
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate1-2-fix-build"]
+    paths:
+      - "mods/red-earth-irregular-core/**"
+      - "mods/red-earth-gate1-test-harness/**"
+      - "custom_mods/red_earth_irregular_core.index.json"
+      - "custom_mods/red_earth_gate1_test_harness.index.json"
+      - ".github/workflows/build-red-earth-gate1-2-fix.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: red-earth-gate1-2-fix-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: "0.1.2"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate standalone Gate 1.2 sources
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          python -m pip install --quiet pillow
+          luac -p mods/red-earth-irregular-core/main.lua
+          luac -p mods/red-earth-gate1-test-harness/main.lua
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image
+
+          core=Path("mods/red-earth-irregular-core")
+          harness=Path("mods/red-earth-gate1-test-harness")
+          cm=json.loads((core/"manifest.json").read_text())
+          hm=json.loads((harness/"manifest.json").read_text())
+          ci=json.loads(Path("custom_mods/red_earth_irregular_core.index.json").read_text())
+          hi=json.loads(Path("custom_mods/red_earth_gate1_test_harness.index.json").read_text())
+          cs=(core/"main.lua").read_text()
+          hs=(harness/"main.lua").read_text()
+
+          assert cm["version"]=="0.1.2"
+          assert hm["version"]=="0.1.2"
+          assert ci["version"]=="0.1.2"
+          assert hi["version"]=="0.1.2"
+          assert "red_earth_irregular_core@>=0.1.2 <0.2.0" in hm["dependencies"]
+
+          # Gate 1 remains the standalone normal species/data module.
+          for token in [
+              "frontShiny","backShiny","menuShiny","iconShiny","mon.shiny",
+              "overworld_wild_spawns","registerSpriteProvider",
+              "EVENT_GOT_STARTER","give_pokemon",
+              "PHILOSOPHER_","SOLITARY","DISTANCE","AETHERIC","MELONY","ANSEM",
+          ]:
+              assert token.upper() not in cs.upper(), token
+
+          expected={}
+          for stem in ("psydren","vesperis","solipsdion"):
+              expected[f"{stem}_front.png"]=(56,56)
+              expected[f"{stem}_back.png"]=(48,48)
+              expected[f"{stem}_menu.png"]=(40,40)
+              expected[f"{stem}_icon.png"]=(16,32)
+          actual={p.name for p in (core/"assets").glob("*.png")}
+          assert actual==set(expected), (sorted(actual),sorted(expected))
+          assert not any("shiny" in n.lower() for n in actual)
+
+          for name,size in expected.items():
+              with Image.open(core/"assets"/name) as im:
+                  im.load()
+                  assert im.size==size,(name,im.size,size)
+                  assert im.mode in ("RGBA","LA","P"),(name,im.mode)
+
+          # v0.1.2 Dex fixes + clean user-facing species IDs + historical stage scales.
+          for needle in [
+              'text:register("IRR_PSYDREN_DEX_TEXT"',
+              'text:register("IRR_VESPERIS_DEX_TEXT"',
+              'text:register("IRR_SOLIPSDION_DEX_TEXT"',
+              'kind="ABYSSAL",heightFt=2,heightIn=4,weight=185',
+              'kind="WRAITH",heightFt=4,heightIn=11,weight=710',
+              'kind="SOVEREIGN",heightFt=7,heightIn=2,weight=2690',
+              'text="IRR_PSYDREN_DEX_TEXT"',
+              'text="IRR_VESPERIS_DEX_TEXT"',
+              'text="IRR_SOLIPSDION_DEX_TEXT"',
+              'PSYDREN = "PSYDREN"',
+              'VESPERIS = "VESPERIS"',
+              'SOLIPSDION = "SOLIPSDION"',
+              'battleScaleFront=0.94, battleScaleBack=0.94',
+              'battleScaleFront=1.0, battleScaleBack=1.0',
+              'battleScaleFront=1.08, battleScaleBack=1.05',
+              'mod.exports.version = "0.1.2"',
+          ]:
+              assert needle in cs, needle
+
+          # Test harness only: physical left -> center -> right maps
+          # Charmander -> Squirtle -> Bulbasaur in Oak's actual object order.
+          assert 'TEXT_OAKSLAB_CHARMANDER_POKE_BALL={\n    species=IDS.PSYDREN' in hs
+          assert 'TEXT_OAKSLAB_SQUIRTLE_POKE_BALL={\n    species=IDS.VESPERIS' in hs
+          assert 'TEXT_OAKSLAB_BULBASAUR_POKE_BALL={\n    species=IDS.SOLIPSDION' in hs
+          assert 'flags.EVENT_GOT_STARTER~=true' in hs
+          assert 'PSYDREN="PSYDREN"' in hs
+          assert 'VESPERIS="VESPERIS"' in hs
+          assert 'SOLIPSDION="SOLIPSDION"' in hs
+
+          print("GATE 1.1 STANDALONE SCOPE PASS")
+          PY
+
+      - name: Package core and harness
+        run: |
+          mkdir -p site/data/mods/DuskPromised@red_earth_irregular_core
+          mkdir -p site/data/mods/DuskPromised@red_earth_gate1_test_harness
+
+          python - <<'PY'
+          import hashlib,json,zipfile
+          from pathlib import Path
+
+          def pack(src_dir, folder, out_path):
+              src=Path(src_dir)
+              files=["main.lua","manifest.json","README.md","LICENSE"]
+              if (src/"assets").exists():
+                  files += [str(p.relative_to(src)) for p in sorted((src/"assets").glob("*.png"))]
+              out=Path(out_path)
+              if out.exists(): out.unlink()
+              with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+                  for name in files:
+                      info=zipfile.ZipInfo(folder+"/"+name)
+                      info.date_time=(2026,9,16,0,0,0)
+                      info.compress_type=zipfile.ZIP_DEFLATED
+                      info.external_attr=0o100644<<16
+                      z.writestr(info,(src/name).read_bytes())
+              with zipfile.ZipFile(out) as z:
+                  assert z.testzip() is None
+                  assert not any("__MACOSX" in n for n in z.namelist())
+              body=out.read_bytes()
+              return hashlib.sha256(body).hexdigest(),len(body)
+
+          core_path="site/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.2.zip"
+          harness_path="site/data/mods/DuskPromised@red_earth_gate1_test_harness/red_earth_gate1_test_harness-0.1.2.zip"
+          core_sha,core_size=pack("mods/red-earth-irregular-core","red_earth_irregular_core",core_path)
+          harness_sha,harness_size=pack("mods/red-earth-gate1-test-harness","red_earth_gate1_test_harness",harness_path)
+
+          Path("/tmp/core_sha.txt").write_text(core_sha)
+          Path("/tmp/harness_sha.txt").write_text(harness_sha)
+          Path("custom_mods/red_earth_irregular_core.sha256").write_text(core_sha+"  red_earth_irregular_core-0.1.2.zip\n")
+          Path("custom_mods/red_earth_gate1_test_harness.sha256").write_text(harness_sha+"  red_earth_gate1_test_harness-0.1.2.zip\n")
+
+          for ip,sha in [
+              ("custom_mods/red_earth_irregular_core.index.json",core_sha),
+              ("custom_mods/red_earth_gate1_test_harness.index.json",harness_sha),
+          ]:
+              p=Path(ip); j=json.loads(p.read_text()); j["sha256"]=sha
+              p.write_text(json.dumps(j,indent=2)+"\n")
+
+          print("CORE",core_sha,core_size)
+          print("HARNESS",harness_sha,harness_size)
+          PY
+
+      - name: Publish Gate 1.2 QA release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          CORE_SHA="$(cat /tmp/core_sha.txt)"
+          HARNESS_SHA="$(cat /tmp/harness_sha.txt)"
+          cat >/tmp/sha256sums.txt <<EOF
+          $CORE_SHA  red_earth_irregular_core-0.1.2.zip
+          $HARNESS_SHA  red_earth_gate1_test_harness-0.1.2.zip
+          EOF
+
+          if ! gh release view "v$VERSION" >/dev/null 2>&1; then
+            gh release create "v$VERSION"               --target "$GITHUB_SHA"               --title "Red Earth Gate 1 QA v$VERSION"               --notes "Gate 1.2 restores intended per-stage battle scales and replaces leaking IRR_ species IDs with user-facing PSYDREN/VESPERIS/SOLIPSDION IDs. Gate 1 remains standalone; shiny routing is Gate 2."               --prerelease
+          fi
+          gh release upload "v$VERSION"             "site/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.2.zip"             "site/data/mods/DuskPromised@red_earth_gate1_test_harness/red_earth_gate1_test_harness-0.1.2.zip"             "/tmp/sha256sums.txt#sha256sums.txt"             --clobber
+
+      - name: Build sealed Gate 1.2 retest cart
+        run: |
+          CORE_SHA="$(cat /tmp/core_sha.txt)"
+          HARNESS_SHA="$(cat /tmp/harness_sha.txt)"
+          mkdir -p cart_source/gate_1_irregular_test carts
+
+          python - "$CORE_SHA" "$HARNESS_SHA" <<'PY'
+          import json,struct,zlib,sys
+          from pathlib import Path
+          core_sha,harness_sha=sys.argv[1],sys.argv[2]
+
+          mods=[
+            {"id":"gen1_kaizo","source":"github","repo":"AyeBathingApe/gen1recomp-allgen-kaizo","version":"0.8.3","sha256":"99fff33b12764496e185bc5e0c5397f0c6670f439830e54e866fd8fa82813ad2"},
+            {"id":"potato_voxel","source":"github","repo":"ShaneMcGovernIE/potato_voxel","version":"1.9.6","sha256":"f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846","options":{"renderScale":100,"water":"full","aa":2,"curve":1,"grid":True,"battles":True,"battleBack":True,"atmos":True,"weather":True,"shadows":True,"shadowQuality":0}},
+            {"id":"crystal_animated_sprites_with_shiny_visuals","source":"github","repo":"distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals","version":"2.0.3","sha256":"3d2874917f03a42cbf96d0d7e1b5c19bde09a5405fe12559ac241af017155689"},
+            {"id":"red_earth_irregular_core","source":"github","repo":"DuskPromised/gen1recomp-mod-index","version":"0.1.2","sha256":core_sha},
+            {"id":"red_earth_gate1_test_harness","source":"github","repo":"DuskPromised/gen1recomp-mod-index","version":"0.1.2","sha256":harness_sha},
+            {"id":"performance_monitor","source":"github","repo":"notquiteog/performance_monitor","version":"1.4.1","sha256":"34688ca51894ab68e4f6dad51e5ce3a0bc8c17913a45eb3d0ddb318560412379"},
+          ]
+          order=["gen1_kaizo","potato_voxel","crystal_animated_sprites_with_shiny_visuals","red_earth_irregular_core","red_earth_gate1_test_harness","performance_monitor"]
+          cart={
+            "schema":1,"id":"gate_1_irregular_test","title":"Gate 1 — Irregular Core Test",
+            "version":"0.1.2","author":"Adam M. Aguilera","repo":"DuskPromised/gen1recomp-mod-index",
+            "summary":"Gate A + Irregular Core 0.1.2 QA. No Wilds, shiny routing, followers, Stone, passives, or characters.",
+            "shell":"#24162B","finish":"holo","label":"label.png","base":"red","seal":"sealed+","speeds":[1],
+            "mods":mods,"load_order":order
+          }
+          Path("cart_source/gate_1_irregular_test/cart.json").write_text(json.dumps(cart,indent=2)+"\n")
+
+          label=Path("cart_source/gate_1_irregular_test/label.png")
+          if not label.exists():
+              w=h=256; rgb=(36,22,43)
+              raw=b"".join(b"\x00"+bytes(rgb)*w for _ in range(h))
+              def chunk(t,d):
+                  return struct.pack(">I",len(d))+t+d+struct.pack(">I",zlib.crc32(t+d)&0xffffffff)
+              png=b"\x89PNG\r\n\x1a\n"+chunk(b"IHDR",struct.pack(">IIBBBBB",w,h,8,2,0,0,0))+chunk(b"IDAT",zlib.compress(raw,9))+chunk(b"IEND",b"")
+              label.write_bytes(png)
+
+          idx={
+            "folder":"DuskPromised@gate_1_irregular_test","id":cart["id"],"title":cart["title"],
+            "author":cart["author"],"version":cart["version"],"summary":cart["summary"],
+            "base":"red","seal":"sealed+","speeds":[1],"shell":"#24162B","finish":"holo",
+            "tags":["gate 1","red earth","qa","irregular core","development"],
+            "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
+            "automatic_version_check":False,"game_version":">=0.2.24 <2.0.0",
+            "mods":mods,"load_order":order,"update_check":"off"
+          }
+          Path("carts/gate_1_irregular_test.index.json").write_text(json.dumps(idx,indent=2)+"\n")
+          PY
+
+          curl -fsSL https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py -o /tmp/cartkit.py
+          python /tmp/cartkit.py validate cart_source/gate_1_irregular_test --online --strict
+          python /tmp/cartkit.py pack cart_source/gate_1_irregular_test             -o /tmp/gate_1_irregular_test-0.1.2.g1rcart --online
+
+      - name: Publish test cart metadata
+        run: |
+          mkdir -p site/data/carts/DuskPromised@gate_1_irregular_test
+          python - <<'PY'
+          import hashlib,json,shutil
+          from pathlib import Path
+          src=Path("/tmp/gate_1_irregular_test-0.1.2.g1rcart")
+          out=Path("site/data/carts/DuskPromised@gate_1_irregular_test")
+          dst=out/src.name
+          shutil.copy2(src,dst)
+          shutil.copy2("cart_source/gate_1_irregular_test/label.png",out/"label.png")
+          sha=hashlib.sha256(dst.read_bytes()).hexdigest()
+          p=Path("carts/gate_1_irregular_test.index.json")
+          j=json.loads(p.read_text())
+          j["latest"]={"version":"0.1.2","name":"0.1.2","prerelease":True,"zip":{"name":dst.name,"url":"https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_1_irregular_test/"+dst.name,"size":dst.stat().st_size,"sha256":sha}}
+          j["thumbnail"]="data/carts/DuskPromised@gate_1_irregular_test/label.png"
+          j["update_check"]="ok"
+          p.write_text(json.dumps(j,indent=2)+"\n")
+          Path("/tmp/cart_sha.txt").write_text(sha)
+          print("CART",sha,dst.stat().st_size)
+          PY
+
+      - name: Commit Gate 1.2 packages and cart
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add             mods/red-earth-irregular-core             mods/red-earth-gate1-test-harness             custom_mods/red_earth_irregular_core.index.json             custom_mods/red_earth_irregular_core.sha256             custom_mods/red_earth_gate1_test_harness.index.json             custom_mods/red_earth_gate1_test_harness.sha256             cart_source/gate_1_irregular_test             carts/gate_1_irregular_test.index.json
+          git add -f             site/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.2.zip             site/data/mods/DuskPromised@red_earth_gate1_test_harness/red_earth_gate1_test_harness-0.1.2.zip             site/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.2.g1rcart             site/data/carts/DuskPromised@gate_1_irregular_test/label.png
+          if git diff --cached --quiet; then
+            echo "Gate 1.2 artifacts already current."
+          else
+            git commit -m "Publish Gate 1.2 scale and species-ID fixes"
+            git push origin HEAD:gate1-2-fix-build
+          fi
