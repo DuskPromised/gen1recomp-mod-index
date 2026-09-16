@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T23:09:59.937579+00:00",
+  "generated_at": "2026-09-16T23:56:57.535402+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -9125,7 +9125,7 @@
       "id": "red_earth_gate1_test_harness",
       "title": "Red Earth — Gate 1 Test Harness",
       "author": "Adam M. Aguilera",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "categories": [
         "DEVELOPMENT",
         "CONTENT"
@@ -9147,7 +9147,7 @@
       ],
       "dependencies": [
         "gen1_kaizo@>=0.8.3 <1.0.0",
-        "red_earth_irregular_core@>=0.1.1 <0.2.0"
+        "red_earth_irregular_core@>=0.1.2 <0.2.0"
       ],
       "conflicts": [
         "irregular_origin",
@@ -9160,12 +9160,12 @@
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "github": "DuskPromised/gen1recomp-mod-index",
       "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_gate1_test_harness/red_earth_gate1_test_harness-0.1.1.zip",
-      "source_zip": "red_earth_gate1_test_harness-0.1.1.zip",
-      "summary": "Gate 1.1 QA harness: physical left-to-right Oak balls dispense Psydren Lv15, Vesperis Lv35, and Solipsdion Lv50 without consuming Kaizo's real starter choice.",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_gate1_test_harness/red_earth_gate1_test_harness-0.1.2.zip",
+      "source_zip": "red_earth_gate1_test_harness-0.1.2.zip",
+      "summary": "Gate 1.2 QA harness for the clean PSYDREN/VESPERIS/SOLIPSDION species IDs and corrected stage battle scaling.",
       "source_scope": "DuskPromised original Gate 1 QA tool",
       "update_check": "off",
-      "sha256": "e8e25b4a3926387f23803105dd56f9185494b17514ff200a3a3e7c6942d0bb6c",
+      "sha256": "78f5c62ac31abc7057ab0ea723175d0f7c6a9e6a52a8ddd00128256438d62a42",
       "optional_dependencies": [],
       "optional_integrations": []
     },
@@ -9174,7 +9174,7 @@
       "id": "red_earth_irregular_core",
       "title": "Red Earth — Gate 1: Irregular Core",
       "author": "Adam M. Aguilera",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "categories": [
         "GAMEPLAY",
         "CONTENT",
@@ -9209,12 +9209,12 @@
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "github": "DuskPromised/gen1recomp-mod-index",
       "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.1.zip",
-      "source_zip": "red_earth_irregular_core-0.1.1.zip",
-      "summary": "Gate 1.1 Irregular species core with corrected Pokédex prose/layout and weight units; canonical species data, evolutions, moves, normal art, and stable save IDs.",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.2.zip",
+      "source_zip": "red_earth_irregular_core-0.1.2.zip",
+      "summary": "Gate 1.2 standalone Irregular species core: clean PSYDREN/VESPERIS/SOLIPSDION save IDs, corrected Dex data, canonical normal art, and species-specific historical battle scales.",
       "source_scope": "DuskPromised original Gate 1 module",
       "update_check": "off",
-      "sha256": "0d9691074a17f8de0b5cd6e755bb29ffbb87605b1baba873ce1b7fa807d64f5e",
+      "sha256": "287f761dc2826b67fb8d1b3ef8364c0333dd3170d6fa4846f5b35df8e8b097b0",
       "optional_dependencies": [],
       "optional_integrations": []
     },
@@ -12594,8 +12594,8 @@
       "id": "gate_1_irregular_test",
       "title": "Gate 1 — Irregular Core Test",
       "author": "Adam M. Aguilera",
-      "version": "0.1.1",
-      "summary": "Gate A + standalone Irregular Core 0.1.1 and QA harness. No Wilds, shiny routing, or later Red Earth systems.",
+      "version": "0.1.2",
+      "summary": "Gate A + Irregular Core 0.1.2 QA. No Wilds, shiny routing, followers, Stone, passives, or characters.",
       "base": "red",
       "seal": "sealed+",
       "speeds": [
@@ -12652,15 +12652,15 @@
           "id": "red_earth_irregular_core",
           "source": "github",
           "repo": "DuskPromised/gen1recomp-mod-index",
-          "version": "0.1.1",
-          "sha256": "0d9691074a17f8de0b5cd6e755bb29ffbb87605b1baba873ce1b7fa807d64f5e"
+          "version": "0.1.2",
+          "sha256": "287f761dc2826b67fb8d1b3ef8364c0333dd3170d6fa4846f5b35df8e8b097b0"
         },
         {
           "id": "red_earth_gate1_test_harness",
           "source": "github",
           "repo": "DuskPromised/gen1recomp-mod-index",
-          "version": "0.1.1",
-          "sha256": "e8e25b4a3926387f23803105dd56f9185494b17514ff200a3a3e7c6942d0bb6c"
+          "version": "0.1.2",
+          "sha256": "78f5c62ac31abc7057ab0ea723175d0f7c6a9e6a52a8ddd00128256438d62a42"
         },
         {
           "id": "performance_monitor",
@@ -12680,14 +12680,14 @@
       ],
       "update_check": "ok",
       "latest": {
-        "version": "0.1.1",
-        "name": "0.1.1",
+        "version": "0.1.2",
+        "name": "0.1.2",
         "prerelease": true,
         "zip": {
-          "name": "gate_1_irregular_test-0.1.1.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.1.g1rcart",
-          "size": 3524,
-          "sha256": "4030878a29d7197405781ea8b3678f0baf3ad3ceaf77be051d1d2c744e0d5b99"
+          "name": "gate_1_irregular_test-0.1.2.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.2.g1rcart",
+          "size": 3516,
+          "sha256": "8c070362facaf54731517b6beeda8e0b9bcdd37e5e5bdb2d73f030f4c3795714"
         }
       },
       "thumbnail": "data/carts/DuskPromised@gate_1_irregular_test/label.png"
