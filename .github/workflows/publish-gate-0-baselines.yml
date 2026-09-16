@@ -1,0 +1,156 @@
+name: Publish Gate 0 Baselines
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "cart_source/gate_0a_pristine/**"
+      - "cart_source/gate_0b_wilds/**"
+      - "carts/gate_0a_pristine.index.json"
+      - "carts/gate_0b_wilds.index.json"
+      - ".github/workflows/publish-gate-0-baselines.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: publish-gate-0-baselines
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Audit Gate 0 scope
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          a=json.loads(Path("cart_source/gate_0a_pristine/cart.json").read_text())
+          b=json.loads(Path("cart_source/gate_0b_wilds/cart.json").read_text())
+
+          assert a["id"]=="gate_0a_pristine"
+          assert b["id"]=="gate_0b_wilds"
+          assert a["seal"]==b["seal"]=="sealed+"
+
+          ids_a=[m["id"] for m in a["mods"]]
+          ids_b=[m["id"] for m in b["mods"]]
+          assert ids_a==[
+            "gen1_kaizo",
+            "potato_voxel",
+            "crystal_animated_sprites_with_shiny_visuals",
+            "performance_monitor",
+          ], ids_a
+          assert ids_b==[
+            "gen1_kaizo",
+            "potato_voxel",
+            "crystal_animated_sprites_with_shiny_visuals",
+            "overworld_wild_spawns",
+            "performance_monitor",
+          ], ids_b
+
+          forbidden=("red_earth","irregular","psydren","vesperis","solipsdion","philosopher","melony","ansem")
+          for cart in (a,b):
+              blob=json.dumps(cart).lower()
+              for token in forbidden:
+                  assert token not in blob, (cart["id"], token)
+
+          assert a["load_order"]==ids_a
+          assert b["load_order"]==ids_b
+          print("GATE 0 SCOPE PASS")
+          PY
+
+      - name: Fetch cartkit
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py -o /tmp/cartkit.py
+
+      - name: Generate neutral Gate labels and pack carts
+        run: |
+          python - <<'PY'
+          import json, struct, zlib
+          from pathlib import Path
+
+          def write_png(path, rgb):
+              w=h=256
+              raw=b"".join(b"\x00"+bytes(rgb)*w for _ in range(h))
+              def chunk(kind,data):
+                  return struct.pack(">I",len(data))+kind+data+struct.pack(">I",zlib.crc32(kind+data)&0xffffffff)
+              body=b"\x89PNG\r\n\x1a\n"
+              body+=chunk(b"IHDR",struct.pack(">IIBBBBB",w,h,8,2,0,0,0))
+              body+=chunk(b"IDAT",zlib.compress(raw,9))
+              body+=chunk(b"IEND",b"")
+              Path(path).write_bytes(body)
+
+          for gate,color in (("gate_0a_pristine",(11,19,43)),("gate_0b_wilds",(15,61,46))):
+              dst=Path("/tmp")/gate
+              dst.mkdir(parents=True,exist_ok=True)
+              (dst/"cart.json").write_text(Path(f"cart_source/{gate}/cart.json").read_text())
+              write_png(dst/"label.png",color)
+          PY
+
+          python /tmp/cartkit.py pack /tmp/gate_0a_pristine -o /tmp/gate_0a_pristine-0.0.1.g1rcart
+          python /tmp/cartkit.py pack /tmp/gate_0b_wilds -o /tmp/gate_0b_wilds-0.0.1.g1rcart
+
+      - name: Publish carts and metadata
+        run: |
+          python - <<'PY'
+          import hashlib, json, shutil
+          from pathlib import Path
+
+          for gate in ("gate_0a_pristine","gate_0b_wilds"):
+              source=json.loads(Path(f"cart_source/{gate}/cart.json").read_text())
+              folder=f"DuskPromised@{gate}"
+              out=Path("site/data/carts")/folder
+              out.mkdir(parents=True,exist_ok=True)
+
+              cart_src=Path("/tmp")/f"{gate}-0.0.1.g1rcart"
+              cart_dst=out/cart_src.name
+              shutil.copy2(cart_src,cart_dst)
+              shutil.copy2(Path("/tmp")/gate/"label.png",out/"label.png")
+
+              body=cart_dst.read_bytes()
+              meta_path=Path("carts")/f"{gate}.index.json"
+              meta=json.loads(meta_path.read_text())
+              for key in ("title","author","summary","version","base","seal","speeds","shell","finish","mods","load_order"):
+                  meta[key]=source[key]
+              meta["latest"]={
+                "version":source["version"],
+                "name":source["version"],
+                "prerelease":True,
+                "zip":{
+                  "name":cart_dst.name,
+                  "url":f"https://duskpromised.github.io/gen1recomp-mod-index/data/carts/{folder}/{cart_dst.name}",
+                  "size":len(body),
+                  "sha256":hashlib.sha256(body).hexdigest()
+                }
+              }
+              meta["thumbnail"]=f"data/carts/{folder}/label.png"
+              meta["update_check"]="ok"
+              meta_path.write_text(json.dumps(meta,indent=2)+"\n")
+              print(gate, hashlib.sha256(body).hexdigest())
+          PY
+
+      - name: Commit Gate 0 publications
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add carts/gate_0a_pristine.index.json carts/gate_0b_wilds.index.json
+          git add site/data/carts/DuskPromised@gate_0a_pristine
+          git add site/data/carts/DuskPromised@gate_0b_wilds
+          if git diff --cached --quiet; then
+            echo "Gate 0 publications already current."
+          else
+            git commit -m "Publish Gate 0 baseline carts"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh combined index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run sync.yml --ref main
