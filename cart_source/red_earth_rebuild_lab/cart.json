@@ -5,13 +5,15 @@
   "version": "0.1.0",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "iOS rebuild test: Kaizo + PotatoVoxel + Crystal + audited Irregular rebuild. Wilds and Regional Shiny Art are intentionally omitted.",
+  "summary": "iOS core test: Kaizo + PotatoVoxel + Crystal + audited Irregular rebuild; Wilds and Regional Shiny Art omitted.",
   "shell": "#5A1E24",
   "finish": "holo",
   "label": "label.png",
   "base": "red",
   "seal": "open",
-  "speeds": [1],
+  "speeds": [
+    1
+  ],
   "mods": [
     {
       "id": "gen1_kaizo",
@@ -19,7 +21,9 @@
       "repo": "AyeBathingApe/gen1recomp-allgen-kaizo",
       "version": "0.8.3",
       "sha256": "99fff33b12764496e185bc5e0c5397f0c6670f439830e54e866fd8fa82813ad2",
-      "options": {"battle": "static"}
+      "options": {
+        "battle": "static"
+      }
     },
     {
       "id": "potato_voxel",
