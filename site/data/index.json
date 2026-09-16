@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T05:52:38.291515+00:00",
+  "generated_at": "2026-09-16T05:53:27.650721+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12658,14 +12658,14 @@
       ],
       "update_check": "ok",
       "latest": {
-        "version": "0.1.2",
-        "name": "0.1.2",
+        "version": "0.1.3",
+        "name": "0.1.3",
         "prerelease": true,
         "zip": {
-          "name": "red_earth_rebuild_lab-0.1.2.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.2.g1rcart",
-          "size": 219864,
-          "sha256": "89b9c387f7de25def900a36a5acce9844745213d00f6a615b764620439029efc"
+          "name": "red_earth_rebuild_lab-0.1.3.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.3.g1rcart",
+          "size": 220077,
+          "sha256": "c3db8a105bfa925645300f16cdd3ad869d99963afd9093533d74eba562274d43"
         }
       },
       "thumbnail": "data/carts/DuskPromised@red_earth_rebuild_lab/thumbnail.jpg"
