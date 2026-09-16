@@ -1,7 +1,7 @@
 {
   "id": "red_earth_voxel_profile_next",
   "name": "Red Earth Voxel Profile NEXT",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -17,6 +17,6 @@
     "engine_internals"
   ],
   "affects_link": false,
-  "description": "Development-only compatibility shim that restores PotatoVoxel named quality presets atomically after a save loads, while leaving ATMOS, WEATHER, day/night and CUSTOM settings alone.",
+  "description": "Development-only compatibility shim that keeps PotatoVoxel launcher/global settings and in-game settings in sync across Continue/load, including CUSTOM profiles.",
   "github": "DuskPromised/gen1recomp-mod-index"
 }
