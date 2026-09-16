@@ -1,7 +1,7 @@
 {
   "folder": "DuskPromised@gate_0a_pristine",
   "id": "gate_0a_pristine",
-  "title": "Gate 0A — Pristine Baseline",
+  "title": "Gate 0A \u2014 Pristine Baseline",
   "author": "Adam M. Aguilera",
   "version": "0.0.1",
   "summary": "Pristine upstream baseline: Kaizo + PotatoVoxel + Crystal + Performance Monitor. No Red Earth code.",
@@ -16,7 +16,8 @@
     "gate 0",
     "baseline",
     "potato voxel",
-    "development"
+    "development",
+    "verified upstream"
   ],
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "automatic_version_check": false,
@@ -70,5 +71,17 @@
     "crystal_animated_sprites_with_shiny_visuals",
     "performance_monitor"
   ],
-  "update_check": "off"
+  "update_check": "ok",
+  "latest": {
+    "version": "0.0.1",
+    "name": "0.0.1",
+    "prerelease": true,
+    "zip": {
+      "name": "gate_0a_pristine-0.0.1.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_0a_pristine/gate_0a_pristine-0.0.1.g1rcart",
+      "size": 2910,
+      "sha256": "accd292921595e1aee711bba20125d9ef1d903623560fafe3142533603ce53ee"
+    }
+  },
+  "thumbnail": "data/carts/DuskPromised@gate_0a_pristine/label.png"
 }
