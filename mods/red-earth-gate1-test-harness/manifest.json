@@ -1,0 +1,27 @@
+{
+  "id": "red_earth_gate1_test_harness",
+  "name": "Red Earth — Gate 1 Test Harness",
+  "version": "0.1.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "DEVELOPMENT",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 900,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "gen1_kaizo@>=0.8.3 <1.0.0",
+    "red_earth_irregular_core@>=0.1.0 <0.2.0"
+  ],
+  "conflicts": [
+    "irregular_origin",
+    "red_earth_irregular",
+    "red_earth_irregular_rebuild",
+    "red_earth_irregular_upgrade"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Temporary Gate 1 QA harness. Uses Oak's three starter balls as one-time dispensers for Psydren Lv15, Vesperis Lv35, and Solipsdion Lv50 while leaving Kaizo's real starter flag untouched."
+}
