@@ -1,0 +1,131 @@
+name: Publish Red Earth Voxel Profile NEXT
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "mods/red-earth-voxel-profile-next/**"
+      - ".github/workflows/publish-red-earth-voxel-profile-next.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: red-earth-voxel-profile-next-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: "0.1.0"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Audit source
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("mods/red-earth-voxel-profile-next")
+          m=json.loads((root/"manifest.json").read_text())
+          assert m["id"]=="red_earth_voxel_profile_next"
+          assert m["version"]=="0.1.0"
+          assert "potato_voxel" in m["dependencies"]
+          main=(root/"main.lua").read_text()
+          for needle in [
+              'Pipelines.level("voxel")',
+              "q.matches",
+              "q.applyMode",
+              'level < 1 or level > 4',
+              'save.loaded',
+              'save.created',
+              'game.ready',
+          ]:
+              assert needle in main, needle
+          for forbidden in ["MapAtmos", "Weather.setting", "Pipelines.setLevel"]:
+              assert forbidden not in main, forbidden
+          print("VOXEL PROFILE NEXT SOURCE AUDIT PASS")
+          PY
+
+      - name: Build deterministic ZIP
+        run: |
+          python - <<'PY'
+          import hashlib, zipfile
+          from pathlib import Path
+          src=Path("mods/red-earth-voxel-profile-next")
+          out=Path("/tmp/red_earth_voxel_profile_next-0.1.0.zip")
+          with zipfile.ZipFile(out,"w",zipfile.ZIP_DEFLATED) as z:
+              for name in ("manifest.json","main.lua","README.md"):
+                  info=zipfile.ZipInfo("red_earth_voxel_profile_next/"+name,date_time=(1980,1,1,0,0,0))
+                  info.compress_type=zipfile.ZIP_DEFLATED
+                  z.writestr(info,(src/name).read_bytes())
+          sha=hashlib.sha256(out.read_bytes()).hexdigest()
+          Path("/tmp/mod.sha").write_text(sha)
+          print("SHA",sha)
+          PY
+
+      - name: Publish archive and metadata
+        run: |
+          python - <<'PY'
+          import json, shutil
+          from pathlib import Path
+          version="0.1.0"
+          sha=Path("/tmp/mod.sha").read_text().strip()
+          folder=Path("site/data/mods/DuskPromised@red_earth_voxel_profile_next")
+          folder.mkdir(parents=True,exist_ok=True)
+          archive=f"red_earth_voxel_profile_next-{version}.zip"
+          shutil.copy2("/tmp/"+archive, folder/archive)
+          meta={
+            "folder":"DuskPromised@red_earth_voxel_profile_next",
+            "id":"red_earth_voxel_profile_next",
+            "title":"Red Earth Voxel Profile NEXT",
+            "author":"Adam M. Aguilera",
+            "version":version,
+            "categories":["COMPATIBILITY"],
+            "tags":["red earth","next","potato voxel","persistence","quality preset","gate 0"],
+            "api":2,
+            "profile":"content",
+            "game_version":">=0.1.51 <2.0.0",
+            "dependencies":["potato_voxel"],
+            "optional_dependencies":[],
+            "conflicts":[],
+            "affects_link":False,
+            "experimental":True,
+            "repo":"https://github.com/DuskPromised/gen1recomp-mod-index",
+            "github":"DuskPromised/gen1recomp-mod-index",
+            "license":"MIT",
+            "downloadURL":f"https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_voxel_profile_next/{archive}",
+            "source_zip":archive,
+            "sha256":sha,
+            "summary":"Gate 0 shim that restores PotatoVoxel named presets after load without touching CUSTOM, ATMOS, WEATHER, or day/night.",
+            "source_scope":"DuskPromised original compatibility patch",
+            "update_check":"off"
+          }
+          Path("custom_mods/red_earth_voxel_profile_next.index.json").write_text(json.dumps(meta,indent=2)+"\n")
+          Path("custom_mods/red_earth_voxel_profile_next.sha256").write_text(f"{sha}  {archive}\n")
+          print("PUBLISH METADATA",sha)
+          PY
+
+      - name: Commit release
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f \
+            "site/data/mods/DuskPromised@red_earth_voxel_profile_next/red_earth_voxel_profile_next-$VERSION.zip" \
+            "custom_mods/red_earth_voxel_profile_next.index.json" \
+            "custom_mods/red_earth_voxel_profile_next.sha256"
+          if git diff --cached --quiet; then
+            echo "Voxel Profile NEXT already current."
+          else
+            git commit -m "Publish Red Earth Voxel Profile NEXT v$VERSION"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh combined index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run sync.yml --ref main
