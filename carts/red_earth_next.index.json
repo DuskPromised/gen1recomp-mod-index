@@ -64,6 +64,17 @@
     "overworld_wild_spawns",
     "performance_monitor"
   ],
-  "update_check": "pending",
-  "thumbnail": "data/carts/DuskPromised@red_earth_next/thumbnail.jpg"
+  "update_check": "ok",
+  "thumbnail": "data/carts/DuskPromised@red_earth_next/thumbnail.jpg",
+  "latest": {
+    "version": "0.0.5",
+    "name": "0.0.5",
+    "prerelease": true,
+    "zip": {
+      "name": "red_earth_next-0.0.5.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.5.g1rcart",
+      "size": 218515,
+      "sha256": "002a0234a1c9fb1f824da2649e0c7495ffd18fb6e10e89bcbf94158837c71ccf"
+    }
+  }
 }
