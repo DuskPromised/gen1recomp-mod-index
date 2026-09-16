@@ -2,6 +2,8 @@
 
 This is the first Red Earth-owned module built on the verified Gate 0A foundation.
 
+**Architecture rule:** Gate 1 remains a standalone species/data module. It does not absorb later Red Earth systems. Shiny state/art routing belongs to a separate Gate 2 module; followers, starter flow, characters, passives, Stone mechanics, environment logic, and compatibility patches remain separate until final production consolidation.
+
 ## Gate 1 scope
 
 This package contains only the stable species/data layer for:
