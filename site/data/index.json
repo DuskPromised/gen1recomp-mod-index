@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T02:15:45.071725+00:00",
+  "generated_at": "2026-09-16T02:16:42.187567+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12241,7 +12241,7 @@
       "title": "Red Earth Foundation Lab — Clean",
       "author": "Adam M. Aguilera",
       "version": "0.1.0",
-      "summary": "Fresh Gate 0 A/B cart: Kaizo + PotatoVoxel + Wilds + Performance Monitor only, with a new cart/save identity and no Red Earth patches.",
+      "summary": "Fresh Gate 0 A/B cart: Kaizo + PotatoVoxel + Wilds + Performance Monitor only; new cart/save, no Red Earth patches.",
       "base": "red",
       "seal": "open",
       "speeds": [
@@ -12301,7 +12301,19 @@
         "overworld_wild_spawns",
         "performance_monitor"
       ],
-      "update_check": "pending"
+      "update_check": "ok",
+      "latest": {
+        "version": "0.1.0",
+        "name": "0.1.0",
+        "prerelease": true,
+        "zip": {
+          "name": "red_earth_foundation_lab-0.1.0.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_foundation_lab/red_earth_foundation_lab-0.1.0.g1rcart",
+          "size": 218542,
+          "sha256": "12613ac64837833de060ffbd6067441b549cb1d49f70b6c97b835fb940b4d1df"
+        }
+      },
+      "thumbnail": "data/carts/DuskPromised@red_earth_foundation_lab/thumbnail.jpg"
     },
     {
       "folder": "DuskPromised@red_earth_next",
