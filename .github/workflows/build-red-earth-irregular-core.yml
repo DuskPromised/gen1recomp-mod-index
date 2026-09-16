@@ -1,0 +1,177 @@
+name: Build Red Earth Gate 1 Irregular Core
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate1-build"]
+    paths:
+      - "mods/red-earth-irregular-core/**"
+      - "custom_mods/red_earth_irregular_core.index.json"
+      - ".github/workflows/build-red-earth-irregular-core.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: red-earth-gate1-core-build
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Gate 1 source scope
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          python -m pip install --quiet pillow
+
+          luac -p mods/red-earth-irregular-core/main.lua
+
+          python - <<'PY'
+          import json, struct, zlib
+          from pathlib import Path
+          from PIL import Image
+
+          root=Path("mods/red-earth-irregular-core")
+          manifest=json.loads((root/"manifest.json").read_text())
+          idx=json.loads(Path("custom_mods/red_earth_irregular_core.index.json").read_text())
+          src=(root/"main.lua").read_text()
+
+          assert manifest["id"]=="red_earth_irregular_core"
+          assert manifest["version"]=="0.1.0"
+          assert idx["id"]=="red_earth_irregular_core"
+          assert idx["version"]=="0.1.0"
+
+          for needle in [
+              "IRR_PSYDREN","IRR_VESPERIS","IRR_SOLIPSDION",
+              "IRR_CONFUSION","IRR_SOVEREIGN_RAGE","IRR_SERAPHS_VERDICT",
+              'types={"PSYCHIC","WATER"}',
+              'types={"PSYCHIC","GHOST"}',
+              'types={"PSYCHIC","DRAGON"}',
+              'baseStats={hp=55,attack=40,defense=65,speed=45,special=70}',
+              'baseStats={hp=70,attack=55,defense=75,speed=80,special=95}',
+              'baseStats={hp=95,attack=85,defense=105,speed=105,special=125}',
+              'level=16,species=IDS.VESPERIS',
+              'level=36,species=IDS.SOLIPSDION',
+              'mod.exports.version = "0.1.0"',
+          ]:
+              assert needle in src, needle
+
+          # Gate 1 must stay clean: later-gate systems are prohibited in code.
+          forbidden=[
+              "world.talk","EVENT_GOT_STARTER","give_pokemon",
+              "overworld_wild_spawns","registerSpriteProvider",
+              "frontShiny","backShiny","menuShiny","iconShiny",
+              "mon.shiny","PHILOSOPHER_","battle.damage",
+              "SOLITARY","DISTANCE","AETHERIC","MELONY","ANSEM",
+          ]
+          upper=src.upper()
+          for token in forbidden:
+              assert token.upper() not in upper, token
+
+          expected={}
+          for stem in ("psydren","vesperis","solipsdion"):
+              expected[f"{stem}_front.png"]=(56,56)
+              expected[f"{stem}_back.png"]=(48,48)
+              expected[f"{stem}_menu.png"]=(40,40)
+              expected[f"{stem}_icon.png"]=(16,32)
+
+          actual={p.name for p in (root/"assets").glob("*.png")}
+          assert actual==set(expected), (sorted(actual),sorted(expected))
+
+          PNG_SIG=b"\x89PNG\r\n\x1a\n"
+          def validate_png(path,size):
+              data=path.read_bytes()
+              assert data.startswith(PNG_SIG), path
+              pos=8
+              saw_iend=False
+              while pos < len(data):
+                  length=struct.unpack(">I",data[pos:pos+4])[0]
+                  ctype=data[pos+4:pos+8]
+                  payload=data[pos+8:pos+8+length]
+                  stored=struct.unpack(">I",data[pos+8+length:pos+12+length])[0]
+                  crc=zlib.crc32(ctype)
+                  crc=zlib.crc32(payload,crc)&0xffffffff
+                  assert crc==stored, (path,ctype)
+                  pos += 12+length
+                  if ctype==b"IEND":
+                      saw_iend=True
+                      break
+              assert saw_iend and pos==len(data), path
+              with Image.open(path) as im:
+                  im.verify()
+              with Image.open(path) as im:
+                  im.load()
+                  assert im.size==size, (path,im.size,size)
+                  assert im.convert("RGBA").getchannel("A").getbbox() is not None, path
+
+          for name,size in expected.items():
+              validate_png(root/"assets"/name,size)
+
+          print("GATE 1 SOURCE/SCOPE/ART AUDIT PASS")
+          PY
+
+      - name: Package deterministic Gate 1 ZIP
+        run: |
+          mkdir -p site/data/mods/DuskPromised@red_earth_irregular_core
+          python - <<'PY'
+          import hashlib, json, zipfile
+          from pathlib import Path
+
+          src=Path("mods/red-earth-irregular-core")
+          out=Path("site/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.0.zip")
+          files=["main.lua","manifest.json","README.md","LICENSE"]
+          files += [str(p.relative_to(src)) for p in sorted((src/"assets").glob("*.png"))]
+          assert len(files)==16, files
+
+          if out.exists(): out.unlink()
+          with zipfile.ZipFile(out,"w",compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+              for name in files:
+                  info=zipfile.ZipInfo("red_earth_irregular_core/"+name)
+                  info.date_time=(2026,9,16,0,0,0)
+                  info.compress_type=zipfile.ZIP_DEFLATED
+                  info.external_attr=0o100644<<16
+                  z.writestr(info,(src/name).read_bytes())
+
+          with zipfile.ZipFile(out) as z:
+              assert z.testzip() is None
+              assert len(z.namelist())==16
+              assert not any("__MACOSX" in n for n in z.namelist())
+              m=json.loads(z.read("red_earth_irregular_core/manifest.json"))
+              assert m["id"]=="red_earth_irregular_core" and m["version"]=="0.1.0"
+              packed=z.read("red_earth_irregular_core/main.lua").decode("utf-8")
+              assert "world.talk" not in packed
+              assert "overworld_wild_spawns" not in packed
+              assert "frontShiny" not in packed
+
+          body=out.read_bytes()
+          sha=hashlib.sha256(body).hexdigest()
+          Path("custom_mods/red_earth_irregular_core.sha256").write_text(
+              sha+"  "+out.name+"\n"
+          )
+
+          idx_path=Path("custom_mods/red_earth_irregular_core.index.json")
+          idx=json.loads(idx_path.read_text())
+          idx["sha256"]=sha
+          idx_path.write_text(json.dumps(idx,indent=2)+"\n")
+
+          print("GATE 1 PACKAGE PASS")
+          print("sha256",sha,"bytes",len(body))
+          PY
+
+      - name: Commit packaged Gate 1 mod
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add custom_mods/red_earth_irregular_core.index.json
+          git add -f             site/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.0.zip             custom_mods/red_earth_irregular_core.sha256
+
+          if git diff --cached --quiet; then
+            echo "Gate 1 package already current."
+          else
+            git commit -m "Publish Red Earth Gate 1 Irregular Core v0.1.0"
+            git push origin HEAD:gate1-build
+          fi

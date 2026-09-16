@@ -1,0 +1,47 @@
+{
+  "folder": "DuskPromised@red_earth_irregular_core",
+  "id": "red_earth_irregular_core",
+  "title": "Red Earth \u2014 Gate 1: Irregular Core",
+  "author": "Adam M. Aguilera",
+  "version": "0.1.0",
+  "categories": [
+    "GAMEPLAY",
+    "CONTENT",
+    "DEVELOPMENT"
+  ],
+  "tags": [
+    "red earth",
+    "gate 1",
+    "custom pokemon",
+    "psydren",
+    "vesperis",
+    "solipsdion",
+    "species core"
+  ],
+  "api": 2,
+  "profile": "content",
+  "game_version": ">=0.2.24 <2.0.0",
+  "permissions": [
+    "engine_internals"
+  ],
+  "dependencies": [
+    "gen1_kaizo@>=0.8.3 <1.0.0"
+  ],
+  "conflicts": [
+    "irregular_origin",
+    "red_earth_irregular",
+    "red_earth_irregular_rebuild",
+    "red_earth_irregular_upgrade"
+  ],
+  "affects_link": true,
+  "experimental": true,
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "license": "MIT",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.0.zip",
+  "source_zip": "red_earth_irregular_core-0.1.0.zip",
+  "summary": "Gate 1 standalone Irregular species core: Psydren, Vesperis and Solipsdion canonical data, evolutions, moves, normal battle/menu/icon art and stable save IDs only.",
+  "source_scope": "DuskPromised original Gate 1 module",
+  "update_check": "off",
+  "sha256": "53f9e38200b3227a797b6fcf3366a64746c196186d47166e9a72300e0dfa8acf"
+}
