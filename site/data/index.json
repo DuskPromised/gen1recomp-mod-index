@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T04:34:45.257761+00:00",
+  "generated_at": "2026-09-16T04:36:15.395713+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12551,7 +12551,7 @@
       "title": "Red Earth Rebuild Lab — Core + Voxel",
       "author": "Adam M. Aguilera",
       "version": "0.1.0",
-      "summary": "iOS rebuild test: Kaizo + PotatoVoxel + Crystal + audited Irregular rebuild. Wilds and Regional Shiny Art are intentionally omitted.",
+      "summary": "iOS core test: Kaizo + PotatoVoxel + Crystal + audited Irregular rebuild; Wilds and Regional Shiny Art omitted.",
       "base": "red",
       "seal": "open",
       "speeds": [
@@ -12570,9 +12570,71 @@
       "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
       "automatic_version_check": false,
       "game_version": ">=0.2.24 <2.0.0",
-      "mods": [],
-      "load_order": [],
-      "update_check": "off"
+      "mods": [
+        {
+          "id": "gen1_kaizo",
+          "source": "github",
+          "repo": "AyeBathingApe/gen1recomp-allgen-kaizo",
+          "version": "0.8.3",
+          "sha256": "99fff33b12764496e185bc5e0c5397f0c6670f439830e54e866fd8fa82813ad2",
+          "options": {
+            "battle": "static"
+          }
+        },
+        {
+          "id": "potato_voxel",
+          "source": "github",
+          "repo": "ShaneMcGovernIE/potato_voxel",
+          "version": "1.9.6",
+          "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846"
+        },
+        {
+          "id": "crystal_animated_sprites_with_shiny_visuals",
+          "source": "github",
+          "repo": "distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals",
+          "version": "2.0.3",
+          "sha256": "3d2874917f03a42cbf96d0d7e1b5c19bde09a5405fe12559ac241af017155689"
+        },
+        {
+          "id": "red_earth_irregular_rebuild",
+          "source": "github",
+          "repo": "DuskPromised/gen1recomp-mod-index",
+          "version": "0.1.1",
+          "sha256": "8699930b10735b63e5c11ce8278dcb2125fe17936842e63a9b97dbba7f13278f",
+          "options": {
+            "dynamic_wilds": true,
+            "dynamic_trainers": true,
+            "player_skin": "red"
+          }
+        },
+        {
+          "id": "performance_monitor",
+          "source": "github",
+          "repo": "notquiteog/performance_monitor",
+          "version": "1.4.1",
+          "sha256": "34688ca51894ab68e4f6dad51e5ce3a0bc8c17913a45eb3d0ddb318560412379"
+        }
+      ],
+      "load_order": [
+        "gen1_kaizo",
+        "potato_voxel",
+        "crystal_animated_sprites_with_shiny_visuals",
+        "red_earth_irregular_rebuild",
+        "performance_monitor"
+      ],
+      "update_check": "ok",
+      "latest": {
+        "version": "0.1.0",
+        "name": "0.1.0",
+        "prerelease": true,
+        "zip": {
+          "name": "red_earth_rebuild_lab-0.1.0.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.0.g1rcart",
+          "size": 219042,
+          "sha256": "48f45261b27b5b30f102c6cde339701bbbec684bcf2725727339d57f9098853a"
+        }
+      },
+      "thumbnail": "data/carts/DuskPromised@red_earth_rebuild_lab/thumbnail.jpg"
     },
     {
       "folder": "DuskPromised@red_earth_voxel_lab",
