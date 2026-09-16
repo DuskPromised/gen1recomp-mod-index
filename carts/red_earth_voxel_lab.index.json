@@ -1,7 +1,7 @@
 {
   "folder": "DuskPromised@red_earth_voxel_lab",
   "id": "red_earth_voxel_lab",
-  "title": "Red Earth Voxel Lab — Potato Only",
+  "title": "Red Earth Voxel Lab \u2014 Potato Only",
   "author": "Adam M. Aguilera",
   "version": "0.1.0",
   "summary": "Clean voxel test: Kaizo + PotatoVoxel + Performance Monitor only; Wilds removed, Potato settings adjustable.",
@@ -54,5 +54,17 @@
     "potato_voxel",
     "performance_monitor"
   ],
-  "update_check": "pending"
+  "update_check": "ok",
+  "latest": {
+    "version": "0.1.0",
+    "name": "0.1.0",
+    "prerelease": true,
+    "zip": {
+      "name": "red_earth_voxel_lab-0.1.0.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_voxel_lab/red_earth_voxel_lab-0.1.0.g1rcart",
+      "size": 218239,
+      "sha256": "faed531476b842958eb4b1dd933f82170a4bee552620a0123ab3be329a3ac432"
+    }
+  },
+  "thumbnail": "data/carts/DuskPromised@red_earth_voxel_lab/thumbnail.jpg"
 }
