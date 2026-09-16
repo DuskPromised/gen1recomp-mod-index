@@ -3,7 +3,7 @@
   "id": "red_earth_irregular_rebuild",
   "title": "Red Earth: Irregular — Rebuild Candidate",
   "author": "Adam M. Aguilera",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "categories": [
     "GAMEPLAY",
     "CONTENT",
@@ -58,10 +58,10 @@
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "github": "DuskPromised/gen1recomp-mod-index",
   "license": "MIT",
-  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_rebuild/red_earth_irregular_rebuild-0.1.1.zip",
-  "source_zip": "red_earth_irregular_rebuild-0.1.1.zip",
-  "sha256": "8699930b10735b63e5c11ce8278dcb2125fe17936842e63a9b97dbba7f13278f",
-  "summary": "TEST candidate — clean Red Earth Irregular/Philosopher reconstruction, audited to avoid global battle scaling. Wilds and Regional Shiny Art are intentionally excluded from the first lab cart.",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_rebuild/red_earth_irregular_rebuild-0.1.2.zip",
+  "source_zip": "red_earth_irregular_rebuild-0.1.2.zip",
+  "sha256": "fd3727045030855bf52f26b1b1c768437526dae1c7be4ec51cb7bbca852c1c3a",
+  "summary": "TEST candidate — Claude reconstruction + audited Wilds metadata fix + direct Oak-ball ownership so Allgen Kaizo cannot pre-empt Psydren.",
   "source_scope": "DuskPromised original test candidate",
   "update_check": "off"
 }
