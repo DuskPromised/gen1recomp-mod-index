@@ -1,10 +1,10 @@
--- Red Earth — Gate 1 Test Harness v0.1.1
+-- Red Earth — Gate 1 Test Harness v0.1.2
 -- TEST-ONLY. Never merge this acquisition behavior into the production core.
 
 local IDS={
-  PSYDREN="IRR_PSYDREN",
-  VESPERIS="IRR_VESPERIS",
-  SOLIPSDION="IRR_SOLIPSDION",
+  PSYDREN="PSYDREN",
+  VESPERIS="VESPERIS",
+  SOLIPSDION="SOLIPSDION",
 }
 
 local TESTS={
@@ -97,6 +97,6 @@ return function(mod)
     return
   end)
 
-  mod.exports.version="0.1.1"
+  mod.exports.version="0.1.2"
   mod.exports.testOnly=true
 end
