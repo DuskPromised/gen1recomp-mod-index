@@ -4,7 +4,7 @@
   "title": "Red Earth Foundation Lab — Clean",
   "author": "Adam M. Aguilera",
   "version": "0.1.0",
-  "summary": "Fresh Gate 0 A/B cart: Kaizo + PotatoVoxel + Wilds + Performance Monitor only, with a new cart/save identity and no Red Earth patches.",
+  "summary": "Fresh Gate 0 A/B cart: Kaizo + PotatoVoxel + Wilds + Performance Monitor only; new cart/save, no Red Earth patches.",
   "base": "red",
   "seal": "open",
   "speeds": [
