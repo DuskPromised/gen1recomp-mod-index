@@ -58,7 +58,7 @@ jobs:
           assert "options" not in potato, "PotatoVoxel settings must remain user-persistent during Gate 0"
 
           patch = by_id["red_earth_voxel_profile_next"]
-          assert patch["version"] == "0.2.0""
+          assert patch["version"] == "0.2.0"
 
           wilds = by_id["overworld_wild_spawns"]
           assert wilds["version"] == "2.1.9"
