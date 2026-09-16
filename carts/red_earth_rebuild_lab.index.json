@@ -1,7 +1,7 @@
 {
   "folder": "DuskPromised@red_earth_rebuild_lab",
   "id": "red_earth_rebuild_lab",
-  "title": "Red Earth Rebuild Lab — Core + Voxel",
+  "title": "Red Earth Rebuild Lab \u2014 Core + Voxel",
   "author": "Adam M. Aguilera",
   "version": "0.1.1",
   "summary": "Claude rebuild test: Kaizo + PotatoVoxel + Crystal + Irregular v0.1.2; Wilds/Regional Shiny Art omitted.",
@@ -52,8 +52,8 @@
       "id": "red_earth_irregular_rebuild",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.1.1",
-      "sha256": "8699930b10735b63e5c11ce8278dcb2125fe17936842e63a9b97dbba7f13278f",
+      "version": "0.1.2",
+      "sha256": "fd3727045030855bf52f26b1b1c768437526dae1c7be4ec51cb7bbca852c1c3a",
       "options": {
         "dynamic_wilds": true,
         "dynamic_trainers": true,
@@ -77,14 +77,14 @@
   ],
   "update_check": "ok",
   "latest": {
-    "version": "0.1.0",
-    "name": "0.1.0",
+    "version": "0.1.1",
+    "name": "0.1.1",
     "prerelease": true,
     "zip": {
-      "name": "red_earth_rebuild_lab-0.1.0.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.0.g1rcart",
-      "size": 219042,
-      "sha256": "48f45261b27b5b30f102c6cde339701bbbec684bcf2725727339d57f9098853a"
+      "name": "red_earth_rebuild_lab-0.1.1.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.1.g1rcart",
+      "size": 219035,
+      "sha256": "7b398f819acc240714f92904bbf6ff2de1f3a607b2ca1e788387b5e40a06773e"
     }
   },
   "thumbnail": "data/carts/DuskPromised@red_earth_rebuild_lab/thumbnail.jpg"
