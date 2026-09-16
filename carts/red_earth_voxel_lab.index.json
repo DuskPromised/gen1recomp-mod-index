@@ -4,7 +4,7 @@
   "title": "Red Earth Voxel Lab — Potato Only",
   "author": "Adam M. Aguilera",
   "version": "0.1.0",
-  "summary": "Clean voxel test cart: Kaizo + PotatoVoxel + Performance Monitor only; Wilds removed and Potato settings remain adjustable.",
+  "summary": "Clean voxel test: Kaizo + PotatoVoxel + Performance Monitor only; Wilds removed, Potato settings adjustable.",
   "base": "red",
   "seal": "open",
   "speeds": [
