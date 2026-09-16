@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "id": "red_earth_ab_lab",
+  "title": "Red Earth A/B Lab",
+  "version": "0.1.0",
+  "author": "Adam M. Aguilera",
+  "repo": "DuskPromised/gen1recomp-mod-index",
+  "summary": "Clean A/B lab: PotatoVoxel and Wilds ship OFF so each can be toggled independently for isolation testing.",
+  "shell": "#5A1E24",
+  "finish": "holo",
+  "label": "label.png",
+  "base": "red",
+  "seal": "open",
+  "speeds": [
+    1
+  ],
+  "mods": [
+    {
+      "id": "gen1_kaizo",
+      "source": "github",
+      "repo": "AyeBathingApe/gen1recomp-allgen-kaizo",
+      "version": "0.8.3",
+      "sha256": "99fff33b12764496e185bc5e0c5397f0c6670f439830e54e866fd8fa82813ad2",
+      "options": {
+        "battle": "static"
+      }
+    },
+    {
+      "id": "potato_voxel",
+      "source": "github",
+      "repo": "ShaneMcGovernIE/potato_voxel",
+      "version": "1.9.6",
+      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
+      "enabled": false
+    },
+    {
+      "id": "overworld_wild_spawns",
+      "source": "github",
+      "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
+      "version": "2.1.9",
+      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd",
+      "enabled": false
+    },
+    {
+      "id": "performance_monitor",
+      "source": "github",
+      "repo": "notquiteog/performance_monitor",
+      "version": "1.4.1",
+      "sha256": "34688ca51894ab68e4f6dad51e5ce3a0bc8c17913a45eb3d0ddb318560412379"
+    }
+  ],
+  "load_order": [
+    "gen1_kaizo",
+    "potato_voxel",
+    "overworld_wild_spawns",
+    "performance_monitor"
+  ]
+}

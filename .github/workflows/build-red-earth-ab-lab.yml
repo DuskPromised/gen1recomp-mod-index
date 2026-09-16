@@ -1,0 +1,105 @@
+name: Build Red Earth A/B Lab
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - "cart_source/red_earth_ab_lab/**"
+      - "carts/red_earth_ab_lab.index.json"
+      - ".github/workflows/build-red-earth-ab-lab.yml"
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: red-earth-ab-lab-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Audit A/B lab
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          cart=json.loads(Path("cart_source/red_earth_ab_lab/cart.json").read_text())
+          assert cart["id"]=="red_earth_ab_lab"
+          assert cart["version"]=="0.1.0"
+          assert cart["seal"]=="open"
+          assert cart["speeds"]==[1]
+          ids=[m["id"] for m in cart["mods"]]
+          expected=["gen1_kaizo","potato_voxel","overworld_wild_spawns","performance_monitor"]
+          assert ids==expected
+          assert cart["load_order"]==expected
+          by={m["id"]:m for m in cart["mods"]}
+          assert by["potato_voxel"]["enabled"] is False
+          assert by["overworld_wild_spawns"]["enabled"] is False
+          assert "options" not in by["potato_voxel"]
+          assert "options" not in by["overworld_wild_spawns"]
+          assert by["gen1_kaizo"]["options"]=={"battle":"static"}
+          print("A/B LAB AUDIT PASS")
+          PY
+
+      - name: Fetch cartkit
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/bryanthaboi/gen1recomp/dev/tools/cartkit.py -o /tmp/cartkit.py
+
+      - name: Pack cart
+        run: |
+          python /tmp/cartkit.py pack cart_source/red_earth_ab_lab -o /tmp/red_earth_ab_lab-0.1.0.g1rcart
+
+      - name: Publish cart
+        run: |
+          mkdir -p "site/data/carts/DuskPromised@red_earth_ab_lab"
+          cp /tmp/red_earth_ab_lab-0.1.0.g1rcart "site/data/carts/DuskPromised@red_earth_ab_lab/red_earth_ab_lab-0.1.0.g1rcart"
+          cp "site/data/carts/DuskPromised@red_earth_next/thumbnail.jpg" "site/data/carts/DuskPromised@red_earth_ab_lab/thumbnail.jpg"
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          cart_path=Path("site/data/carts/DuskPromised@red_earth_ab_lab/red_earth_ab_lab-0.1.0.g1rcart")
+          meta_path=Path("carts/red_earth_ab_lab.index.json")
+          source=json.loads(Path("cart_source/red_earth_ab_lab/cart.json").read_text())
+          meta=json.loads(meta_path.read_text())
+          body=cart_path.read_bytes()
+          for key in ("title","author","summary","version","base","seal","speeds","shell","finish","mods","load_order"):
+              if key in source: meta[key]=source[key]
+          meta["latest"]={
+              "version":source["version"],"name":source["version"],"prerelease":True,
+              "zip":{
+                  "name":cart_path.name,
+                  "url":"https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_ab_lab/"+cart_path.name,
+                  "size":len(body),
+                  "sha256":hashlib.sha256(body).hexdigest()
+              }
+          }
+          meta["thumbnail"]="data/carts/DuskPromised@red_earth_ab_lab/thumbnail.jpg"
+          meta["update_check"]="ok"
+          meta_path.write_text(json.dumps(meta,indent=2)+"\n")
+          print("SHA",hashlib.sha256(body).hexdigest())
+          PY
+
+      - name: Commit publication
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "site/data/carts/DuskPromised@red_earth_ab_lab/thumbnail.jpg" \
+                  "site/data/carts/DuskPromised@red_earth_ab_lab/red_earth_ab_lab-0.1.0.g1rcart" \
+                  "carts/red_earth_ab_lab.index.json"
+          if git diff --cached --quiet; then
+            echo "Already published"
+          else
+            git commit -m "Publish Red Earth A/B Lab v0.1.0"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Refresh combined index
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run sync.yml --ref main
