@@ -4,7 +4,7 @@
   "title": "Gate 1 \u2014 Irregular Core Test",
   "author": "Adam M. Aguilera",
   "version": "0.1.2",
-  "summary": "Gate A + standalone Irregular Core 0.1.1 and QA harness. No Wilds, shiny routing, or later Red Earth systems.",
+  "summary": "Gate A + Irregular Core 0.1.2 QA. No Wilds, shiny routing, followers, Stone, passives, or characters.",
   "base": "red",
   "seal": "sealed+",
   "speeds": [
@@ -95,8 +95,8 @@
     "zip": {
       "name": "gate_1_irregular_test-0.1.2.g1rcart",
       "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.2.g1rcart",
-      "size": 3524,
-      "sha256": "dccd6e26833f167c5ad2c73e7b8cdc665abeb3c63a9438cc1c8eb8d218931e7f"
+      "size": 3516,
+      "sha256": "8c070362facaf54731517b6beeda8e0b9bcdd37e5e5bdb2d73f030f4c3795714"
     }
   },
   "thumbnail": "data/carts/DuskPromised@gate_1_irregular_test/label.png"

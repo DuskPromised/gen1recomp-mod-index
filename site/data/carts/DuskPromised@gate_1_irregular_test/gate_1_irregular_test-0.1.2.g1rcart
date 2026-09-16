@@ -76,7 +76,7 @@ return {
     speeds = {
       [1] = 1,
     },
-    summary = "Gate A + standalone Irregular Core 0.1.1 and QA harness. No Wilds, shiny routing, or later Red Earth systems.",
+    summary = "Gate A + Irregular Core 0.1.2 QA. No Wilds, shiny routing, followers, Stone, passives, or characters.",
     title = "Gate 1 — Irregular Core Test",
     version = "0.1.2",
   },

@@ -5,7 +5,7 @@
   "version": "0.1.2",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Gate A + standalone Irregular Core 0.1.1 and QA harness. No Wilds, shiny routing, or later Red Earth systems.",
+  "summary": "Gate A + Irregular Core 0.1.2 QA. No Wilds, shiny routing, followers, Stone, passives, or characters.",
   "shell": "#24162B",
   "finish": "holo",
   "label": "label.png",
