@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T05:12:42.873210+00:00",
+  "generated_at": "2026-09-16T05:52:38.291515+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12550,8 +12550,8 @@
       "id": "red_earth_rebuild_lab",
       "title": "Red Earth Rebuild Lab — Core + Voxel",
       "author": "Adam M. Aguilera",
-      "version": "0.1.2",
-      "summary": "Clean Claude rebuild test; Wilds and Regional Shiny Art are pinned OFF. Unpinned legacy Red Earth mods cannot load.",
+      "version": "0.1.3",
+      "summary": "Pinned Voxel persistence test: 100% render, FULL water, 2X AA, V-Curve 1, V-Grid/3D-BTL/shadows ON.",
       "base": "red",
       "seal": "sealed+",
       "speeds": [
@@ -12586,7 +12586,17 @@
           "source": "github",
           "repo": "ShaneMcGovernIE/potato_voxel",
           "version": "1.9.6",
-          "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846"
+          "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
+          "options": {
+            "renderScale": 100,
+            "water": "full",
+            "aa": 2,
+            "curve": 1,
+            "grid": true,
+            "battles": true,
+            "shadows": true,
+            "shadowQuality": 0
+          }
         },
         {
           "id": "crystal_animated_sprites_with_shiny_visuals",
