@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Clean voxel test cart: Kaizo + PotatoVoxel + Performance Monitor only; Wilds removed and Potato settings remain adjustable.",
+  "summary": "Clean voxel test: Kaizo + PotatoVoxel + Performance Monitor only; Wilds removed, Potato settings adjustable.",
   "shell": "#5A1E24",
   "finish": "holo",
   "label": "label.png",
