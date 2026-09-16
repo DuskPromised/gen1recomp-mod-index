@@ -32,7 +32,7 @@ jobs:
 
           cart = json.loads(Path("cart_source/red_earth_foundation_lab/cart.json").read_text())
           assert cart["id"] == "red_earth_foundation_lab"
-          assert cart["version"] == "0.1.0"
+          assert cart["version"] == "0.1.1"
           assert cart["base"] == "red"
           assert cart["seal"] == "open"
           assert cart.get("speeds") == [1]
@@ -54,10 +54,12 @@ jobs:
 
           potato = by_id["potato_voxel"]
           assert potato["version"] == "1.9.6"
+          assert potato.get("enabled") is False
           assert "options" not in potato
 
           wilds = by_id["overworld_wild_spawns"]
           assert wilds["version"] == "2.1.9"
+          assert wilds.get("enabled") is False
           assert "options" not in wilds
 
           assert by_id["performance_monitor"]["version"] == "1.4.1"
@@ -74,7 +76,7 @@ jobs:
           }
           assert forbidden.isdisjoint(ids), sorted(forbidden.intersection(ids))
 
-          print("FOUNDATION LAB AUDIT PASS:", " -> ".join(ids))
+          print("FOUNDATION LAB A/B AUDIT PASS:", " -> ".join(ids))
           PY
 
       - name: Fetch official cartkit
@@ -86,13 +88,13 @@ jobs:
       - name: Pack clean lab cart
         run: |
           python /tmp/cartkit.py pack cart_source/red_earth_foundation_lab \
-            -o /tmp/red_earth_foundation_lab-0.1.0.g1rcart
+            -o /tmp/red_earth_foundation_lab-0.1.1.g1rcart
 
       - name: Publish clean lab cart
         run: |
           mkdir -p "site/data/carts/DuskPromised@red_earth_foundation_lab"
-          cp /tmp/red_earth_foundation_lab-0.1.0.g1rcart \
-            "site/data/carts/DuskPromised@red_earth_foundation_lab/red_earth_foundation_lab-0.1.0.g1rcart"
+          cp /tmp/red_earth_foundation_lab-0.1.1.g1rcart \
+            "site/data/carts/DuskPromised@red_earth_foundation_lab/red_earth_foundation_lab-0.1.1.g1rcart"
           cp "site/data/carts/DuskPromised@red_earth_next/thumbnail.jpg" \
             "site/data/carts/DuskPromised@red_earth_foundation_lab/thumbnail.jpg"
 
@@ -100,7 +102,7 @@ jobs:
           import hashlib, json
           from pathlib import Path
 
-          cart_path = Path("site/data/carts/DuskPromised@red_earth_foundation_lab/red_earth_foundation_lab-0.1.0.g1rcart")
+          cart_path = Path("site/data/carts/DuskPromised@red_earth_foundation_lab/red_earth_foundation_lab-0.1.1.g1rcart")
           meta_path = Path("carts/red_earth_foundation_lab.index.json")
           source_path = Path("cart_source/red_earth_foundation_lab/cart.json")
 
@@ -138,13 +140,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             "site/data/carts/DuskPromised@red_earth_foundation_lab/thumbnail.jpg" \
-            "site/data/carts/DuskPromised@red_earth_foundation_lab/red_earth_foundation_lab-0.1.0.g1rcart" \
+            "site/data/carts/DuskPromised@red_earth_foundation_lab/red_earth_foundation_lab-0.1.1.g1rcart" \
             "carts/red_earth_foundation_lab.index.json"
           if git diff --cached --quiet; then
             echo "Foundation Lab cart is already published."
             exit 0
           fi
-          git commit -m "Publish Red Earth Foundation Lab v0.1.0"
+          git commit -m "Publish Red Earth Foundation Lab v0.1.1"
           git pull --rebase origin main
           git push
 
