@@ -1,10 +1,10 @@
 {
   "folder": "DuskPromised@red_earth_rebuild_lab",
   "id": "red_earth_rebuild_lab",
-  "title": "Red Earth Rebuild Lab \u2014 Core + Voxel",
+  "title": "Red Earth Rebuild Lab — Core + Voxel",
   "author": "Adam M. Aguilera",
-  "version": "0.1.0",
-  "summary": "iOS core test: Kaizo + PotatoVoxel + Crystal + audited Irregular rebuild; Wilds and Regional Shiny Art omitted.",
+  "version": "0.1.1",
+  "summary": "Claude rebuild test: Kaizo + PotatoVoxel + Crystal + Irregular v0.1.2; Wilds/Regional Shiny Art omitted.",
   "base": "red",
   "seal": "open",
   "speeds": [
