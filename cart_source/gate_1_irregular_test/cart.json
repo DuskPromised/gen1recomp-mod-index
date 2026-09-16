@@ -2,10 +2,10 @@
   "schema": 1,
   "id": "gate_1_irregular_test",
   "title": "Gate 1 \u2014 Irregular Core Test",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Gate A plus Irregular Core and isolated QA harness. No Wilds or later Red Earth systems.",
+  "summary": "Gate A + standalone Irregular Core 0.1.1 and QA harness. No Wilds, shiny routing, or later Red Earth systems.",
   "shell": "#24162B",
   "finish": "holo",
   "label": "label.png",
@@ -53,15 +53,15 @@
       "id": "red_earth_irregular_core",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.1.0",
-      "sha256": "53f9e38200b3227a797b6fcf3366a64746c196186d47166e9a72300e0dfa8acf"
+      "version": "0.1.1",
+      "sha256": "0d9691074a17f8de0b5cd6e755bb29ffbb87605b1baba873ce1b7fa807d64f5e"
     },
     {
       "id": "red_earth_gate1_test_harness",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.1.0",
-      "sha256": "bf39205714788e6ba13762e991e3c03108ee792f6809a293340d9c0420b48241"
+      "version": "0.1.1",
+      "sha256": "e8e25b4a3926387f23803105dd56f9185494b17514ff200a3a3e7c6942d0bb6c"
     },
     {
       "id": "performance_monitor",
