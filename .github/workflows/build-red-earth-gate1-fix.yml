@@ -194,7 +194,7 @@ jobs:
           cart={
             "schema":1,"id":"gate_1_irregular_test","title":"Gate 1 — Irregular Core Test",
             "version":"0.1.1","author":"Adam M. Aguilera","repo":"DuskPromised/gen1recomp-mod-index",
-            "summary":"Gate A plus standalone Irregular Core 0.1.1 and isolated QA harness. No Wilds, shiny routing, or later Red Earth systems.",
+            "summary":"Gate A + standalone Irregular Core 0.1.1 and QA harness. No Wilds, shiny routing, or later Red Earth systems.",
             "shell":"#24162B","finish":"holo","label":"label.png","base":"red","seal":"sealed+","speeds":[1],
             "mods":mods,"load_order":order
           }
