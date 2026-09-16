@@ -1,7 +1,7 @@
 {
   "folder": "DuskPromised@red_earth_gate1_test_harness",
   "id": "red_earth_gate1_test_harness",
-  "title": "Red Earth — Gate 1 Test Harness",
+  "title": "Red Earth \u2014 Gate 1 Test Harness",
   "author": "Adam M. Aguilera",
   "version": "0.1.0",
   "categories": [
@@ -42,5 +42,6 @@
   "source_zip": "red_earth_gate1_test_harness-0.1.0.zip",
   "summary": "Temporary Gate 1 QA harness: Oak's three balls dispense Psydren Lv15, Vesperis Lv35 and Solipsdion Lv50 without consuming Kaizo's real starter choice.",
   "source_scope": "DuskPromised original Gate 1 QA tool",
-  "update_check": "off"
+  "update_check": "off",
+  "sha256": "bf39205714788e6ba13762e991e3c03108ee792f6809a293340d9c0420b48241"
 }

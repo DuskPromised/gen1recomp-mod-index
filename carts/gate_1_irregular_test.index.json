@@ -1,0 +1,103 @@
+{
+  "folder": "DuskPromised@gate_1_irregular_test",
+  "id": "gate_1_irregular_test",
+  "title": "Gate 1 \u2014 Irregular Core Test",
+  "author": "Adam M. Aguilera",
+  "version": "0.1.0",
+  "summary": "Gate A plus Irregular Core and isolated QA harness. No Wilds or later Red Earth systems.",
+  "base": "red",
+  "seal": "sealed+",
+  "speeds": [
+    1
+  ],
+  "shell": "#24162B",
+  "finish": "holo",
+  "tags": [
+    "gate 1",
+    "red earth",
+    "qa",
+    "irregular core",
+    "development"
+  ],
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "automatic_version_check": false,
+  "game_version": ">=0.2.24 <2.0.0",
+  "mods": [
+    {
+      "id": "gen1_kaizo",
+      "source": "github",
+      "repo": "AyeBathingApe/gen1recomp-allgen-kaizo",
+      "version": "0.8.3",
+      "sha256": "99fff33b12764496e185bc5e0c5397f0c6670f439830e54e866fd8fa82813ad2"
+    },
+    {
+      "id": "potato_voxel",
+      "source": "github",
+      "repo": "ShaneMcGovernIE/potato_voxel",
+      "version": "1.9.6",
+      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
+      "options": {
+        "renderScale": 100,
+        "water": "full",
+        "aa": 2,
+        "curve": 1,
+        "grid": true,
+        "battles": true,
+        "battleBack": true,
+        "atmos": true,
+        "weather": true,
+        "shadows": true,
+        "shadowQuality": 0
+      }
+    },
+    {
+      "id": "crystal_animated_sprites_with_shiny_visuals",
+      "source": "github",
+      "repo": "distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals",
+      "version": "2.0.3",
+      "sha256": "3d2874917f03a42cbf96d0d7e1b5c19bde09a5405fe12559ac241af017155689"
+    },
+    {
+      "id": "red_earth_irregular_core",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "0.1.0",
+      "sha256": "53f9e38200b3227a797b6fcf3366a64746c196186d47166e9a72300e0dfa8acf"
+    },
+    {
+      "id": "red_earth_gate1_test_harness",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "0.1.0",
+      "sha256": "bf39205714788e6ba13762e991e3c03108ee792f6809a293340d9c0420b48241"
+    },
+    {
+      "id": "performance_monitor",
+      "source": "github",
+      "repo": "notquiteog/performance_monitor",
+      "version": "1.4.1",
+      "sha256": "34688ca51894ab68e4f6dad51e5ce3a0bc8c17913a45eb3d0ddb318560412379"
+    }
+  ],
+  "load_order": [
+    "gen1_kaizo",
+    "potato_voxel",
+    "crystal_animated_sprites_with_shiny_visuals",
+    "red_earth_irregular_core",
+    "red_earth_gate1_test_harness",
+    "performance_monitor"
+  ],
+  "update_check": "ok",
+  "latest": {
+    "version": "0.1.0",
+    "name": "0.1.0",
+    "prerelease": true,
+    "zip": {
+      "name": "gate_1_irregular_test-0.1.0.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.0.g1rcart",
+      "size": 3503,
+      "sha256": "51188f1af7617dd1e402026a24aac188c50d84419040ee14cc7a74b2e2a926d4"
+    }
+  },
+  "thumbnail": "data/carts/DuskPromised@gate_1_irregular_test/label.png"
+}
