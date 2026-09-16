@@ -1,0 +1,20 @@
+{
+  "folder": "DuskPromised@red_earth_rebuild_lab",
+  "id": "red_earth_rebuild_lab",
+  "title": "Red Earth Rebuild Lab — Core + Voxel",
+  "author": "Adam M. Aguilera",
+  "version": "0.1.0",
+  "summary": "iOS rebuild test: Kaizo + PotatoVoxel + Crystal + audited Irregular rebuild. Wilds and Regional Shiny Art are intentionally omitted.",
+  "base": "red",
+  "seal": "open",
+  "speeds": [1],
+  "shell": "#5A1E24",
+  "finish": "holo",
+  "tags": ["red earth", "rebuild lab", "irregular", "potato voxel", "ios test", "development"],
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "automatic_version_check": false,
+  "game_version": ">=0.2.24 <2.0.0",
+  "mods": [],
+  "load_order": [],
+  "update_check": "off"
+}
