@@ -2,15 +2,15 @@
   "schema": 1,
   "id": "red_earth_next",
   "title": "Red Earth NEXT — Gate 0",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Gate 0 persistence test: PotatoVoxel launcher and in-game settings synchronized across Continue, including CUSTOM.",
+  "summary": "Gate 0 persistence fix: open development cart so PotatoVoxel and Wilds own and persist their user settings.",
   "shell": "#5A1E24",
   "finish": "holo",
   "label": "label.png",
   "base": "red",
-  "seal": "sealed+",
+  "seal": "open",
   "speeds": [
     1
   ],
@@ -33,13 +33,6 @@
       "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846"
     },
     {
-      "id": "red_earth_voxel_profile_next",
-      "source": "github",
-      "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.2.0",
-      "sha256": "bbf1f538904967db0d262296a5e786f8dcfc4467d3c68833a0e1f009b107402c"
-    },
-    {
       "id": "overworld_wild_spawns",
       "source": "github",
       "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
@@ -57,7 +50,6 @@
   "load_order": [
     "gen1_kaizo",
     "potato_voxel",
-    "red_earth_voxel_profile_next",
     "overworld_wild_spawns",
     "performance_monitor"
   ]
