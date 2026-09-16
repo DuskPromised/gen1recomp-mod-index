@@ -32,15 +32,14 @@ jobs:
 
           cart = json.loads(Path("cart_source/red_earth_next/cart.json").read_text())
           assert cart["id"] == "red_earth_next"
-          assert cart["version"] == "0.0.4"
+          assert cart["version"] == "0.0.5"
           assert cart["base"] == "red"
-          assert cart["seal"] == "sealed+"
+          assert cart["seal"] == "open"
           assert cart.get("speeds") == [1], "Gate 0 performance testing must stay at 1x game speed"
 
           expected = [
               "gen1_kaizo",
               "potato_voxel",
-              "red_earth_voxel_profile_next",
               "overworld_wild_spawns",
               "performance_monitor",
           ]
@@ -57,9 +56,6 @@ jobs:
           assert potato["version"] == "1.9.6"
           assert "options" not in potato, "PotatoVoxel settings must remain user-persistent during Gate 0"
 
-          patch = by_id["red_earth_voxel_profile_next"]
-          assert patch["version"] == "0.2.0"
-
           wilds = by_id["overworld_wild_spawns"]
           assert wilds["version"] == "2.1.9"
           assert "options" not in wilds, "Wilds settings must remain user-persistent during Gate 0"
@@ -73,11 +69,12 @@ jobs:
               "red_earth_kaizo_bridge", "red_earth_irregular_upgrade",
               "red_earth_shiny_bridge", "red_earth_regional_shiny_art",
               "red_earth_shiny_fx_bridge", "red_earth_dramaless_battle_bridge",
+              "red_earth_voxel_profile_next",
               "crystal_animated_sprites_with_shiny_visuals",
           }
           assert forbidden.isdisjoint(ids), sorted(forbidden.intersection(ids))
 
-          print("GATE 0.0.4 AUDIT PASS:", " -> ".join(ids))
+          print("GATE 0.0.5 AUDIT PASS:", " -> ".join(ids))
           PY
 
       - name: Fetch official cartkit
@@ -89,13 +86,13 @@ jobs:
       - name: Pack Gate 0 cart
         run: |
           python /tmp/cartkit.py pack cart_source/red_earth_next \
-            -o /tmp/red_earth_next-0.0.4.g1rcart
+            -o /tmp/red_earth_next-0.0.5.g1rcart
 
       - name: Publish Gate 0 cart
         run: |
           mkdir -p "site/data/carts/DuskPromised@red_earth_next"
-          cp /tmp/red_earth_next-0.0.4.g1rcart \
-            "site/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.4.g1rcart"
+          cp /tmp/red_earth_next-0.0.5.g1rcart \
+            "site/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.5.g1rcart"
           cp "site/data/carts/DuskPromised@red_earth/thumbnail.jpg" \
             "site/data/carts/DuskPromised@red_earth_next/thumbnail.jpg"
 
@@ -103,7 +100,7 @@ jobs:
           import hashlib, json
           from pathlib import Path
 
-          cart_path = Path("site/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.4.g1rcart")
+          cart_path = Path("site/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.5.g1rcart")
           meta_path = Path("carts/red_earth_next.index.json")
           source_path = Path("cart_source/red_earth_next/cart.json")
 
@@ -141,13 +138,13 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add \
             "site/data/carts/DuskPromised@red_earth_next/thumbnail.jpg" \
-            "site/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.4.g1rcart" \
+            "site/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.5.g1rcart" \
             "carts/red_earth_next.index.json"
           if git diff --cached --quiet; then
             echo "Gate 0 cart is already published."
             exit 0
           fi
-          git commit -m "Publish Red Earth NEXT Gate 0 v0.0.4"
+          git commit -m "Publish Red Earth NEXT Gate 0 v0.0.5"
           git pull --rebase origin main
           git push
 
