@@ -5,7 +5,7 @@
   "version": "0.1.4",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Pinned Voxel persistence test: 100% render, FULL water, 2X AA, V-Curve 1, V-Grid/3D-BTL/back sprites/atmos/weather/shadows ON.",
+  "summary": "Pinned Voxel: 100% render, FULL water, 2X AA, curve 1, grid/3D battle/back sprites/atmos/weather/shadows ON.",
   "shell": "#5A1E24",
   "finish": "holo",
   "label": "label.png",
