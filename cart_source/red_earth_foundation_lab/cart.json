@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
-  "summary": "Fresh Gate 0 A/B cart: Kaizo + PotatoVoxel + Wilds + Performance Monitor only, with a new cart/save identity and no Red Earth patches.",
+  "summary": "Fresh Gate 0 A/B cart: Kaizo + PotatoVoxel + Wilds + Performance Monitor only; new cart/save, no Red Earth patches.",
   "shell": "#5A1E24",
   "finish": "holo",
   "label": "label.png",
