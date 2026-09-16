@@ -1,12 +1,12 @@
--- Red Earth — Gate 1: Irregular Core v0.1.1
+-- Red Earth — Gate 1: Irregular Core v0.1.2
 -- Clean standalone species/data layer built on the verified Gate 0A foundation.
 -- Intentionally NO Oak/starter flow, shiny routing, followers/Wilds, rival/player
 -- overrides, passives, Philosopher's Stone logic, or environment mechanics.
 
 local IDS = {
-  PSYDREN = "IRR_PSYDREN",
-  VESPERIS = "IRR_VESPERIS",
-  SOLIPSDION = "IRR_SOLIPSDION",
+  PSYDREN = "PSYDREN",
+  VESPERIS = "VESPERIS",
+  SOLIPSDION = "SOLIPSDION",
 }
 
 local IRREGULAR = {
@@ -125,7 +125,7 @@ return function(mod)
     spriteFront=ART[IDS.PSYDREN].front,
     spriteBack=ART[IDS.PSYDREN].back,
     frontSize=7, trueColor=true,
-    battleScaleFront=1.0, battleScaleBack=1.0,
+    battleScaleFront=0.94, battleScaleBack=0.94,
     icon={image=ART[IDS.PSYDREN].icon,frames=2},
     cry="MEW",
     dexEntry={
@@ -178,7 +178,7 @@ return function(mod)
     spriteFront=ART[IDS.SOLIPSDION].front,
     spriteBack=ART[IDS.SOLIPSDION].back,
     frontSize=7, trueColor=true,
-    battleScaleFront=1.0, battleScaleBack=1.0,
+    battleScaleFront=1.08, battleScaleBack=1.05,
     icon={image=ART[IDS.SOLIPSDION].icon,frames=2},
     cry="MEWTWO",
     dexEntry={
@@ -242,7 +242,7 @@ return function(mod)
     end
   end)
 
-  mod.exports.version = "0.1.1"
+  mod.exports.version = "0.1.2"
   mod.exports.species = IDS
   mod.exports.isIrregular = function(mon)
     return mon and IRREGULAR[mon.species] == true
