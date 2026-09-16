@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T04:33:14.261510+00:00",
+  "generated_at": "2026-09-16T04:34:45.257761+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -9183,7 +9183,7 @@
       "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_rebuild/red_earth_irregular_rebuild-0.1.1.zip",
       "source_zip": "red_earth_irregular_rebuild-0.1.1.zip",
       "sha256": "8699930b10735b63e5c11ce8278dcb2125fe17936842e63a9b97dbba7f13278f",
-      "summary": "Experimental clean reconstruction of Red Earth Irregular/Philosopher mechanics. Audited to avoid global battle scaling; Wilds is optional. Regional starter visible shiny art is not a release gate for this test.",
+      "summary": "TEST candidate — clean Red Earth Irregular/Philosopher reconstruction, audited to avoid global battle scaling. Wilds and Regional Shiny Art are intentionally excluded from the first lab cart.",
       "source_scope": "DuskPromised original test candidate",
       "update_check": "off"
     },
