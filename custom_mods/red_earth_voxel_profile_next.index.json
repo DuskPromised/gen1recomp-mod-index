@@ -3,7 +3,7 @@
   "id": "red_earth_voxel_profile_next",
   "title": "Red Earth Voxel Profile NEXT",
   "author": "Adam M. Aguilera",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "categories": [
     "COMPATIBILITY"
   ],
@@ -28,10 +28,10 @@
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "github": "DuskPromised/gen1recomp-mod-index",
   "license": "MIT",
-  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_voxel_profile_next/red_earth_voxel_profile_next-0.1.0.zip",
-  "source_zip": "red_earth_voxel_profile_next-0.1.0.zip",
-  "sha256": "af76a06057e01fa0589836d4d7970867b5219ef1f00fe700866ee49a6376428b",
-  "summary": "Gate 0 shim that restores PotatoVoxel named presets after load without touching CUSTOM, ATMOS, WEATHER, or day/night.",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_voxel_profile_next/red_earth_voxel_profile_next-0.2.0.zip",
+  "source_zip": "red_earth_voxel_profile_next-0.2.0.zip",
+  "sha256": "bbf1f538904967db0d262296a5e786f8dcfc4467d3c68833a0e1f009b107402c",
+  "summary": "Gate 0 shim that keeps PotatoVoxel launcher and in-game settings synchronized across Continue/load, including CUSTOM profiles.",
   "source_scope": "DuskPromised original compatibility patch",
   "update_check": "off"
 }
