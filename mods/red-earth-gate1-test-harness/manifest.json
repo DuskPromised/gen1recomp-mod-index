@@ -1,7 +1,7 @@
 {
   "id": "red_earth_gate1_test_harness",
   "name": "Red Earth — Gate 1 Test Harness",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -11,7 +11,7 @@
   "author": "Adam M. Aguilera",
   "dependencies": [
     "gen1_kaizo@>=0.8.3 <1.0.0",
-    "red_earth_irregular_core@>=0.1.1 <0.2.0"
+    "red_earth_irregular_core@>=0.1.2 <0.2.0"
   ],
   "conflicts": [
     "irregular_origin",
