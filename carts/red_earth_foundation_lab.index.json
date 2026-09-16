@@ -3,8 +3,8 @@
   "id": "red_earth_foundation_lab",
   "title": "Red Earth Foundation Lab — Clean",
   "author": "Adam M. Aguilera",
-  "version": "0.1.0",
-  "summary": "Fresh Gate 0 A/B cart: Kaizo + PotatoVoxel + Wilds + Performance Monitor only; new cart/save, no Red Earth patches.",
+  "version": "0.1.1",
+  "summary": "A/B lab: PotatoVoxel and Wilds ship OFF and can be toggled independently; Kaizo + Performance Monitor stay ON.",
   "base": "red",
   "seal": "open",
   "speeds": [
@@ -41,14 +41,16 @@
       "source": "github",
       "repo": "ShaneMcGovernIE/potato_voxel",
       "version": "1.9.6",
-      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846"
+      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
+      "enabled": false
     },
     {
       "id": "overworld_wild_spawns",
       "source": "github",
       "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
       "version": "2.1.9",
-      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd"
+      "sha256": "0ac172cd0f463f78f9544d8a02cc31596655699e879d9a02895ae5aef22923dd",
+      "enabled": false
     },
     {
       "id": "performance_monitor",
@@ -64,17 +66,6 @@
     "overworld_wild_spawns",
     "performance_monitor"
   ],
-  "update_check": "ok",
-  "latest": {
-    "version": "0.1.0",
-    "name": "0.1.0",
-    "prerelease": true,
-    "zip": {
-      "name": "red_earth_foundation_lab-0.1.0.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_foundation_lab/red_earth_foundation_lab-0.1.0.g1rcart",
-      "size": 218542,
-      "sha256": "12613ac64837833de060ffbd6067441b549cb1d49f70b6c97b835fb940b4d1df"
-    }
-  },
+  "update_check": "pending",
   "thumbnail": "data/carts/DuskPromised@red_earth_foundation_lab/thumbnail.jpg"
 }
