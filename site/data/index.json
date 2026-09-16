@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T05:53:27.650721+00:00",
+  "generated_at": "2026-09-16T06:01:41.557594+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12550,8 +12550,8 @@
       "id": "red_earth_rebuild_lab",
       "title": "Red Earth Rebuild Lab — Core + Voxel",
       "author": "Adam M. Aguilera",
-      "version": "0.1.3",
-      "summary": "Pinned Voxel persistence test: 100% render, FULL water, 2X AA, V-Curve 1, V-Grid/3D-BTL/shadows ON.",
+      "version": "0.1.4",
+      "summary": "Pinned Voxel persistence test: 100% render, FULL water, 2X AA, V-Curve 1, V-Grid/3D-BTL/back sprites/atmos/weather/shadows ON.",
       "base": "red",
       "seal": "sealed+",
       "speeds": [
@@ -12595,7 +12595,10 @@
             "grid": true,
             "battles": true,
             "shadows": true,
-            "shadowQuality": 0
+            "shadowQuality": 0,
+            "battleBack": true,
+            "atmos": true,
+            "weather": true
           }
         },
         {
