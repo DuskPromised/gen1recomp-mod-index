@@ -16,7 +16,8 @@
     "gate 0",
     "baseline",
     "potato voxel",
-    "development"
+    "development",
+    "verified upstream"
   ],
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "automatic_version_check": false,
