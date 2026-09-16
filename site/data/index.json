@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T00:25:00.965420+00:00",
+  "generated_at": "2026-09-16T00:25:34.883980+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12309,8 +12309,19 @@
         "overworld_wild_spawns",
         "performance_monitor"
       ],
-      "update_check": "pending",
-      "thumbnail": "data/carts/DuskPromised@red_earth_next/thumbnail.jpg"
+      "update_check": "ok",
+      "thumbnail": "data/carts/DuskPromised@red_earth_next/thumbnail.jpg",
+      "latest": {
+        "version": "0.0.4",
+        "name": "0.0.4",
+        "prerelease": true,
+        "zip": {
+          "name": "red_earth_next-0.0.4.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.4.g1rcart",
+          "size": 218828,
+          "sha256": "84464912de15e787d6e8bc3bcf7d69c620a517db184c4833f00d951fbb4fe1ec"
+        }
+      }
     }
   ],
   "index_notes": {
