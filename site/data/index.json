@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T00:19:42.101492+00:00",
+  "generated_at": "2026-09-16T00:20:32.398627+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12240,8 +12240,8 @@
       "id": "red_earth_next",
       "title": "Red Earth NEXT — Gate 0",
       "author": "Adam M. Aguilera",
-      "version": "0.0.2",
-      "summary": "Gate 0 persistence test: Kaizo + PotatoVoxel + Wilds + Monitor, with renderer and Wilds settings user-persistent.",
+      "version": "0.0.3",
+      "summary": "Gate 0 voxel persistence test with Kaizo, PotatoVoxel, Wilds, Monitor, and a named-preset restore shim.",
       "base": "red",
       "seal": "sealed+",
       "speeds": [
@@ -12281,6 +12281,13 @@
           "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846"
         },
         {
+          "id": "red_earth_voxel_profile_next",
+          "source": "github",
+          "repo": "DuskPromised/gen1recomp-mod-index",
+          "version": "0.1.0",
+          "sha256": "af76a06057e01fa0589836d4d7970867b5219ef1f00fe700866ee49a6376428b"
+        },
+        {
           "id": "overworld_wild_spawns",
           "source": "github",
           "repo": "YoDrehDenSwagAuf/overworld-spawn-mod",
@@ -12298,20 +12305,21 @@
       "load_order": [
         "gen1_kaizo",
         "potato_voxel",
+        "red_earth_voxel_profile_next",
         "overworld_wild_spawns",
         "performance_monitor"
       ],
       "update_check": "ok",
       "thumbnail": "data/carts/DuskPromised@red_earth_next/thumbnail.jpg",
       "latest": {
-        "version": "0.0.2",
-        "name": "0.0.2",
+        "version": "0.0.3",
+        "name": "0.0.3",
         "prerelease": true,
         "zip": {
-          "name": "red_earth_next-0.0.2.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.2.g1rcart",
-          "size": 218524,
-          "sha256": "fff5ea00055d702cffd3612f860466d18c36fabc88d74a09aafa0aff83c6c545"
+          "name": "red_earth_next-0.0.3.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_next/red_earth_next-0.0.3.g1rcart",
+          "size": 218817,
+          "sha256": "874f8cf7837aa0b6f7d7f2bc28ab1f3c0d7ed5a2993dd76115bf8d8113ae2921"
         }
       }
     }
