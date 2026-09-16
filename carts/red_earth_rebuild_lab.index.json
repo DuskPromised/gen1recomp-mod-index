@@ -1,7 +1,7 @@
 {
   "folder": "DuskPromised@red_earth_rebuild_lab",
   "id": "red_earth_rebuild_lab",
-  "title": "Red Earth Rebuild Lab — Core + Voxel",
+  "title": "Red Earth Rebuild Lab \u2014 Core + Voxel",
   "author": "Adam M. Aguilera",
   "version": "0.1.5",
   "summary": "Wilds gate: same pinned Voxel profile and rebuild, with Wilds ON; Regional Shiny Art remains OFF.",
@@ -114,14 +114,14 @@
   ],
   "update_check": "ok",
   "latest": {
-    "version": "0.1.4",
-    "name": "0.1.4",
+    "version": "0.1.5",
+    "name": "0.1.5",
     "prerelease": true,
     "zip": {
-      "name": "red_earth_rebuild_lab-0.1.4.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.4.g1rcart",
-      "size": 220165,
-      "sha256": "f41cff1d8bbdd63e63eafa7c192f4b8ec5f217308e7f8bd98a6488679c45053b"
+      "name": "red_earth_rebuild_lab-0.1.5.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.5.g1rcart",
+      "size": 220153,
+      "sha256": "5103d6fcd0fcc1c1da6249bcb0b94f09ae85315483a99bc713f95dee27a98025"
     }
   },
   "thumbnail": "data/carts/DuskPromised@red_earth_rebuild_lab/thumbnail.jpg"
