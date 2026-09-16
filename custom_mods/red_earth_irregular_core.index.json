@@ -3,7 +3,7 @@
   "id": "red_earth_irregular_core",
   "title": "Red Earth \u2014 Gate 1: Irregular Core",
   "author": "Adam M. Aguilera",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "categories": [
     "GAMEPLAY",
     "CONTENT",
@@ -38,10 +38,10 @@
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "github": "DuskPromised/gen1recomp-mod-index",
   "license": "MIT",
-  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.0.zip",
-  "source_zip": "red_earth_irregular_core-0.1.0.zip",
-  "summary": "Gate 1 standalone Irregular species core: Psydren, Vesperis and Solipsdion canonical data, evolutions, moves, normal battle/menu/icon art and stable save IDs only.",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_core/red_earth_irregular_core-0.1.1.zip",
+  "source_zip": "red_earth_irregular_core-0.1.1.zip",
+  "summary": "Gate 1.1 Irregular species core with corrected Pok\u00e9dex prose/layout and weight units; canonical species data, evolutions, moves, normal art, and stable save IDs.",
   "source_scope": "DuskPromised original Gate 1 module",
   "update_check": "off",
-  "sha256": "53f9e38200b3227a797b6fcf3366a64746c196186d47166e9a72300e0dfa8acf"
+  "sha256": "0d9691074a17f8de0b5cd6e755bb29ffbb87605b1baba873ce1b7fa807d64f5e"
 }

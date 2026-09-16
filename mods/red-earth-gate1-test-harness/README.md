@@ -6,11 +6,11 @@ This mod exists only to expose the three Irregular species quickly on a fresh Ga
 
 ## Oak Lab test dispensers
 
-Before choosing the real Kaizo starter:
+Before choosing the real Kaizo starter, the **physical left-to-right balls** are:
 
-- Bulbasaur ball → Psydren Lv. 15
-- Charmander ball → Vesperis Lv. 35
-- Squirtle ball → Solipsdion Lv. 50
+- Left ball → Psydren Lv. 15
+- Center ball → Vesperis Lv. 35
+- Right ball → Solipsdion Lv. 50
 
 Each ball first opens the species Dex-entry screen, then gives the test Pokémon. The harness does **not** set `EVENT_GOT_STARTER`.
 

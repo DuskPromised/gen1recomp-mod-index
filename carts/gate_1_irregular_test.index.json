@@ -3,8 +3,8 @@
   "id": "gate_1_irregular_test",
   "title": "Gate 1 \u2014 Irregular Core Test",
   "author": "Adam M. Aguilera",
-  "version": "0.1.0",
-  "summary": "Gate A plus Irregular Core and isolated QA harness. No Wilds or later Red Earth systems.",
+  "version": "0.1.1",
+  "summary": "Gate A + standalone Irregular Core 0.1.1 and QA harness. No Wilds, shiny routing, or later Red Earth systems.",
   "base": "red",
   "seal": "sealed+",
   "speeds": [
@@ -61,15 +61,15 @@
       "id": "red_earth_irregular_core",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.1.0",
-      "sha256": "53f9e38200b3227a797b6fcf3366a64746c196186d47166e9a72300e0dfa8acf"
+      "version": "0.1.1",
+      "sha256": "0d9691074a17f8de0b5cd6e755bb29ffbb87605b1baba873ce1b7fa807d64f5e"
     },
     {
       "id": "red_earth_gate1_test_harness",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.1.0",
-      "sha256": "bf39205714788e6ba13762e991e3c03108ee792f6809a293340d9c0420b48241"
+      "version": "0.1.1",
+      "sha256": "e8e25b4a3926387f23803105dd56f9185494b17514ff200a3a3e7c6942d0bb6c"
     },
     {
       "id": "performance_monitor",
@@ -89,14 +89,14 @@
   ],
   "update_check": "ok",
   "latest": {
-    "version": "0.1.0",
-    "name": "0.1.0",
+    "version": "0.1.1",
+    "name": "0.1.1",
     "prerelease": true,
     "zip": {
-      "name": "gate_1_irregular_test-0.1.0.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.0.g1rcart",
-      "size": 3503,
-      "sha256": "51188f1af7617dd1e402026a24aac188c50d84419040ee14cc7a74b2e2a926d4"
+      "name": "gate_1_irregular_test-0.1.1.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.1.g1rcart",
+      "size": 3524,
+      "sha256": "4030878a29d7197405781ea8b3678f0baf3ad3ceaf77be051d1d2c744e0d5b99"
     }
   },
   "thumbnail": "data/carts/DuskPromised@gate_1_irregular_test/label.png"
