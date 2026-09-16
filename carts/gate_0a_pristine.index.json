@@ -1,0 +1,74 @@
+{
+  "folder": "DuskPromised@gate_0a_pristine",
+  "id": "gate_0a_pristine",
+  "title": "Gate 0A — Pristine Baseline",
+  "author": "Adam M. Aguilera",
+  "version": "0.0.1",
+  "summary": "Pristine upstream baseline: Kaizo + PotatoVoxel + Crystal + Performance Monitor. No Red Earth code.",
+  "base": "red",
+  "seal": "sealed+",
+  "speeds": [
+    1
+  ],
+  "shell": "#0B132B",
+  "finish": "holo",
+  "tags": [
+    "gate 0",
+    "baseline",
+    "potato voxel",
+    "development"
+  ],
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "automatic_version_check": false,
+  "game_version": ">=0.2.24 <2.0.0",
+  "mods": [
+    {
+      "id": "gen1_kaizo",
+      "source": "github",
+      "repo": "AyeBathingApe/gen1recomp-allgen-kaizo",
+      "version": "0.8.3",
+      "sha256": "99fff33b12764496e185bc5e0c5397f0c6670f439830e54e866fd8fa82813ad2"
+    },
+    {
+      "id": "potato_voxel",
+      "source": "github",
+      "repo": "ShaneMcGovernIE/potato_voxel",
+      "version": "1.9.6",
+      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
+      "options": {
+        "renderScale": 100,
+        "water": "full",
+        "aa": 2,
+        "curve": 1,
+        "grid": true,
+        "battles": true,
+        "battleBack": true,
+        "atmos": true,
+        "weather": true,
+        "shadows": true,
+        "shadowQuality": 0
+      }
+    },
+    {
+      "id": "crystal_animated_sprites_with_shiny_visuals",
+      "source": "github",
+      "repo": "distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals",
+      "version": "2.0.3",
+      "sha256": "3d2874917f03a42cbf96d0d7e1b5c19bde09a5405fe12559ac241af017155689"
+    },
+    {
+      "id": "performance_monitor",
+      "source": "github",
+      "repo": "notquiteog/performance_monitor",
+      "version": "1.4.1",
+      "sha256": "34688ca51894ab68e4f6dad51e5ce3a0bc8c17913a45eb3d0ddb318560412379"
+    }
+  ],
+  "load_order": [
+    "gen1_kaizo",
+    "potato_voxel",
+    "crystal_animated_sprites_with_shiny_visuals",
+    "performance_monitor"
+  ],
+  "update_check": "off"
+}
