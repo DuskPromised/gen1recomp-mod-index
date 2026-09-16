@@ -1,0 +1,26 @@
+{
+  "id": "red_earth_irregular_core",
+  "name": "Red Earth — Gate 1: Irregular Core",
+  "version": "0.1.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GAMEPLAY",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 300,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "gen1_kaizo@>=0.8.3 <1.0.0"
+  ],
+  "conflicts": [
+    "irregular_origin",
+    "red_earth_irregular",
+    "red_earth_irregular_rebuild",
+    "red_earth_irregular_upgrade"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Gate 1 standalone Irregular species core for Pokémon Red Earth. Registers Psydren, Vesperis, Solipsdion, their canonical stats/types/evolutions/moves, normal battle/menu/icon art, Dex data, and stable species IDs only."
+}
