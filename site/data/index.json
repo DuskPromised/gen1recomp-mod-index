@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-16T06:01:41.557594+00:00",
+  "generated_at": "2026-09-16T06:02:12.809643+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -12551,7 +12551,7 @@
       "title": "Red Earth Rebuild Lab — Core + Voxel",
       "author": "Adam M. Aguilera",
       "version": "0.1.4",
-      "summary": "Pinned Voxel persistence test: 100% render, FULL water, 2X AA, V-Curve 1, V-Grid/3D-BTL/back sprites/atmos/weather/shadows ON.",
+      "summary": "Pinned Voxel: 100% render, FULL water, 2X AA, curve 1, grid/3D battle/back sprites/atmos/weather/shadows ON.",
       "base": "red",
       "seal": "sealed+",
       "speeds": [
@@ -12661,14 +12661,14 @@
       ],
       "update_check": "ok",
       "latest": {
-        "version": "0.1.3",
-        "name": "0.1.3",
+        "version": "0.1.4",
+        "name": "0.1.4",
         "prerelease": true,
         "zip": {
-          "name": "red_earth_rebuild_lab-0.1.3.g1rcart",
-          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.3.g1rcart",
-          "size": 220077,
-          "sha256": "c3db8a105bfa925645300f16cdd3ad869d99963afd9093533d74eba562274d43"
+          "name": "red_earth_rebuild_lab-0.1.4.g1rcart",
+          "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@red_earth_rebuild_lab/red_earth_rebuild_lab-0.1.4.g1rcart",
+          "size": 220165,
+          "sha256": "f41cff1d8bbdd63e63eafa7c192f4b8ec5f217308e7f8bd98a6488679c45053b"
         }
       },
       "thumbnail": "data/carts/DuskPromised@red_earth_rebuild_lab/thumbnail.jpg"
