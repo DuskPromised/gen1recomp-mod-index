@@ -84,7 +84,8 @@ jobs:
           by={m["id"]:m for m in cart["mods"]}
           assert by["red_earth_irregular_rebuild"]["version"]=="0.1.3"
           assert by["red_earth_irregular_rebuild"]["sha256"]=="a63efc97623daa1ff82e3ceb4fb0d80dd66a672b39ad58830228584c9b2d8403"
-          assert by["potato_voxel"]["options"] == {"renderScale":100,"water":"full","aa":2,"curve":1,"grid":True,"battles":True,"shadows":True,"shadowQuality":0}\n          assert by["overworld_wild_spawns"].get("enabled") is False
+          assert by["potato_voxel"]["options"] == {"renderScale":100,"water":"full","aa":2,"curve":1,"grid":True,"battles":True,"shadows":True,"shadowQuality":0}
+          assert by["overworld_wild_spawns"].get("enabled") is False
           assert by["red_earth_regional_shiny_art"].get("enabled") is False
           assert "red_earth_irregular" not in by
           assert "irregular_origin" not in by
