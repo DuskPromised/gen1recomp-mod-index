@@ -46,6 +46,7 @@ _G.love={graphics={newImage=function() return {getDimensions=function()return 16
 local starterInstaller=dofile("mods/red-earth-gate2-starter-shiny-state-icons/main.lua")
 local starterMod={
   path="/mod",
+  exports={},
   hooks={wrap=function(_,name,cb,priority) capturedHooks[name]=capturedHooks[name] or {}; table.insert(capturedHooks[name],{cb=cb,priority=priority}) end},
   events={on=function(_,name,cb) capturedEvents[name]=cb end},
   log={info=function() end,warn=function() end},
@@ -142,6 +143,7 @@ _G.love={
 }
 local fxInstaller=dofile("mods/red-earth-gate2-starter-shiny-fx/main.lua")
 local fxMod={
+  exports={},
   find=function(self,id)
     if id=="red_earth_gate2_starter_shiny_state_icons" then
       return {exports={isGuaranteed=function(mon) return mon and mon.redEarthGate25StarterShiny==true end}}
