@@ -1,0 +1,21 @@
+{
+  "id": "red_earth_gate2_starter_shiny_fx",
+  "name": "Red Earth — Gate 2 Starter Shiny FX",
+  "version": "0.2.10",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GRAPHICS",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 630,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "red_earth_gate2_starter_shiny_state_icons@0.2.10",
+    "crystal_animated_sprites_with_shiny_visuals@2.0.3"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Player-side Gen 2 shiny sparkle and sound for Red Earth guaranteed-shiny Fennekin/Grass starters only. Uses the same gold-with-lilac accent presentation already approved for Gate 2; does not change shiny state, starter routing, art, scale, evolution, Irregular Pokémon, Nature or passives."
+}
