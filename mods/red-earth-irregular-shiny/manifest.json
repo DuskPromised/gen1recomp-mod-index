@@ -1,7 +1,7 @@
 {
   "id": "red_earth_irregular_shiny",
   "name": "Red Earth \u2014 Gate 2: Irregular Shiny",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",

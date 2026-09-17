@@ -1,4 +1,4 @@
-# Gate 2 — Irregular Shiny 0.2.0
+# Gate 2 — Irregular Shiny 0.2.1
 
 Standalone shiny state and authored-art module; requires accepted Core 0.1.2.
 It does not give Pokémon, replace species, or make normal individuals shiny.
@@ -22,3 +22,10 @@ hashes, alpha channels and dimensions before copying the files.
 Player sparkle/SFX and Potato's shiny back sizing are in the separately
 downloadable Gate 2 Presentation Compatibility module. QA acquisition is
 in the separately downloadable Gate 2 Test Harness. No follower systems.
+
+Version 0.2.1 restores 54 transparent torso/leg/tail pixels in shiny Solipsdion's
+48x48 battle back. The supplied master retained their original RGB values
+under alpha zero. The localized restoration record recovers those values;
+all previously opaque pixels and the leg gap remain unchanged. An imagegen
+alpha-only repair served as the silhouette reference; generated colors were
+not adopted. The other eleven images, shiny behavior and normal core are unchanged.
