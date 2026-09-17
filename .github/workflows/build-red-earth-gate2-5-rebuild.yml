@@ -15,6 +15,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -51,7 +54,7 @@ jobs:
           import io, zipfile
           from pathlib import Path
           from PIL import Image
-          zpath=Path('site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.5.zip')
+          zpath=Path('site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.5-r1.zip')
           dex=[1,2,3,152,153,154,252,253,254,387,388,389,495,496,497,650,651,652,653,654,655,722,723,724]
           with zipfile.ZipFile(zpath) as z:
               names=set(z.namelist())
@@ -65,6 +68,20 @@ jobs:
                       assert im.getchannel('A').getbbox(), name
           print('PASS: all Fennekin/approved-Grass shiny battle + icon assets present and nonblank')
           PY
+      - name: Publish isolated rebuilt module release
+        run: |
+          tag="v0.2.5-r1"
+          asset="site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.5-r1.zip"
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.5 rebuild from accepted 0.2.4" --notes "Clean rebuild from the device-green Gate 2.4 baseline. Replaces the failed Gate 2.5 attempt. Makes only intended Oak-gift Fennekin/approved Grass starters genuine shiny and routes their dedicated shiny battle/menu art. No Irregular, scaling, follower, sparkle/audio, Nature, passive, or starter-selector changes."
+          fi
+          name=$(basename "$asset")
+          mkdir -p /tmp/g25
+          if gh release download "$tag" --pattern "$name" --dir /tmp/g25 >/dev/null 2>&1; then
+            cmp "$asset" "/tmp/g25/$name"
+          else
+            gh release upload "$tag" "$asset"
+          fi
       - name: Pack and strict-validate Gate 2.5 cart
         run: |
           python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart --online
@@ -79,6 +96,7 @@ jobs:
           cart=json.loads((root/'cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
           assert cart['version']=='0.2.5'
           assert cart['load_order'][-1]=='red_earth_gate2_starter_shiny_state_icons'
+          assert cart['mods'][-1]['version']=='0.2.5-r1'
           base=cart['mods'][:-1]
           for p in base:
               if not p['id'].startswith('red_earth_'): continue
@@ -86,6 +104,18 @@ jobs:
               assert hashlib.sha256(z.read_bytes()).hexdigest()==p['sha256'], p['id']
           print('PASS: every accepted 0.2.4 Red Earth ZIP remains byte-identical')
           PY
+      - name: Attach rebuilt test cart and checksums
+        run: |
+          tag="v0.2.5-r1"
+          for asset in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+            name=$(basename "$asset")
+            mkdir -p /tmp/g25-cart
+            if gh release download "$tag" --pattern "$name" --dir /tmp/g25-cart >/dev/null 2>&1; then
+              cmp "$asset" "/tmp/g25-cart/$name"
+            else
+              gh release upload "$tag" "$asset"
+            fi
+          done
       - name: Commit rebuilt Gate 2.5 test outputs
         run: |
           git config user.name "github-actions[bot]"
