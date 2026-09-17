@@ -5,7 +5,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 BASE='https://duskpromised.github.io/gen1recomp-mod-index/'
 CID='gate_2_irregular_shiny_test'
-VERSION='0.2.5'
+CART_VERSION='0.2.5'
+MOD_VERSION='0.2.5-r1'
 MID='red_earth_gate2_starter_shiny_state_icons'
 FOLDER='red-earth-gate2-starter-shiny-state-icons'
 BASE_VERSION='0.2.4'
@@ -24,8 +25,8 @@ def legacy_asset(z, suffix):
     assert len(hits)==1, f'expected exactly one legacy asset {suffix}, got {hits}'
     return z.read(hits[0])
 
-out=ROOT/f'site/data/mods/DuskPromised@{MID}/{MID}-{VERSION}.zip'
-cartpath=ROOT/f'site/data/carts/DuskPromised@{CID}/{CID}-{VERSION}.g1rcart'
+out=ROOT/f'site/data/mods/DuskPromised@{MID}/{MID}-{MOD_VERSION}.zip'
+cartpath=ROOT/f'site/data/carts/DuskPromised@{CID}/{CID}-{CART_VERSION}.g1rcart'
 mode=sys.argv[1]
 
 if mode=='package':
@@ -45,15 +46,13 @@ if mode=='package':
     assert LEGACY.exists(), 'proven regional shiny-art v1.0.5 source ZIP missing'
     src=ROOT/'mods'/FOLDER
     manifest=read(src/'manifest.json')
+    assert manifest['version']==MOD_VERSION
     out.parent.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(LEGACY) as legacy, zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
-        # Text/source owned by this clean rebuild.
         for p in sorted(x for x in src.rglob('*') if x.is_file()):
             info=zipfile.ZipInfo(MID+'/'+str(p.relative_to(src)),(2026,9,17,0,0,0))
             info.compress_type=zipfile.ZIP_DEFLATED; info.external_attr=0o100644<<16
             z.writestr(info,p.read_bytes())
-        # Reuse only the proven per-species shiny visual assets. No legacy Lua,
-        # follower providers, scale hooks, or state code is imported.
         for dex in DEX:
             pfx=f'{dex:03d}'
             for side in ('front','back'):
@@ -69,15 +68,15 @@ if mode=='package':
             z.writestr(info,data)
 
     idx=read('custom_mods/red_earth_gate2_presentation.index.json')
-    idx.update(folder='DuskPromised@'+MID,id=MID,title=manifest['name'],version=VERSION,
+    idx.update(folder='DuskPromised@'+MID,id=MID,title=manifest['name'],version=MOD_VERSION,
                dependencies=manifest['dependencies'],permissions=manifest['permissions'],
                summary=manifest['description'],downloadURL=BASE+str(out.relative_to(ROOT/'site')),
                source_zip=out.name,sha256=sha(out),experimental=True)
     write(f'custom_mods/{MID}.index.json',idx)
     (ROOT/f'custom_mods/{MID}.sha256').write_text(f'{sha(out)}  {out.name}\n')
 
-    cart=dict(baseline); cart['version']=VERSION
-    cart['mods']=baseline['mods']+[dict(id=MID,source='github',repo='DuskPromised/gen1recomp-mod-index',version=VERSION,sha256=sha(out))]
+    cart=dict(baseline); cart['version']=CART_VERSION
+    cart['mods']=baseline['mods']+[dict(id=MID,source='github',repo='DuskPromised/gen1recomp-mod-index',version=MOD_VERSION,sha256=sha(out))]
     cart['load_order']=baseline['load_order']+[MID]
     write(f'cart_source/{CID}/cart.json',cart)
     print('MODULE',sha(out),out.stat().st_size)
@@ -85,10 +84,10 @@ if mode=='package':
 
 elif mode=='metadata':
     cart=read(f'cart_source/{CID}/cart.json')
-    assert cart['version']==VERSION
+    assert cart['version']==CART_VERSION
     idx=read(f'carts/{CID}.index.json')
     for k in ['id','version','mods','load_order']: idx[k]=cart[k]
-    idx['latest']={'version':VERSION,'name':'0.2.5-rebuild','prerelease':True,
+    idx['latest']={'version':CART_VERSION,'name':'0.2.5-rebuild','prerelease':True,
                    'zip':{'name':cartpath.name,'url':BASE+str(cartpath.relative_to(ROOT/'site')),
                           'size':cartpath.stat().st_size,'sha256':sha(cartpath)}}
     write(f'carts/{CID}.index.json',idx)
