@@ -1,0 +1,183 @@
+name: Build Red Earth Gate 2 Partial Green Recovery Bundle
+on:
+  workflow_dispatch:
+  push:
+    branches: ["recovery-gate2-partial-green-029"]
+    paths:
+      - ".github/workflows/build-red-earth-gate2-partial-green-recovery.yml"
+permissions:
+  contents: write
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    env:
+      BASELINE_COMMIT: "49ffe37fa9f187e10bb2602e4b9d1c79cef0287a"
+      ENGINE_COMMIT: "e2114f7c85795d52903ea98deab493a4f181bace"
+      RELEASE_TAG: "red-earth-gate2-partial-green-0.2.9"
+      BUNDLE_NAME: "RED_EARTH_GATE2_PARTIAL_GREEN_RECOVERY_0.2.9"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Assemble exact 0.2.9 recovery tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/$BUNDLE_NAME"
+          mkdir -p "$ROOT/cart" "$ROOT/red-earth-mods" "$ROOT/red-earth-source" "$ROOT/dependencies" "$ROOT/engine-reference" "$ROOT/docs"
+
+          git show "$BASELINE_COMMIT:cart_source/gate_2_irregular_shiny_test/cart.json" > "$ROOT/cart/cart.json"
+          git show "$BASELINE_COMMIT:cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt" > "$ROOT/cart/gate-2-sha256sums.txt" || true
+
+          CART_PATH="site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.9.g1rcart"
+          test -f "$CART_PATH"
+          cp "$CART_PATH" "$ROOT/cart/"
+
+          copy_re_mod() {
+            local id="$1" version="$2"
+            local src="site/data/mods/DuskPromised@${id}/${id}-${version}.zip"
+            test -f "$src"
+            cp "$src" "$ROOT/red-earth-mods/"
+            mkdir -p "$ROOT/red-earth-source/$id"
+            unzip -q "$src" -d "$ROOT/red-earth-source/$id"
+          }
+
+          copy_re_mod red_earth_irregular_core 0.1.2
+          copy_re_mod red_earth_irregular_potato_compat 0.1.3
+          copy_re_mod red_earth_irregular_shiny 0.2.0
+          copy_re_mod red_earth_gate2_presentation 0.2.0
+          copy_re_mod red_earth_gate2_test_harness 0.2.9
+          copy_re_mod red_earth_solipsdion_shiny_back_fix 0.2.3
+          copy_re_mod red_earth_gate2_sparkle_gold_lilac 0.2.4
+          copy_re_mod red_earth_gate2_starter_shiny_state_icons 0.2.6
+
+          curl -fL --retry 4 -o "$ROOT/dependencies/gen1-recomp-allgen-kaizo-0.8.3.zip" \
+            "https://github.com/AyeBathingApe/gen1recomp-allgen-kaizo/releases/download/v0.8.3/gen1-recomp-allgen-kaizo-0.8.3.zip"
+          curl -fL --retry 4 -o "$ROOT/dependencies/potato_voxel-1.9.6.zip" \
+            "https://github.com/Nexhas28/potato_voxel/releases/download/v1.9.6/potato_voxel-1.9.6.zip"
+          curl -fL --retry 4 -o "$ROOT/dependencies/crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip" \
+            "https://github.com/distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals/releases/download/v2.0.3/crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip"
+          curl -fL --retry 4 -o "$ROOT/dependencies/performance_monitor_v1.4.1.zip" \
+            "https://github.com/notquiteog/performance_monitor/releases/download/v1.4.1/performance_monitor_v1.4.1.zip"
+
+          rsync -a --exclude='.git' engine-reference/ "$ROOT/engine-reference/gen1recomp-$ENGINE_COMMIT/"
+
+          cat > "$ROOT/BASELINE.md" <<'EOF'
+          # Red Earth Gate 2 — Partial Green Recovery Baseline
+
+          This bundle is an immutable development/recovery snapshot for the last on-device state in which the custom Irregular line was confirmed green.
+
+          ## Authoritative baseline
+          - Cart: Gate 2 test cart 0.2.9
+          - Repository baseline commit: 49ffe37fa9f187e10bb2602e4b9d1c79cef0287a
+          - Engine reference: bryanthaboi/gen1recomp @ e2114f7c85795d52903ea98deab493a4f181bace
+          - Base game profile: Red
+
+          ## GREEN / freeze unless intentionally changing later
+          - Psydren shiny and normal identity remain distinct.
+          - Psydren -> Vesperis -> Solipsdion evolution preserves shiny vs normal state.
+          - Custom shiny battle art is correct.
+          - Custom normal battle art is correct.
+          - Custom shiny sparkle + sound works.
+          - Normal custom control has no shiny reveal.
+          - Custom party/menu art is correct.
+          - Shiny and normal custom nickname screens show the corresponding custom artwork.
+          - Solipsdion shiny back 54-pixel repair is part of the accepted stack.
+          - Gold/lilac custom shiny presentation is part of the accepted stack.
+
+          ## NOT GREEN / do not mistake for accepted behavior
+          `red_earth_gate2_starter_shiny_state_icons-0.2.6.zip` is included because it is part of the exact 0.2.9 cart needed to reproduce the environment. Fennekin was only partially working: shiny menu/summary/battle art appeared, but Oak preview remained normal, nickname presentation was wrong, and shiny sparkle/sound did not fire. Treat that module as an unresolved reference, not as a frozen implementation.
+
+          Gate 2 is not considered fully sealed until Fennekin / regional-starter presentation and reveal behavior passes on-device.
+          EOF
+
+          cat > "$ROOT/CLAUDE_HANDOFF.md" <<'EOF'
+          # Claude / external coding handoff
+
+          Everything needed to inspect the current partial-green baseline is inside this archive. Do not fetch replacement files from GitHub unless explicitly instructed.
+
+          Start with `BASELINE.md`, `cart/cart.json`, and `SHA256SUMS.txt`.
+
+          Rules:
+          1. Treat GREEN custom-line behavior as sacred.
+          2. Do not introduce global sprite wrappers, global scaling hooks, broad starter-selection overrides, or shared art interception.
+          3. Patch the narrowest module possible.
+          4. Preserve exact hashes of untouched modules.
+          5. The included Fennekin 0.2.6 module is reproduction/reference material only; it is not fully green.
+          6. Keep every mod independent and patchable. Do not flatten the stack into one monolithic mod.
+          EOF
+
+          cat > "$ROOT/docs/README.txt" <<EOF
+          This is the pre-final Gate 2 recovery bundle. A second FINAL_GREEN Gate 2 bundle should be created after the Fennekin contract passes on-device.
+          EOF
+
+          python - <<'PY'
+          import hashlib, json, pathlib
+          root = pathlib.Path("${RUNNER_TEMP}") / "${BUNDLE_NAME}"
+          cart = json.loads((root/'cart/cart.json').read_text())
+          files = {}
+          for p in root.rglob('*'):
+              if p.is_file():
+                  files[str(p.relative_to(root))] = hashlib.sha256(p.read_bytes()).hexdigest()
+          manifest = {
+              'bundle': '${BUNDLE_NAME}',
+              'status': 'PARTIAL_GREEN_RECOVERY',
+              'cart_version': cart['version'],
+              'baseline_commit': '${BASELINE_COMMIT}',
+              'engine_commit': '${ENGINE_COMMIT}',
+              'load_order': cart['load_order'],
+              'mods': cart['mods'],
+              'files': files,
+          }
+          (root/'BUNDLE_MANIFEST.json').write_text(json.dumps(manifest, indent=2)+'\n')
+          PY
+
+      - name: Verify pinned mod hashes
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/$BUNDLE_NAME"
+          python - <<'PY'
+          import hashlib, json, pathlib
+          root = pathlib.Path("${RUNNER_TEMP}") / "${BUNDLE_NAME}"
+          cart = json.loads((root/'cart/cart.json').read_text())
+          names = {
+            'gen1_kaizo': 'gen1-recomp-allgen-kaizo-0.8.3.zip',
+            'potato_voxel': 'potato_voxel-1.9.6.zip',
+            'crystal_animated_sprites_with_shiny_visuals': 'crystal_animated_sprites_with_shiny_visuals_v2.0.3.zip',
+            'performance_monitor': 'performance_monitor_v1.4.1.zip',
+          }
+          for pin in cart['mods']:
+              mid, ver, expected = pin['id'], pin['version'], pin['sha256']
+              if mid.startswith('red_earth_'):
+                  p = root/'red-earth-mods'/f'{mid}-{ver}.zip'
+              else:
+                  p = root/'dependencies'/names[mid]
+              assert p.exists(), p
+              actual = hashlib.sha256(p.read_bytes()).hexdigest()
+              assert actual == expected, (mid, actual, expected)
+              print('OK', mid, ver, actual)
+          PY
+
+      - name: Seal bundle and publish release asset
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/$BUNDLE_NAME"
+          (cd "$ROOT" && find . -type f -not -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt)
+          (cd "$RUNNER_TEMP" && zip -q -r "$BUNDLE_NAME.zip" "$BUNDLE_NAME")
+          sha256sum "$RUNNER_TEMP/$BUNDLE_NAME.zip" > "$RUNNER_TEMP/$BUNDLE_NAME.zip.sha256"
+
+          if ! gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" --target "$GITHUB_SHA" --prerelease \
+              --title "Red Earth Gate 2 partial-green recovery 0.2.9" \
+              --notes "Immutable development/recovery handoff for the device-green Irregular line. Includes the exact 0.2.9 cart, every pinned Red Earth mod ZIP, all pinned third-party dependency ZIPs, extracted Red Earth source, the exact engine source snapshot used for validation, hashes, and a Claude handoff. Fennekin 0.2.6 is included only to reproduce the baseline and remains explicitly unresolved."
+          fi
+          gh release upload "$RELEASE_TAG" "$RUNNER_TEMP/$BUNDLE_NAME.zip" "$RUNNER_TEMP/$BUNDLE_NAME.zip.sha256" --clobber
