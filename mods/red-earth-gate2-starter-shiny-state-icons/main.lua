@@ -1,10 +1,10 @@
 -- Gate 2.5 rebuilt from the accepted Gate 2.4 baseline.
--- Responsibilities are intentionally narrow:
---   1) make only the intended Oak-gift Fennekin / Grass starters genuine shiny;
+-- Narrow responsibilities:
+--   1) make only the intended Oak-gift Fennekin / approved Grass starters genuine shiny;
 --   2) preserve that identity through evolution/save flow;
---   3) show packaged true-color shiny party/menu icons for those lines.
--- It does NOT own battle art, followers, scale/grounding, starter selection,
--- Irregular art, sparkle/audio, Nature, or passives.
+--   3) route proven shiny battle art + true-color party/menu icons for those lines.
+-- It does NOT own followers, scale/grounding, starter selection, Irregular art,
+-- sparkle/audio, Nature, or passives.
 
 local Stats = require("src.pokemon.Stats")
 local PartyMenu = require("src.ui.PartyMenu")
@@ -15,7 +15,7 @@ local unpack = table.unpack or unpack
 local BASE_STARTERS = {
   FENNEKIN=true,
   BULBASAUR=true, CHIKORITA=true, TREECKO=true, TURTWIG=true,
-  SNIVY=true, CHESPIN=true, ROWLET=true, GROOKEY=true, SPRIGATITO=true,
+  SNIVY=true, CHESPIN=true, ROWLET=true,
 }
 
 local STARTER_DEX = {
@@ -27,8 +27,6 @@ local STARTER_DEX = {
   CHESPIN=650, QUILLADIN=651, CHESNAUGHT=652,
   FENNEKIN=653, BRAIXEN=654, DELPHOX=655,
   ROWLET=722, DARTRIX=723, DECIDUEYE=724,
-  GROOKEY=810, THWACKEY=811, RILLABOOM=812,
-  SPRIGATITO=906, FLORAGATO=907, MEOWSCARADA=908,
 }
 
 local SHINY_DVS = { attack=15, defense=10, speed=10, special=10, hp=8 }
@@ -47,6 +45,11 @@ local function isShiny(mon)
   if not mon then return false end
   if mon.shiny == true or mon.isShiny == true then return true end
   return Stats.isShiny and Stats.isShiny(mon.dvs) or false
+end
+
+local function speciesOf(ctx)
+  if not ctx then return nil end
+  return ctx.species or (ctx.mon and ctx.mon.species)
 end
 
 local function padDex(n)
@@ -92,13 +95,11 @@ local function recalc(mon, game, refill)
   local def = game and game.data and game.data.pokemon
     and game.data.pokemon[mon.species]
   if not def then return end
-
   local oldMax = mon.stats and tonumber(mon.stats.hp) or 0
   local oldHp = tonumber(mon.hp) or oldMax
   mon.stats = Stats.calc(def, tonumber(mon.level) or 1, mon.dvs, mon.statExp)
   local newMax = mon.stats and tonumber(mon.stats.hp) or 0
   if newMax <= 0 then return end
-
   if refill or oldMax <= 0 then
     mon.hp = newMax
   else
@@ -143,23 +144,17 @@ end
 
 return function(mod)
   -- Observe Oak's existing give_pokemon flow AFTER upstream starter transforms.
-  -- The accepted Gate 2 QA gifts are levels 15/35/50 and are therefore ignored.
-  -- The actual Kaizo starter gift is level 5 and only the intended Fennekin /
-  -- Grass species are converted.
+  -- Gate 2 QA gifts are levels 15/35/50 and are deliberately ignored.
   mod.hooks:wrap("script.command", function(next, ctx, name, args, ...)
     if name ~= "give_pokemon" or not oakLab(ctx) then
       return next(ctx, name, args, ...)
     end
-
     local game = (ctx and ctx.game) or mod.game
     local save = (ctx and ctx.save) or (game and game.save)
     local seen = snapshot(save)
     local result = { n=0 }
-    local function capture(...)
-      result = { n=select("#", ...), ... }
-    end
+    local function capture(...) result = { n=select("#", ...), ... } end
     capture(next(ctx, name, args, ...))
-
     local mon = findNew(save, seen)
     if mon and BASE_STARTERS[mon.species]
         and (tonumber(mon.level) or 0) == 5 then
@@ -169,34 +164,43 @@ return function(mod)
     return unpack(result, 1, result.n)
   end, 180)
 
-  -- Evolution mutates the same mon; preserve exact shiny identity and DVs.
   mod.events:on("pokemon.evolved", function(ev)
     local mon = ev and ev.mon
     if mon and mon.redEarthGate25StarterShiny then
       makeGuaranteedShiny(mon, (ev and ev.game) or mod.game, false)
     end
   end)
-  mod.events:on("save.loaded", function(ev)
-    scanSave((ev and ev.game) or mod.game)
-  end)
-  mod.events:on("game.ready", function(ev)
-    scanSave((ev and ev.game) or mod.game)
-  end)
+  mod.events:on("save.loaded", function(ev) scanSave((ev and ev.game) or mod.game) end)
+  mod.events:on("game.ready", function(ev) scanSave((ev and ev.game) or mod.game) end)
 
-  -- Engine-owned icon seam for detached summaries/naming/other icon callers.
+  -- Proven v1.0.5 routing pattern: choose the dedicated shiny asset, then feed
+  -- it THROUGH the normal sprite chain. The renderer still owns scale,
+  -- grounding and animation, so this patch cannot repeat the old shrink/sink bug.
+  mod.hooks:wrap("pokemon.sprite", function(next, path, ctx)
+    ctx = ctx or {}
+    local species = speciesOf(ctx)
+    local dex = species and STARTER_DEX[species]
+    if not dex or not isShiny(ctx.mon) then
+      return next(path, ctx)
+    end
+    ctx.trueColor = true
+    local root = mod.path .. "/assets/battlers/" .. padDex(dex)
+    local chosen = (ctx.side == "back")
+      and (root .. "_back_shiny.png")
+      or  (root .. "_front_shiny.png")
+    return next(chosen, ctx)
+  end, 150)
+
   mod.hooks:wrap("pokemon.icon", function(next, path, ctx)
     local resolved = next(path, ctx)
     local mon = ctx and ctx.mon
-    local dex = mon and STARTER_DEX[mon.species]
+    local species = speciesOf(ctx)
+    local dex = species and STARTER_DEX[species]
     if not (dex and isShiny(mon)) then return resolved end
     ctx.trueColor = true
     return mod.path .. "/assets/icons/" .. padDex(dex) .. "_shiny.png"
   end, 170)
 
-  -- Stock PartyMenu can retain the original built-in icon class name even when
-  -- pokemon.icon substitutes a true-color path.  Draw the packaged shiny icon
-  -- directly for these shiny lines so no normal/orange Fennekin icon survives.
-  -- This does NOT mutate game.data.icons.bySpecies and falls back safely.
   local cache = {}
   local function imageFor(path)
     local cached = cache[path]
