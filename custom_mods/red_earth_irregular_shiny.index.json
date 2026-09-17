@@ -3,7 +3,7 @@
   "id": "red_earth_irregular_shiny",
   "title": "Red Earth \u2014 Gate 2: Irregular Shiny",
   "author": "Adam M. Aguilera",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "categories": [
     "CONTENT",
     "DEVELOPMENT"
@@ -27,10 +27,10 @@
   "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
   "github": "DuskPromised/gen1recomp-mod-index",
   "license": "MIT",
-  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_shiny/red_earth_irregular_shiny-0.2.0.zip",
-  "source_zip": "red_earth_irregular_shiny-0.2.0.zip",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_shiny/red_earth_irregular_shiny-0.2.1.zip",
+  "source_zip": "red_earth_irregular_shiny-0.2.1.zip",
   "summary": "Genuine shiny DVs and authored shiny battle, menu and icon art. Opt-in; normal individuals retain normal art.",
   "source_scope": "DuskPromised standalone Gate 2 module",
   "update_check": "off",
-  "sha256": "b7c13ee684dc5406f69322f226a132428d8352fa018764e84ece96e5321d3318"
+  "sha256": "e935d866720b95fde89730397f1ea9cc614e97e846313e1c04aa5f1c2c6ffef1"
 }
