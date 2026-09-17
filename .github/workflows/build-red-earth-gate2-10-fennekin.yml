@@ -1,0 +1,123 @@
+name: Build Red Earth Gate 2.10 Fennekin Contract + FX
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate2-10-fennekin-contract-fx"]
+    paths:
+      - "mods/red-earth-gate2-starter-shiny-state-icons/**"
+      - "mods/red-earth-gate2-starter-shiny-fx/**"
+      - "tools/test_gate2_10.lua"
+      - "tools/build_gate2_10.py"
+      - ".github/workflows/build-red-earth-gate2-10-fennekin.yml"
+permissions:
+  contents: write
+concurrency:
+  group: gate2-10-fennekin-contract-fx
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Install validation tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+      - name: Audit narrow scope
+        run: |
+          luac -p mods/red-earth-gate2-starter-shiny-state-icons/main.lua
+          luac -p mods/red-earth-gate2-starter-shiny-fx/main.lua
+          lua5.4 tools/test_gate2_10.lua
+          python - <<'PY'
+          from pathlib import Path
+          state=Path('mods/red-earth-gate2-starter-shiny-state-icons/main.lua').read_text()
+          fx=Path('mods/red-earth-gate2-starter-shiny-fx/main.lua').read_text()
+          for x in ['forwarded[3] = true','askNicknameAfterState','previewSpecies','ctx.kind == "dex"','end, -10)','0.2.10']:
+              assert x in state,x
+          for x in ['DexEntryMenu.new','world.talk','resolveBattleScale','battleScale','PSYDREN','VESPERIS','SOLIPSDION']:
+              assert x not in state,x
+          for x in ['sx.isGuaranteed','battle.started','playEntranceCry','gen2_shiny_sparkle.mp3','GOLD','LILAC','0.2.10']:
+              assert x in fx,x
+          for x in ['script.command','world.talk','DexEntryMenu','pokemon.sprite','pokemon.icon','makeGuaranteedShiny','mon.dvs','battleScale','PSYDREN','VESPERIS','SOLIPSDION']:
+              assert x not in fx,x
+          print('PASS: starter state/preview and player FX are isolated; no Dex constructor, Oak talk, scale or Irregular interception')
+          PY
+      - name: Preserve exact 0.2.9 baseline manifest
+        run: cp cart_source/gate_2_irregular_shiny_test/cart.json /tmp/gate29-cart.json
+      - name: Package from exact published 0.2.9 baseline
+        run: python tools/build_gate2_10.py package engine-reference/tools/cartkit.py
+      - name: Publish immutable 0.2.10 module prerelease
+        run: |
+          if ! gh release view v0.2.10 >/dev/null 2>&1; then
+            gh release create v0.2.10 --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.10 Fennekin shiny contract + FX" --notes "Built from the byte-verified 0.2.9 cart. The accepted custom Psydren/Vesperis/Solipsdion path is unchanged. This release changes only the regional starter shiny contract and adds an isolated player-side starter sparkle module: Fennekin/approved Grass starters become genuinely shiny before the standard nickname UI, the force-owned Oak dex preview resolves their shiny art without replacing DexEntryMenu, and their player send-out receives the approved gold/lilac sparkle sound sequence."
+          fi
+          mkdir -p /tmp/gate210-existing
+          for path in \
+            site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.10.zip \
+            site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_fx/red_earth_gate2_starter_shiny_fx-0.2.10.zip; do
+            name=$(basename "$path")
+            if gh release download v0.2.10 --pattern "$name" --dir /tmp/gate210-existing; then cmp "$path" "/tmp/gate210-existing/$name"; else gh release upload v0.2.10 "$path"; fi
+          done
+      - name: Pack and strict-validate 0.2.10 cart
+        run: |
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.10.g1rcart --online
+          python engine-reference/tools/cartkit.py validate cart_source/gate_2_irregular_shiny_test --online --strict
+          python tools/build_gate2_10.py metadata engine-reference/tools/cartkit.py
+      - name: Verify only starter contract pin changed and starter FX was added
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          old=json.loads(Path('/tmp/gate29-cart.json').read_text())
+          new=json.loads(Path('cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
+          assert old['version']=='0.2.9' and new['version']=='0.2.10'
+          oldm={p['id']:p for p in old['mods']}
+          newm={p['id']:p for p in new['mods']}
+          starter='red_earth_gate2_starter_shiny_state_icons'
+          fx='red_earth_gate2_starter_shiny_fx'
+          failed='red_earth_gate2_starter_preview_sparkle_fix'
+          assert failed not in newm
+          assert oldm[starter]['version']=='0.2.6'
+          assert newm[starter]['version']=='0.2.10'
+          assert fx not in oldm and newm[fx]['version']=='0.2.10'
+          for mid,pin in oldm.items():
+              if mid==starter: continue
+              assert mid in newm,mid
+              assert newm[mid]==pin,mid
+          assert set(newm)==set(oldm)|{fx}
+          assert new['load_order'][:-1]==old['load_order']
+          assert new['load_order'][-1]==fx
+          print('PASS: all 0.2.9 pins including custom line + harness are unchanged; only starter contract replaced and isolated FX appended')
+          PY
+      - name: Attach cart and checksums
+        run: |
+          mkdir -p /tmp/gate210-existing
+          for path in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.10.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+            name=$(basename "$path")
+            if gh release download v0.2.10 --pattern "$name" --dir /tmp/gate210-existing; then cmp "$path" "/tmp/gate210-existing/$name"; else gh release upload v0.2.10 "$path"; fi
+          done
+      - name: Commit verified 0.2.10 outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/red-earth-gate2-starter-shiny-state-icons mods/red-earth-gate2-starter-shiny-fx
+          git add tools/test_gate2_10.lua tools/build_gate2_10.py .github/workflows/build-red-earth-gate2-10-fennekin.yml
+          git add cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
+          git add custom_mods/red_earth_gate2_starter_shiny_state_icons.index.json custom_mods/red_earth_gate2_starter_shiny_state_icons.sha256
+          git add custom_mods/red_earth_gate2_starter_shiny_fx.index.json custom_mods/red_earth_gate2_starter_shiny_fx.sha256
+          git add -f site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.10.zip
+          git add -f site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_fx/red_earth_gate2_starter_shiny_fx-0.2.10.zip
+          git add -f site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.10.g1rcart
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Gate 2.10 Fennekin shiny contract and FX"
+            git push origin HEAD:gate2-10-fennekin-contract-fx
+          fi
