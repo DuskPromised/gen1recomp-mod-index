@@ -1,4 +1,5 @@
--- Gate 2.5 rebuilt from the accepted Gate 2.4 baseline.
+-- Gate 2.5 replacement built from the accepted Gate 2.4 baseline.
+-- Package/cart version is 0.2.6 because failed 0.2.5 was already installed on devices.
 -- Narrow responsibilities:
 --   1) make only the intended Oak-gift Fennekin / approved Grass starters genuine shiny;
 --   2) preserve that identity through evolution/save flow;
@@ -249,7 +250,7 @@ return function(mod)
     PartyMenu._redEarthGate25Rebuild = wrapped
   end
 
-  mod.exports.version = "0.2.5-r2"
+  mod.exports.version = "0.2.6"
   mod.exports.makeGuaranteedShiny = function(mon, game)
     return makeGuaranteedShiny(mon, game or mod.game, false)
   end
