@@ -2,7 +2,7 @@
   "schema": 1,
   "id": "gate_2_irregular_shiny_test",
   "title": "Gate 2 \u2014 Irregular Shiny Test",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Adam M. Aguilera",
   "repo": "DuskPromised/gen1recomp-mod-index",
   "summary": "Gate 2 QA: authored shiny art/state, player sparkle, three shiny gifts and a normal control on accepted Gate 1.",
@@ -81,15 +81,15 @@
       "id": "red_earth_gate2_presentation",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.2.0",
-      "sha256": "0d09c9d0e382ceed5d28080807b84dd2b6010185f7b63fd174886e5bec910479"
+      "version": "0.2.2",
+      "sha256": "d7194a28b0945ed7faeb84fe992c4ffe6eee7da320b76cc10af785150a7e7d3e"
     },
     {
       "id": "red_earth_gate2_test_harness",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.2.0",
-      "sha256": "7e7cdddc67fb10e2d0f0588c1064621b4ffc708925a90ea22e21c8cc3ffcc6f9"
+      "version": "0.2.2",
+      "sha256": "98c83f69564bf44a7ec8d517d5e7d48d78d0f510e8378dabfa0e032c9edec792"
     }
   ],
   "load_order": [
