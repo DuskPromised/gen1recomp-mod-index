@@ -1,17 +1,23 @@
--- Gate 2.5 replacement built from the accepted Gate 2.4 baseline.
--- Package/cart version is 0.2.6 because failed 0.2.5 was already installed on devices.
--- Narrow responsibilities:
+-- Gate 2.10 starter shiny contract.
+-- Built from the accepted 0.2.6 module and narrowed around Kaizo's native
+-- script.command starter seam.  Responsibilities:
 --   1) make only the intended Oak-gift Fennekin / approved Grass starters genuine shiny;
---   2) preserve that identity through evolution/save flow;
---   3) route proven shiny battle art + true-color party/menu icons for those lines.
+--   2) establish shiny identity BEFORE the standard nickname UI;
+--   3) show the matching shiny art in Oak's force-owned starter dex preview;
+--   4) preserve shiny identity through evolution/save flow;
+--   5) route proven shiny battle art + true-color party/menu icons for those lines.
 -- It does NOT own followers, scale/grounding, starter selection, Irregular art,
--- sparkle/audio, Nature, or passives.
+-- Nature, passives, or the player send-out sparkle/audio (separate module).
 
 local Stats = require("src.pokemon.Stats")
 local PartyMenu = require("src.ui.PartyMenu")
 local Assets = require("src.render.Assets")
 local PaletteFX = require("src.render.PaletteFX")
+local Commands = require("src.script.Commands")
+local Screens = require("src.ui.Screens")
+local Strings = require("src.core.Strings")
 local unpack = table.unpack or unpack
+local function pack(...) return { n=select("#", ...), ... } end
 
 local BASE_STARTERS = {
   FENNEKIN=true,
@@ -62,6 +68,13 @@ local function oakLab(ctx)
     and ctx.overworld.map.id
   if mapId == "OAKS_LAB" then return true end
   return ctx and ctx.source and ctx.source.mapId == "OAKS_LAB"
+end
+
+local function starterPending(ctx)
+  local flags = ctx and ctx.save and ctx.save.flags
+  return type(flags) == "table"
+    and flags.EVENT_FOLLOWED_OAK_INTO_LAB == true
+    and flags.EVENT_GOT_STARTER ~= true
 end
 
 local function snapshot(save)
@@ -143,25 +156,85 @@ local function scanSave(game)
   scan(save.box)
 end
 
+local function askNicknameAfterState(ctx, mon)
+  local runner = ctx and ctx.runner
+  if not runner then return end
+  local success = ctx.lastCheck
+  local name = ctx.game.stringBuffer
+    or (ctx.game.data.pokemon[mon.species] and ctx.game.data.pokemon[mon.species].name)
+    or mon.species
+  local textId, subs
+  if ctx.game.data.text and ctx.game.data.text._DoYouWantToNicknameText then
+    textId, subs = "_DoYouWantToNicknameText", { RAM=name }
+  else
+    textId = Strings("Do you want to\ngive a nickname\nto %s?", name)
+  end
+  Commands.show_text(ctx, textId, subs, { choice=function(yes)
+    if not yes then
+      ctx.lastCheck = success
+      runner:resume()
+      return
+    end
+    Screens.push(ctx.game, "NamingScreen", {
+      title=Strings("NICKNAME?"), maxLen=10, mon=mon,
+      onDone=function(nick)
+        if nick and #nick > 0 then mon.nickname = nick end
+        ctx.lastCheck = success
+        runner:resume()
+      end,
+    })
+  end })
+end
+
 return function(mod)
+  -- Kaizo's starter replacement wrapper has default priority 0.  This link
+  -- deliberately runs AFTER it (-10), so args already contain the selected
+  -- regional species.  That lets us remain ignorant of Kaizo's region menu
+  -- internals and keeps every non-target command byte-for-byte downstream.
+  local previewSpecies
   mod.hooks:wrap("script.command", function(next, ctx, name, args, ...)
-    if name ~= "give_pokemon" or not oakLab(ctx) then
+    if type(args) ~= "table" or not oakLab(ctx) or not starterPending(ctx) then
       return next(ctx, name, args, ...)
     end
-    local game = (ctx and ctx.game) or mod.game
-    local save = (ctx and ctx.save) or (game and game.save)
-    local seen = snapshot(save)
-    local result = { n=0 }
-    local function capture(...) result = { n=select("#", ...), ... } end
-    capture(next(ctx, name, args, ...))
-    local mon = findNew(save, seen)
-    if mon and BASE_STARTERS[mon.species]
-        and (tonumber(mon.level) or 0) == 5 then
-      makeGuaranteedShiny(mon, game, true)
-      mod.log:info("Gate 2.5 genuine shiny Oak gift: %s", tostring(mon.species))
+
+    -- Oak's force-owned dex card is constructed synchronously inside the
+    -- downstream push_screen command.  A transient species marker lets the
+    -- normal pokemon.sprite seam choose shiny art without replacing or
+    -- monkey-patching DexEntryMenu.new (the 0.2.8 regression source).
+    if name == "push_screen" and args[1] == "DexEntryMenu"
+        and type(args[2]) == "table" and BASE_STARTERS[args[2].species] then
+      previewSpecies = args[2].species
+      local result = pack(next(ctx, name, args, ...))
+      previewSpecies = nil
+      return unpack(result, 1, result.n)
     end
-    return unpack(result, 1, result.n)
-  end, 180)
+
+    -- The native give_pokemon asks for a nickname before it returns.  For the
+    -- one intended level-5 Oak starter only, suppress that one built-in AskName,
+    -- let the native command create/add the mon, make it genuinely shiny, then
+    -- present the engine-equivalent nickname UI with the already-shiny mon.
+    -- This preserves Kaizo's ball/region routing and all non-target gifts.
+    if name == "give_pokemon" and BASE_STARTERS[args[1]]
+        and (tonumber(args[2]) or 0) == 5 then
+      local game = (ctx and ctx.game) or mod.game
+      local save = (ctx and ctx.save) or (game and game.save)
+      local seen = snapshot(save)
+      local forwarded = {}
+      for i, v in ipairs(args) do forwarded[i] = v end
+      forwarded[3] = true
+      local result = pack(next(ctx, name, forwarded, ...))
+      local mon = findNew(save, seen)
+      if mon and mon.species == args[1] then
+        makeGuaranteedShiny(mon, game, true)
+        mod.log:info("Gate 2.10 genuine shiny Oak gift before nickname: %s",
+          tostring(mon.species))
+        if not mon.nickname then askNicknameAfterState(ctx, mon) end
+      end
+      return unpack(result, 1, result.n)
+    end
+
+    return next(ctx, name, args, ...)
+  end, -10)
 
   mod.events:on("pokemon.evolved", function(ev)
     local mon = ev and ev.mon
@@ -176,7 +249,9 @@ return function(mod)
     ctx = ctx or {}
     local species = speciesOf(ctx)
     local dex = species and STARTER_DEX[species]
-    if not dex or not isShiny(ctx.mon) then
+    local starterPreview = ctx.kind == "dex" and ctx.mon == nil
+      and previewSpecies == species
+    if not dex or (not starterPreview and not isShiny(ctx.mon)) then
       return next(path, ctx)
     end
     ctx.trueColor = true
@@ -245,7 +320,7 @@ return function(mod)
     PartyMenu._redEarthGate25Rebuild = wrapped
   end
 
-  mod.exports.version = "0.2.6"
+  mod.exports.version = "0.2.10"
   mod.exports.makeGuaranteedShiny = function(mon, game)
     return makeGuaranteedShiny(mon, game or mod.game, false)
   end
