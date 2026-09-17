@@ -1,0 +1,86 @@
+name: Build Red Earth Gate 1.3 Compatibility
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate1-2-fix-build"]
+    paths:
+      - "mods/red-earth-irregular-potato-compat/**"
+      - "tools/build_gate1_3.py"
+      - "tools/test_gate1_potato.*"
+      - "tools/verify_gate_pins.py"
+      - ".github/workflows/build-red-earth-gate1-3-compat.yml"
+permissions:
+  contents: write
+concurrency:
+  group: gate1-3-compat-build
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate patch against exact pinned PotatoVoxel
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          python -m pip install --quiet pillow
+          luac -p mods/red-earth-irregular-potato-compat/main.lua
+          curl -fsSL --retry 3 --max-time 120 https://github.com/ShaneMcGovernIE/potato_voxel/releases/download/v1.9.6/potato_voxel-1.9.6.zip -o /tmp/potato-1.9.6.zip
+          python tools/test_gate1_potato.py /tmp/potato-1.9.6.zip
+      - name: Package standalone compatibility module
+        run: python tools/build_gate1_3.py package
+      - name: Publish immutable compatibility prerelease
+        run: |
+          ASSET=red_earth_irregular_potato_compat-0.1.3.zip
+          LOCAL=site/data/mods/DuskPromised@red_earth_irregular_potato_compat/$ASSET
+          if gh release view v0.1.3 >/dev/null 2>&1; then
+            mkdir -p /tmp/existing-gate1-3
+            if gh release download v0.1.3 --pattern "$ASSET" --dir /tmp/existing-gate1-3; then
+              cmp "$LOCAL" "/tmp/existing-gate1-3/$ASSET"
+            else
+              gh release upload v0.1.3 "$LOCAL"
+            fi
+          else
+            gh release create v0.1.3 "$LOCAL" --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 1.3 compatibility retest" --notes "Separate Irregular/PotatoVoxel compatibility patch. Preserves authored back transparency and stage proportions. Core and harness remain 0.1.2. Gate 1 is not sealed pending live-device retest."
+          fi
+      - name: Validate all sealed cart pins online and pack Gate 1.3
+        run: |
+          curl -fsSL --retry 3 https://raw.githubusercontent.com/bryanthaboi/gen1recomp/e2114f7c85795d52903ea98deab493a4f181bace/tools/cartkit.py -o /tmp/cartkit.py
+          python tools/verify_gate_pins.py /tmp/cartkit.py
+          for name in gate_0a_pristine gate_0b_wilds; do
+            dir="/tmp/gate0-validation/$name"
+            mkdir -p "$dir"
+            cp "cart_source/$name/cart.json" "$dir/cart.json"
+            cp "site/data/carts/DuskPromised@$name/label.png" "$dir/label.png"
+            python /tmp/cartkit.py pack "$dir" -o "/tmp/$name.g1rcart"
+            cmp "/tmp/$name.g1rcart" "site/data/carts/DuskPromised@$name/$name-0.0.1.g1rcart"
+          done
+          for cart in /tmp/gate0-validation/* cart_source/gate_1_irregular_test; do
+            python /tmp/cartkit.py validate "$cart" --online --strict
+          done
+          python /tmp/cartkit.py pack cart_source/gate_1_irregular_test -o site/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.3.g1rcart --online
+          python tools/build_gate1_3.py metadata
+      - name: Attach cart and checksums
+        run: |
+          for path in site/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.3.g1rcart cart_source/gate_1_irregular_test/gate-1.3-sha256sums.txt; do
+            name=$(basename "$path")
+            mkdir -p /tmp/existing-cart1-3
+            if gh release download v0.1.3 --pattern "$name" --dir /tmp/existing-cart1-3; then
+              cmp "$path" "/tmp/existing-cart1-3/$name"
+            else
+              gh release upload v0.1.3 "$path"
+            fi
+          done
+      - name: Commit verified packages and feed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add custom_mods/red_earth_irregular_potato_compat.* cart_source/gate_1_irregular_test/cart.json cart_source/gate_1_irregular_test/gate-1.3-sha256sums.txt carts/gate_1_irregular_test.index.json site/data/index.json
+          git add -f site/data/mods/DuskPromised@red_earth_irregular_potato_compat/red_earth_irregular_potato_compat-0.1.3.zip site/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.3.g1rcart
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish standalone Gate 1.3 compatibility patch and verified cart"
+            git push origin HEAD:gate1-2-fix-build
+          fi
