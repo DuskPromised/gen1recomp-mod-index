@@ -249,7 +249,7 @@ return function(mod)
     PartyMenu._redEarthGate25Rebuild = wrapped
   end
 
-  mod.exports.version = "0.2.5"
+  mod.exports.version = "0.2.5-r2"
   mod.exports.makeGuaranteedShiny = function(mon, game)
     return makeGuaranteedShiny(mon, game or mod.game, false)
   end
