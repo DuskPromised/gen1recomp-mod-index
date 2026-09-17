@@ -112,24 +112,24 @@ jobs:
           6. Keep every mod independent and patchable. Do not flatten the stack into one monolithic mod.
           EOF
 
-          cat > "$ROOT/docs/README.txt" <<EOF
+          cat > "$ROOT/docs/README.txt" <<'EOF'
           This is the pre-final Gate 2 recovery bundle. A second FINAL_GREEN Gate 2 bundle should be created after the Fennekin contract passes on-device.
           EOF
 
           python - <<'PY'
-          import hashlib, json, pathlib
-          root = pathlib.Path("${RUNNER_TEMP}") / "${BUNDLE_NAME}"
+          import hashlib, json, os, pathlib
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / os.environ['BUNDLE_NAME']
           cart = json.loads((root/'cart/cart.json').read_text())
           files = {}
           for p in root.rglob('*'):
               if p.is_file():
                   files[str(p.relative_to(root))] = hashlib.sha256(p.read_bytes()).hexdigest()
           manifest = {
-              'bundle': '${BUNDLE_NAME}',
+              'bundle': os.environ['BUNDLE_NAME'],
               'status': 'PARTIAL_GREEN_RECOVERY',
               'cart_version': cart['version'],
-              'baseline_commit': '${BASELINE_COMMIT}',
-              'engine_commit': '${ENGINE_COMMIT}',
+              'baseline_commit': os.environ['BASELINE_COMMIT'],
+              'engine_commit': os.environ['ENGINE_COMMIT'],
               'load_order': cart['load_order'],
               'mods': cart['mods'],
               'files': files,
@@ -141,10 +141,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ROOT="$RUNNER_TEMP/$BUNDLE_NAME"
           python - <<'PY'
-          import hashlib, json, pathlib
-          root = pathlib.Path("${RUNNER_TEMP}") / "${BUNDLE_NAME}"
+          import hashlib, json, os, pathlib
+          root = pathlib.Path(os.environ['RUNNER_TEMP']) / os.environ['BUNDLE_NAME']
           cart = json.loads((root/'cart/cart.json').read_text())
           names = {
             'gen1_kaizo': 'gen1-recomp-allgen-kaizo-0.8.3.zip',
