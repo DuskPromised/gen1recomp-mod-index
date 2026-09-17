@@ -3,7 +3,7 @@
   "id": "gate_2_irregular_shiny_test",
   "title": "Gate 2 \u2014 Irregular Shiny Test",
   "author": "Adam M. Aguilera",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "summary": "Gate 2 QA: authored shiny art/state, player sparkle, three shiny gifts and a normal control on accepted Gate 1.",
   "base": "red",
   "seal": "sealed+",
@@ -89,15 +89,15 @@
       "id": "red_earth_gate2_presentation",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.2.0",
-      "sha256": "0d09c9d0e382ceed5d28080807b84dd2b6010185f7b63fd174886e5bec910479"
+      "version": "0.2.2",
+      "sha256": "d7194a28b0945ed7faeb84fe992c4ffe6eee7da320b76cc10af785150a7e7d3e"
     },
     {
       "id": "red_earth_gate2_test_harness",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.2.0",
-      "sha256": "7e7cdddc67fb10e2d0f0588c1064621b4ffc708925a90ea22e21c8cc3ffcc6f9"
+      "version": "0.2.2",
+      "sha256": "98c83f69564bf44a7ec8d517d5e7d48d78d0f510e8378dabfa0e032c9edec792"
     }
   ],
   "load_order": [
@@ -113,14 +113,14 @@
   ],
   "update_check": "ok",
   "latest": {
-    "version": "0.2.1",
-    "name": "0.2.1",
+    "version": "0.2.2",
+    "name": "0.2.2",
     "prerelease": true,
     "zip": {
-      "name": "gate_2_irregular_shiny_test-0.2.1.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.1.g1rcart",
+      "name": "gate_2_irregular_shiny_test-0.2.2.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.2.g1rcart",
       "size": 4446,
-      "sha256": "85504b720eeb1996e07f03b8bfabfc781f36bdd9bd6a8e053bcf6d7ede32e86b"
+      "sha256": "94ea07c88aa22af25ae10d8ec08f8a61cd12515f57466263124a857b99273b6c"
     }
   },
   "thumbnail": "data/carts/DuskPromised@gate_2_irregular_shiny_test/label.png"
