@@ -1,0 +1,98 @@
+{
+  "psydren_front_shiny.png": {
+    "source": "mods/irregular-origin/assets/psydren_front_shiny.png",
+    "sha256": "0678cb9752408172694eee064877cca817285e9b7fdc2b80c5650b25f86ebc10",
+    "size": [
+      56,
+      56
+    ]
+  },
+  "psydren_back_shiny.png": {
+    "source": "mods/irregular-origin/assets/psydren_back_shiny.png",
+    "sha256": "5a0186e0daff9e925f6b224fb6dc2517bd779283aa82e008c5f63c9126aa6bcd",
+    "size": [
+      48,
+      48
+    ]
+  },
+  "psydren_menu_shiny.png": {
+    "source": "mods/irregular-origin/assets/psydren_menu_shiny.png",
+    "sha256": "61e8440a0332ed10d229d7673092bae59b8bb96c03fc275f289977dae3c40dae",
+    "size": [
+      40,
+      40
+    ]
+  },
+  "psydren_icon_shiny.png": {
+    "source": "mods/irregular-origin/assets/psydren_icon_shiny.png",
+    "sha256": "2c7e434df8760e8285280445d31e2f25391c8143d5b5dfd5f4a82f3715274548",
+    "size": [
+      16,
+      32
+    ]
+  },
+  "vesperis_front_shiny.png": {
+    "source": "mods/irregular-origin/assets/vesperis_front_shiny.png",
+    "sha256": "0d67c55b1d2f26553d5f5dd8ac613a3b93c633c70736100e377e4f0e108d022c",
+    "size": [
+      56,
+      56
+    ]
+  },
+  "vesperis_back_shiny.png": {
+    "source": "mods/irregular-origin/assets/vesperis_back_shiny.png",
+    "sha256": "01f22175d06119936388208ad1c230a9ece1b6b31a6691fc63710484d7e95fb0",
+    "size": [
+      48,
+      48
+    ]
+  },
+  "vesperis_menu_shiny.png": {
+    "source": "mods/irregular-origin/assets/vesperis_menu_shiny.png",
+    "sha256": "29ea0d1a394d066593c23d741113e13485164ed60e7486e08a6e7ebd40f82ef3",
+    "size": [
+      40,
+      40
+    ]
+  },
+  "vesperis_icon_shiny.png": {
+    "source": "mods/irregular-origin/assets/vesperis_icon_shiny.png",
+    "sha256": "ddc7309a4fc2337866630d043334cd67339c95b194e4b6c17db86e9572c27eb9",
+    "size": [
+      16,
+      32
+    ]
+  },
+  "solipsdion_front_shiny.png": {
+    "source": "mods/irregular-origin/assets/solipsdion_front_shiny.png",
+    "sha256": "acdaeb7a73f4be472209c04c91eb997980c4f204fc26c748efbfcbd62076eefe",
+    "size": [
+      56,
+      56
+    ]
+  },
+  "solipsdion_back_shiny.png": {
+    "source": "mods/irregular-origin/assets/solipsdion_back_shiny.png",
+    "sha256": "d80870079b822d2241dc830b5a79d1365e960ae564b90e4acbfc567289836844",
+    "size": [
+      48,
+      48
+    ]
+  },
+  "solipsdion_menu_shiny.png": {
+    "source": "mods/irregular-origin/assets/solipsdion_menu_shiny.png",
+    "sha256": "d10823e9173566330100ff8b1e0c4b01c1c5e8afafbebc5a0ba193dbf39c52b9",
+    "size": [
+      40,
+      40
+    ]
+  },
+  "solipsdion_icon_shiny.png": {
+    "source": "mods/irregular-origin/assets/solipsdion_icon_shiny.png",
+    "sha256": "3a0f3a812e65e041a00681ad9013088babe7d1cd966cedb473a7ece5141116b2",
+    "size": [
+      16,
+      32
+    ]
+  }
+}
