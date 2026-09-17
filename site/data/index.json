@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-17T14:59:15.549444+00:00",
+  "generated_at": "2026-09-17T15:55:33.160716+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -34,7 +34,7 @@
     {
       "folder": "hydhyro@gen1_pt-br_mod",
       "id": "gen1_pt-br_mod",
-      "title": "(PT-BR) Vers\u00e3o Brasileira",
+      "title": "(PT-BR) Versão Brasileira",
       "author": "hydhyro",
       "version": "0.1.12",
       "categories": [
@@ -46,7 +46,7 @@
       "profile": "content",
       "thumbnail": "data/mods/hydhyro@gen1_pt-br_mod/thumbnail.png",
       "description_url": "data/mods/hydhyro@gen1_pt-br_mod/description.md",
-      "summary": "Tradu\u00e7\u00e3o em Portugu\u00eas brasileiro das vers\u00f5es Amarela, Azul e Vermelha de Pok\u00e9mon gen1.",
+      "summary": "Tradução em Português brasileiro das versões Amarela, Azul e Vermelha de Pokémon gen1.",
       "latest": {
         "version": "0.1.12",
         "tag": "0.1.12",
@@ -131,7 +131,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-access-pc-anywhere",
-      "summary": "Start menu PC opens Bill\u2019s PC from the overworld when available.",
+      "summary": "Start menu PC opens Bill’s PC from the overworld when available.",
       "tags": [
         "pc",
         "wex"
@@ -251,7 +251,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/anglers-cove-aquarium",
-      "summary": "Fishing and aquarium sim side activity for Pok\u00e9mon Crystal, with tank care, unique catches, collectibles, and optional PokeSurvive integration.",
+      "summary": "Fishing and aquarium sim side activity for Pokémon Crystal, with tank care, unique catches, collectibles, and optional PokeSurvive integration.",
       "tags": [
         "fishing",
         "aquarium",
@@ -268,7 +268,7 @@
       "latest": {
         "version": "1.3.1",
         "tag": "v1.3.1",
-        "name": "\ud83c\udfa3 Angler's Cove Aquarium v1.3.1",
+        "name": "🎣 Angler's Cove Aquarium v1.3.1",
         "prerelease": false,
         "published_at": "2026-09-06T01:09:29Z",
         "zip": {
@@ -295,7 +295,7 @@
       "id": "anytime_rename",
       "title": "Anytime Rename",
       "author": "Roxas2712",
-      "summary": "Rename the trainer, rival and party Pok\u00e9mon from the START menu, with generation-aware save handling and automatic German localization.",
+      "summary": "Rename the trainer, rival and party Pokémon from the START menu, with generation-aware save handling and automatic German localization.",
       "version": "1.2.1",
       "categories": [
         "UI",
@@ -605,7 +605,7 @@
         "QOL"
       ],
       "repo": "https://github.com/EnterPlayerOne/Battle-Cinematics-Stadium-Camera",
-      "summary": "Dynamic 3D battle camera director with Stadium 64, DW3 Classic and Hero Portrait idle views, Pok\u00e9mon intros, move aware attacks, faint shots, manual control, and Gen 1 + Gold support.",
+      "summary": "Dynamic 3D battle camera director with Stadium 64, DW3 Classic and Hero Portrait idle views, Pokémon intros, move aware attacks, faint shots, manual control, and Gen 1 + Gold support.",
       "tags": [
         "camera",
         "battle-camera",
@@ -628,7 +628,7 @@
       "latest": {
         "version": "1.4.3",
         "tag": "v1.4.3",
-        "name": "Battle Cinematics v1.4.3 \u2014 Stadium 2 Importer 0.14.4 Compatibility",
+        "name": "Battle Cinematics v1.4.3 — Stadium 2 Importer 0.14.4 Compatibility",
         "prerelease": false,
         "published_at": "2026-09-16T23:02:13Z",
         "zip": {
@@ -661,7 +661,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/Battle-Factory-Remix",
-      "summary": "Battle through rental Pok\u00e9mon challenges, swap your team between rounds, defeat Factory Heads, and earn unique BP rewards.",
+      "summary": "Battle through rental Pokémon challenges, swap your team between rounds, defeat Factory Heads, and earn unique BP rewards.",
       "tags": [
         "battle factory",
         "rentals",
@@ -683,7 +683,7 @@
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
-        "name": "\ud83c\udfed Battle Factory Remix v1.2.0 \u2014 More CMs + Signature Held Items",
+        "name": "🏭 Battle Factory Remix v1.2.0 — More CMs + Signature Held Items",
         "prerelease": false,
         "published_at": "2026-09-14T22:33:20Z",
         "zip": {
@@ -881,7 +881,7 @@
       "id": "better_battle_ui",
       "title": "Better Battle UI",
       "author": "eduardocalafell",
-      "summary": "The enemy's hidden HP and type, move effectiveness, stat changes, catch chance and an XP bar \u2014 in a framed HUD that fits the voxel battle.",
+      "summary": "The enemy's hidden HP and type, move effectiveness, stat changes, catch chance and an XP bar — in a framed HUD that fits the voxel battle.",
       "version": "0.1.0",
       "categories": [
         "UI",
@@ -1527,7 +1527,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-controller-rumble/tree/main",
-      "summary": "Modern rumble support that brings Gen 1\u2019s classic shakes to life across battles, menus, story moments, and the overworld.",
+      "summary": "Modern rumble support that brings Gen 1’s classic shakes to life across battles, menus, story moments, and the overworld.",
       "tags": [
         "controller",
         "rumble",
@@ -1689,7 +1689,7 @@
       "categories": [
         "CONTENT"
       ],
-      "summary": "Adds Crystal Onix as a Rock/Ice Onix variant shown as #95C directly beneath #095 ONIX in both the stock Pok\u00e9dex and Pok\u00e9dex Plus (when installed), with a fully integrated quest and perfect-DV/max-Stat-EXP reward.",
+      "summary": "Adds Crystal Onix as a Rock/Ice Onix variant shown as #95C directly beneath #095 ONIX in both the stock Pokédex and Pokédex Plus (when installed), with a fully integrated quest and perfect-DV/max-Stat-EXP reward.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -1797,7 +1797,7 @@
       "latest": {
         "version": "0.1.2",
         "tag": "v0.1.2",
-        "name": "v0.1.2 \u2014 Correctifs des retours de test",
+        "name": "v0.1.2 — Correctifs des retours de test",
         "prerelease": false,
         "published_at": "2026-08-07T09:36:22Z",
         "zip": {
@@ -1877,9 +1877,9 @@
     {
       "folder": "Roxas2712@deutsch-blau",
       "id": "deutsch-blau",
-      "title": "Deutsch f\u00fcr Pok\u00e9mon Blau",
+      "title": "Deutsch für Pokémon Blau",
       "author": "Roxas2712",
-      "summary": "Deutsche \u00dcbersetzung von Pok\u00e9mon Blau: Originaltexte, Namen, Schrift und Titelgrafik der Blauen Edition f\u00fcr die importierte US-ROM.",
+      "summary": "Deutsche Übersetzung von Pokémon Blau: Originaltexte, Namen, Schrift und Titelgrafik der Blauen Edition für die importierte US-ROM.",
       "version": "1.0.2",
       "categories": [
         "TRANSLATION"
@@ -1906,7 +1906,7 @@
       "latest": {
         "version": "1.1.1",
         "tag": "v1.1.1",
-        "name": "Deutsch f\u00fcr Pok\u00e9mon Blau 1.1.1",
+        "name": "Deutsch für Pokémon Blau 1.1.1",
         "prerelease": false,
         "published_at": "2026-08-18T10:47:12Z",
         "zip": {
@@ -1931,9 +1931,9 @@
     {
       "folder": "Roxas2712@deutsch-gelb",
       "id": "deutsch-gelb",
-      "title": "Deutsch f\u00fcr Pok\u00e9mon Gelb",
+      "title": "Deutsch für Pokémon Gelb",
       "author": "Roxas2712",
-      "summary": "Deutsche \u00dcbersetzung von Pok\u00e9mon Gelb: Originaltexte, Namen und Schrift der Gelben Edition f\u00fcr die importierte US-ROM.",
+      "summary": "Deutsche Übersetzung von Pokémon Gelb: Originaltexte, Namen und Schrift der Gelben Edition für die importierte US-ROM.",
       "version": "1.0.5",
       "categories": [
         "TRANSLATION"
@@ -1960,7 +1960,7 @@
       "latest": {
         "version": "1.1.1",
         "tag": "v1.1.1",
-        "name": "Deutsch f\u00fcr Pok\u00e9mon Gelb 1.1.1",
+        "name": "Deutsch für Pokémon Gelb 1.1.1",
         "prerelease": false,
         "published_at": "2026-08-18T10:47:13Z",
         "zip": {
@@ -1985,9 +1985,9 @@
     {
       "folder": "Roxas2712@deutsch",
       "id": "deutsch",
-      "title": "Deutsch f\u00fcr Pok\u00e9mon Rot",
+      "title": "Deutsch für Pokémon Rot",
       "author": "Roxas2712",
-      "summary": "Deutsche \u00dcbersetzung von Pok\u00e9mon Rot: Originaltexte, Namen, Schrift und Titelgrafik der Roten Edition f\u00fcr die importierte US-ROM.",
+      "summary": "Deutsche Übersetzung von Pokémon Rot: Originaltexte, Namen, Schrift und Titelgrafik der Roten Edition für die importierte US-ROM.",
       "version": "2.1.6",
       "categories": [
         "TRANSLATION"
@@ -2014,7 +2014,7 @@
       "latest": {
         "version": "2.2.1",
         "tag": "v2.2.1",
-        "name": "Deutsch f\u00fcr Pok\u00e9mon Rot 2.2.1",
+        "name": "Deutsch für Pokémon Rot 2.2.1",
         "prerelease": false,
         "published_at": "2026-08-18T10:47:10Z",
         "zip": {
@@ -2095,7 +2095,7 @@
       "id": "dialogue_portraits",
       "title": "Dialogue Portraits",
       "author": "Nezara",
-      "summary": "Shows a portrait of whoever's talking beside the dialogue box: all 45 trainer classes, 28 talking Pok\u00e9mon, and custom art for anyone else.",
+      "summary": "Shows a portrait of whoever's talking beside the dialogue box: all 45 trainer classes, 28 talking Pokémon, and custom art for anyone else.",
       "version": "1.0.2",
       "categories": [
         "UI",
@@ -2250,7 +2250,7 @@
       "id": "DRAMATIC_SKY_RIDE",
       "title": "Dramatic Sky Ride",
       "author": "MFR TechConsult",
-      "summary": "Ride Gen 1 Pok\u00e9mon on land, water and in the air with Battle Art Voxel Fork, Pok\u00e9PC sprites, story-aware progression and Wild Skies integration.",
+      "summary": "Ride Gen 1 Pokémon on land, water and in the air with Battle Art Voxel Fork, PokéPC sprites, story-aware progression and Wild Skies integration.",
       "version": "0.1.2",
       "categories": [
         "GAMEPLAY",
@@ -2317,7 +2317,7 @@
       "id": "translation-nl",
       "title": "Dutch translation",
       "author": "BartInTheField",
-      "summary": "Dutch translation for Pok\u00e9mon Red and Blue, generated from PokeCorpus.",
+      "summary": "Dutch translation for Pokémon Red and Blue, generated from PokeCorpus.",
       "version": "0.0.2",
       "categories": [
         "TRANSLATION"
@@ -2468,9 +2468,9 @@
     {
       "folder": "Sebarosu@recomp-spanish",
       "id": "recomp-spanish",
-      "title": "Edici\u00f3n Roja",
+      "title": "Edición Roja",
       "author": "Sebarosu",
-      "summary": "Traducci\u00f3n al espa\u00f1ol de Pok\u00e9mon Rojo/Azul. Bienvenidos al mundo de POK\u00e9MON, ahora en ESPA\u00d1OL.",
+      "summary": "Traducción al español de Pokémon Rojo/Azul. Bienvenidos al mundo de POKéMON, ahora en ESPAÑOL.",
       "version": "1.1.0",
       "categories": [
         "TRANSLATION"
@@ -2596,7 +2596,7 @@
       "latest": {
         "version": "0.1.10",
         "tag": "v0.1.10",
-        "name": "v0.1.10 \u2014 Custom EXP SHARE percentages",
+        "name": "v0.1.10 — Custom EXP SHARE percentages",
         "prerelease": false,
         "published_at": "2026-08-21T14:15:15Z",
         "zip": {
@@ -2705,9 +2705,9 @@
     {
       "folder": "eduardocalafell@fakemons",
       "id": "fakemons",
-      "title": "Fak\u00e9mons",
+      "title": "Fakémons",
       "author": "eduardocalafell",
-      "summary": "Original fan-made Fak\u00e9mons as real catchable species \u2014 full stats, moves, learnsets, dex entries and original art, spawning in themed habitats.",
+      "summary": "Original fan-made Fakémons as real catchable species — full stats, moves, learnsets, dex entries and original art, spawning in themed habitats.",
       "version": "0.1.1",
       "categories": [
         "CONTENT",
@@ -2734,7 +2734,7 @@
       "latest": {
         "version": "0.1.1",
         "tag": "v0.1.1",
-        "name": "Fak\u00e9mons v0.1.1",
+        "name": "Fakémons v0.1.1",
         "prerelease": false,
         "published_at": "2026-08-08T16:05:10Z",
         "zip": {
@@ -2772,7 +2772,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/duderosier@FAST_NURSE_JOY/description.md",
-      "summary": "Skip the wait at every Pok\u00e9mon Center \u2014 and top everything up at the PC.",
+      "summary": "Skip the wait at every Pokémon Center — and top everything up at the PC.",
       "latest": {
         "version": "0.2.19",
         "tag": "v0.2.19",
@@ -2846,7 +2846,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-followers-ex",
-      "summary": "Trainer/Pokemon control, pack size, party/BOX LEADER, and Wilds encounters using Pok\u00e9PC follower sheets (needs Pok\u00e9PC Followers + Wilds)",
+      "summary": "Trainer/Pokemon control, pack size, party/BOX LEADER, and Wilds encounters using PokéPC follower sheets (needs PokéPC Followers + Wilds)",
       "tags": [
         "follower",
         "wex"
@@ -2947,7 +2947,7 @@
       "categories": [
         "GAMEPLAY"
       ],
-      "summary": "Adds Master Ball to every Pok\u00e9 Mart and sets its buy price to 0.",
+      "summary": "Adds Master Ball to every Poké Mart and sets its buy price to 0.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -2974,7 +2974,7 @@
       "categories": [
         "QOL"
       ],
-      "summary": "Adds RARE CANDY to every standard Pok\u00e9 Mart and makes it completely free.",
+      "summary": "Adds RARE CANDY to every standard Poké Mart and makes it completely free.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -3111,7 +3111,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/Hazard15301/G1GPP",
-      "summary": "A preservation-focused expansion for Pok\u00e9mon Red and Blue, rewarding curious players who explore beyond the expected.",
+      "summary": "A preservation-focused expansion for Pokémon Red and Blue, rewarding curious players who explore beyond the expected.",
       "tags": [
         "glitches",
         "missingno",
@@ -3337,7 +3337,7 @@
       "repo": "https://github.com/ArmstrongThomas/gen1-modern-ui",
       "downloadURL": "https://github.com/ArmstrongThomas/gen1-modern-ui/releases/download/v0.9.2/gen1_modern_ui-0.9.2.zip",
       "source_zip": "gen1_modern_ui-0.9.2.zip",
-      "summary": "Repaints the menus in full window space \u2014 responsive dialogue, Party, PC, Trainer Card, Pokedex, Bag and Shop, with themes and a minimal mode.",
+      "summary": "Repaints the menus in full window space — responsive dialogue, Party, PC, Trainer Card, Pokedex, Bag and Shop, with themes and a minimal mode.",
       "permissions": [],
       "dependencies": [],
       "optional_dependencies": [],
@@ -3801,7 +3801,7 @@
       "id": "Gen1Dex",
       "title": "Gen1Dex",
       "author": "Wild",
-      "summary": "The Pok\u00e9dex with a POK\u00e9MON beside every entry: a party icon on every row, a silhouette until you have seen it, three pages behind each one, and an AREA screen that says how to get there.",
+      "summary": "The Pokédex with a POKéMON beside every entry: a party icon on every row, a silhouette until you have seen it, three pages behind each one, and an AREA screen that says how to get there.",
       "version": "1.5.1",
       "categories": [
         "UI",
@@ -3866,7 +3866,7 @@
       "id": "Gen1Follower",
       "title": "Gen1Follower",
       "author": "Wild",
-      "summary": "All 251 Gen 1 and Gen 2 overworld followers, sized by Pok\u00e9dex proportions, with voxel support. Built from Antigravity & gamecorner33's Pok\u00e9PC Followers.",
+      "summary": "All 251 Gen 1 and Gen 2 overworld followers, sized by Pokédex proportions, with voxel support. Built from Antigravity & gamecorner33's PokéPC Followers.",
       "version": "1.3.2",
       "categories": [
         "GAMEPLAY",
@@ -3927,7 +3927,7 @@
       "id": "Gen1MenuManager",
       "title": "Gen1MenuManager",
       "author": "Wild",
-      "summary": "Rearrange the START menu and the Pok\u00e9mon Center PC menu: reorder rows, hide the ones you never touch, and pin field items and moves to rows of their own.",
+      "summary": "Rearrange the START menu and the Pokémon Center PC menu: reorder rows, hide the ones you never touch, and pin field items and moves to rows of their own.",
       "version": "0.2.8",
       "categories": [
         "TOOL",
@@ -4210,7 +4210,7 @@
       "id": "Gen1Party",
       "title": "Gen1Party",
       "author": "Wild",
-      "summary": "The party menu with every POK\u00e9MON in its own species colours instead of all six sharing one, and nothing left running off the right edge of the screen.",
+      "summary": "The party menu with every POKéMON in its own species colours instead of all six sharing one, and nothing left running off the right edge of the screen.",
       "version": "1.7.0",
       "categories": [
         "UI",
@@ -4320,7 +4320,7 @@
       "id": "Gen1Remember",
       "title": "Gen1Remember",
       "author": "Wild",
-      "summary": "A POK\u00e9MON can be taught a move it has forgotten, from the popup you already open on it: every level-up move it should have had by now, its pre-evolutions' included.",
+      "summary": "A POKéMON can be taught a move it has forgotten, from the popup you already open on it: every level-up move it should have had by now, its pre-evolutions' included.",
       "version": "1.0.1",
       "categories": [
         "UI",
@@ -4565,7 +4565,7 @@
       "id": "gen1_wild_ui",
       "title": "Gen1WildUI",
       "author": "Wild",
-      "summary": "The visual half of the suite in one mod: battle backdrops and intro, the battle menus, the Pok\u00e9dex, the box, the party menu, the bag, item icons and descriptions, the lift panel.",
+      "summary": "The visual half of the suite in one mod: battle backdrops and intro, the battle menus, the Pokédex, the box, the party menu, the bag, item icons and descriptions, the lift panel.",
       "version": "1.12.0",
       "categories": [
         "UI",
@@ -4889,7 +4889,7 @@
       "latest": {
         "version": "1.0.10",
         "tag": "1.0.10",
-        "name": "1.0.10 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "1.0.10 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:12Z",
         "zip": {
@@ -5104,7 +5104,7 @@
       "profile": "content",
       "thumbnail": "data/mods/hydhyro@gen1recomp_portuguese_ui/thumbnail.png",
       "description_url": "data/mods/hydhyro@gen1recomp_portuguese_ui/description.md",
-      "summary": "Tradu\u00e7\u00e3o da inferface do launcher para pt-br. N\u00e3o traduz os jogos.",
+      "summary": "Tradução da inferface do launcher para pt-br. Não traduz os jogos.",
       "latest": {
         "version": "0.1.3",
         "tag": "0.1.3",
@@ -5174,7 +5174,7 @@
       "license": "MIT",
       "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.10.zip",
       "source_zip": "irregular_origin-1.0.10.zip",
-      "summary": "v1.0.10 split-foundation Irregular line using the final canonical normal/shiny battle, menu, icon and follower art, routed through the native renderer with a Psydren Pok\u00e9dex acquisition preview.",
+      "summary": "v1.0.10 split-foundation Irregular line using the final canonical normal/shiny battle, menu, icon and follower art, routed through the native renderer with a Psydren Pokédex acquisition preview.",
       "source_scope": "DuskPromised original mod",
       "update_check": "off",
       "optional_dependencies": [
@@ -5219,7 +5219,7 @@
       "latest": {
         "version": "1.1.1",
         "tag": "1.1.1",
-        "name": "1.1.1 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "1.1.1 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:16Z",
         "zip": {
@@ -5275,9 +5275,9 @@
     {
       "folder": "bryanthaboi@translation-ja-hrkt",
       "id": "translation-ja-hrkt",
-      "title": "JP GREEN - Poketto Monsut\u0101 Midori",
+      "title": "JP GREEN - Poketto Monsutā Midori",
       "author": "bryanthaboi",
-      "summary": "Japanese translation of Red and Blue, rendered through the engine's bundled Plain Pixel TTF \u2014 no glyph sheet needed.",
+      "summary": "Japanese translation of Red and Blue, rendered through the engine's bundled Plain Pixel TTF — no glyph sheet needed.",
       "version": "0.4.4",
       "categories": [
         "TRANSLATION"
@@ -5355,7 +5355,7 @@
       "id": "kanto_ascendant",
       "title": "Kanto Ascendant",
       "author": "Roxas2712",
-      "summary": "A living 251-Pok\u00e9mon Kanto expansion with evolving rematches, Johto progression, legendary events, breeding, shinies, Mega Evolution and a substantial postgame.",
+      "summary": "A living 251-Pokémon Kanto expansion with evolving rematches, Johto progression, legendary events, breeding, shinies, Mega Evolution and a substantial postgame.",
       "version": "6.5.7",
       "categories": [
         "GAMEPLAY",
@@ -5426,7 +5426,7 @@
       "latest": {
         "version": "6.7.10",
         "tag": "v6.7.10",
-        "name": "Kanto Ascendant 6.7.10 \u2014 Riolu Friendship Fix",
+        "name": "Kanto Ascendant 6.7.10 — Riolu Friendship Fix",
         "prerelease": false,
         "published_at": "2026-09-11T19:51:41Z",
         "zip": {
@@ -5486,7 +5486,7 @@
       "latest": {
         "version": "0.52.0",
         "tag": "v0.52.0",
-        "name": "v0.52.0 \u2014 a fainted lead, a frozen spectator, balls on the water, the eye on a route",
+        "name": "v0.52.0 — a fainted lead, a frozen spectator, balls on the water, the eye on a route",
         "prerelease": false,
         "published_at": "2026-09-15T01:53:24Z",
         "zip": {
@@ -5668,7 +5668,7 @@
       "id": "kanto_gear",
       "title": "Kanto Gear",
       "author": "AverageConsumer",
-      "summary": "A second screen when you have one. A better layout when you do not \u2014 maps, party data, battle intelligence and touch controls for Gen1Recomp.",
+      "summary": "A second screen when you have one. A better layout when you do not — maps, party data, battle intelligence and touch controls for Gen1Recomp.",
       "version": "2.2.0",
       "categories": [
         "UI",
@@ -5707,7 +5707,7 @@
       "latest": {
         "version": "3.2.9",
         "tag": "v3.2.9",
-        "name": "Kanto Gear 3.2.9 \u2014 Auto Battle Screen & Touch Menus",
+        "name": "Kanto Gear 3.2.9 — Auto Battle Screen & Touch Menus",
         "prerelease": false,
         "published_at": "2026-09-12T17:38:30Z",
         "zip": {
@@ -5739,7 +5739,7 @@
       ],
       "repo": "https://github.com/jtfresh90/Kanto-Life-Mod",
       "github": "jtfresh90/Kanto-Life-Mod",
-      "summary": "Ambient town and route crowds, optional Pokemon NPCs, sleep toggle with rate control, and Common Courtesy knocking \u2014 for every gen1recomp game.",
+      "summary": "Ambient town and route crowds, optional Pokemon NPCs, sleep toggle with rate control, and Common Courtesy knocking — for every gen1recomp game.",
       "tags": [
         "npc",
         "town",
@@ -5797,7 +5797,7 @@
       ],
       "repo": "https://github.com/1Jamie/Kanto-Reforged",
       "github": "1Jamie/Kanto-Reforged",
-      "summary": "Expands Gen 1 and Gen 2 with Hoenn Pok\u00e9mon, Gen 3 battle mechanics & abilities, restored Kanto dungeons, and new postgame content.",
+      "summary": "Expands Gen 1 and Gen 2 with Hoenn Pokémon, Gen 3 battle mechanics & abilities, restored Kanto dungeons, and new postgame content.",
       "tags": [
         "pokemon",
         "gen2",
@@ -6358,7 +6358,7 @@
         "QOL"
       ],
       "repo": "https://github.com/piftee/gen1recomp-modern-party-ui",
-      "summary": "Adds responsive type-coloured party and Pok\u00e9mon summary cards built from Gen 1's own font, sprites, and UI assets.",
+      "summary": "Adds responsive type-coloured party and Pokémon summary cards built from Gen 1's own font, sprites, and UI assets.",
       "tags": [
         "ui",
         "party",
@@ -6486,7 +6486,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/MaybeGreg@modern_type_framework/description.md",
-      "summary": "Updates the type chart to modern chart. Does not edit Pok\u00e9mon or moves.",
+      "summary": "Updates the type chart to modern chart. Does not edit Pokémon or moves.",
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
@@ -6887,7 +6887,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-music-player",
-      "summary": "A fast in\u2011game music browser with favorites, queues, and instant access anywhere",
+      "summary": "A fast in‑game music browser with favorites, queues, and instant access anywhere",
       "tags": [
         "music player",
         "sound test",
@@ -7087,7 +7087,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/Mutant-Monster-Lab",
-      "summary": "Splice Pok\u00e9mon mutations and unleash global phenomena with the Holon Collider.",
+      "summary": "Splice Pokémon mutations and unleash global phenomena with the Holon Collider.",
       "tags": [
         "pokemon",
         "mutations",
@@ -7104,7 +7104,7 @@
       "latest": {
         "version": "1.1.0",
         "tag": "v1.1.0",
-        "name": "\ud83e\uddec Mutant Monster Lab v1.1.0",
+        "name": "🧬 Mutant Monster Lab v1.1.0",
         "prerelease": false,
         "published_at": "2026-09-08T15:44:03Z",
         "zip": {
@@ -7255,7 +7255,7 @@
       "categories": [
         "QOL"
       ],
-      "summary": "Adds a RENAME option to the Pok\u00e9mon party submenu so any party Pok\u00e9mon can be nicknamed directly from the menu.",
+      "summary": "Adds a RENAME option to the Pokémon party submenu so any party Pokémon can be nicknamed directly from the menu.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -7400,7 +7400,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/TheRhysWyrill@instant_heal_pc_rest/description.md",
-      "summary": "Instantly heals your party when talking to Nurse Joy, auto-advances the heal dialog, turns the player around to prevent accidental re-dialogue, and automatically heals Pok\u00e9mon deposited into PC storag",
+      "summary": "Instantly heals your party when talking to Nurse Joy, auto-advances the heal dialog, turns the player around to prevent accidental re-dialogue, and automatically heals Pokémon deposited into PC storag",
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
@@ -7506,7 +7506,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/Gamecorner_033@overworld_encounters/description.md",
-      "summary": "Replaces hidden random grass encounters with visible roaming overworld Pok\u00e9mon sprites!",
+      "summary": "Replaces hidden random grass encounters with visible roaming overworld Pokémon sprites!",
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
@@ -7861,7 +7861,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/PokeSurvive",
-      "summary": "PokeSurvive transforms a normal Pok\u00e9mon playthrough into a much more unpredictable journey built around survival, resource management, randomized worlds, Pok\u00e9mon personalities, camping, exploration ev",
+      "summary": "PokeSurvive transforms a normal Pokémon playthrough into a much more unpredictable journey built around survival, resource management, randomized worlds, Pokémon personalities, camping, exploration ev",
       "tags": [
         "simulation",
         "survival",
@@ -7880,7 +7880,7 @@
       "latest": {
         "version": "2.0.0",
         "tag": "v2.0.0",
-        "name": "\ud83c\udfd5\ufe0f PokeSurvive v2.0.0 \u2014 Immersive World",
+        "name": "🏕️ PokeSurvive v2.0.0 — Immersive World",
         "prerelease": false,
         "published_at": "2026-09-16T21:35:47Z",
         "zip": {
@@ -7912,7 +7912,7 @@
         "GAMEPLAY"
       ],
       "repo": "https://github.com/mresnick67/Gen1ReComp-Pokewalker",
-      "summary": "Your real-world steps become EXP for your Pok\u00e9mon party or Watts to spend in-game on encounters and items.",
+      "summary": "Your real-world steps become EXP for your Pokémon party or Watts to spend in-game on encounters and items.",
       "tags": [
         "steps",
         "mobile",
@@ -7932,7 +7932,7 @@
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
-        "name": "Pokewalker 1.2.0 \u2014 step insurance",
+        "name": "Pokewalker 1.2.0 — step insurance",
         "prerelease": false,
         "published_at": "2026-08-15T17:03:31Z",
         "zip": {
@@ -7957,7 +7957,7 @@
     {
       "folder": "Code-Grub@pokebag_plus",
       "id": "pokebag_plus",
-      "title": "Pok\u00e9Bag+",
+      "title": "PokéBag+",
       "author": "Code-Grub",
       "summary": "The bag in four pockets -- ITEMS, BALLS, KEY ITEMS, TM/HM -- paged with Left and Right, keeping vanilla order and the SELECT swap.",
       "version": "0.1.0",
@@ -8012,13 +8012,13 @@
     {
       "folder": "FAFF0x@pokedex_plus",
       "id": "pokedex_plus",
-      "title": "Pok\u00e9dex Plus",
+      "title": "Pokédex Plus",
       "author": "FAFF0x",
       "version": "1.3.4",
       "categories": [
         "UI"
       ],
-      "summary": "Enhances the Pok\u00e9dex with search, stats, habitats, evolutions, moves, regional-style shared-number variants, and pokemon.icon rows compatible with the original Modern UI 0.8.x via Modern UI Icon Fix.",
+      "summary": "Enhances the Pokédex with search, stats, habitats, evolutions, moves, regional-style shared-number variants, and pokemon.icon rows compatible with the original Modern UI 0.8.x via Modern UI Icon Fix.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -8044,7 +8044,7 @@
     {
       "folder": "Code-Grub@pokegear_menu",
       "id": "pokegear_menu",
-      "title": "Pok\u00e9Gear Menu",
+      "title": "PokéGear Menu",
       "author": "Code-Grub",
       "version": "0.1.8",
       "categories": [
@@ -8078,7 +8078,7 @@
       "latest": {
         "version": "0.3.0",
         "tag": "v0.3.0",
-        "name": "Pok\u00e9Gear Menu 0.3.0",
+        "name": "PokéGear Menu 0.3.0",
         "prerelease": false,
         "published_at": "2026-09-08T22:03:24Z",
         "zip": {
@@ -8103,7 +8103,7 @@
     {
       "folder": "Gamecorner_033@PokePCFollowers_VoxelMerge",
       "id": "PokePCFollowers_VoxelMerge",
-      "title": "Pok\u00e9PC Followers (W/Voxel Support)",
+      "title": "PokéPC Followers (W/Voxel Support)",
       "author": "Gamecorner_033",
       "version": "0.5.1",
       "categories": [
@@ -8118,7 +8118,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/Gamecorner_033@PokePCFollowers_VoxelMerge/description.md",
-      "summary": "An all-species overworld follower mod for Pok\u00e9mon Red, Blue, and Yellow (Gen 1 Recomp). This mod allows every single Gen 1 Pok\u00e9mon to walk behind you in full overworld color as your companion!",
+      "summary": "An all-species overworld follower mod for Pokémon Red, Blue, and Yellow (Gen 1 Recomp). This mod allows every single Gen 1 Pokémon to walk behind you in full overworld color as your companion!",
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
@@ -8522,7 +8522,7 @@
       "latest": {
         "version": "1.1.11",
         "tag": "v1.1.11",
-        "name": "v1.1.11 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "v1.1.11 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:18Z",
         "zip": {
@@ -8603,7 +8603,7 @@
         "QOL"
       ],
       "repo": "https://github.com/Razor1993-Real/FlyingOverhaul",
-      "summary": "Overhauls the FLY system while keeping it as close to the vanilla style as possible. FLY no longer opens the town map\u2014instead, ride the bird freely over Kanto and choose your own landing spot",
+      "summary": "Overhauls the FLY system while keeping it as close to the vanilla style as possible. FLY no longer opens the town map—instead, ride the bird freely over Kanto and choose your own landing spot",
       "tags": [
         "flying",
         "exploration",
@@ -8752,7 +8752,7 @@
       "id": "recomp-rider",
       "title": "Recomp Rider",
       "author": "adrian",
-      "summary": "Drive KITT across the Pok\u00e9mon world.",
+      "summary": "Drive KITT across the Pokémon world.",
       "version": "0.4.0",
       "categories": [
         "GAMEPLAY",
@@ -8939,7 +8939,7 @@
       "license": "MIT",
       "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.4.zip",
       "source_zip": "red_earth_kaizo_bridge-1.0.4.zip",
-      "summary": "v1.0.10-foundation Kaizo bridge with genuine shiny Oak gifts, regional rival continuity, correct Oak names, a Pok\u00e9dex preview for the optional final-ball starter, and upward-only dynamic scaling.",
+      "summary": "v1.0.10-foundation Kaizo bridge with genuine shiny Oak gifts, regional rival continuity, correct Oak names, a Pokédex preview for the optional final-ball starter, and upward-only dynamic scaling.",
       "source_scope": "DuskPromised original mod",
       "update_check": "off"
     },
@@ -9123,7 +9123,7 @@
     {
       "folder": "DuskPromised@red_earth_gate1_test_harness",
       "id": "red_earth_gate1_test_harness",
-      "title": "Red Earth \u2014 Gate 1 Test Harness",
+      "title": "Red Earth — Gate 1 Test Harness",
       "author": "Adam M. Aguilera",
       "version": "0.1.2",
       "categories": [
@@ -9172,7 +9172,7 @@
     {
       "folder": "DuskPromised@red_earth_irregular_core",
       "id": "red_earth_irregular_core",
-      "title": "Red Earth \u2014 Gate 1: Irregular Core",
+      "title": "Red Earth — Gate 1: Irregular Core",
       "author": "Adam M. Aguilera",
       "version": "0.1.2",
       "categories": [
@@ -9221,7 +9221,7 @@
     {
       "folder": "DuskPromised@red_earth_gate2_sparkle_gold_lilac",
       "id": "red_earth_gate2_sparkle_gold_lilac",
-      "title": "Red Earth \u2014 Gate 2 Gold-Lilac Shiny Sparkle",
+      "title": "Red Earth — Gate 2 Gold-Lilac Shiny Sparkle",
       "author": "Adam M. Aguilera",
       "version": "0.2.4",
       "categories": [
@@ -9261,7 +9261,7 @@
     {
       "folder": "DuskPromised@red_earth_gate2_presentation",
       "id": "red_earth_gate2_presentation",
-      "title": "Red Earth \u2014 Gate 2 Presentation Compatibility",
+      "title": "Red Earth — Gate 2 Presentation Compatibility",
       "author": "Adam M. Aguilera",
       "version": "0.2.0",
       "categories": [
@@ -9302,7 +9302,7 @@
     {
       "folder": "DuskPromised@red_earth_gate2_test_harness",
       "id": "red_earth_gate2_test_harness",
-      "title": "Red Earth \u2014 Gate 2 Test Harness",
+      "title": "Red Earth — Gate 2 Test Harness",
       "author": "Adam M. Aguilera",
       "version": "0.2.0",
       "categories": [
@@ -9340,9 +9340,48 @@
       "optional_integrations": []
     },
     {
+      "folder": "DuskPromised@red_earth_gate2_starter_shiny_state_icons",
+      "id": "red_earth_gate2_starter_shiny_state_icons",
+      "title": "Red Earth — Gate 2.5 Starter Shiny Contract",
+      "author": "Adam M. Aguilera",
+      "version": "0.2.6",
+      "categories": [
+        "GRAPHICS",
+        "DEVELOPMENT"
+      ],
+      "tags": [
+        "red earth",
+        "gate 2",
+        "standalone"
+      ],
+      "api": 2,
+      "profile": "content",
+      "game_version": ">=0.2.24 <2.0.0",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "gen1_kaizo@0.8.3",
+        "red_earth_irregular_shiny@0.2.0"
+      ],
+      "conflicts": [],
+      "experimental": true,
+      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+      "github": "DuskPromised/gen1recomp-mod-index",
+      "license": "MIT",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.6.zip",
+      "source_zip": "red_earth_gate2_starter_shiny_state_icons-0.2.6.zip",
+      "summary": "Gate 2.5 replacement built cleanly from accepted 0.2.4 and published as 0.2.6 so existing failed 0.2.5 installs receive an update. Makes Oak-gift Fennekin and approved Grass starters genuine shinies, preserves shiny identity through evolution/save, and routes dedicated shiny battle plus party/menu art through native render paths. Does not alter Irregular art, battle scale/grounding, starter selection, followers, sparkle/audio, Nature, or passives.",
+      "source_scope": "DuskPromised standalone Gate 2 module",
+      "update_check": "off",
+      "sha256": "ab63b75c27800a9dea1fa938dfc6f724b3e40ab2f840f1aa5d9af3a805c6f8ee",
+      "optional_dependencies": [],
+      "optional_integrations": []
+    },
+    {
       "folder": "DuskPromised@red_earth_irregular_shiny",
       "id": "red_earth_irregular_shiny",
-      "title": "Red Earth \u2014 Gate 2: Irregular Shiny",
+      "title": "Red Earth — Gate 2: Irregular Shiny",
       "author": "Adam M. Aguilera",
       "version": "0.2.0",
       "categories": [
@@ -9380,7 +9419,7 @@
     {
       "folder": "DuskPromised@red_earth_irregular_potato_compat",
       "id": "red_earth_irregular_potato_compat",
-      "title": "Red Earth \u2014 Irregular Potato Compatibility",
+      "title": "Red Earth — Irregular Potato Compatibility",
       "author": "Adam M. Aguilera",
       "version": "0.1.3",
       "categories": [
@@ -9422,7 +9461,7 @@
     {
       "folder": "DuskPromised@red_earth_solipsdion_shiny_back_fix",
       "id": "red_earth_solipsdion_shiny_back_fix",
-      "title": "Red Earth \u2014 Solipsdion Shiny Back Pixel Repair",
+      "title": "Red Earth — Solipsdion Shiny Back Pixel Repair",
       "author": "Adam M. Aguilera",
       "version": "0.2.3",
       "categories": [
@@ -9458,7 +9497,7 @@
     {
       "folder": "DuskPromised@red_earth_irregular_rebuild",
       "id": "red_earth_irregular_rebuild",
-      "title": "Red Earth: Irregular \u2014 Rebuild Candidate",
+      "title": "Red Earth: Irregular — Rebuild Candidate",
       "author": "Adam M. Aguilera",
       "version": "0.1.3",
       "categories": [
@@ -9518,7 +9557,7 @@
       "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_rebuild/red_earth_irregular_rebuild-0.1.3.zip",
       "source_zip": "red_earth_irregular_rebuild-0.1.3.zip",
       "sha256": "a63efc97623daa1ff82e3ceb4fb0d80dd66a672b39ad58830228584c9b2d8403",
-      "summary": "TEST candidate \u2014 current Gen1Recomp icon-schema fix + direct Oak-ball ownership; no global battle-sprite scaling.",
+      "summary": "TEST candidate — current Gen1Recomp icon-schema fix + direct Oak-ball ownership; no global battle-sprite scaling.",
       "source_scope": "DuskPromised original test candidate",
       "update_check": "off"
     },
@@ -9912,7 +9951,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/Safari-Derby",
-      "summary": "Race and train your Pok\u00e9mon at Fuchsia's Safari Derby, compete in cups, wager on races, earn ribbons, and unlock unique prizes.",
+      "summary": "Race and train your Pokémon at Fuchsia's Safari Derby, compete in cups, wager on races, earn ribbons, and unlock unique prizes.",
       "tags": [
         "racing",
         "safari derby",
@@ -9935,7 +9974,7 @@
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
-        "name": "\ud83c\udfc1 Safari Derby v1.2.0",
+        "name": "🏁 Safari Derby v1.2.0",
         "prerelease": false,
         "published_at": "2026-09-06T16:08:35Z",
         "zip": {
@@ -10108,7 +10147,7 @@
       "latest": {
         "version": "0.4.1",
         "tag": "v0.4.1",
-        "name": "v0.4.1 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "v0.4.1 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:23Z",
         "zip": {
@@ -10171,7 +10210,7 @@
       "latest": {
         "version": "0.2.1",
         "tag": "0.2.1",
-        "name": "0.2.1 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "0.2.1 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:21Z",
         "zip": {
@@ -10220,7 +10259,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/Satori7Kensho@shiny_starters_gifts/description.md",
-      "summary": "Force shiny starters and optionally all story gifts in Gen1Recomp. Must activate before receiving Pok\u00e9mon for shiny.",
+      "summary": "Force shiny starters and optionally all story gifts in Gen1Recomp. Must activate before receiving Pokémon for shiny.",
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
@@ -10257,7 +10296,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-shiny-pokemon",
-      "summary": "Shiny DV rolls, Gen 2 recolors, and sparkles in battle/overworld; rates and toggles under OPTIONS \u2192 SHINY POKEMON.",
+      "summary": "Shiny DV rolls, Gen 2 recolors, and sparkles in battle/overworld; rates and toggles under OPTIONS → SHINY POKEMON.",
       "tags": [
         "shiny",
         "shinies",
@@ -10530,7 +10569,7 @@
       "latest": {
         "version": "0.5.1",
         "tag": "v0.5.1",
-        "name": "v0.5.1 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "v0.5.1 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:25Z",
         "zip": {
@@ -10635,7 +10674,7 @@
       "latest": {
         "version": "1.1.2",
         "tag": "1.1.2",
-        "name": "Starter Picker 1.1.2 \u2014 Better Menus options compatibility",
+        "name": "Starter Picker 1.1.2 — Better Menus options compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T09:36:56Z",
         "zip": {
@@ -10667,7 +10706,7 @@
         "AUDIO"
       ],
       "repo": "https://github.com/ShaneMcGovernIE/surround-audio",
-      "summary": "Pok\u00e9mon Crystal's SOUND option, ported to Red/Blue/Yellow's 8-bit music: MONO, STEREO channel split, and 5.1 surround with center-channel sound effects.",
+      "summary": "Pokémon Crystal's SOUND option, ported to Red/Blue/Yellow's 8-bit music: MONO, STEREO channel split, and 5.1 surround with center-channel sound effects.",
       "tags": [
         "audio",
         "stereo",
@@ -11335,7 +11374,7 @@
     {
       "folder": "jherediagu@traduccion_es",
       "id": "traduccion_es",
-      "title": "Traducci\u00f3n Espa\u00f1ola",
+      "title": "Traducción Española",
       "author": "jherediagu",
       "version": "0.1.0",
       "categories": [
@@ -11343,7 +11382,7 @@
         "TRANSLATION"
       ],
       "repo": "https://github.com/jherediagu/traduccion_es",
-      "summary": "El juego en espa\u00f1ol desde tu propio cartucho EUR \u2014 guion oficial, sin redistribuir nada",
+      "summary": "El juego en español desde tu propio cartucho EUR — guion oficial, sin redistribuir nada",
       "tags": [
         "spanish",
         "translation",
@@ -11387,7 +11426,7 @@
     {
       "folder": "AntoniMan31@trad-fr-extended",
       "id": "trad-fr-extended",
-      "title": "Traduction FR \u00e9tendue",
+      "title": "Traduction FR étendue",
       "author": "AntoniMan31",
       "version": "0.1.0",
       "categories": [
@@ -11395,7 +11434,7 @@
         "TRANSLATION"
       ],
       "repo": "https://github.com/antoniman31/trad-fr-extended",
-      "summary": "Compl\u00e8te la traduction fran\u00e7aise de translation-fr : 151 cat\u00e9gories du Pok\u00e9dex, 109 textes moteur et 11 noms manquants. N\u00e9cessite translation-fr.",
+      "summary": "Complète la traduction française de translation-fr : 151 catégories du Pokédex, 109 textes moteur et 11 noms manquants. Nécessite translation-fr.",
       "tags": [
         "francais",
         "traduction",
@@ -11416,7 +11455,7 @@
       "latest": {
         "version": "0.2.0",
         "tag": "v0.2.0",
-        "name": "Traduction FR \u00e9tendue v0.2.0",
+        "name": "Traduction FR étendue v0.2.0",
         "prerelease": false,
         "published_at": "2026-08-09T19:38:46Z",
         "zip": {
@@ -11440,9 +11479,9 @@
     {
       "folder": "MrJoufflu@translation-qc",
       "id": "translation-qc",
-      "title": "Traduction Qu\u00e9b\u00e9coise",
+      "title": "Traduction Québécoise",
       "author": "MrJoufflu",
-      "summary": "Traduction compl\u00e8te en fran\u00e7ais qu\u00e9b\u00e9cois (joual + sacres cibl\u00e9s) pour Pok\u00e9mon Rouge, Bleu et Jaune, bas\u00e9e sur le texte fran\u00e7ais officiel.",
+      "summary": "Traduction complète en français québécois (joual + sacres ciblés) pour Pokémon Rouge, Bleu et Jaune, basée sur le texte français officiel.",
       "version": "1.0.1",
       "categories": [
         "TRANSLATION"
@@ -11622,7 +11661,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/DarkwarePX@trainer_skins/description.md",
-      "summary": "Trainer Skins adds customizable trainer sprites to Pok\u00e9mon Gen 1 and Gen 2 in Gen 1 Recomp.",
+      "summary": "Trainer Skins adds customizable trainer sprites to Pokémon Gen 1 and Gen 2 in Gen 1 Recomp.",
       "latest": {
         "version": "0.2.0",
         "tag": "V0.2.0",
@@ -11658,7 +11697,7 @@
         "AUDIO"
       ],
       "repo": "https://github.com/ElvieBlooms/trainer_talk",
-      "summary": "Trainer Talk adds a voice to your Pok\u00e9mon adventure \u2014 someone in your corner who reacts to what's actually happening as you play.",
+      "summary": "Trainer Talk adds a voice to your Pokémon adventure — someone in your corner who reacts to what's actually happening as you play.",
       "tags": [
         "audio",
         "voice",
@@ -11848,7 +11887,7 @@
       "id": "useful_bag",
       "title": "Useful Bag",
       "author": "ShaneMcGovernIE",
-      "summary": "999-capacity bag auto-sorted into six pockets (Items, Medicine, Pok\u00e9 Balls, TMs / HMs, Battle Items, Key Items) cycled with Left/Right, plus TAB / R3 to sort by name or count.",
+      "summary": "999-capacity bag auto-sorted into six pockets (Items, Medicine, Poké Balls, TMs / HMs, Battle Items, Key Items) cycled with Left/Right, plus TAB / R3 to sort by name or count.",
       "version": "2.1.0",
       "categories": [
         "QOL"
@@ -11899,7 +11938,7 @@
       "id": "useful_dex",
       "title": "Useful Dex",
       "author": "ShaneMcGovernIE",
-      "summary": "Press A in the Pok\u00e9dex to cycle the species page into base stats, BST, evolutions, and the full movelist.",
+      "summary": "Press A in the Pokédex to cycle the species page into base stats, BST, evolutions, and the full movelist.",
       "version": "1.1.0",
       "categories": [
         "UI",
@@ -12109,9 +12148,9 @@
     {
       "folder": "bryanthaboi@versaovermelha",
       "id": "versaovermelha",
-      "title": "Vers\u00e3oVermelha",
+      "title": "VersãoVermelha",
       "author": "bryanthaboi",
-      "summary": "Portugu\u00eas brasileiro, ripped from the Hyd~Tradu\u00e7\u00f5es Vers\u00e3o Vermelha v1.3.1 IPS patch.",
+      "summary": "Português brasileiro, ripped from the Hyd~Traduções Versão Vermelha v1.3.1 IPS patch.",
       "version": "0.2.0",
       "categories": [
         "TRANSLATION"
@@ -12478,7 +12517,7 @@
       "id": "wild_skies",
       "title": "Wild Skies",
       "author": "ShaneHudson",
-      "summary": "Flying Pok\u00e9mon from the encounter tables cross the overworld.",
+      "summary": "Flying Pokémon from the encounter tables cross the overworld.",
       "version": "1.5.0",
       "categories": [
         "GAMEPLAY",
@@ -12635,50 +12674,13 @@
       "optional_integrations": [],
       "dependencies": [],
       "conflicts": []
-    },
-    {
-      "folder": "DuskPromised@red_earth_gate2_starter_shiny_state_icons",
-      "id": "red_earth_gate2_starter_shiny_state_icons",
-      "title": "Red Earth \u2014 Gate 2.5 Starter Shiny Contract",
-      "author": "Adam M. Aguilera",
-      "version": "0.2.6",
-      "categories": [
-        "GRAPHICS",
-        "DEVELOPMENT"
-      ],
-      "tags": [
-        "red earth",
-        "gate 2",
-        "standalone"
-      ],
-      "api": 2,
-      "profile": "content",
-      "game_version": ">=0.2.24 <2.0.0",
-      "permissions": [
-        "engine_internals"
-      ],
-      "dependencies": [
-        "gen1_kaizo@0.8.3",
-        "red_earth_irregular_shiny@0.2.0"
-      ],
-      "conflicts": [],
-      "experimental": true,
-      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
-      "github": "DuskPromised/gen1recomp-mod-index",
-      "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.6.zip",
-      "source_zip": "red_earth_gate2_starter_shiny_state_icons-0.2.6.zip",
-      "summary": "Gate 2.5 replacement built cleanly from accepted 0.2.4 and published as 0.2.6 so existing failed 0.2.5 installs receive an update. Makes Oak-gift Fennekin and approved Grass starters genuine shinies, preserves shiny identity through evolution/save, and routes dedicated shiny battle plus party/menu art through native render paths. Does not alter Irregular art, battle scale/grounding, starter selection, followers, sparkle/audio, Nature, or passives.",
-      "source_scope": "DuskPromised standalone Gate 2 module",
-      "update_check": "off",
-      "sha256": "ab63b75c27800a9dea1fa938dfc6f724b3e40ab2f840f1aa5d9af3a805c6f8ee"
     }
   ],
   "carts": [
     {
       "folder": "DuskPromised@gate_0a_pristine",
       "id": "gate_0a_pristine",
-      "title": "Gate 0A \u2014 Pristine Baseline",
+      "title": "Gate 0A — Pristine Baseline",
       "author": "Adam M. Aguilera",
       "version": "0.0.1",
       "summary": "Pristine upstream baseline: Kaizo + PotatoVoxel + Crystal + Performance Monitor. No Red Earth code.",
@@ -12765,7 +12767,7 @@
     {
       "folder": "DuskPromised@gate_0b_wilds",
       "id": "gate_0b_wilds",
-      "title": "Gate 0B \u2014 Wilds Baseline",
+      "title": "Gate 0B — Wilds Baseline",
       "author": "Adam M. Aguilera",
       "version": "0.0.1",
       "summary": "Gate 0A plus upstream Wilds 2.1.9 only. No Red Earth code.",
@@ -12866,7 +12868,7 @@
     {
       "folder": "DuskPromised@gate_1_irregular_test",
       "id": "gate_1_irregular_test",
-      "title": "Gate 1 \u2014 Irregular Core Test",
+      "title": "Gate 1 — Irregular Core Test",
       "author": "Adam M. Aguilera",
       "version": "0.1.3",
       "summary": "Gate 1.3: Core/Harness 0.1.2 + separate Irregular/Potato patch for back transparency and stage proportions.",
@@ -12977,7 +12979,7 @@
     {
       "folder": "DuskPromised@gate_2_irregular_shiny_test",
       "id": "gate_2_irregular_shiny_test",
-      "title": "Gate 2 \u2014 Irregular Shiny Test",
+      "title": "Gate 2 — Irregular Shiny Test",
       "author": "Adam M. Aguilera",
       "version": "0.2.6",
       "summary": "Gate 2 QA: authored shiny art/state, player sparkle, three shiny gifts and a normal control on accepted Gate 1.",
