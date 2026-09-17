@@ -10,16 +10,17 @@ def read(p):return json.loads((ROOT/p).read_text())
 def write(p,o):
  p=ROOT/p;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(o,indent=2)+'\n')
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-old=ROOT/f'site/data/carts/DuskPromised@{CID}/{CID}-{BASE_VERSION}.g1rcart'
-assert sha(old)==BASE_SHA,'accepted 0.2.3 cart changed'
-baseline=read(f'cart_source/{CID}/cart.json')
-assert baseline['version']==BASE_VERSION,'cart source is not accepted 0.2.3'
-kitpath=Path(sys.argv[2]) if len(sys.argv)>2 else ROOT.parent/'engine-reference/tools/cartkit.py'
-spec=importlib.util.spec_from_file_location('cartkit',kitpath);kit=importlib.util.module_from_spec(spec);spec.loader.exec_module(kit)
-assert kit.bundle_bytes(baseline,ROOT/f'cart_source/{CID}')==old.read_bytes(),'0.2.3 source differs from published cart'
 out=ROOT/f'site/data/mods/DuskPromised@{MID}/{MID}-{VERSION}.zip'
 cartpath=ROOT/f'site/data/carts/DuskPromised@{CID}/{CID}-{VERSION}.g1rcart'
-if sys.argv[1]=='package':
+mode=sys.argv[1]
+if mode=='package':
+ old=ROOT/f'site/data/carts/DuskPromised@{CID}/{CID}-{BASE_VERSION}.g1rcart'
+ assert sha(old)==BASE_SHA,'accepted 0.2.3 cart changed'
+ baseline=read(f'cart_source/{CID}/cart.json')
+ assert baseline['version']==BASE_VERSION,'cart source is not accepted 0.2.3'
+ kitpath=Path(sys.argv[2]) if len(sys.argv)>2 else ROOT.parent/'engine-reference/tools/cartkit.py'
+ spec=importlib.util.spec_from_file_location('cartkit',kitpath);kit=importlib.util.module_from_spec(spec);spec.loader.exec_module(kit)
+ assert kit.bundle_bytes(baseline,ROOT/f'cart_source/{CID}')==old.read_bytes(),'0.2.3 source differs from published cart'
  for pin in baseline['mods']:
   if not pin['id'].startswith('red_earth_'):continue
   p=ROOT/f"site/data/mods/DuskPromised@{pin['id']}/{pin['id']}-{pin['version']}.zip"
@@ -41,8 +42,10 @@ if sys.argv[1]=='package':
  write(f'cart_source/{CID}/cart.json',cart)
  print('SPARKLE',sha(out),out.stat().st_size)
  print('PASS: accepted Gate 2.3 pins preserved; only the standalone sparkle module was added')
-elif sys.argv[1]=='metadata':
- cart=read(f'cart_source/{CID}/cart.json');idx=read(f'carts/{CID}.index.json')
+elif mode=='metadata':
+ cart=read(f'cart_source/{CID}/cart.json')
+ assert cart['version']==VERSION,'metadata expects the just-packed 0.2.4 cart source'
+ idx=read(f'carts/{CID}.index.json')
  for k in ['id','version','mods','load_order']:idx[k]=cart[k]
  idx['latest']={'version':VERSION,'name':VERSION,'prerelease':True,'zip':{'name':cartpath.name,'url':BASE+str(cartpath.relative_to(ROOT/'site')),'size':cartpath.stat().st_size,'sha256':sha(cartpath)}}
  write(f'carts/{CID}.index.json',idx)
