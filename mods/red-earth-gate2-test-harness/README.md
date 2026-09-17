@@ -17,6 +17,3 @@ object across party/boxes by reference, and calls the Gate 2 shiny API only
 for explicitly shiny gifts. It does not convert earlier mons or Kaizo gifts.
 Persistent per-gift flags prevent duplicates. Party overflow uses native PC
 storage; if all storage is full the gift flag remains unset so it can retry.
-
-Version 0.2.2 corrects the exact dependency to Irregular Shiny 0.2.1.
-No runtime behavior or artwork changes.

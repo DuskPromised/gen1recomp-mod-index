@@ -37,7 +37,7 @@ return function(mod)
   end
   mod.exports.isShiny=isShiny
   mod.exports.art=art
-  mod.exports.version="0.2.1"
+  mod.exports.version="0.2.0"
 
   -- The normal core runs at 125. This terminal, species-specific route runs
   -- after it, so a normal core cannot overwrite the selected authored variant.

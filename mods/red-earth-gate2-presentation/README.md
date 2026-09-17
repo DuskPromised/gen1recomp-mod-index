@@ -19,6 +19,3 @@ Effects use wall time, so they do not speed up with gameplay logic.
 No world/follower effect, generic shiny recoloring or production acquisition
 is installed. This patch attaches instance methods, with no permanent global
 sprite/scaling wrapper. Device retesting is still required before Gate 2 passes.
-
-Version 0.2.2 corrects the exact dependency to Irregular Shiny 0.2.1.
-No runtime behavior or artwork changes.

@@ -98,5 +98,5 @@ return function(mod)
     installed[battle]=true
   end
   mod.events:on("battle.started",function(ev) install(ev and ev.battle) end)
-  mod.exports.version="0.2.2"
+  mod.exports.version="0.2.0"
 end

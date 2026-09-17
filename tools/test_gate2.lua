@@ -28,7 +28,10 @@ local function make(id,folder)
 end
 local core=make('red_earth_irregular_core','red-earth-irregular-core')
 local normalSource=Serializer.encode(game.data.pokemon)
-local shiny=make('red_earth_irregular_shiny','red-earth-irregular-shiny').exports
+local shinyMod=make('red_earth_irregular_shiny','red-earth-irregular-shiny')
+shinyMod.version='0.2.0'
+local shiny=shinyMod.exports
+make('red_earth_solipsdion_shiny_back_fix','red-earth-solipsdion-shiny-back-fix')
 assert(normalSource==Serializer.encode(game.data.pokemon),'shiny module must not mutate species records')
 game.data.pokemon.SQUIRTLE=game.data.pokemon.PSYDREN
 local function mon(s,l) return Pokemon.new(game.data,s,l,function() return 15 end) end

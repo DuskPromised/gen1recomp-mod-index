@@ -16,7 +16,21 @@ names=set(re.findall(r'function Commands\.(\w+)\(',commands))
 names.update(['label','jump'])
 source='ENGINE='+json.dumps(str(engine))+'\nROOT='+json.dumps(str(root))+'\n'
 source+='COMMANDS={'+','.join('['+json.dumps(x)+']=true' for x in sorted(names))+'}\n'
-if '--dependencies' in sys.argv:
+if '--fresh-start' in sys.argv:
+    cart=json.loads((root/'cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
+    files={}
+    for pin in cart['mods']:
+        mid=pin['id']
+        if mid.startswith('red_earth_'):
+            with zipfile.ZipFile(root/f"site/data/mods/DuskPromised@{mid}/{mid}-{pin['version']}.zip") as z:
+                for name in z.namelist():
+                    if name.endswith(('.lua','.json')):files['mods/'+name]=z.read(name).decode()
+        else:
+            files[f'mods/{mid}/manifest.json']=json.dumps(dict(id=mid,name=mid,version=pin['version'],entry='main.lua'))
+            files[f'mods/{mid}/main.lua']='return function(mod) end'
+    source+='FILES_JSON='+json.dumps(json.dumps(files))+'\n'
+    source+=(root/'tools/test_gate2_fresh_start.lua').read_text()
+elif '--dependencies' in sys.argv:
     cart=json.loads((root/'cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
     manifests=[]
     for pin in cart['mods']:
