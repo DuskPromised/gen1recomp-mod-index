@@ -1,12 +1,16 @@
-"""Build Gate 2.5 cleanly from the accepted device-green Gate 2.4 cart."""
+"""Build the Gate 2.5 replacement cleanly from the accepted device-green Gate 2.4 cart.
+
+The feature gate remains Gate 2.5, but the published package/cart version is 0.2.6
+because failed 0.2.5 installs already exist and must receive a higher updater version.
+"""
 import hashlib, json, sys, zipfile, importlib.util
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE='https://duskpromised.github.io/gen1recomp-mod-index/'
 CID='gate_2_irregular_shiny_test'
-CART_VERSION='0.2.5'
-MOD_VERSION='0.2.5-r1'
+CART_VERSION='0.2.6'
+MOD_VERSION='0.2.6'
 MID='red_earth_gate2_starter_shiny_state_icons'
 FOLDER='red-earth-gate2-starter-shiny-state-icons'
 BASE_VERSION='0.2.4'
@@ -80,14 +84,14 @@ if mode=='package':
     cart['load_order']=baseline['load_order']+[MID]
     write(f'cart_source/{CID}/cart.json',cart)
     print('MODULE',sha(out),out.stat().st_size)
-    print('PASS: exact 0.2.4 baseline preserved; one rebuilt starter shiny module appended')
+    print('PASS: exact 0.2.4 baseline preserved; one rebuilt Gate 2.5 starter shiny module appended as 0.2.6')
 
 elif mode=='metadata':
     cart=read(f'cart_source/{CID}/cart.json')
     assert cart['version']==CART_VERSION
     idx=read(f'carts/{CID}.index.json')
     for k in ['id','version','mods','load_order']: idx[k]=cart[k]
-    idx['latest']={'version':CART_VERSION,'name':'0.2.5-rebuild','prerelease':True,
+    idx['latest']={'version':CART_VERSION,'name':'0.2.6-gate2.5-rebuild','prerelease':True,
                    'zip':{'name':cartpath.name,'url':BASE+str(cartpath.relative_to(ROOT/'site')),
                           'size':cartpath.stat().st_size,'sha256':sha(cartpath)}}
     write(f'carts/{CID}.index.json',idx)
