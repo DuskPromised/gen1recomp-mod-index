@@ -1,0 +1,34 @@
+{
+  "folder": "DuskPromised@red_earth_solipsdion_shiny_back_fix",
+  "id": "red_earth_solipsdion_shiny_back_fix",
+  "title": "Red Earth \u2014 Solipsdion Shiny Back Pixel Repair",
+  "author": "Adam M. Aguilera",
+  "version": "0.2.3",
+  "categories": [
+    "GRAPHICS",
+    "DEVELOPMENT"
+  ],
+  "tags": [
+    "red earth",
+    "gate 2",
+    "standalone"
+  ],
+  "api": 2,
+  "profile": "content",
+  "game_version": ">=0.2.24 <2.0.0",
+  "permissions": [],
+  "dependencies": [
+    "red_earth_irregular_shiny@0.2.0"
+  ],
+  "conflicts": [],
+  "experimental": true,
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "license": "MIT",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_solipsdion_shiny_back_fix/red_earth_solipsdion_shiny_back_fix-0.2.3.zip",
+  "source_zip": "red_earth_solipsdion_shiny_back_fix-0.2.3.zip",
+  "summary": "Asset-only 54-pixel repair for shiny Solipsdion's back. Requires the unchanged accepted Gate 2.0 shiny module.",
+  "source_scope": "DuskPromised standalone Gate 2 module",
+  "update_check": "off",
+  "sha256": "1e99a78b8e504623beb22ce62972b59982b208b30fc71d4b825907001b3ec06a"
+}
