@@ -60,7 +60,7 @@ if sys.argv[1]=='package':
     cart['mods'].insert(-1,entry)
     cart['load_order'].insert(-1,MID)
     cart['version']=VERSION
-    cart['summary']='Gate 1.3 retest: unchanged Core/Harness 0.1.2 plus separate Irregular/Potato compatibility for back alpha and stage sizes.'
+    cart['summary']='Gate 1.3: Core/Harness 0.1.2 + separate Irregular/Potato patch for back transparency and stage proportions.'
     write('cart_source/gate_1_irregular_test/cart.json',cart)
     print('COMPAT',sha,out.stat().st_size)
 elif sys.argv[1]=='metadata':
