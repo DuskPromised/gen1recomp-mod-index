@@ -1,0 +1,100 @@
+name: Build Red Earth Gate 2.5 Rebuild From 0.2.4
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate2-5-rebuild-from-024"]
+    paths:
+      - "mods/red-earth-gate2-starter-shiny-state-icons/**"
+      - "tools/build_gate2_5_rebuild.py"
+      - ".github/workflows/build-red-earth-gate2-5-rebuild.yml"
+permissions:
+  contents: write
+concurrency:
+  group: gate2-5-rebuild-from-024
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Install validation tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          python -m pip install --disable-pip-version-check pillow
+      - name: Audit rebuilt module scope
+        run: |
+          luac -p mods/red-earth-gate2-starter-shiny-state-icons/main.lua
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('mods/red-earth-gate2-starter-shiny-state-icons/main.lua').read_text()
+          for required in ['script.command','pokemon.sprite','pokemon.icon','PartyMenu.drawIcon','FENNEKIN','TREECKO','ROWLET']:
+              assert required in s, required
+          for forbidden in ['registerSpriteProvider','resolveBattleScale','battleScale','SpriteRenderer','world.talk']:
+              assert forbidden not in s, forbidden
+          assert 'return next(chosen, ctx)' in s
+          assert 'mon.redEarthGate25StarterShiny' in s
+          print('PASS: genuine shiny acquisition + native sprite/icon routing only')
+          PY
+      - name: Build module from exact accepted 0.2.4 baseline
+        run: python tools/build_gate2_5_rebuild.py package engine-reference/tools/cartkit.py
+      - name: Validate packaged visual assets
+        run: |
+          python - <<'PY'
+          import io, zipfile
+          from pathlib import Path
+          from PIL import Image
+          zpath=Path('site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.5.zip')
+          dex=[1,2,3,152,153,154,252,253,254,387,388,389,495,496,497,650,651,652,653,654,655,722,723,724]
+          with zipfile.ZipFile(zpath) as z:
+              names=set(z.namelist())
+              for d in dex:
+                  p=f'{d:03d}'
+                  for rel in [f'assets/battlers/{p}_front_shiny.png',f'assets/battlers/{p}_back_shiny.png',f'assets/icons/{p}_shiny.png']:
+                      name='red_earth_gate2_starter_shiny_state_icons/'+rel
+                      assert name in names, name
+                      im=Image.open(io.BytesIO(z.read(name))).convert('RGBA')
+                      assert im.size[0]>0 and im.size[1]>0
+                      assert im.getchannel('A').getbbox(), name
+          print('PASS: all Fennekin/approved-Grass shiny battle + icon assets present and nonblank')
+          PY
+      - name: Pack and strict-validate Gate 2.5 cart
+        run: |
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart --online
+          python engine-reference/tools/cartkit.py validate cart_source/gate_2_irregular_shiny_test --online --strict
+          python tools/build_gate2_5_rebuild.py metadata engine-reference/tools/cartkit.py
+      - name: Verify no accepted 0.2.4 module was rewritten
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          root=Path('.')
+          cart=json.loads((root/'cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
+          assert cart['version']=='0.2.5'
+          assert cart['load_order'][-1]=='red_earth_gate2_starter_shiny_state_icons'
+          base=cart['mods'][:-1]
+          for p in base:
+              if not p['id'].startswith('red_earth_'): continue
+              z=root/f"site/data/mods/DuskPromised@{p['id']}/{p['id']}-{p['version']}.zip"
+              assert hashlib.sha256(z.read_bytes()).hexdigest()==p['sha256'], p['id']
+          print('PASS: every accepted 0.2.4 Red Earth ZIP remains byte-identical')
+          PY
+      - name: Commit rebuilt Gate 2.5 test outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/red-earth-gate2-starter-shiny-state-icons tools/build_gate2_5_rebuild.py
+          git add cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
+          git add custom_mods/red_earth_gate2_starter_shiny_state_icons.index.json custom_mods/red_earth_gate2_starter_shiny_state_icons.sha256
+          git add -f site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish rebuilt Gate 2.5 test cart from green 0.2.4"
+            git push origin HEAD:gate2-5-rebuild-from-024
+          fi
