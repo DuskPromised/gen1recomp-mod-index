@@ -1,36 +1,40 @@
-# Red Earth — Gate 2.5 Starter Shiny State + Icons
+# Red Earth — Gate 2.5 Starter Shiny Contract
 
-This is the clean Gate 2.5 rebuild from the accepted Gate 2.4 baseline.
+Clean rebuild from the accepted Gate 2.4 baseline.
 
-## What changed from the failed 2.5 attempt
-The failed attempt only checked whether Fennekin/regional starters were already shiny before choosing the shiny icon. It never made the actual Oak gift shiny, so the icon branch could not activate.
+## Why the first 2.5 failed
+The discarded patch assumed Fennekin/regional starters were already genuine shinies and only tried to swap their menu icon. If the actual Oak gift was normal, that branch could never activate. It also did not solve battle presentation.
 
-This rebuild first makes the intended Oak gift a genuine shiny, then routes the shiny icon from that real state.
+## This rebuild
+- makes the actual level-5 Oak-gift Fennekin a genuine shiny
+- makes the approved selectable Grass Oak gift a genuine shiny
+- preserves that shiny identity through evolution and reload
+- uses dedicated shiny front/back art through the native `pokemon.sprite` chain
+- uses dedicated true-color shiny party/menu icons
 
-## Scope
-- Fennekin Oak gift: genuine shiny DVs + `mon.shiny = true`
-- selectable Grass Oak gift: same genuine shiny state
-- shiny state marker persists through evolution/save reload
-- shiny party/menu icon for Fennekin line + Grass starter lines
-- fresh save required for acquisition test
+The battle-art route is the later proven safe pattern: it selects the shiny asset, then passes it back through the normal renderer. It does not set global scale or grounding.
+
+## Approved Grass lines in this Gate 2.5 pass
+Bulbasaur, Chikorita, Treecko, Turtwig, Snivy, Chespin, and Rowlet, including evolutions.
 
 ## Untouched from accepted Gate 2.4
-- Psydren / Vesperis / Solipsdion shiny routing and authored art
+- Psydren / Vesperis / Solipsdion state and authored art
 - Solipsdion 54-pixel repair
-- gold/lilac send-out sparkle and sound
-- battle sprite scaling/grounding
-- PotatoVoxel configuration
-- starter-region selector itself
+- gold shiny sparkle + existing sound
+- battle scale/grounding
+- PotatoVoxel settings
+- starter-region selector
 - followers
-- Natures
+- Nature
 - passives
 
-## Test order
-1. Use a fresh Gate 2.5 save.
-2. Complete the existing Gate 2 QA gifts as before.
-3. Proceed into Kaizo's normal Oak starter selection.
-4. Select Kalos/Fennekin and verify it is truly shiny and its party icon is shiny.
-5. On another fresh save, select a Grass starter and verify the same.
-6. Evolve with Rare Candy and confirm shiny state/icon persist.
-7. Reorder, box/withdraw, save, fully close, reopen.
-8. Confirm Psydren/Vesperis/Solipsdion remain identical to accepted 0.2.4.
+## Required test
+Use a fresh save for acquisition.
+
+1. Confirm the existing Gate 2 custom-line QA remains identical to 0.2.4.
+2. Finish the QA gifts so normal Oak starter flow resumes.
+3. Acquire Fennekin and verify: genuine shiny marker/state, shiny battle art, shiny party/menu icon, sparkle + sound.
+4. Evolve Fennekin and verify Braixen/Delphox remain shiny visually and internally.
+5. On another fresh save choose one Grass starter and repeat the same checks.
+6. Reorder, box/withdraw, save, fully close, reopen.
+7. Confirm no sprite shrink/sink and no change to the Irregular line.
