@@ -1,0 +1,122 @@
+name: Build Red Earth Gate 2.5 Regional Shiny Menu Icon
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate2-5-regional-menu-icon-fix"]
+    paths:
+      - "mods/red-earth-gate2-regional-menu-icon-fix/**"
+      - "tools/build_gate2_5.py"
+      - ".github/workflows/build-red-earth-gate2-regional-menu-icon.yml"
+permissions:
+  contents: write
+concurrency:
+  group: gate2-5-regional-menu-icon-fix
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      POKEAPI_COMMIT: "2ecb4eeacd5a1718621fc30f12772e3f60d830b9"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Install validation tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          python -m pip install --disable-pip-version-check pillow
+      - name: Syntax and strict scope audit
+        run: |
+          luac -p mods/red-earth-gate2-regional-menu-icon-fix/main.lua
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('mods/red-earth-gate2-regional-menu-icon-fix/main.lua').read_text()
+          assert 'pokemon.icon' in s and 'PartyMenu.drawIcon' in s
+          for name in ['FENNEKIN','TREECKO','GROOKEY','SPRIGATITO']:
+              assert name in s
+          forbidden=['pokemon.sprite','battle.started','drawBattlerPic','playEntranceCry','registerSpriteProvider','resolveBattleScale','battleScale','mon.shiny =','mon.shiny=','dvs =','dvs=']
+          for needle in forbidden:
+              assert needle not in s, needle
+          print('PASS: icon-only scope; no battle/follower/state/scaling hooks')
+          PY
+      - name: Build deterministic official shiny icon sheets
+        run: |
+          mkdir -p /tmp/gate25-icons /tmp/gate25-raw
+          python - <<'PY'
+          import os, subprocess
+          from pathlib import Path
+          from PIL import Image
+          commit=os.environ['POKEAPI_COMMIT']
+          ids=[1,2,3,152,153,154,252,253,254,387,388,389,495,496,497,650,651,652,653,654,655,722,723,724,810,811,812,906,907,908]
+          raw=Path('/tmp/gate25-raw'); out=Path('/tmp/gate25-icons')
+          def fit16(im):
+              im=im.convert('RGBA')
+              box=im.getchannel('A').getbbox()
+              card=Image.new('RGBA',(16,16),(0,0,0,0))
+              if not box:return card
+              crop=im.crop(box)
+              scale=min(16/crop.width,16/crop.height,1.0)
+              size=(max(1,round(crop.width*scale)),max(1,round(crop.height*scale)))
+              if size!=crop.size:crop=crop.resize(size,Image.Resampling.NEAREST)
+              x=(16-crop.width)//2;y=16-crop.height
+              card.paste(crop,(x,y),crop)
+              return card
+          for dex in ids:
+              p=raw/f'{dex}.png'
+              url=f'https://raw.githubusercontent.com/PokeAPI/sprites/{commit}/sprites/pokemon/shiny/{dex}.png'
+              subprocess.run(['curl','-fL','--retry','3','-sS',url,'-o',str(p)],check=True)
+              icon=fit16(Image.open(p))
+              assert icon.getchannel('A').getbbox(), dex
+              sheet=Image.new('RGBA',(16,32),(0,0,0,0))
+              sheet.paste(icon,(0,0),icon);sheet.paste(icon,(0,16),icon)
+              sheet.save(out/f'{dex:03d}_shiny.png',optimize=False)
+          print('BUILT',len(ids),'official shiny icon sheets')
+          PY
+      - name: Package icon module and preserve Gate 2.4 byte baseline
+        run: python tools/build_gate2_5.py package engine-reference/tools/cartkit.py
+      - name: Publish immutable Gate 2.5 module prerelease
+        run: |
+          if ! gh release view v0.2.5 >/dev/null 2>&1; then
+            gh release create v0.2.5 --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.5 regional shiny menu/icon repair" --notes "Adds one standalone icon-only repair on top of accepted Gate 2.4. Fennekin and selectable regional Grass starter lines display official shiny party/menu icons when their genuine shiny state is set. Battle art, followers, scale, starter routing, evolution logic, sparkle/audio, Nature and passives remain unchanged. Device retest pending."
+          fi
+          name="red_earth_gate2_regional_menu_icon_fix-0.2.5.zip"
+          path="site/data/mods/DuskPromised@red_earth_gate2_regional_menu_icon_fix/$name"
+          mkdir -p /tmp/gate25-existing
+          if gh release download v0.2.5 --pattern "$name" --dir /tmp/gate25-existing; then
+            cmp "$path" "/tmp/gate25-existing/$name"
+          else
+            gh release upload v0.2.5 "$path"
+          fi
+      - name: Pack and validate Gate 2.5 cart
+        run: |
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart --online
+          python engine-reference/tools/cartkit.py validate cart_source/gate_2_irregular_shiny_test --online --strict
+          python tools/build_gate2_5.py metadata engine-reference/tools/cartkit.py
+      - name: Attach verified cart and checksums
+        run: |
+          mkdir -p /tmp/gate25-existing
+          for path in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+            name=$(basename "$path")
+            if gh release download v0.2.5 --pattern "$name" --dir /tmp/gate25-existing; then
+              cmp "$path" "/tmp/gate25-existing/$name"
+            else
+              gh release upload v0.2.5 "$path"
+            fi
+          done
+      - name: Commit verified Gate 2.5 outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/red-earth-gate2-regional-menu-icon-fix cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
+          git add custom_mods/red_earth_gate2_regional_menu_icon_fix.index.json custom_mods/red_earth_gate2_regional_menu_icon_fix.sha256
+          git add -f site/data/mods/DuskPromised@red_earth_gate2_regional_menu_icon_fix site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Gate 2.5 regional shiny menu icon test cart"
+            git push origin HEAD:gate2-5-regional-menu-icon-fix
+          fi
