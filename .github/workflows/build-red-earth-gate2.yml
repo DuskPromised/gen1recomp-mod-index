@@ -1,20 +1,22 @@
-name: Build Red Earth Gate 2.2 Dependency Repair
+name: Build Red Earth Gate 2.0 Restore and Pixel Patch
 on:
   workflow_dispatch:
   push:
-    branches: ["gate2-2-dependency-fix"]
+    branches: ["gate2-3-restore"]
     paths:
       - "mods/red-earth-irregular-shiny/**"
       - "mods/red-earth-gate2-presentation/**"
       - "mods/red-earth-gate2-test-harness/**"
-      - "tools/build_gate2.py"
+      - "tools/build_gate2_3.py"
+      - "tools/fixtures/**"
+      - "mods/red-earth-solipsdion-shiny-back-fix/**"
       - "tools/restore_shiny_back.py"
       - "tools/test_gate2.*"
       - ".github/workflows/build-red-earth-gate2.yml"
 permissions:
   contents: write
 concurrency:
-  group: gate2-2-dependency-fix
+  group: gate2-3-restore
   cancel-in-progress: false
 jobs:
   build:
@@ -37,22 +39,24 @@ jobs:
           for src in mods/red-earth-irregular-shiny/main.lua mods/red-earth-gate2-presentation/main.lua mods/red-earth-gate2-test-harness/main.lua; do luac -p "$src"; done
           python tools/test_gate2.py engine-reference
       - name: Package narrow shiny repair and verify unchanged module hashes
-        run: python tools/build_gate2.py package
+        run: python tools/build_gate2_3.py package engine-reference/tools/cartkit.py
       - name: Enforce packaged dependencies through native mod loader
-        run: python tools/test_gate2.py engine-reference --dependencies
+        run: |
+          python tools/test_gate2.py engine-reference --dependencies
+          python tools/test_gate2.py engine-reference --fresh-start
       - name: Publish immutable standalone prerelease modules
         run: |
-          if ! gh release view v0.2.2 >/dev/null 2>&1; then
-            gh release create v0.2.2 --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.2 dependency repair" --notes "Fixes the exact shiny-module dependency in the standalone harness and presentation patch. Their new 0.2.2 packages require unchanged shiny 0.2.1. This restores QA starter interception. Adds native Loader dependency regression checks against packaged manifests. Artwork is unchanged."
+          if ! gh release view v0.2.3 >/dev/null 2>&1; then
+            gh release create v0.2.3 --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.0 restored with separate pixel patch" --notes "Restores the exact accepted Gate 2.0 stack. Adds only a separate asset module restoring 54 missing shiny Solipsdion back pixels. Original state, harness, presentation and artwork remain immutable. Native loader/script/DV/art/evolution/persistence checks added; device retest pending."
           fi
           mkdir -p /tmp/gate2-existing
-          for mid in red_earth_gate2_presentation red_earth_gate2_test_harness; do
-            name="$mid-0.2.2.zip"
+          for mid in red_earth_solipsdion_shiny_back_fix; do
+            name="$mid-0.2.3.zip"
             path="site/data/mods/DuskPromised@$mid/$name"
-            if gh release download v0.2.2 --pattern "$name" --dir /tmp/gate2-existing; then
+            if gh release download v0.2.3 --pattern "$name" --dir /tmp/gate2-existing; then
               cmp "$path" "/tmp/gate2-existing/$name"
             else
-              gh release upload v0.2.2 "$path"
+              gh release upload v0.2.3 "$path"
             fi
           done
       - name: Online byte verification and strict sealed cart validation
@@ -69,30 +73,30 @@ jobs:
           for cart in /tmp/gate0-validation/* cart_source/gate_1_irregular_test cart_source/gate_2_irregular_shiny_test; do
             python engine-reference/tools/cartkit.py validate "$cart" --online --strict
           done
-          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.2.g1rcart --online
-          python tools/build_gate2.py metadata
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.3.g1rcart --online
+          python tools/build_gate2_3.py metadata engine-reference/tools/cartkit.py
       - name: Attach verified cart and checksums
         run: |
-          for path in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.2.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+          for path in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.3.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
             name=$(basename "$path")
-            if gh release download v0.2.2 --pattern "$name" --dir /tmp/gate2-existing; then
+            if gh release download v0.2.3 --pattern "$name" --dir /tmp/gate2-existing; then
               cmp "$path" "/tmp/gate2-existing/$name"
             else
-              gh release upload v0.2.2 "$path"
+              gh release upload v0.2.3 "$path"
             fi
           done
       - name: Commit verified modules, cart and feed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add mods/red-earth-irregular-shiny/assets cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
-          for mid in red_earth_irregular_shiny red_earth_gate2_presentation red_earth_gate2_test_harness; do
+          git add mods/red-earth-solipsdion-shiny-back-fix/assets cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
+          for mid in red_earth_irregular_shiny red_earth_gate2_presentation red_earth_gate2_test_harness red_earth_solipsdion_shiny_back_fix; do
             git add "custom_mods/$mid.index.json" "custom_mods/$mid.sha256"
             ver=$(python -c "import json; print(json.load(open('custom_mods/$mid.index.json'))['version'])")
             git add -f "site/data/mods/DuskPromised@$mid/$mid-$ver.zip"
           done
           git add -f site/data/carts/DuskPromised@gate_2_irregular_shiny_test
           if ! git diff --cached --quiet; then
-            git commit -m "Publish Gate 2.2 dependency repair and verified QA cart"
-            git push origin HEAD:gate2-2-dependency-fix
+            git commit -m "Publish restored Gate 2.0 stack and standalone pixel repair cart"
+            git push origin HEAD:gate2-3-restore
           fi

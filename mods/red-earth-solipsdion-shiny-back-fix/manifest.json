@@ -1,0 +1,16 @@
+{
+  "id": "red_earth_solipsdion_shiny_back_fix",
+  "name": "Red Earth — Solipsdion Shiny Back Pixel Repair",
+  "version": "0.2.3",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GRAPHICS",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 600,
+  "author": "Adam M. Aguilera",
+  "dependencies": ["red_earth_irregular_shiny@0.2.0"],
+  "permissions": [],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Asset-only 54-pixel repair for shiny Solipsdion's back. Requires the unchanged accepted Gate 2.0 shiny module."
+}

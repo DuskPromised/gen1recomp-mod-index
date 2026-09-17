@@ -65,3 +65,24 @@ Harness and Presentation now have separate 0.2.2 packages requiring shiny
 dependency enforcement now reproduces both prior failures and requires all
 current Red Earth modules to survive dependency resolution before publishing.
 Gate 2.1 must not be used for testing; use cart 0.2.2.
+
+### Recovery 0.2.3 — exact 0.2.0 stack plus standalone pixel repair
+
+The user reported normal art on a fresh start in 0.2.2 and instructed us to
+restore 0.2.0, then re-add only the missing pixels. The shiny state module,
+harness and presentation module are restored from their exact immutable
+0.2.0 ZIPs. Every original 0.2.0 cart pin remains identical. A separate
+`red_earth_solipsdion_shiny_back_fix` changes only the exported shiny
+Solipsdion back path to the 54-pixel repaired asset. The original module
+files, state, acquisition logic, normal art and other shiny art are unchanged.
+
+The strengthened test loads packaged Red Earth modules through native Loader
+and its sandbox, then runs native ScriptRunner/Commands with nickname-dialogue
+yield/resume, Pokemon.new, DVs, sprite/icon selection, evolution, PC deposit,
+party reorder and serializer reload. Headless dialogue rendering and upstream
+module bodies are test stand-ins; accepted upstream version records are used
+for dependency checks. This is not an iOS full-game run. Separate composition
+tests cover the existing Potato scale/alpha and sparkle paths with the repaired
+back reference. Physical-device acceptance remains pending.
+
+Standing user release verification rule is recorded in AGENTS.md.

@@ -16,6 +16,7 @@ local Loader=require('src.mods.Loader')
 local function resolve(regression)
   local loader=Loader.new({fs={},generation=1})
   for _,raw in ipairs(Json.decode(MANIFEST_JSON)) do
+    if regression and raw.id=='red_earth_irregular_shiny' then raw.version='0.2.1' end
     if regression and (raw.id=='red_earth_gate2_test_harness'
         or raw.id=='red_earth_gate2_presentation') then
       for i,dep in ipairs(raw.dependencies) do
