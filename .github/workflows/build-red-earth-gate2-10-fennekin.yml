@@ -38,12 +38,16 @@ jobs:
           luac -p mods/red-earth-gate2-starter-shiny-fx/main.lua
           lua5.4 tools/test_gate2_10.lua
           python - <<'PY'
+          import re
           from pathlib import Path
           state=Path('mods/red-earth-gate2-starter-shiny-state-icons/main.lua').read_text()
           fx=Path('mods/red-earth-gate2-starter-shiny-fx/main.lua').read_text()
           for x in ['forwarded[3] = true','askNicknameAfterState','previewSpecies','ctx.kind == "dex"','end, -10)','0.2.10']:
               assert x in state,x
-          for x in ['DexEntryMenu.new','world.talk','resolveBattleScale','battleScale','PSYDREN','VESPERIS','SOLIPSDION']:
+          # A comment documents the old 0.2.8 DexEntryMenu.new regression; reject
+          # executable constructor calls, not that explanatory text.
+          assert not re.search(r'DexEntryMenu\.new\s*\(', state), 'DexEntryMenu.new call'
+          for x in ['world.talk','resolveBattleScale','battleScale','PSYDREN','VESPERIS','SOLIPSDION']:
               assert x not in state,x
           for x in ['sx.isGuaranteed','battle.started','playEntranceCry','gen2_shiny_sparkle.mp3','GOLD','LILAC','0.2.10']:
               assert x in fx,x
