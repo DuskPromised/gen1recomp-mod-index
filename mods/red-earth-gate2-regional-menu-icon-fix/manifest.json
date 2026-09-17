@@ -1,0 +1,21 @@
+{
+  "id": "red_earth_gate2_regional_menu_icon_fix",
+  "name": "Red Earth — Gate 2 Regional Shiny Menu/Icon Fix",
+  "version": "0.2.5",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GRAPHICS",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 620,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "red_earth_irregular_shiny@0.2.0",
+    "gen1_kaizo@0.8.3"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Gate 2-only shiny party/menu/icon repair for Fennekin and the selectable regional Grass starter lines. Reads genuine shiny state only. Does not change battle art, followers, scaling, starter routing, evolution logic, sparkle/audio, Natures, or passives."
+}
