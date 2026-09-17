@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-17T03:01:37.613026+00:00",
+  "generated_at": "2026-09-17T05:02:15.639307+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -34,7 +34,7 @@
     {
       "folder": "hydhyro@gen1_pt-br_mod",
       "id": "gen1_pt-br_mod",
-      "title": "(PT-BR) Vers\u00e3o Brasileira",
+      "title": "(PT-BR) Versão Brasileira",
       "author": "hydhyro",
       "version": "0.1.12",
       "categories": [
@@ -46,7 +46,7 @@
       "profile": "content",
       "thumbnail": "data/mods/hydhyro@gen1_pt-br_mod/thumbnail.png",
       "description_url": "data/mods/hydhyro@gen1_pt-br_mod/description.md",
-      "summary": "Tradu\u00e7\u00e3o em Portugu\u00eas brasileiro das vers\u00f5es Amarela, Azul e Vermelha de Pok\u00e9mon gen1.",
+      "summary": "Tradução em Português brasileiro das versões Amarela, Azul e Vermelha de Pokémon gen1.",
       "latest": {
         "version": "0.1.12",
         "tag": "0.1.12",
@@ -64,7 +64,7 @@
         "total": 444,
         "recent": 56,
         "window_days": 7,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -112,7 +112,7 @@
         "total": 320,
         "recent": 114,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -131,7 +131,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-access-pc-anywhere",
-      "summary": "Start menu PC opens Bill\u2019s PC from the overworld when available.",
+      "summary": "Start menu PC opens Bill’s PC from the overworld when available.",
       "tags": [
         "pc",
         "wex"
@@ -155,10 +155,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 7746,
-        "recent": 1969,
+        "total": 7752,
+        "recent": 1975,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -200,10 +200,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 709,
-        "recent": 265,
+        "total": 710,
+        "recent": 266,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -251,7 +251,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/anglers-cove-aquarium",
-      "summary": "Fishing and aquarium sim side activity for Pok\u00e9mon Crystal, with tank care, unique catches, collectibles, and optional PokeSurvive integration.",
+      "summary": "Fishing and aquarium sim side activity for Pokémon Crystal, with tank care, unique catches, collectibles, and optional PokeSurvive integration.",
       "tags": [
         "fishing",
         "aquarium",
@@ -268,7 +268,7 @@
       "latest": {
         "version": "1.3.1",
         "tag": "v1.3.1",
-        "name": "\ud83c\udfa3 Angler's Cove Aquarium v1.3.1",
+        "name": "🎣 Angler's Cove Aquarium v1.3.1",
         "prerelease": false,
         "published_at": "2026-09-06T01:09:29Z",
         "zip": {
@@ -279,10 +279,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 271,
-        "recent": 75,
+        "total": 273,
+        "recent": 77,
         "window_days": 7,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -295,7 +295,7 @@
       "id": "anytime_rename",
       "title": "Anytime Rename",
       "author": "Roxas2712",
-      "summary": "Rename the trainer, rival and party Pok\u00e9mon from the START menu, with generation-aware save handling and automatic German localization.",
+      "summary": "Rename the trainer, rival and party Pokémon from the START menu, with generation-aware save handling and automatic German localization.",
       "version": "1.2.1",
       "categories": [
         "UI",
@@ -343,7 +343,7 @@
         "total": 577,
         "recent": 198,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -459,7 +459,7 @@
         "total": 1187,
         "recent": 385,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -504,7 +504,7 @@
         "total": 383,
         "recent": 143,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -560,7 +560,7 @@
         "total": 962,
         "recent": 419,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -570,14 +570,14 @@
       "id": "BATTLE_ART_VOXEL_FORK",
       "title": "Battle Art Voxel Fork",
       "author": "absol89",
-      "version": "1.10.8",
+      "version": "1.10.9",
       "categories": [
         "ART",
         "UI"
       ],
       "repo": "https://github.com/absol89/DramaticShapeVoxelMod",
-      "downloadURL": "https://github.com/absol89/DramaticShapeVoxelMod/releases/download/1.10.8/BATTLE_ART_VOXEL_FORK-1.10.8.zip",
-      "source_zip": "BATTLE_ART_VOXEL_FORK-1.10.8.zip",
+      "downloadURL": "https://github.com/absol89/DramaticShapeVoxelMod/releases/download/1.10.9/BATTLE_ART_VOXEL_FORK-1.10.9.zip",
+      "source_zip": "BATTLE_ART_VOXEL_FORK-1.10.9.zip",
       "summary": "A fork of the Dramatic Shape voxel mod aimed at battle art: animated back sprites, selectable sprite generations, and sprite fallback for other sprite mods.",
       "permissions": [
         "engine_internals"
@@ -605,7 +605,7 @@
         "QOL"
       ],
       "repo": "https://github.com/EnterPlayerOne/Battle-Cinematics-Stadium-Camera",
-      "summary": "Dynamic 3D battle camera director with Stadium 64, DW3 Classic and Hero Portrait idle views, Pok\u00e9mon intros, move aware attacks, faint shots, manual control, and Gen 1 + Gold support.",
+      "summary": "Dynamic 3D battle camera director with Stadium 64, DW3 Classic and Hero Portrait idle views, Pokémon intros, move aware attacks, faint shots, manual control, and Gen 1 + Gold support.",
       "tags": [
         "camera",
         "battle-camera",
@@ -626,23 +626,23 @@
       "thumbnail": "data/mods/EnterPlayerOne@BATTLE_CINEMATICS/thumbnail.jpg",
       "description_url": "data/mods/EnterPlayerOne@BATTLE_CINEMATICS/description.md",
       "latest": {
-        "version": "1.4.2",
-        "tag": "v1.4.2",
-        "name": "Battle Cinematics v1.4.2 - Live Colosseum PiP & Phenac Approach",
+        "version": "1.4.3",
+        "tag": "v1.4.3",
+        "name": "Battle Cinematics v1.4.3 — Stadium 2 Importer 0.14.4 Compatibility",
         "prerelease": false,
-        "published_at": "2026-09-14T00:53:27Z",
+        "published_at": "2026-09-16T23:02:13Z",
         "zip": {
-          "name": "BATTLE_CINEMATICS-1.4.2.zip",
-          "url": "https://github.com/EnterPlayerOne/Battle-Cinematics-Stadium-Camera/releases/download/v1.4.2/BATTLE_CINEMATICS-1.4.2.zip",
-          "size": 327675
+          "name": "BATTLE_CINEMATICS-1.4.3.zip",
+          "url": "https://github.com/EnterPlayerOne/Battle-Cinematics-Stadium-Camera/releases/download/v1.4.3/BATTLE_CINEMATICS-1.4.3.zip",
+          "size": 329165
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 19586,
-        "recent": 8701,
+        "total": 19651,
+        "recent": 8766,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -661,7 +661,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/Battle-Factory-Remix",
-      "summary": "Battle through rental Pok\u00e9mon challenges, swap your team between rounds, defeat Factory Heads, and earn unique BP rewards.",
+      "summary": "Battle through rental Pokémon challenges, swap your team between rounds, defeat Factory Heads, and earn unique BP rewards.",
       "tags": [
         "battle factory",
         "rentals",
@@ -683,7 +683,7 @@
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
-        "name": "\ud83c\udfed Battle Factory Remix v1.2.0 \u2014 More CMs + Signature Held Items",
+        "name": "🏭 Battle Factory Remix v1.2.0 — More CMs + Signature Held Items",
         "prerelease": false,
         "published_at": "2026-09-14T22:33:20Z",
         "zip": {
@@ -694,10 +694,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 66,
-        "recent": 56,
+        "total": 72,
+        "recent": 62,
         "window_days": 7,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -760,7 +760,7 @@
         "total": 982,
         "recent": 569,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -807,10 +807,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 7148,
-        "recent": 1563,
+        "total": 7158,
+        "recent": 1573,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -869,7 +869,7 @@
         "total": 149,
         "recent": 132,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -881,7 +881,7 @@
       "id": "better_battle_ui",
       "title": "Better Battle UI",
       "author": "eduardocalafell",
-      "summary": "The enemy's hidden HP and type, move effectiveness, stat changes, catch chance and an XP bar \u2014 in a framed HUD that fits the voxel battle.",
+      "summary": "The enemy's hidden HP and type, move effectiveness, stat changes, catch chance and an XP bar — in a framed HUD that fits the voxel battle.",
       "version": "0.1.0",
       "categories": [
         "UI",
@@ -921,10 +921,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4221,
-        "recent": 2030,
+        "total": 4232,
+        "recent": 2041,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -978,10 +978,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 559,
-        "recent": 262,
+        "total": 560,
+        "recent": 263,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1033,10 +1033,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 693,
-        "recent": 665,
+        "total": 701,
+        "recent": 673,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1094,10 +1094,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3094,
-        "recent": 1216,
+        "total": 3095,
+        "recent": 1217,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1139,10 +1139,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 363,
-        "recent": 338,
+        "total": 365,
+        "recent": 340,
         "window_days": 23,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1188,10 +1188,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4019,
-        "recent": 742,
+        "total": 4022,
+        "recent": 745,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1232,10 +1232,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1249,
-        "recent": 344,
+        "total": 1250,
+        "recent": 345,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1281,7 +1281,7 @@
         "total": 536,
         "recent": 269,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1346,10 +1346,10 @@
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
-        "total": 770,
-        "recent": 750,
+        "total": 774,
+        "recent": 754,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1400,10 +1400,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 678,
-        "recent": 335,
+        "total": 679,
+        "recent": 336,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1449,10 +1449,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5967,
-        "recent": 1288,
+        "total": 5972,
+        "recent": 1293,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1507,10 +1507,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 112,
-        "recent": 83,
+        "total": 118,
+        "recent": 89,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1527,7 +1527,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-controller-rumble/tree/main",
-      "summary": "Modern rumble support that brings Gen 1\u2019s classic shakes to life across battles, menus, story moments, and the overworld.",
+      "summary": "Modern rumble support that brings Gen 1’s classic shakes to life across battles, menus, story moments, and the overworld.",
       "tags": [
         "controller",
         "rumble",
@@ -1555,10 +1555,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6119,
-        "recent": 1358,
+        "total": 6122,
+        "recent": 1361,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1606,10 +1606,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1352,
-        "recent": 401,
+        "total": 1353,
+        "recent": 402,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1689,7 +1689,7 @@
       "categories": [
         "CONTENT"
       ],
-      "summary": "Adds Crystal Onix as a Rock/Ice Onix variant shown as #95C directly beneath #095 ONIX in both the stock Pok\u00e9dex and Pok\u00e9dex Plus (when installed), with a fully integrated quest and perfect-DV/max-Stat-EXP reward.",
+      "summary": "Adds Crystal Onix as a Rock/Ice Onix variant shown as #95C directly beneath #095 ONIX in both the stock Pokédex and Pokédex Plus (when installed), with a fully integrated quest and perfect-DV/max-Stat-EXP reward.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -1754,7 +1754,7 @@
         "total": 1712,
         "recent": 484,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1797,7 +1797,7 @@
       "latest": {
         "version": "0.1.2",
         "tag": "v0.1.2",
-        "name": "v0.1.2 \u2014 Correctifs des retours de test",
+        "name": "v0.1.2 — Correctifs des retours de test",
         "prerelease": false,
         "published_at": "2026-08-07T09:36:22Z",
         "zip": {
@@ -1811,7 +1811,7 @@
         "total": 295,
         "recent": 65,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1865,10 +1865,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2497,
-        "recent": 902,
+        "total": 2499,
+        "recent": 904,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1877,9 +1877,9 @@
     {
       "folder": "Roxas2712@deutsch-blau",
       "id": "deutsch-blau",
-      "title": "Deutsch f\u00fcr Pok\u00e9mon Blau",
+      "title": "Deutsch für Pokémon Blau",
       "author": "Roxas2712",
-      "summary": "Deutsche \u00dcbersetzung von Pok\u00e9mon Blau: Originaltexte, Namen, Schrift und Titelgrafik der Blauen Edition f\u00fcr die importierte US-ROM.",
+      "summary": "Deutsche Übersetzung von Pokémon Blau: Originaltexte, Namen, Schrift und Titelgrafik der Blauen Edition für die importierte US-ROM.",
       "version": "1.0.2",
       "categories": [
         "TRANSLATION"
@@ -1906,7 +1906,7 @@
       "latest": {
         "version": "1.1.1",
         "tag": "v1.1.1",
-        "name": "Deutsch f\u00fcr Pok\u00e9mon Blau 1.1.1",
+        "name": "Deutsch für Pokémon Blau 1.1.1",
         "prerelease": false,
         "published_at": "2026-08-18T10:47:12Z",
         "zip": {
@@ -1920,7 +1920,7 @@
         "total": 782,
         "recent": 273,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1931,9 +1931,9 @@
     {
       "folder": "Roxas2712@deutsch-gelb",
       "id": "deutsch-gelb",
-      "title": "Deutsch f\u00fcr Pok\u00e9mon Gelb",
+      "title": "Deutsch für Pokémon Gelb",
       "author": "Roxas2712",
-      "summary": "Deutsche \u00dcbersetzung von Pok\u00e9mon Gelb: Originaltexte, Namen und Schrift der Gelben Edition f\u00fcr die importierte US-ROM.",
+      "summary": "Deutsche Übersetzung von Pokémon Gelb: Originaltexte, Namen und Schrift der Gelben Edition für die importierte US-ROM.",
       "version": "1.0.5",
       "categories": [
         "TRANSLATION"
@@ -1960,7 +1960,7 @@
       "latest": {
         "version": "1.1.1",
         "tag": "v1.1.1",
-        "name": "Deutsch f\u00fcr Pok\u00e9mon Gelb 1.1.1",
+        "name": "Deutsch für Pokémon Gelb 1.1.1",
         "prerelease": false,
         "published_at": "2026-08-18T10:47:13Z",
         "zip": {
@@ -1974,7 +1974,7 @@
         "total": 1024,
         "recent": 347,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1985,9 +1985,9 @@
     {
       "folder": "Roxas2712@deutsch",
       "id": "deutsch",
-      "title": "Deutsch f\u00fcr Pok\u00e9mon Rot",
+      "title": "Deutsch für Pokémon Rot",
       "author": "Roxas2712",
-      "summary": "Deutsche \u00dcbersetzung von Pok\u00e9mon Rot: Originaltexte, Namen, Schrift und Titelgrafik der Roten Edition f\u00fcr die importierte US-ROM.",
+      "summary": "Deutsche Übersetzung von Pokémon Rot: Originaltexte, Namen, Schrift und Titelgrafik der Roten Edition für die importierte US-ROM.",
       "version": "2.1.6",
       "categories": [
         "TRANSLATION"
@@ -2014,7 +2014,7 @@
       "latest": {
         "version": "2.2.1",
         "tag": "v2.2.1",
-        "name": "Deutsch f\u00fcr Pok\u00e9mon Rot 2.2.1",
+        "name": "Deutsch für Pokémon Rot 2.2.1",
         "prerelease": false,
         "published_at": "2026-08-18T10:47:10Z",
         "zip": {
@@ -2028,7 +2028,7 @@
         "total": 2139,
         "recent": 665,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2082,7 +2082,7 @@
         "total": 167,
         "recent": 75,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2095,7 +2095,7 @@
       "id": "dialogue_portraits",
       "title": "Dialogue Portraits",
       "author": "Nezara",
-      "summary": "Shows a portrait of whoever's talking beside the dialogue box: all 45 trainer classes, 28 talking Pok\u00e9mon, and custom art for anyone else.",
+      "summary": "Shows a portrait of whoever's talking beside the dialogue box: all 45 trainer classes, 28 talking Pokémon, and custom art for anyone else.",
       "version": "1.0.2",
       "categories": [
         "UI",
@@ -2136,7 +2136,7 @@
         "total": 625,
         "recent": 404,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2189,10 +2189,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1593,
-        "recent": 750,
+        "total": 1594,
+        "recent": 751,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2250,7 +2250,7 @@
       "id": "DRAMATIC_SKY_RIDE",
       "title": "Dramatic Sky Ride",
       "author": "MFR TechConsult",
-      "summary": "Ride Gen 1 Pok\u00e9mon on land, water and in the air with Battle Art Voxel Fork, Pok\u00e9PC sprites, story-aware progression and Wild Skies integration.",
+      "summary": "Ride Gen 1 Pokémon on land, water and in the air with Battle Art Voxel Fork, PokéPC sprites, story-aware progression and Wild Skies integration.",
       "version": "0.1.2",
       "categories": [
         "GAMEPLAY",
@@ -2303,10 +2303,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6064,
-        "recent": 1542,
+        "total": 6071,
+        "recent": 1549,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2317,7 +2317,7 @@
       "id": "translation-nl",
       "title": "Dutch translation",
       "author": "BartInTheField",
-      "summary": "Dutch translation for Pok\u00e9mon Red and Blue, generated from PokeCorpus.",
+      "summary": "Dutch translation for Pokémon Red and Blue, generated from PokeCorpus.",
       "version": "0.0.2",
       "categories": [
         "TRANSLATION"
@@ -2351,7 +2351,7 @@
         "total": 226,
         "recent": 55,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2425,7 +2425,7 @@
         "total": 334,
         "recent": 266,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2468,9 +2468,9 @@
     {
       "folder": "Sebarosu@recomp-spanish",
       "id": "recomp-spanish",
-      "title": "Edici\u00f3n Roja",
+      "title": "Edición Roja",
       "author": "Sebarosu",
-      "summary": "Traducci\u00f3n al espa\u00f1ol de Pok\u00e9mon Rojo/Azul. Bienvenidos al mundo de POK\u00e9MON, ahora en ESPA\u00d1OL.",
+      "summary": "Traducción al español de Pokémon Rojo/Azul. Bienvenidos al mundo de POKéMON, ahora en ESPAÑOL.",
       "version": "1.1.0",
       "categories": [
         "TRANSLATION"
@@ -2502,10 +2502,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6463,
-        "recent": 1561,
+        "total": 6479,
+        "recent": 1577,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2556,10 +2556,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 493,
-        "recent": 301,
+        "total": 494,
+        "recent": 302,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2596,7 +2596,7 @@
       "latest": {
         "version": "0.1.10",
         "tag": "v0.1.10",
-        "name": "v0.1.10 \u2014 Custom EXP SHARE percentages",
+        "name": "v0.1.10 — Custom EXP SHARE percentages",
         "prerelease": false,
         "published_at": "2026-08-21T14:15:15Z",
         "zip": {
@@ -2607,10 +2607,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 28610,
-        "recent": 10390,
+        "total": 28639,
+        "recent": 10419,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2693,10 +2693,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 141,
-        "recent": 54,
+        "total": 143,
+        "recent": 56,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2705,9 +2705,9 @@
     {
       "folder": "eduardocalafell@fakemons",
       "id": "fakemons",
-      "title": "Fak\u00e9mons",
+      "title": "Fakémons",
       "author": "eduardocalafell",
-      "summary": "Original fan-made Fak\u00e9mons as real catchable species \u2014 full stats, moves, learnsets, dex entries and original art, spawning in themed habitats.",
+      "summary": "Original fan-made Fakémons as real catchable species — full stats, moves, learnsets, dex entries and original art, spawning in themed habitats.",
       "version": "0.1.1",
       "categories": [
         "CONTENT",
@@ -2734,7 +2734,7 @@
       "latest": {
         "version": "0.1.1",
         "tag": "v0.1.1",
-        "name": "Fak\u00e9mons v0.1.1",
+        "name": "Fakémons v0.1.1",
         "prerelease": false,
         "published_at": "2026-08-08T16:05:10Z",
         "zip": {
@@ -2748,7 +2748,7 @@
         "total": 305,
         "recent": 157,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2772,7 +2772,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/duderosier@FAST_NURSE_JOY/description.md",
-      "summary": "Skip the wait at every Pok\u00e9mon Center \u2014 and top everything up at the PC.",
+      "summary": "Skip the wait at every Pokémon Center — and top everything up at the PC.",
       "latest": {
         "version": "0.2.19",
         "tag": "v0.2.19",
@@ -2787,10 +2787,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 296,
-        "recent": 286,
+        "total": 298,
+        "recent": 288,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2824,10 +2824,10 @@
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
-        "total": 744,
-        "recent": 718,
+        "total": 748,
+        "recent": 722,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2846,7 +2846,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-followers-ex",
-      "summary": "Trainer/Pokemon control, pack size, party/BOX LEADER, and Wilds encounters using Pok\u00e9PC follower sheets (needs Pok\u00e9PC Followers + Wilds)",
+      "summary": "Trainer/Pokemon control, pack size, party/BOX LEADER, and Wilds encounters using PokéPC follower sheets (needs PokéPC Followers + Wilds)",
       "tags": [
         "follower",
         "wex"
@@ -2873,10 +2873,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 13276,
-        "recent": 2847,
+        "total": 13294,
+        "recent": 2865,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2927,10 +2927,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 9198,
-        "recent": 3442,
+        "total": 9219,
+        "recent": 3463,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2947,7 +2947,7 @@
       "categories": [
         "GAMEPLAY"
       ],
-      "summary": "Adds Master Ball to every Pok\u00e9 Mart and sets its buy price to 0.",
+      "summary": "Adds Master Ball to every Poké Mart and sets its buy price to 0.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -2974,7 +2974,7 @@
       "categories": [
         "QOL"
       ],
-      "summary": "Adds RARE CANDY to every standard Pok\u00e9 Mart and makes it completely free.",
+      "summary": "Adds RARE CANDY to every standard Poké Mart and makes it completely free.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -3020,23 +3020,23 @@
       "thumbnail": null,
       "description_url": "data/mods/Tekky@g9-battle-engine/description.md",
       "latest": {
-        "version": "4.0.5",
-        "tag": "v4.0.5",
-        "name": "4.0.5",
+        "version": "4.1.3",
+        "tag": "v4.1.3",
+        "name": "4.1.3",
         "prerelease": false,
-        "published_at": "2026-09-15T17:57:27Z",
+        "published_at": "2026-09-16T21:21:50Z",
         "zip": {
-          "name": "g9-battle-engine-4.0.5.zip",
-          "url": "https://github.com/tectorifter/Gen9Dex/releases/download/v4.0.5/g9-battle-engine-4.0.5.zip",
-          "size": 903598
+          "name": "g9-battle-engine-4.1.3.zip",
+          "url": "https://github.com/tectorifter/Gen9Dex/releases/download/v4.1.3/g9-battle-engine-4.1.3.zip",
+          "size": 905796
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 701,
-        "recent": 637,
+        "total": 723,
+        "recent": 659,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3091,10 +3091,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6858,
-        "recent": 2047,
+        "total": 6888,
+        "recent": 2077,
         "window_days": 19,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3111,7 +3111,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/Hazard15301/G1GPP",
-      "summary": "A preservation-focused expansion for Pok\u00e9mon Red and Blue, rewarding curious players who explore beyond the expected.",
+      "summary": "A preservation-focused expansion for Pokémon Red and Blue, rewarding curious players who explore beyond the expected.",
       "tags": [
         "glitches",
         "missingno",
@@ -3147,10 +3147,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 116,
-        "recent": 106,
+        "total": 123,
+        "recent": 113,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3204,10 +3204,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1544,
-        "recent": 907,
+        "total": 1546,
+        "recent": 909,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3258,10 +3258,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 34995,
-        "recent": 15596,
+        "total": 35035,
+        "recent": 15636,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3314,10 +3314,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3304,
-        "recent": 1732,
+        "total": 3309,
+        "recent": 1737,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3337,7 +3337,7 @@
       "repo": "https://github.com/ArmstrongThomas/gen1-modern-ui",
       "downloadURL": "https://github.com/ArmstrongThomas/gen1-modern-ui/releases/download/v0.9.2/gen1_modern_ui-0.9.2.zip",
       "source_zip": "gen1_modern_ui-0.9.2.zip",
-      "summary": "Repaints the menus in full window space \u2014 responsive dialogue, Party, PC, Trainer Card, Pokedex, Bag and Shop, with themes and a minimal mode.",
+      "summary": "Repaints the menus in full window space — responsive dialogue, Party, PC, Trainer Card, Pokedex, Bag and Shop, with themes and a minimal mode.",
       "permissions": [],
       "dependencies": [],
       "optional_dependencies": [],
@@ -3437,10 +3437,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 363,
-        "recent": 297,
+        "total": 366,
+        "recent": 300,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3495,10 +3495,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 983,
-        "recent": 525,
+        "total": 996,
+        "recent": 538,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3553,7 +3553,7 @@
         "total": 145,
         "recent": 88,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3610,10 +3610,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 544,
-        "recent": 470,
+        "total": 547,
+        "recent": 473,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3668,10 +3668,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 239,
-        "recent": 166,
+        "total": 240,
+        "recent": 167,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3724,10 +3724,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2416,
-        "recent": 1475,
+        "total": 2426,
+        "recent": 1485,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3786,10 +3786,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 202,
-        "recent": 122,
+        "total": 203,
+        "recent": 123,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3801,7 +3801,7 @@
       "id": "Gen1Dex",
       "title": "Gen1Dex",
       "author": "Wild",
-      "summary": "The Pok\u00e9dex with a POK\u00e9MON beside every entry: a party icon on every row, a silhouette until you have seen it, three pages behind each one, and an AREA screen that says how to get there.",
+      "summary": "The Pokédex with a POKéMON beside every entry: a party icon on every row, a silhouette until you have seen it, three pages behind each one, and an AREA screen that says how to get there.",
       "version": "1.5.1",
       "categories": [
         "UI",
@@ -3851,10 +3851,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 275,
-        "recent": 171,
+        "total": 278,
+        "recent": 174,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3866,7 +3866,7 @@
       "id": "Gen1Follower",
       "title": "Gen1Follower",
       "author": "Wild",
-      "summary": "All 251 Gen 1 and Gen 2 overworld followers, sized by Pok\u00e9dex proportions, with voxel support. Built from Antigravity & gamecorner33's Pok\u00e9PC Followers.",
+      "summary": "All 251 Gen 1 and Gen 2 overworld followers, sized by Pokédex proportions, with voxel support. Built from Antigravity & gamecorner33's PokéPC Followers.",
       "version": "1.3.2",
       "categories": [
         "GAMEPLAY",
@@ -3911,10 +3911,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 465,
-        "recent": 302,
+        "total": 467,
+        "recent": 304,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3927,7 +3927,7 @@
       "id": "Gen1MenuManager",
       "title": "Gen1MenuManager",
       "author": "Wild",
-      "summary": "Rearrange the START menu and the Pok\u00e9mon Center PC menu: reorder rows, hide the ones you never touch, and pin field items and moves to rows of their own.",
+      "summary": "Rearrange the START menu and the Pokémon Center PC menu: reorder rows, hide the ones you never touch, and pin field items and moves to rows of their own.",
       "version": "0.2.8",
       "categories": [
         "TOOL",
@@ -3969,10 +3969,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 254,
-        "recent": 135,
+        "total": 257,
+        "recent": 138,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4025,10 +4025,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 791,
-        "recent": 358,
+        "total": 792,
+        "recent": 359,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4089,10 +4089,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 340,
-        "recent": 188,
+        "total": 341,
+        "recent": 189,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4149,10 +4149,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 178,
-        "recent": 121,
+        "total": 181,
+        "recent": 124,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4194,10 +4194,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 16338,
-        "recent": 2009,
+        "total": 16356,
+        "recent": 2027,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4210,7 +4210,7 @@
       "id": "Gen1Party",
       "title": "Gen1Party",
       "author": "Wild",
-      "summary": "The party menu with every POK\u00e9MON in its own species colours instead of all six sharing one, and nothing left running off the right edge of the screen.",
+      "summary": "The party menu with every POKéMON in its own species colours instead of all six sharing one, and nothing left running off the right edge of the screen.",
       "version": "1.7.0",
       "categories": [
         "UI",
@@ -4257,10 +4257,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 215,
-        "recent": 131,
+        "total": 216,
+        "recent": 132,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4306,10 +4306,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2816,
-        "recent": 1186,
+        "total": 2823,
+        "recent": 1193,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4320,7 +4320,7 @@
       "id": "Gen1Remember",
       "title": "Gen1Remember",
       "author": "Wild",
-      "summary": "A POK\u00e9MON can be taught a move it has forgotten, from the popup you already open on it: every level-up move it should have had by now, its pre-evolutions' included.",
+      "summary": "A POKéMON can be taught a move it has forgotten, from the popup you already open on it: every level-up move it should have had by now, its pre-evolutions' included.",
       "version": "1.0.1",
       "categories": [
         "UI",
@@ -4367,10 +4367,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 116,
-        "recent": 80,
+        "total": 117,
+        "recent": 81,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4430,7 +4430,7 @@
         "total": 158,
         "recent": 95,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4489,7 +4489,7 @@
         "total": 130,
         "recent": 79,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4549,10 +4549,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2141,
-        "recent": 1621,
+        "total": 2162,
+        "recent": 1642,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4565,7 +4565,7 @@
       "id": "gen1_wild_ui",
       "title": "Gen1WildUI",
       "author": "Wild",
-      "summary": "The visual half of the suite in one mod: battle backdrops and intro, the battle menus, the Pok\u00e9dex, the box, the party menu, the bag, item icons and descriptions, the lift panel.",
+      "summary": "The visual half of the suite in one mod: battle backdrops and intro, the battle menus, the Pokédex, the box, the party menu, the bag, item icons and descriptions, the lift panel.",
       "version": "1.12.0",
       "categories": [
         "UI",
@@ -4611,10 +4611,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2257,
-        "recent": 1706,
+        "total": 2280,
+        "recent": 1729,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4657,7 +4657,7 @@
         "total": 118,
         "recent": 108,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4701,10 +4701,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 275,
-        "recent": 165,
+        "total": 276,
+        "recent": 166,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4762,7 +4762,7 @@
         "total": 47,
         "recent": 22,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4814,10 +4814,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4926,
-        "recent": 1141,
+        "total": 4929,
+        "recent": 1144,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4889,7 +4889,7 @@
       "latest": {
         "version": "1.0.10",
         "tag": "1.0.10",
-        "name": "1.0.10 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "1.0.10 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:12Z",
         "zip": {
@@ -4900,10 +4900,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 262,
-        "recent": 176,
+        "total": 265,
+        "recent": 179,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4952,7 +4952,7 @@
         "total": 1696,
         "recent": 432,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5035,10 +5035,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 124,
-        "recent": 52,
+        "total": 125,
+        "recent": 53,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5077,10 +5077,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 91,
-        "recent": 80,
+        "total": 92,
+        "recent": 81,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5104,7 +5104,7 @@
       "profile": "content",
       "thumbnail": "data/mods/hydhyro@gen1recomp_portuguese_ui/thumbnail.png",
       "description_url": "data/mods/hydhyro@gen1recomp_portuguese_ui/description.md",
-      "summary": "Tradu\u00e7\u00e3o da inferface do launcher para pt-br. N\u00e3o traduz os jogos.",
+      "summary": "Tradução da inferface do launcher para pt-br. Não traduz os jogos.",
       "latest": {
         "version": "0.1.3",
         "tag": "0.1.3",
@@ -5119,10 +5119,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 93,
-        "recent": 59,
+        "total": 95,
+        "recent": 61,
         "window_days": 7,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5174,7 +5174,7 @@
       "license": "MIT",
       "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@irregular_origin/irregular_origin-1.0.10.zip",
       "source_zip": "irregular_origin-1.0.10.zip",
-      "summary": "v1.0.10 split-foundation Irregular line using the final canonical normal/shiny battle, menu, icon and follower art, routed through the native renderer with a Psydren Pok\u00e9dex acquisition preview.",
+      "summary": "v1.0.10 split-foundation Irregular line using the final canonical normal/shiny battle, menu, icon and follower art, routed through the native renderer with a Psydren Pokédex acquisition preview.",
       "source_scope": "DuskPromised original mod",
       "update_check": "off",
       "optional_dependencies": [
@@ -5219,7 +5219,7 @@
       "latest": {
         "version": "1.1.1",
         "tag": "1.1.1",
-        "name": "1.1.1 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "1.1.1 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:16Z",
         "zip": {
@@ -5233,7 +5233,7 @@
         "total": 221,
         "recent": 145,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5275,9 +5275,9 @@
     {
       "folder": "bryanthaboi@translation-ja-hrkt",
       "id": "translation-ja-hrkt",
-      "title": "JP GREEN - Poketto Monsut\u0101 Midori",
+      "title": "JP GREEN - Poketto Monsutā Midori",
       "author": "bryanthaboi",
-      "summary": "Japanese translation of Red and Blue, rendered through the engine's bundled Plain Pixel TTF \u2014 no glyph sheet needed.",
+      "summary": "Japanese translation of Red and Blue, rendered through the engine's bundled Plain Pixel TTF — no glyph sheet needed.",
       "version": "0.4.4",
       "categories": [
         "TRANSLATION"
@@ -5311,7 +5311,7 @@
         "total": 313,
         "recent": 63,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5355,7 +5355,7 @@
       "id": "kanto_ascendant",
       "title": "Kanto Ascendant",
       "author": "Roxas2712",
-      "summary": "A living 251-Pok\u00e9mon Kanto expansion with evolving rematches, Johto progression, legendary events, breeding, shinies, Mega Evolution and a substantial postgame.",
+      "summary": "A living 251-Pokémon Kanto expansion with evolving rematches, Johto progression, legendary events, breeding, shinies, Mega Evolution and a substantial postgame.",
       "version": "6.5.7",
       "categories": [
         "GAMEPLAY",
@@ -5426,7 +5426,7 @@
       "latest": {
         "version": "6.7.10",
         "tag": "v6.7.10",
-        "name": "Kanto Ascendant 6.7.10 \u2014 Riolu Friendship Fix",
+        "name": "Kanto Ascendant 6.7.10 — Riolu Friendship Fix",
         "prerelease": false,
         "published_at": "2026-09-11T19:51:41Z",
         "zip": {
@@ -5437,10 +5437,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8819,
-        "recent": 1856,
+        "total": 8834,
+        "recent": 1871,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5486,7 +5486,7 @@
       "latest": {
         "version": "0.52.0",
         "tag": "v0.52.0",
-        "name": "v0.52.0 \u2014 a fainted lead, a frozen spectator, balls on the water, the eye on a route",
+        "name": "v0.52.0 — a fainted lead, a frozen spectator, balls on the water, the eye on a route",
         "prerelease": false,
         "published_at": "2026-09-15T01:53:24Z",
         "zip": {
@@ -5497,10 +5497,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 930,
-        "recent": 779,
+        "total": 943,
+        "recent": 792,
         "window_days": 19,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5539,10 +5539,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2013,
-        "recent": 549,
+        "total": 2014,
+        "recent": 550,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5600,10 +5600,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 753,
-        "recent": 502,
+        "total": 758,
+        "recent": 507,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5653,10 +5653,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3070,
-        "recent": 1480,
+        "total": 3073,
+        "recent": 1483,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5668,7 +5668,7 @@
       "id": "kanto_gear",
       "title": "Kanto Gear",
       "author": "AverageConsumer",
-      "summary": "A second screen when you have one. A better layout when you do not \u2014 maps, party data, battle intelligence and touch controls for Gen1Recomp.",
+      "summary": "A second screen when you have one. A better layout when you do not — maps, party data, battle intelligence and touch controls for Gen1Recomp.",
       "version": "2.2.0",
       "categories": [
         "UI",
@@ -5707,7 +5707,7 @@
       "latest": {
         "version": "3.2.9",
         "tag": "v3.2.9",
-        "name": "Kanto Gear 3.2.9 \u2014 Auto Battle Screen & Touch Menus",
+        "name": "Kanto Gear 3.2.9 — Auto Battle Screen & Touch Menus",
         "prerelease": false,
         "published_at": "2026-09-12T17:38:30Z",
         "zip": {
@@ -5718,10 +5718,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 18394,
-        "recent": 10743,
+        "total": 18450,
+        "recent": 10799,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5739,7 +5739,7 @@
       ],
       "repo": "https://github.com/jtfresh90/Kanto-Life-Mod",
       "github": "jtfresh90/Kanto-Life-Mod",
-      "summary": "Ambient town and route crowds, optional Pokemon NPCs, sleep toggle with rate control, and Common Courtesy knocking \u2014 for every gen1recomp game.",
+      "summary": "Ambient town and route crowds, optional Pokemon NPCs, sleep toggle with rate control, and Common Courtesy knocking — for every gen1recomp game.",
       "tags": [
         "npc",
         "town",
@@ -5775,10 +5775,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2696,
-        "recent": 1210,
+        "total": 2697,
+        "recent": 1211,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5797,7 +5797,7 @@
       ],
       "repo": "https://github.com/1Jamie/Kanto-Reforged",
       "github": "1Jamie/Kanto-Reforged",
-      "summary": "Expands Gen 1 and Gen 2 with Hoenn Pok\u00e9mon, Gen 3 battle mechanics & abilities, restored Kanto dungeons, and new postgame content.",
+      "summary": "Expands Gen 1 and Gen 2 with Hoenn Pokémon, Gen 3 battle mechanics & abilities, restored Kanto dungeons, and new postgame content.",
       "tags": [
         "pokemon",
         "gen2",
@@ -5828,23 +5828,23 @@
       "thumbnail": "data/mods/1Jamie@Kanto-Reforged/thumbnail.png",
       "description_url": "data/mods/1Jamie@Kanto-Reforged/description.md",
       "latest": {
-        "version": "1.7.8",
-        "tag": "v1.7.8",
-        "name": "v1.7.8",
+        "version": "1.7.9",
+        "tag": "v1.7.9",
+        "name": "v1.7.9",
         "prerelease": false,
-        "published_at": "2026-09-16T19:37:56Z",
+        "published_at": "2026-09-16T23:48:01Z",
         "zip": {
           "name": "Kanto-Reforged.zip",
-          "url": "https://github.com/1Jamie/Kanto-Reforged/releases/download/v1.7.8/Kanto-Reforged.zip",
-          "size": 10669396
+          "url": "https://github.com/1Jamie/Kanto-Reforged/releases/download/v1.7.9/Kanto-Reforged.zip",
+          "size": 10696727
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6043,
-        "recent": 71,
+        "total": 6108,
+        "recent": 136,
         "window_days": 1,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5900,7 +5900,7 @@
         "total": 40,
         "recent": 33,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5931,10 +5931,10 @@
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
-        "total": 91,
-        "recent": 68,
+        "total": 93,
+        "recent": 70,
         "window_days": 7,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5984,10 +5984,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1430,
-        "recent": 1002,
+        "total": 1431,
+        "recent": 1003,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6041,10 +6041,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1061,
-        "recent": 486,
+        "total": 1062,
+        "recent": 487,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6134,10 +6134,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2389,
-        "recent": 1221,
+        "total": 2406,
+        "recent": 1238,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6230,7 +6230,7 @@
         "total": 1538,
         "recent": 760,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6280,10 +6280,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 884,
-        "recent": 669,
+        "total": 885,
+        "recent": 670,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6336,10 +6336,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 14430,
-        "recent": 3668,
+        "total": 14445,
+        "recent": 3683,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6358,7 +6358,7 @@
         "QOL"
       ],
       "repo": "https://github.com/piftee/gen1recomp-modern-party-ui",
-      "summary": "Adds responsive type-coloured party and Pok\u00e9mon summary cards built from Gen 1's own font, sprites, and UI assets.",
+      "summary": "Adds responsive type-coloured party and Pokémon summary cards built from Gen 1's own font, sprites, and UI assets.",
       "tags": [
         "ui",
         "party",
@@ -6400,10 +6400,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5754,
-        "recent": 2377,
+        "total": 5767,
+        "recent": 2390,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6462,10 +6462,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2237,
-        "recent": 1674,
+        "total": 2249,
+        "recent": 1686,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6486,14 +6486,14 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/MaybeGreg@modern_type_framework/description.md",
-      "summary": "Updates the type chart to modern chart. Does not edit Pok\u00e9mon or moves.",
+      "summary": "Updates the type chart to modern chart. Does not edit Pokémon or moves.",
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
         "total": 79,
         "recent": 52,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6576,10 +6576,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1010,
-        "recent": 232,
+        "total": 1012,
+        "recent": 234,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6638,10 +6638,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 24,
-        "recent": 16,
+        "total": 25,
+        "recent": 17,
         "window_days": 7,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6691,10 +6691,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 874,
-        "recent": 573,
+        "total": 875,
+        "recent": 574,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6801,10 +6801,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5304,
-        "recent": 2390,
+        "total": 5313,
+        "recent": 2399,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6887,7 +6887,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-music-player",
-      "summary": "A fast in\u2011game music browser with favorites, queues, and instant access anywhere",
+      "summary": "A fast in‑game music browser with favorites, queues, and instant access anywhere",
       "tags": [
         "music player",
         "sound test",
@@ -6915,10 +6915,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1673,
-        "recent": 416,
+        "total": 1676,
+        "recent": 419,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6965,10 +6965,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1020,
-        "recent": 945,
+        "total": 1025,
+        "recent": 950,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7015,10 +7015,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 749,
-        "recent": 697,
+        "total": 752,
+        "recent": 700,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7065,10 +7065,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 973,
-        "recent": 906,
+        "total": 978,
+        "recent": 911,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7087,7 +7087,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/Mutant-Monster-Lab",
-      "summary": "Splice Pok\u00e9mon mutations and unleash global phenomena with the Holon Collider.",
+      "summary": "Splice Pokémon mutations and unleash global phenomena with the Holon Collider.",
       "tags": [
         "pokemon",
         "mutations",
@@ -7104,7 +7104,7 @@
       "latest": {
         "version": "1.1.0",
         "tag": "v1.1.0",
-        "name": "\ud83e\uddec Mutant Monster Lab v1.1.0",
+        "name": "🧬 Mutant Monster Lab v1.1.0",
         "prerelease": false,
         "published_at": "2026-09-08T15:44:03Z",
         "zip": {
@@ -7118,7 +7118,7 @@
         "total": 104,
         "recent": 54,
         "window_days": 7,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7255,7 +7255,7 @@
       "categories": [
         "QOL"
       ],
-      "summary": "Adds a RENAME option to the Pok\u00e9mon party submenu so any party Pok\u00e9mon can be nicknamed directly from the menu.",
+      "summary": "Adds a RENAME option to the Pokémon party submenu so any party Pokémon can be nicknamed directly from the menu.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -7314,7 +7314,7 @@
         "total": 142,
         "recent": 90,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7368,10 +7368,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5420,
-        "recent": 2255,
+        "total": 5424,
+        "recent": 2259,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7400,7 +7400,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/TheRhysWyrill@instant_heal_pc_rest/description.md",
-      "summary": "Instantly heals your party when talking to Nurse Joy, auto-advances the heal dialog, turns the player around to prevent accidental re-dialogue, and automatically heals Pok\u00e9mon deposited into PC storag",
+      "summary": "Instantly heals your party when talking to Nurse Joy, auto-advances the heal dialog, turns the player around to prevent accidental re-dialogue, and automatically heals Pokémon deposited into PC storag",
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
@@ -7415,10 +7415,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2195,
-        "recent": 971,
+        "total": 2201,
+        "recent": 977,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7477,10 +7477,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 780,
-        "recent": 170,
+        "total": 782,
+        "recent": 172,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7506,14 +7506,14 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/Gamecorner_033@overworld_encounters/description.md",
-      "summary": "Replaces hidden random grass encounters with visible roaming overworld Pok\u00e9mon sprites!",
+      "summary": "Replaces hidden random grass encounters with visible roaming overworld Pokémon sprites!",
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
         "total": 0,
         "recent": 0,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7641,10 +7641,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 203,
-        "recent": 172,
+        "total": 204,
+        "recent": 173,
         "window_days": 23,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7699,7 +7699,7 @@
         "total": 1182,
         "recent": 275,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7786,10 +7786,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2563,
-        "recent": 842,
+        "total": 2571,
+        "recent": 850,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7841,10 +7841,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 953,
-        "recent": 411,
+        "total": 954,
+        "recent": 412,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7861,7 +7861,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/PokeSurvive",
-      "summary": "PokeSurvive transforms a normal Pok\u00e9mon playthrough into a much more unpredictable journey built around survival, resource management, randomized worlds, Pok\u00e9mon personalities, camping, exploration ev",
+      "summary": "PokeSurvive transforms a normal Pokémon playthrough into a much more unpredictable journey built around survival, resource management, randomized worlds, Pokémon personalities, camping, exploration ev",
       "tags": [
         "simulation",
         "survival",
@@ -7878,23 +7878,23 @@
       "thumbnail": "data/mods/GawdMode@pokemon_survival/thumbnail.png",
       "description_url": "data/mods/GawdMode@pokemon_survival/description.md",
       "latest": {
-        "version": "1.3.3",
-        "tag": "v1.3.3",
-        "name": "\ud83c\udfd5\ufe0f PokeSurvive v1.3.3 \u2014 Battle Factory Remix Compatibility Update",
+        "version": "2.0.0",
+        "tag": "v2.0.0",
+        "name": "🏕️ PokeSurvive v2.0.0 — Immersive World",
         "prerelease": false,
-        "published_at": "2026-09-11T05:13:12Z",
+        "published_at": "2026-09-16T21:35:47Z",
         "zip": {
-          "name": "PokeSurvive-v1.3.3.zip",
-          "url": "https://github.com/GawdMode/PokeSurvive/releases/download/v1.3.3/PokeSurvive-v1.3.3.zip",
-          "size": 467788
+          "name": "PokeSurvive-v2.0.0.zip",
+          "url": "https://github.com/GawdMode/PokeSurvive/releases/download/v2.0.0/PokeSurvive-v2.0.0.zip",
+          "size": 1357997
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 875,
-        "recent": 406,
+        "total": 878,
+        "recent": 409,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7912,7 +7912,7 @@
         "GAMEPLAY"
       ],
       "repo": "https://github.com/mresnick67/Gen1ReComp-Pokewalker",
-      "summary": "Your real-world steps become EXP for your Pok\u00e9mon party or Watts to spend in-game on encounters and items.",
+      "summary": "Your real-world steps become EXP for your Pokémon party or Watts to spend in-game on encounters and items.",
       "tags": [
         "steps",
         "mobile",
@@ -7932,7 +7932,7 @@
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
-        "name": "Pokewalker 1.2.0 \u2014 step insurance",
+        "name": "Pokewalker 1.2.0 — step insurance",
         "prerelease": false,
         "published_at": "2026-08-15T17:03:31Z",
         "zip": {
@@ -7943,10 +7943,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3186,
-        "recent": 706,
+        "total": 3187,
+        "recent": 707,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7957,7 +7957,7 @@
     {
       "folder": "Code-Grub@pokebag_plus",
       "id": "pokebag_plus",
-      "title": "Pok\u00e9Bag+",
+      "title": "PokéBag+",
       "author": "Code-Grub",
       "summary": "The bag in four pockets -- ITEMS, BALLS, KEY ITEMS, TM/HM -- paged with Left and Right, keeping vanilla order and the SELECT swap.",
       "version": "0.1.0",
@@ -7998,10 +7998,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 158,
-        "recent": 134,
+        "total": 160,
+        "recent": 136,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8012,13 +8012,13 @@
     {
       "folder": "FAFF0x@pokedex_plus",
       "id": "pokedex_plus",
-      "title": "Pok\u00e9dex Plus",
+      "title": "Pokédex Plus",
       "author": "FAFF0x",
       "version": "1.3.4",
       "categories": [
         "UI"
       ],
-      "summary": "Enhances the Pok\u00e9dex with search, stats, habitats, evolutions, moves, regional-style shared-number variants, and pokemon.icon rows compatible with the original Modern UI 0.8.x via Modern UI Icon Fix.",
+      "summary": "Enhances the Pokédex with search, stats, habitats, evolutions, moves, regional-style shared-number variants, and pokemon.icon rows compatible with the original Modern UI 0.8.x via Modern UI Icon Fix.",
       "tags": [],
       "api": 2,
       "profile": "content",
@@ -8044,7 +8044,7 @@
     {
       "folder": "Code-Grub@pokegear_menu",
       "id": "pokegear_menu",
-      "title": "Pok\u00e9Gear Menu",
+      "title": "PokéGear Menu",
       "author": "Code-Grub",
       "version": "0.1.8",
       "categories": [
@@ -8078,7 +8078,7 @@
       "latest": {
         "version": "0.3.0",
         "tag": "v0.3.0",
-        "name": "Pok\u00e9Gear Menu 0.3.0",
+        "name": "PokéGear Menu 0.3.0",
         "prerelease": false,
         "published_at": "2026-09-08T22:03:24Z",
         "zip": {
@@ -8089,10 +8089,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 400,
-        "recent": 399,
+        "total": 404,
+        "recent": 403,
         "window_days": 19,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8103,7 +8103,7 @@
     {
       "folder": "Gamecorner_033@PokePCFollowers_VoxelMerge",
       "id": "PokePCFollowers_VoxelMerge",
-      "title": "Pok\u00e9PC Followers (W/Voxel Support)",
+      "title": "PokéPC Followers (W/Voxel Support)",
       "author": "Gamecorner_033",
       "version": "0.5.1",
       "categories": [
@@ -8118,14 +8118,14 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/Gamecorner_033@PokePCFollowers_VoxelMerge/description.md",
-      "summary": "An all-species overworld follower mod for Pok\u00e9mon Red, Blue, and Yellow (Gen 1 Recomp). This mod allows every single Gen 1 Pok\u00e9mon to walk behind you in full overworld color as your companion!",
+      "summary": "An all-species overworld follower mod for Pokémon Red, Blue, and Yellow (Gen 1 Recomp). This mod allows every single Gen 1 Pokémon to walk behind you in full overworld color as your companion!",
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
         "total": 0,
         "recent": 0,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8173,10 +8173,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2217,
-        "recent": 1890,
+        "total": 2250,
+        "recent": 1923,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8234,10 +8234,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 20381,
-        "recent": 13337,
+        "total": 20454,
+        "recent": 13410,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8284,10 +8284,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 18866,
-        "recent": 7738,
+        "total": 18893,
+        "recent": 7765,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8332,10 +8332,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 60608,
-        "recent": 12542,
+        "total": 60674,
+        "recent": 12608,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8378,10 +8378,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1210,
-        "recent": 739,
+        "total": 1212,
+        "recent": 741,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8475,7 +8475,7 @@
         "total": 352,
         "recent": 102,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8522,7 +8522,7 @@
       "latest": {
         "version": "1.1.11",
         "tag": "v1.1.11",
-        "name": "v1.1.11 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "v1.1.11 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:18Z",
         "zip": {
@@ -8536,7 +8536,7 @@
         "total": 113,
         "recent": 84,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8580,10 +8580,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5908,
-        "recent": 1183,
+        "total": 5914,
+        "recent": 1189,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8603,7 +8603,7 @@
         "QOL"
       ],
       "repo": "https://github.com/Razor1993-Real/FlyingOverhaul",
-      "summary": "Overhauls the FLY system while keeping it as close to the vanilla style as possible. FLY no longer opens the town map\u2014instead, ride the bird freely over Kanto and choose your own landing spot",
+      "summary": "Overhauls the FLY system while keeping it as close to the vanilla style as possible. FLY no longer opens the town map—instead, ride the bird freely over Kanto and choose your own landing spot",
       "tags": [
         "flying",
         "exploration",
@@ -8636,10 +8636,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 641,
-        "recent": 318,
+        "total": 643,
+        "recent": 320,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8684,23 +8684,23 @@
       "thumbnail": "data/mods/alamops@rby_mmo/thumbnail.png",
       "description_url": "data/mods/alamops@rby_mmo/description.md",
       "latest": {
-        "version": "1.4.1",
-        "tag": "v1.4.1",
-        "name": "1.4.1",
+        "version": "1.4.3",
+        "tag": "v1.4.3",
+        "name": "1.4.3",
         "prerelease": false,
-        "published_at": "2026-09-10T02:13:28Z",
+        "published_at": "2026-09-17T00:33:47Z",
         "zip": {
-          "name": "rby_mmo-1.4.1.zip",
-          "url": "https://github.com/alamops/RBYMMOMod/releases/download/v1.4.1/rby_mmo-1.4.1.zip",
-          "size": 2037446
+          "name": "rby_mmo-1.4.3.zip",
+          "url": "https://github.com/alamops/RBYMMOMod/releases/download/v1.4.3/rby_mmo-1.4.3.zip",
+          "size": 2050513
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5925,
-        "recent": 2339,
+        "total": 5945,
+        "recent": 2359,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8739,7 +8739,7 @@
         "total": 174,
         "recent": 73,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8752,7 +8752,7 @@
       "id": "recomp-rider",
       "title": "Recomp Rider",
       "author": "adrian",
-      "summary": "Drive KITT across the Pok\u00e9mon world.",
+      "summary": "Drive KITT across the Pokémon world.",
       "version": "0.4.0",
       "categories": [
         "GAMEPLAY",
@@ -8796,10 +8796,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1174,
-        "recent": 656,
+        "total": 1182,
+        "recent": 664,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8939,7 +8939,7 @@
       "license": "MIT",
       "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_kaizo_bridge/red_earth_kaizo_bridge-1.0.4.zip",
       "source_zip": "red_earth_kaizo_bridge-1.0.4.zip",
-      "summary": "v1.0.10-foundation Kaizo bridge with genuine shiny Oak gifts, regional rival continuity, correct Oak names, a Pok\u00e9dex preview for the optional final-ball starter, and upward-only dynamic scaling.",
+      "summary": "v1.0.10-foundation Kaizo bridge with genuine shiny Oak gifts, regional rival continuity, correct Oak names, a Pokédex preview for the optional final-ball starter, and upward-only dynamic scaling.",
       "source_scope": "DuskPromised original mod",
       "update_check": "off"
     },
@@ -9123,7 +9123,7 @@
     {
       "folder": "DuskPromised@red_earth_gate1_test_harness",
       "id": "red_earth_gate1_test_harness",
-      "title": "Red Earth \u2014 Gate 1 Test Harness",
+      "title": "Red Earth — Gate 1 Test Harness",
       "author": "Adam M. Aguilera",
       "version": "0.1.2",
       "categories": [
@@ -9172,7 +9172,7 @@
     {
       "folder": "DuskPromised@red_earth_irregular_core",
       "id": "red_earth_irregular_core",
-      "title": "Red Earth \u2014 Gate 1: Irregular Core",
+      "title": "Red Earth — Gate 1: Irregular Core",
       "author": "Adam M. Aguilera",
       "version": "0.1.2",
       "categories": [
@@ -9219,9 +9219,49 @@
       "optional_integrations": []
     },
     {
+      "folder": "DuskPromised@red_earth_gate2_sparkle_gold_lilac",
+      "id": "red_earth_gate2_sparkle_gold_lilac",
+      "title": "Red Earth — Gate 2 Gold-Lilac Shiny Sparkle",
+      "author": "Adam M. Aguilera",
+      "version": "0.2.4",
+      "categories": [
+        "GRAPHICS",
+        "DEVELOPMENT"
+      ],
+      "tags": [
+        "red earth",
+        "gate 2",
+        "standalone"
+      ],
+      "api": 2,
+      "profile": "content",
+      "game_version": ">=0.2.24 <2.0.0",
+      "permissions": [
+        "engine_internals"
+      ],
+      "dependencies": [
+        "red_earth_gate2_presentation@0.2.0",
+        "red_earth_irregular_shiny@0.2.0",
+        "crystal_animated_sprites_with_shiny_visuals@2.0.3"
+      ],
+      "conflicts": [],
+      "experimental": true,
+      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+      "github": "DuskPromised/gen1recomp-mod-index",
+      "license": "MIT",
+      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_gate2_sparkle_gold_lilac/red_earth_gate2_sparkle_gold_lilac-0.2.4.zip",
+      "source_zip": "red_earth_gate2_sparkle_gold_lilac-0.2.4.zip",
+      "summary": "Gate 2-only presentation overlay that covers Crystal's black player send-out sparkle with a warm gold sparkle and restrained lilac glint. No shiny state, art routing, scale, evolution, starter, nature, passive, or audio logic changes.",
+      "source_scope": "DuskPromised standalone Gate 2 module",
+      "update_check": "off",
+      "sha256": "a53b7e965a5eedad476eb87cb2f72317e30cb81b1d2bfddfaabb835673fd7c52",
+      "optional_dependencies": [],
+      "optional_integrations": []
+    },
+    {
       "folder": "DuskPromised@red_earth_gate2_presentation",
       "id": "red_earth_gate2_presentation",
-      "title": "Red Earth \u2014 Gate 2 Presentation Compatibility",
+      "title": "Red Earth — Gate 2 Presentation Compatibility",
       "author": "Adam M. Aguilera",
       "version": "0.2.0",
       "categories": [
@@ -9262,7 +9302,7 @@
     {
       "folder": "DuskPromised@red_earth_gate2_test_harness",
       "id": "red_earth_gate2_test_harness",
-      "title": "Red Earth \u2014 Gate 2 Test Harness",
+      "title": "Red Earth — Gate 2 Test Harness",
       "author": "Adam M. Aguilera",
       "version": "0.2.0",
       "categories": [
@@ -9302,7 +9342,7 @@
     {
       "folder": "DuskPromised@red_earth_irregular_shiny",
       "id": "red_earth_irregular_shiny",
-      "title": "Red Earth \u2014 Gate 2: Irregular Shiny",
+      "title": "Red Earth — Gate 2: Irregular Shiny",
       "author": "Adam M. Aguilera",
       "version": "0.2.0",
       "categories": [
@@ -9340,7 +9380,7 @@
     {
       "folder": "DuskPromised@red_earth_irregular_potato_compat",
       "id": "red_earth_irregular_potato_compat",
-      "title": "Red Earth \u2014 Irregular Potato Compatibility",
+      "title": "Red Earth — Irregular Potato Compatibility",
       "author": "Adam M. Aguilera",
       "version": "0.1.3",
       "categories": [
@@ -9382,7 +9422,7 @@
     {
       "folder": "DuskPromised@red_earth_solipsdion_shiny_back_fix",
       "id": "red_earth_solipsdion_shiny_back_fix",
-      "title": "Red Earth \u2014 Solipsdion Shiny Back Pixel Repair",
+      "title": "Red Earth — Solipsdion Shiny Back Pixel Repair",
       "author": "Adam M. Aguilera",
       "version": "0.2.3",
       "categories": [
@@ -9418,7 +9458,7 @@
     {
       "folder": "DuskPromised@red_earth_irregular_rebuild",
       "id": "red_earth_irregular_rebuild",
-      "title": "Red Earth: Irregular \u2014 Rebuild Candidate",
+      "title": "Red Earth: Irregular — Rebuild Candidate",
       "author": "Adam M. Aguilera",
       "version": "0.1.3",
       "categories": [
@@ -9478,7 +9518,7 @@
       "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_irregular_rebuild/red_earth_irregular_rebuild-0.1.3.zip",
       "source_zip": "red_earth_irregular_rebuild-0.1.3.zip",
       "sha256": "a63efc97623daa1ff82e3ceb4fb0d80dd66a672b39ad58830228584c9b2d8403",
-      "summary": "TEST candidate \u2014 current Gen1Recomp icon-schema fix + direct Oak-ball ownership; no global battle-sprite scaling.",
+      "summary": "TEST candidate — current Gen1Recomp icon-schema fix + direct Oak-ball ownership; no global battle-sprite scaling.",
       "source_scope": "DuskPromised original test candidate",
       "update_check": "off"
     },
@@ -9656,10 +9696,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 346,
-        "recent": 87,
+        "total": 347,
+        "recent": 88,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9747,10 +9787,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 794,
-        "recent": 745,
+        "total": 804,
+        "recent": 755,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9797,10 +9837,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8525,
-        "recent": 1570,
+        "total": 8529,
+        "recent": 1574,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9850,10 +9890,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 19572,
-        "recent": 7853,
+        "total": 19608,
+        "recent": 7889,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9872,7 +9912,7 @@
         "CONTENT"
       ],
       "repo": "https://github.com/GawdMode/Safari-Derby",
-      "summary": "Race and train your Pok\u00e9mon at Fuchsia's Safari Derby, compete in cups, wager on races, earn ribbons, and unlock unique prizes.",
+      "summary": "Race and train your Pokémon at Fuchsia's Safari Derby, compete in cups, wager on races, earn ribbons, and unlock unique prizes.",
       "tags": [
         "racing",
         "safari derby",
@@ -9895,7 +9935,7 @@
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
-        "name": "\ud83c\udfc1 Safari Derby v1.2.0",
+        "name": "🏁 Safari Derby v1.2.0",
         "prerelease": false,
         "published_at": "2026-09-06T16:08:35Z",
         "zip": {
@@ -9906,10 +9946,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 107,
-        "recent": 53,
+        "total": 111,
+        "recent": 57,
         "window_days": 7,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9966,7 +10006,7 @@
         "total": 410,
         "recent": 242,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10022,7 +10062,7 @@
         "total": 483,
         "recent": 253,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10068,7 +10108,7 @@
       "latest": {
         "version": "0.4.1",
         "tag": "v0.4.1",
-        "name": "v0.4.1 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "v0.4.1 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:23Z",
         "zip": {
@@ -10082,7 +10122,7 @@
         "total": 185,
         "recent": 155,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10131,7 +10171,7 @@
       "latest": {
         "version": "0.2.1",
         "tag": "0.2.1",
-        "name": "0.2.1 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "0.2.1 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:21Z",
         "zip": {
@@ -10145,7 +10185,7 @@
         "total": 109,
         "recent": 94,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10180,7 +10220,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/Satori7Kensho@shiny_starters_gifts/description.md",
-      "summary": "Force shiny starters and optionally all story gifts in Gen1Recomp. Must activate before receiving Pok\u00e9mon for shiny.",
+      "summary": "Force shiny starters and optionally all story gifts in Gen1Recomp. Must activate before receiving Pokémon for shiny.",
       "latest": {
         "version": "1.2.0",
         "tag": "v1.2.0",
@@ -10195,10 +10235,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1731,
-        "recent": 744,
+        "total": 1733,
+        "recent": 746,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10217,7 +10257,7 @@
         "QOL"
       ],
       "repo": "https://github.com/masterwebx/gen1recomp-shiny-pokemon",
-      "summary": "Shiny DV rolls, Gen 2 recolors, and sparkles in battle/overworld; rates and toggles under OPTIONS \u2192 SHINY POKEMON.",
+      "summary": "Shiny DV rolls, Gen 2 recolors, and sparkles in battle/overworld; rates and toggles under OPTIONS → SHINY POKEMON.",
       "tags": [
         "shiny",
         "shinies",
@@ -10245,10 +10285,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 16261,
-        "recent": 4330,
+        "total": 16275,
+        "recent": 4344,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10298,10 +10338,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 847,
-        "recent": 663,
+        "total": 851,
+        "recent": 667,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10353,7 +10393,7 @@
         "total": 527,
         "recent": 297,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10402,7 +10442,7 @@
         "total": 270,
         "recent": 111,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10445,7 +10485,7 @@
         "total": 0,
         "recent": 0,
         "window_days": 19,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10490,7 +10530,7 @@
       "latest": {
         "version": "0.5.1",
         "tag": "v0.5.1",
-        "name": "v0.5.1 \u2014 Gen1Recomp 0.2.18 compatibility",
+        "name": "v0.5.1 — Gen1Recomp 0.2.18 compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T03:39:25Z",
         "zip": {
@@ -10504,7 +10544,7 @@
         "total": 178,
         "recent": 160,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10549,7 +10589,7 @@
         "total": 154,
         "recent": 98,
         "window_days": 19,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10595,7 +10635,7 @@
       "latest": {
         "version": "1.1.2",
         "tag": "1.1.2",
-        "name": "Starter Picker 1.1.2 \u2014 Better Menus options compatibility",
+        "name": "Starter Picker 1.1.2 — Better Menus options compatibility",
         "prerelease": false,
         "published_at": "2026-08-25T09:36:56Z",
         "zip": {
@@ -10606,10 +10646,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 711,
-        "recent": 483,
+        "total": 714,
+        "recent": 486,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10627,7 +10667,7 @@
         "AUDIO"
       ],
       "repo": "https://github.com/ShaneMcGovernIE/surround-audio",
-      "summary": "Pok\u00e9mon Crystal's SOUND option, ported to Red/Blue/Yellow's 8-bit music: MONO, STEREO channel split, and 5.1 surround with center-channel sound effects.",
+      "summary": "Pokémon Crystal's SOUND option, ported to Red/Blue/Yellow's 8-bit music: MONO, STEREO channel split, and 5.1 surround with center-channel sound effects.",
       "tags": [
         "audio",
         "stereo",
@@ -10658,10 +10698,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 10514,
-        "recent": 3568,
+        "total": 10535,
+        "recent": 3589,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10746,7 +10786,7 @@
         "total": 608,
         "recent": 175,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10874,10 +10914,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 10128,
-        "recent": 3985,
+        "total": 10147,
+        "recent": 4004,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11154,10 +11194,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 303,
-        "recent": 179,
+        "total": 304,
+        "recent": 180,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11199,10 +11239,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 198,
-        "recent": 139,
+        "total": 199,
+        "recent": 140,
         "window_days": 11,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11256,10 +11296,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1707,
-        "recent": 294,
+        "total": 1711,
+        "recent": 298,
         "window_days": 14,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11295,7 +11335,7 @@
     {
       "folder": "jherediagu@traduccion_es",
       "id": "traduccion_es",
-      "title": "Traducci\u00f3n Espa\u00f1ola",
+      "title": "Traducción Española",
       "author": "jherediagu",
       "version": "0.1.0",
       "categories": [
@@ -11303,7 +11343,7 @@
         "TRANSLATION"
       ],
       "repo": "https://github.com/jherediagu/traduccion_es",
-      "summary": "El juego en espa\u00f1ol desde tu propio cartucho EUR \u2014 guion oficial, sin redistribuir nada",
+      "summary": "El juego en español desde tu propio cartucho EUR — guion oficial, sin redistribuir nada",
       "tags": [
         "spanish",
         "translation",
@@ -11333,10 +11373,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 316,
-        "recent": 163,
+        "total": 318,
+        "recent": 165,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11347,7 +11387,7 @@
     {
       "folder": "AntoniMan31@trad-fr-extended",
       "id": "trad-fr-extended",
-      "title": "Traduction FR \u00e9tendue",
+      "title": "Traduction FR étendue",
       "author": "AntoniMan31",
       "version": "0.1.0",
       "categories": [
@@ -11355,7 +11395,7 @@
         "TRANSLATION"
       ],
       "repo": "https://github.com/antoniman31/trad-fr-extended",
-      "summary": "Compl\u00e8te la traduction fran\u00e7aise de translation-fr : 151 cat\u00e9gories du Pok\u00e9dex, 109 textes moteur et 11 noms manquants. N\u00e9cessite translation-fr.",
+      "summary": "Complète la traduction française de translation-fr : 151 catégories du Pokédex, 109 textes moteur et 11 noms manquants. Nécessite translation-fr.",
       "tags": [
         "francais",
         "traduction",
@@ -11376,7 +11416,7 @@
       "latest": {
         "version": "0.2.0",
         "tag": "v0.2.0",
-        "name": "Traduction FR \u00e9tendue v0.2.0",
+        "name": "Traduction FR étendue v0.2.0",
         "prerelease": false,
         "published_at": "2026-08-09T19:38:46Z",
         "zip": {
@@ -11387,10 +11427,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1098,
-        "recent": 599,
+        "total": 1103,
+        "recent": 604,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11400,9 +11440,9 @@
     {
       "folder": "MrJoufflu@translation-qc",
       "id": "translation-qc",
-      "title": "Traduction Qu\u00e9b\u00e9coise",
+      "title": "Traduction Québécoise",
       "author": "MrJoufflu",
-      "summary": "Traduction compl\u00e8te en fran\u00e7ais qu\u00e9b\u00e9cois (joual + sacres cibl\u00e9s) pour Pok\u00e9mon Rouge, Bleu et Jaune, bas\u00e9e sur le texte fran\u00e7ais officiel.",
+      "summary": "Traduction complète en français québécois (joual + sacres ciblés) pour Pokémon Rouge, Bleu et Jaune, basée sur le texte français officiel.",
       "version": "1.0.1",
       "categories": [
         "TRANSLATION"
@@ -11438,7 +11478,7 @@
         "total": 159,
         "recent": 63,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11505,7 +11545,7 @@
         "total": 73,
         "recent": 66,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11551,10 +11591,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 9653,
-        "recent": 3489,
+        "total": 9687,
+        "recent": 3523,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11582,7 +11622,7 @@
       "profile": "content",
       "thumbnail": null,
       "description_url": "data/mods/DarkwarePX@trainer_skins/description.md",
-      "summary": "Trainer Skins adds customizable trainer sprites to Pok\u00e9mon Gen 1 and Gen 2 in Gen 1 Recomp.",
+      "summary": "Trainer Skins adds customizable trainer sprites to Pokémon Gen 1 and Gen 2 in Gen 1 Recomp.",
       "latest": {
         "version": "0.2.0",
         "tag": "V0.2.0",
@@ -11600,7 +11640,7 @@
         "total": 319,
         "recent": 318,
         "window_days": 19,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11618,7 +11658,7 @@
         "AUDIO"
       ],
       "repo": "https://github.com/ElvieBlooms/trainer_talk",
-      "summary": "Trainer Talk adds a voice to your Pok\u00e9mon adventure \u2014 someone in your corner who reacts to what's actually happening as you play.",
+      "summary": "Trainer Talk adds a voice to your Pokémon adventure — someone in your corner who reacts to what's actually happening as you play.",
       "tags": [
         "audio",
         "voice",
@@ -11645,10 +11685,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1157,
-        "recent": 622,
+        "total": 1159,
+        "recent": 624,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11709,10 +11749,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2839,
-        "recent": 846,
+        "total": 2842,
+        "recent": 849,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11759,10 +11799,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 16071,
-        "recent": 4623,
+        "total": 16091,
+        "recent": 4643,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11808,7 +11848,7 @@
       "id": "useful_bag",
       "title": "Useful Bag",
       "author": "ShaneMcGovernIE",
-      "summary": "999-capacity bag auto-sorted into six pockets (Items, Medicine, Pok\u00e9 Balls, TMs / HMs, Battle Items, Key Items) cycled with Left/Right, plus TAB / R3 to sort by name or count.",
+      "summary": "999-capacity bag auto-sorted into six pockets (Items, Medicine, Poké Balls, TMs / HMs, Battle Items, Key Items) cycled with Left/Right, plus TAB / R3 to sort by name or count.",
       "version": "2.1.0",
       "categories": [
         "QOL"
@@ -11843,10 +11883,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 19947,
-        "recent": 7740,
+        "total": 19982,
+        "recent": 7775,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11859,7 +11899,7 @@
       "id": "useful_dex",
       "title": "Useful Dex",
       "author": "ShaneMcGovernIE",
-      "summary": "Press A in the Pok\u00e9dex to cycle the species page into base stats, BST, evolutions, and the full movelist.",
+      "summary": "Press A in the Pokédex to cycle the species page into base stats, BST, evolutions, and the full movelist.",
       "version": "1.1.0",
       "categories": [
         "UI",
@@ -11894,10 +11934,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8204,
-        "recent": 1527,
+        "total": 8211,
+        "recent": 1534,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11947,10 +11987,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3029,
-        "recent": 1318,
+        "total": 3044,
+        "recent": 1333,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11998,10 +12038,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 10020,
-        "recent": 2016,
+        "total": 10033,
+        "recent": 2029,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12055,10 +12095,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 259,
-        "recent": 210,
+        "total": 260,
+        "recent": 211,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12069,9 +12109,9 @@
     {
       "folder": "bryanthaboi@versaovermelha",
       "id": "versaovermelha",
-      "title": "Vers\u00e3oVermelha",
+      "title": "VersãoVermelha",
       "author": "bryanthaboi",
-      "summary": "Portugu\u00eas brasileiro, ripped from the Hyd~Tradu\u00e7\u00f5es Vers\u00e3o Vermelha v1.3.1 IPS patch.",
+      "summary": "Português brasileiro, ripped from the Hyd~Traduções Versão Vermelha v1.3.1 IPS patch.",
       "version": "0.2.0",
       "categories": [
         "TRANSLATION"
@@ -12102,10 +12142,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4349,
-        "recent": 677,
+        "total": 4357,
+        "recent": 685,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12161,10 +12201,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2280,
-        "recent": 1067,
+        "total": 2285,
+        "recent": 1072,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12229,10 +12269,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5859,
-        "recent": 3516,
+        "total": 5881,
+        "recent": 3538,
         "window_days": 21,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12288,7 +12328,7 @@
         "total": 127,
         "recent": 95,
         "window_days": 26,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12375,7 +12415,7 @@
         "total": 1664,
         "recent": 279,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12422,10 +12462,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 13442,
-        "recent": 3421,
+        "total": 13457,
+        "recent": 3436,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12438,7 +12478,7 @@
       "id": "wild_skies",
       "title": "Wild Skies",
       "author": "ShaneHudson",
-      "summary": "Flying Pok\u00e9mon from the encounter tables cross the overworld.",
+      "summary": "Flying Pokémon from the encounter tables cross the overworld.",
       "version": "1.5.0",
       "categories": [
         "GAMEPLAY",
@@ -12477,10 +12517,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 12495,
-        "recent": 4372,
+        "total": 12522,
+        "recent": 4399,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12534,10 +12574,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 77650,
-        "recent": 21457,
+        "total": 77748,
+        "recent": 21555,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12585,61 +12625,23 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6895,
-        "recent": 2028,
+        "total": 6902,
+        "recent": 2035,
         "window_days": 29,
-        "as_of": "2026-09-16T21:03:52.832Z"
+        "as_of": "2026-09-17T04:09:13.005Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
       "dependencies": [],
       "conflicts": []
-    },
-    {
-      "folder": "DuskPromised@red_earth_gate2_sparkle_gold_lilac",
-      "id": "red_earth_gate2_sparkle_gold_lilac",
-      "title": "Red Earth \u2014 Gate 2 Gold-Lilac Shiny Sparkle",
-      "author": "Adam M. Aguilera",
-      "version": "0.2.4",
-      "categories": [
-        "GRAPHICS",
-        "DEVELOPMENT"
-      ],
-      "tags": [
-        "red earth",
-        "gate 2",
-        "standalone"
-      ],
-      "api": 2,
-      "profile": "content",
-      "game_version": ">=0.2.24 <2.0.0",
-      "permissions": [
-        "engine_internals"
-      ],
-      "dependencies": [
-        "red_earth_gate2_presentation@0.2.0",
-        "red_earth_irregular_shiny@0.2.0",
-        "crystal_animated_sprites_with_shiny_visuals@2.0.3"
-      ],
-      "conflicts": [],
-      "experimental": true,
-      "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
-      "github": "DuskPromised/gen1recomp-mod-index",
-      "license": "MIT",
-      "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_gate2_sparkle_gold_lilac/red_earth_gate2_sparkle_gold_lilac-0.2.4.zip",
-      "source_zip": "red_earth_gate2_sparkle_gold_lilac-0.2.4.zip",
-      "summary": "Gate 2-only presentation overlay that covers Crystal's black player send-out sparkle with a warm gold sparkle and restrained lilac glint. No shiny state, art routing, scale, evolution, starter, nature, passive, or audio logic changes.",
-      "source_scope": "DuskPromised standalone Gate 2 module",
-      "update_check": "off",
-      "sha256": "a53b7e965a5eedad476eb87cb2f72317e30cb81b1d2bfddfaabb835673fd7c52"
     }
   ],
   "carts": [
     {
       "folder": "DuskPromised@gate_0a_pristine",
       "id": "gate_0a_pristine",
-      "title": "Gate 0A \u2014 Pristine Baseline",
+      "title": "Gate 0A — Pristine Baseline",
       "author": "Adam M. Aguilera",
       "version": "0.0.1",
       "summary": "Pristine upstream baseline: Kaizo + PotatoVoxel + Crystal + Performance Monitor. No Red Earth code.",
@@ -12726,7 +12728,7 @@
     {
       "folder": "DuskPromised@gate_0b_wilds",
       "id": "gate_0b_wilds",
-      "title": "Gate 0B \u2014 Wilds Baseline",
+      "title": "Gate 0B — Wilds Baseline",
       "author": "Adam M. Aguilera",
       "version": "0.0.1",
       "summary": "Gate 0A plus upstream Wilds 2.1.9 only. No Red Earth code.",
@@ -12827,7 +12829,7 @@
     {
       "folder": "DuskPromised@gate_1_irregular_test",
       "id": "gate_1_irregular_test",
-      "title": "Gate 1 \u2014 Irregular Core Test",
+      "title": "Gate 1 — Irregular Core Test",
       "author": "Adam M. Aguilera",
       "version": "0.1.3",
       "summary": "Gate 1.3: Core/Harness 0.1.2 + separate Irregular/Potato patch for back transparency and stage proportions.",
@@ -12938,7 +12940,7 @@
     {
       "folder": "DuskPromised@gate_2_irregular_shiny_test",
       "id": "gate_2_irregular_shiny_test",
-      "title": "Gate 2 \u2014 Irregular Shiny Test",
+      "title": "Gate 2 — Irregular Shiny Test",
       "author": "Adam M. Aguilera",
       "version": "0.2.4",
       "summary": "Gate 2 QA: authored shiny art/state, player sparkle, three shiny gifts and a normal control on accepted Gate 1.",

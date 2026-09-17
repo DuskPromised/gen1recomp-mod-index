@@ -10,7 +10,7 @@ Community entries imported: **189**
 
 Explicit Gen-2-only community entries excluded: **4**
 
-Combined feed entries: **258**
+Combined feed entries: **259**
 
 Published carts: **4**
 
