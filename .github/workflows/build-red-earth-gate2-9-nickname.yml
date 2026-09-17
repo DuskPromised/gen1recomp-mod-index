@@ -1,0 +1,177 @@
+name: Build Red Earth Gate 2.9 Nickname Timing Rebuild
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate2-9-nickname-timing-rebuild"]
+    paths:
+      - "mods/red-earth-gate2-test-harness/**"
+      - "tools/build_gate2_9.py"
+      - ".github/workflows/build-red-earth-gate2-9-nickname.yml"
+permissions:
+  contents: write
+concurrency:
+  group: gate2-9-nickname-timing-rebuild
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Install validation tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+      - name: Audit narrow scope and nickname ordering
+        run: |
+          luac -p mods/red-earth-gate2-test-harness/main.lua
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('mods/red-earth-gate2-test-harness/main.lua').read_text()
+          for x in ['forwarded[3]=true','askNicknameAfterState','Screens.push(ctx.game,"NamingScreen"','makeShiny(created,ctx.game)','0.2.9']:
+              assert x in s,x
+          for x in ['DexEntryMenu','forceOwned','battle.started','playEntranceCry','starterDex']:
+              assert x not in s,x
+          print('PASS: no Dex/starter-preview/battle-sparkle interception in 0.2.9 harness')
+          PY
+          lua5.4 - <<'LUA'
+          local captured={}
+          local pushed=false
+          package.preload['src.pokemon.Stats']=function()
+            return {calc=function() return {hp=77} end}
+          end
+          package.preload['src.script.Commands']=function()
+            return {show_text=function(ctx,textId,subs,opts)
+              assert(opts and opts.choice,'nickname choice missing')
+              opts.choice(true)
+            end}
+          end
+          package.preload['src.ui.Screens']=function()
+            return {push=function(game,kind,opts)
+              assert(kind=='NamingScreen','wrong screen')
+              assert(opts.mon and opts.mon.shiny==true,'nickname screen saw mon before shiny state')
+              assert(opts.mon.dvs and opts.mon.dvs.defense==10,'shiny DVs not installed before nickname screen')
+              pushed=true
+              opts.onDone('TEST')
+            end}
+          end
+          package.preload['src.core.Strings']=function()
+            return function(s,...) if select('#',...)>0 then return string.format(s,...) end return s end
+          end
+          local save={party={},boxes={},box={},flags={EVENT_FOLLOWED_OAK_INTO_LAB=true}}
+          local game={save=save,data={pokemon={PSYDREN={name='PSYDREN'}},text={_DoYouWantToNicknameText='nick?'}}}
+          local mod={id='red_earth_gate2_test_harness',game=game,exports={}}
+          mod.hooks={wrap=function(_,name,fn) captured[name]=fn end}
+          function mod:find(id)
+            if id=='red_earth_irregular_shiny' then
+              return {exports={makeShiny=function(mon)
+                mon.dvs={attack=15,defense=10,speed=10,special=10,hp=8}
+                mon.shiny=true; mon.stats={hp=99}; return true
+              end}}
+            end
+          end
+          local install=assert(loadfile('mods/red-earth-gate2-test-harness/main.lua'))()
+          install(mod)
+          assert(captured['world.talk'] and captured['script.command'])
+          local ow={map={id='OAKS_LAB'},runner={run=function(self,rows,opts) self.rows=rows;self.opts=opts end}}
+          local target={def={text='TEXT_OAKSLAB_CHARMANDER_POKE_BALL'}}
+          captured['world.talk'](function() error('QA ball unexpectedly fell through') end,ow,target)
+          local ctx={save=save,game=game,runner={resume=function() end},source={modId=mod.id}}
+          local sawSkip=false
+          local ret=captured['script.command'](function(hctx,name,args)
+            assert(name=='give_pokemon')
+            assert(args[3]==true,'vanilla nickname was not suppressed for QA gift')
+            sawSkip=true
+            table.insert(save.party,{species=args[1],level=args[2],dvs={attack=1},shiny=false,stats={hp=10},hp=10})
+            hctx.lastCheck=true
+            hctx.game.stringBuffer='PSYDREN'
+            return 'ok'
+          end,ctx,'give_pokemon',{'PSYDREN',15})
+          assert(ret=='ok' and sawSkip and pushed)
+          assert(save.party[1].shiny==true and save.party[1].nickname=='TEST')
+          local passed=false
+          captured['script.command'](function(_,_,args)
+            assert(args[3]==nil,'non-harness gift was modified')
+            passed=true
+          end,{save=save,game=game,source={modId='production'}},'give_pokemon',{'FENNEKIN',5})
+          assert(passed,'production passthrough failed')
+          print('PASS: shiny state precedes nickname UI; production give_pokemon passes through untouched')
+          LUA
+      - name: Package from exact device-green 0.2.6 baseline
+        run: python tools/build_gate2_9.py package engine-reference/tools/cartkit.py
+      - name: Publish immutable 0.2.9 harness prerelease
+        run: |
+          if ! gh release view v0.2.9 >/dev/null 2>&1; then
+            gh release create v0.2.9 --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.9 nickname timing rebuild" --notes "Rebuilt from the byte-verified 0.2.6 cart. Removes the failed 0.2.8 preview/sparkle patch. Only the QA test harness changes: it applies the selected custom Pokemon shiny/normal state before presenting the standard nickname screen. No DexEntryMenu, Oak region-selection, starter ownership, or battle sparkle hooks are introduced."
+          fi
+          name="red_earth_gate2_test_harness-0.2.9.zip"
+          path="site/data/mods/DuskPromised@red_earth_gate2_test_harness/$name"
+          mkdir -p /tmp/gate29-existing
+          if gh release download v0.2.9 --pattern "$name" --dir /tmp/gate29-existing; then cmp "$path" "/tmp/gate29-existing/$name"; else gh release upload v0.2.9 "$path"; fi
+      - name: Pack and strict-validate 0.2.9 cart
+        run: |
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.9.g1rcart --online
+          python engine-reference/tools/cartkit.py validate cart_source/gate_2_irregular_shiny_test --online --strict
+          python tools/build_gate2_9.py metadata engine-reference/tools/cartkit.py
+      - name: Verify only the QA harness changed from accepted 0.2.6
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          root=Path('.')
+          cart=json.loads((root/'cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
+          assert cart['version']=='0.2.9'
+          ids=[p['id'] for p in cart['mods']]
+          assert 'red_earth_gate2_starter_preview_sparkle_fix' not in ids
+          assert 'red_earth_gate2_starter_presentation_fix' not in ids
+          harness=[p for p in cart['mods'] if p['id']=='red_earth_gate2_test_harness']
+          assert len(harness)==1 and harness[0]['version']=='0.2.9'
+          accepted={
+            'red_earth_irregular_core':'287f761dc2826b67fb8d1b3ef8364c0333dd3170d6fa4846f5b35df8e8b097b0',
+            'red_earth_irregular_potato_compat':'3fcafd38926ca2f37cfde091cbbaa9ee5d43c6d60b8001cd7ad0557e68f6a9ba',
+            'red_earth_irregular_shiny':'b7c13ee684dc5406f69322f226a132428d8352fa018764e84ece96e5321d3318',
+            'red_earth_gate2_presentation':'0d09c9d0e382ceed5d28080807b84dd2b6010185f7b63fd174886e5bec910479',
+            'red_earth_solipsdion_shiny_back_fix':'1e99a78b8e504623beb22ce62972b59982b208b30fc71d4b825907001b3ec06a',
+            'red_earth_gate2_sparkle_gold_lilac':'a53b7e965a5eedad476eb87cb2f72317e30cb81b1d2bfddfaabb835673fd7c52',
+            'red_earth_gate2_starter_shiny_state_icons':'ab63b75c27800a9dea1fa938dfc6f724b3e40ab2f840f1aa5d9af3a805c6f8ee',
+          }
+          for p in cart['mods']:
+            if p['id'] in accepted: assert p['sha256']==accepted[p['id']],p['id']
+          print('PASS: every accepted 0.2.6 Red Earth pin is unchanged except the QA harness')
+          PY
+      - name: Attach cart and checksums
+        run: |
+          mkdir -p /tmp/gate29-existing
+          for path in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.9.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+            name=$(basename "$path"); if gh release download v0.2.9 --pattern "$name" --dir /tmp/gate29-existing; then cmp "$path" "/tmp/gate29-existing/$name"; else gh release upload v0.2.9 "$path"; fi
+          done
+      - name: Remove failed 0.2.8 patch from repository and releases
+        run: |
+          rm -rf mods/red-earth-gate2-starter-preview-sparkle-fix
+          rm -f custom_mods/red_earth_gate2_starter_preview_sparkle_fix.index.json custom_mods/red_earth_gate2_starter_preview_sparkle_fix.sha256
+          rm -rf site/data/mods/DuskPromised@red_earth_gate2_starter_preview_sparkle_fix
+          rm -f site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.8.g1rcart
+          rm -f tools/build_gate2_8.py .github/workflows/build-red-earth-gate2-8-preview-sparkle.yml
+          if gh release view v0.2.8 >/dev/null 2>&1; then gh release delete v0.2.8 --yes --cleanup-tag; fi
+      - name: Commit verified 0.2.9 outputs and 0.2.8 removal
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u
+          git add mods/red-earth-gate2-test-harness tools/build_gate2_9.py .github/workflows/build-red-earth-gate2-9-nickname.yml
+          git add cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
+          git add custom_mods/red_earth_gate2_test_harness.index.json custom_mods/red_earth_gate2_test_harness.sha256
+          git add -f site/data/mods/DuskPromised@red_earth_gate2_test_harness/red_earth_gate2_test_harness-0.2.9.zip
+          git add -f site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.9.g1rcart
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Gate 2.9 nickname timing rebuild"
+            git push origin HEAD:gate2-9-nickname-timing-rebuild
+          fi
