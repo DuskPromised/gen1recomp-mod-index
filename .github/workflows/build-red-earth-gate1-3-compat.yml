@@ -50,7 +50,7 @@ jobs:
         run: |
           curl -fsSL --retry 3 https://raw.githubusercontent.com/bryanthaboi/gen1recomp/e2114f7c85795d52903ea98deab493a4f181bace/tools/cartkit.py -o /tmp/cartkit.py
           python tools/verify_gate_pins.py /tmp/cartkit.py
-          for cart in cart_source/*; do
+          for cart in site/data/carts/DuskPromised@gate_0*/*.g1rcart cart_source/gate_1_irregular_test; do
             python /tmp/cartkit.py validate "$cart" --online --strict
           done
           python /tmp/cartkit.py pack cart_source/gate_1_irregular_test -o site/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.3.g1rcart --online
