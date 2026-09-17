@@ -10,8 +10,8 @@ Community entries imported: **189**
 
 Explicit Gen-2-only community entries excluded: **4**
 
-Combined feed entries: **254**
+Combined feed entries: **257**
 
-Published carts: **3**
+Published carts: **4**
 
 FAFF0x ZIP manifests were parsed directly; wider community metadata is preserved from the current bryanthaboi community index. Duplicate IDs prefer the FAFF0x/directly verified entry.
