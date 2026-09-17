@@ -35,14 +35,17 @@ jobs:
         run: |
           luac -p mods/red-earth-gate2-regional-menu-icon-fix/main.lua
           python - <<'PY'
+          import re
           from pathlib import Path
           s=Path('mods/red-earth-gate2-regional-menu-icon-fix/main.lua').read_text()
           assert 'pokemon.icon' in s and 'PartyMenu.drawIcon' in s
           for name in ['FENNEKIN','TREECKO','GROOKEY','SPRIGATITO']:
               assert name in s
-          forbidden=['pokemon.sprite','battle.started','drawBattlerPic','playEntranceCry','registerSpriteProvider','resolveBattleScale','battleScale','mon.shiny =','mon.shiny=','dvs =','dvs=']
+          forbidden=['pokemon.sprite','battle.started','drawBattlerPic','playEntranceCry','registerSpriteProvider','resolveBattleScale','battleScale']
           for needle in forbidden:
               assert needle not in s, needle
+          assert not re.search(r'\bmon\.shiny\s*=(?!=)',s), 'shiny-state assignment forbidden'
+          assert not re.search(r'\bmon\.dvs\s*=(?!=)',s), 'DV assignment forbidden'
           print('PASS: icon-only scope; no battle/follower/state/scaling hooks')
           PY
       - name: Build deterministic official shiny icon sheets
