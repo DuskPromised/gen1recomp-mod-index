@@ -11,7 +11,7 @@ permissions:
   contents: write
 concurrency:
   group: gate2-5-rebuild-from-024
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
