@@ -1,4 +1,4 @@
-name: Build Red Earth Gate 2.5 Rebuild From 0.2.4
+name: Build Red Earth Gate 2.5 Replacement As 0.2.6
 on:
   workflow_dispatch:
   push:
@@ -44,6 +44,7 @@ jobs:
               assert forbidden not in s, forbidden
           assert 'return next(chosen, ctx)' in s
           assert 'mon.redEarthGate25StarterShiny' in s
+          assert 'mod.exports.version = "0.2.6"' in s
           print('PASS: genuine shiny acquisition + native sprite/icon routing only')
           PY
       - name: Build module from exact accepted 0.2.4 baseline
@@ -54,7 +55,7 @@ jobs:
           import io, zipfile
           from pathlib import Path
           from PIL import Image
-          zpath=Path('site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.5-r1.zip')
+          zpath=Path('site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.6.zip')
           dex=[1,2,3,152,153,154,252,253,254,387,388,389,495,496,497,650,651,652,653,654,655,722,723,724]
           with zipfile.ZipFile(zpath) as z:
               names=set(z.namelist())
@@ -68,35 +69,35 @@ jobs:
                       assert im.getchannel('A').getbbox(), name
           print('PASS: all Fennekin/approved-Grass shiny battle + icon assets present and nonblank')
           PY
-      - name: Publish isolated rebuilt module release
+      - name: Publish 0.2.6 module release
         run: |
-          tag="v0.2.5-r1"
-          asset="site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.5-r1.zip"
+          tag="v0.2.6"
+          asset="site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.6.zip"
           if ! gh release view "$tag" >/dev/null 2>&1; then
-            gh release create "$tag" --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.5 rebuild from accepted 0.2.4" --notes "Clean rebuild from the device-green Gate 2.4 baseline. Replaces the failed Gate 2.5 attempt. Makes only intended Oak-gift Fennekin/approved Grass starters genuine shiny and routes their dedicated shiny battle/menu art. No Irregular, scaling, follower, sparkle/audio, Nature, passive, or starter-selector changes."
+            gh release create "$tag" --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.5 replacement — package 0.2.6" --notes "Updater-safe replacement for failed 0.2.5, rebuilt from the device-green 0.2.4 baseline. Makes only intended Oak-gift Fennekin/approved Grass starters genuine shiny and routes their dedicated shiny battle/menu art. No Irregular, scaling, follower, sparkle/audio, Nature, passive, or starter-selector changes."
           fi
           name=$(basename "$asset")
-          mkdir -p /tmp/g25
-          if gh release download "$tag" --pattern "$name" --dir /tmp/g25 >/dev/null 2>&1; then
-            cmp "$asset" "/tmp/g25/$name"
+          mkdir -p /tmp/g26
+          if gh release download "$tag" --pattern "$name" --dir /tmp/g26 >/dev/null 2>&1; then
+            cmp "$asset" "/tmp/g26/$name"
           else
             gh release upload "$tag" "$asset"
           fi
-      - name: Pack and strict-validate Gate 2.5 cart
+      - name: Pack and strict-validate 0.2.6 cart
         run: |
-          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart --online
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.6.g1rcart --online
           python engine-reference/tools/cartkit.py validate cart_source/gate_2_irregular_shiny_test --online --strict
           python tools/build_gate2_5_rebuild.py metadata engine-reference/tools/cartkit.py
-      - name: Verify no accepted 0.2.4 module was rewritten
+      - name: Verify exact 0.2.4 baseline remained untouched
         run: |
           python - <<'PY'
           import json,hashlib
           from pathlib import Path
           root=Path('.')
           cart=json.loads((root/'cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
-          assert cart['version']=='0.2.5'
+          assert cart['version']=='0.2.6'
           assert cart['load_order'][-1]=='red_earth_gate2_starter_shiny_state_icons'
-          assert cart['mods'][-1]['version']=='0.2.5-r1'
+          assert cart['mods'][-1]['version']=='0.2.6'
           base=cart['mods'][:-1]
           for p in base:
               if not p['id'].startswith('red_earth_'): continue
@@ -104,27 +105,27 @@ jobs:
               assert hashlib.sha256(z.read_bytes()).hexdigest()==p['sha256'], p['id']
           print('PASS: every accepted 0.2.4 Red Earth ZIP remains byte-identical')
           PY
-      - name: Attach rebuilt test cart and checksums
+      - name: Attach 0.2.6 cart and checksums
         run: |
-          tag="v0.2.5-r1"
-          for asset in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+          tag="v0.2.6"
+          for asset in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.6.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
             name=$(basename "$asset")
-            mkdir -p /tmp/g25-cart
-            if gh release download "$tag" --pattern "$name" --dir /tmp/g25-cart >/dev/null 2>&1; then
-              cmp "$asset" "/tmp/g25-cart/$name"
+            mkdir -p /tmp/g26-cart
+            if gh release download "$tag" --pattern "$name" --dir /tmp/g26-cart >/dev/null 2>&1; then
+              cmp "$asset" "/tmp/g26-cart/$name"
             else
               gh release upload "$tag" "$asset"
             fi
           done
-      - name: Commit rebuilt Gate 2.5 test outputs
+      - name: Commit updater-visible 0.2.6 outputs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add mods/red-earth-gate2-starter-shiny-state-icons tools/build_gate2_5_rebuild.py
           git add cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
           git add custom_mods/red_earth_gate2_starter_shiny_state_icons.index.json custom_mods/red_earth_gate2_starter_shiny_state_icons.sha256
-          git add -f site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.5.g1rcart
+          git add -f site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.6.g1rcart
           if ! git diff --cached --quiet; then
-            git commit -m "Publish rebuilt Gate 2.5 test cart from green 0.2.4"
+            git commit -m "Publish updater-visible Gate 2.5 replacement as 0.2.6"
             git push origin HEAD:gate2-5-rebuild-from-024
           fi
