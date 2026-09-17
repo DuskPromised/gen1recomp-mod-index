@@ -9,7 +9,7 @@ from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE='https://duskpromised.github.io/gen1recomp-mod-index/'
-VERSION='0.2.0'
+VERSION='0.2.1'
 MODULES=['red-earth-irregular-shiny','red-earth-gate2-presentation','red-earth-gate2-test-harness']
 CID='gate_2_irregular_shiny_test'
 def read(p):return json.loads((ROOT/p).read_text())
@@ -35,12 +35,15 @@ if sys.argv[1]=='package':
             im.load();assert im.mode=='RGBA' and list(im.size)==rec['size']
             assert im.getchannel('A').getextrema()==(0,255)
         shutil.copyfile(original,assets/name)
+    from restore_shiny_back import restore_and_verify
+    restore_and_verify(source)
     assert {p.name for p in assets.iterdir()}==set(sources)
     pins=[]
     for folder in MODULES:
         src=ROOT/'mods'/folder;manifest=read(src/'manifest.json');mid=manifest['id']
-        assert manifest['version']==VERSION
-        out=ROOT/f'site/data/mods/DuskPromised@{mid}/{mid}-{VERSION}.zip'
+        ver=manifest['version']
+        assert ver==('0.2.1' if folder=='red-earth-irregular-shiny' else '0.2.0')
+        out=ROOT/f'site/data/mods/DuskPromised@{mid}/{mid}-{ver}.zip'
         out.parent.mkdir(parents=True,exist_ok=True)
         with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
             for path in sorted(p for p in src.rglob('*') if p.is_file()):
@@ -49,8 +52,11 @@ if sys.argv[1]=='package':
                 z.writestr(info,path.read_bytes())
         with zipfile.ZipFile(out) as z:assert z.testzip() is None
         digest=sha(out)
+        unchanged={'red_earth_gate2_presentation':'0d09c9d0e382ceed5d28080807b84dd2b6010185f7b63fd174886e5bec910479',
+            'red_earth_gate2_test_harness':'7e7cdddc67fb10e2d0f0588c1064621b4ffc708925a90ea22e21c8cc3ffcc6f9'}
+        if mid in unchanged:assert digest==unchanged[mid], 'unchanged module drift'
         idx={'folder':f'DuskPromised@{mid}','id':mid,'title':manifest['name'],
-            'author':manifest['author'],'version':VERSION,'categories':[manifest['category'],'DEVELOPMENT'],
+            'author':manifest['author'],'version':ver,'categories':[manifest['category'],'DEVELOPMENT'],
             'tags':['red earth','gate 2','standalone'],'api':2,'profile':'content',
             'game_version':manifest['game_version'],'permissions':manifest['permissions'],
             'dependencies':manifest['dependencies'],'conflicts':manifest.get('conflicts',[]),
@@ -61,7 +67,7 @@ if sys.argv[1]=='package':
             'update_check':'off','sha256':digest}
         write(f'custom_mods/{mid}.index.json',idx)
         (ROOT/f'custom_mods/{mid}.sha256').write_text(f'{digest}  {out.name}\n')
-        pins.append({'id':mid,'source':'github','repo':'DuskPromised/gen1recomp-mod-index','version':VERSION,'sha256':digest})
+        pins.append({'id':mid,'source':'github','repo':'DuskPromised/gen1recomp-mod-index','version':ver,'sha256':digest})
         print('MODULE',mid,digest,out.stat().st_size)
     cart=read('cart_source/gate_1_irregular_test/cart.json')
     cart.update(id=CID,title='Gate 2 — Irregular Shiny Test',version=VERSION,
@@ -92,7 +98,7 @@ elif sys.argv[1]=='metadata':
     for folder in MODULES:
         mid=read(f'mods/{folder}/manifest.json')['id'];meta=read(f'custom_mods/{mid}.index.json')
         feed['mods']=[m for m in feed['mods'] if m['id']!=mid]+[meta]
-        sums.append(f"{meta['sha256']}  {mid}-{VERSION}.zip")
+        sums.append(f"{meta['sha256']}  {mid}-{meta['version']}.zip")
     sums.append(f'{digest}  {out.name}')
     write('site/data/index.json',feed)
     (ROOT/f'cart_source/{CID}/gate-2-sha256sums.txt').write_text('\n'.join(sums)+'\n')

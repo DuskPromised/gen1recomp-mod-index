@@ -14,7 +14,7 @@ intentional test levels, not production starter levels.
 Accepted cart SHA256:
 `c02e65b22113d821b189157d45794b8efcfc76cb4eefda9b7287bdd74b96a707`
 
-## Gate 2 — AWAITING LIVE RETEST
+## Gate 2 — FUNCTIONAL PATHS PASSED; SHINY BACK ART RETEST PENDING
 
 Three separately downloadable modules: Irregular Shiny, Gate 2 QA Harness,
 and Gate 2 Presentation Compatibility. The new cart retains the accepted
@@ -35,3 +35,19 @@ Follower effects, regional starters, characters, passives and Stone systems
 remain later gates. All modules and compatibility layers remain separate
 until final production consolidation. Gate 1.2's pre-existing ID change is
 not reversed here; migration of older IRR_ saves remains unimplemented.
+
+### Device report and narrow 0.2.1 revision
+
+The user confirmed normal Psydren stays normal through both evolutions; shiny
+Psydren and shiny Vesperis stay shiny through Solipsdion. Rare Candies, native
+evolution and level-up move prompts work. This report does not independently
+confirm the full save/reorder/box checklist. The regional starter menu icon
+remains a later-gate issue.
+
+Shiny Solipsdion battle-back holes reproduce in the PNG itself. The supplied
+master has transparent pearl-colored body pixels with retained original RGB;
+a white menu background conceals the holes. Version 0.2.1 changes only the
+shiny module and Gate 2 cart, restoring 54 body pixels from the master. All
+existing opaque pixels, other eleven shiny images, normal core, sizing/alpha
+compatibility modules and QA harness remain unchanged. Gate 2 is still open
+until the corrected back sprite and remaining persistence checks pass.
