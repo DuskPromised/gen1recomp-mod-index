@@ -1,0 +1,22 @@
+{
+  "id": "red_earth_gate2_sparkle_gold_lilac",
+  "name": "Red Earth — Gate 2 Gold-Lilac Shiny Sparkle",
+  "version": "0.2.4",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GRAPHICS",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 610,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "red_earth_gate2_presentation@0.2.0",
+    "red_earth_irregular_shiny@0.2.0",
+    "crystal_animated_sprites_with_shiny_visuals@2.0.3"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Gate 2-only presentation overlay that covers Crystal's black player send-out sparkle with a warm gold sparkle and restrained lilac glint. No shiny state, art routing, scale, evolution, starter, nature, passive, or audio logic changes."
+}

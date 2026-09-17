@@ -1,0 +1,85 @@
+name: Build Red Earth Gate 2.4 Gold-Lilac Sparkle
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate2-4-sparkle-gold-lilac"]
+    paths:
+      - "mods/red-earth-gate2-sparkle-gold-lilac/**"
+      - "tools/build_gate2_4.py"
+      - ".github/workflows/build-red-earth-gate2-sparkle.yml"
+permissions:
+  contents: write
+concurrency:
+  group: gate2-4-sparkle-gold-lilac
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Syntax and scope checks
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          luac -p mods/red-earth-gate2-sparkle-gold-lilac/main.lua
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('mods/red-earth-gate2-sparkle-gold-lilac/main.lua').read_text()
+          assert 'red_earth_gate2_presentation' in s
+          assert 'red_earth_irregular_shiny' in s
+          assert 'gen2_sparkles.png' in s
+          assert 'playEntranceCry' in s and 'drawBattlerPic' in s
+          assert 'mon.shiny=' not in s and 'dvs=' not in s
+          assert 'battleScale' not in s and 'resolveBattleScale' not in s
+          print('PASS: presentation-only sparkle overlay scope')
+          PY
+      - name: Package sparkle module and preserve Gate 2.3 byte baseline
+        run: python tools/build_gate2_4.py package engine-reference/tools/cartkit.py
+      - name: Publish immutable sparkle module prerelease
+        run: |
+          if ! gh release view v0.2.4 >/dev/null 2>&1; then
+            gh release create v0.2.4 --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.4 gold-lilac shiny sparkle" --notes "Keeps the accepted Gate 2.3 cart unchanged and adds one standalone presentation-only module. Player shiny send-out sparkles are warm gold with a restrained lilac glint; Crystal timing, sound, centering, shiny state, art routing, scaling, evolutions and persistence remain unchanged. Device retest pending."
+          fi
+          name="red_earth_gate2_sparkle_gold_lilac-0.2.4.zip"
+          path="site/data/mods/DuskPromised@red_earth_gate2_sparkle_gold_lilac/$name"
+          mkdir -p /tmp/gate24-existing
+          if gh release download v0.2.4 --pattern "$name" --dir /tmp/gate24-existing; then
+            cmp "$path" "/tmp/gate24-existing/$name"
+          else
+            gh release upload v0.2.4 "$path"
+          fi
+      - name: Pack and validate Gate 2.4 cart
+        run: |
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.4.g1rcart --online
+          python engine-reference/tools/cartkit.py validate cart_source/gate_2_irregular_shiny_test --online --strict
+          python tools/build_gate2_4.py metadata engine-reference/tools/cartkit.py
+      - name: Attach verified cart and checksums
+        run: |
+          mkdir -p /tmp/gate24-existing
+          for path in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.4.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+            name=$(basename "$path")
+            if gh release download v0.2.4 --pattern "$name" --dir /tmp/gate24-existing; then
+              cmp "$path" "/tmp/gate24-existing/$name"
+            else
+              gh release upload v0.2.4 "$path"
+            fi
+          done
+      - name: Commit verified Gate 2.4 outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/red-earth-gate2-sparkle-gold-lilac cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
+          git add custom_mods/red_earth_gate2_sparkle_gold_lilac.index.json custom_mods/red_earth_gate2_sparkle_gold_lilac.sha256
+          git add -f site/data/mods/DuskPromised@red_earth_gate2_sparkle_gold_lilac site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.4.g1rcart
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Gate 2.4 gold-lilac shiny sparkle test cart"
+            git push origin HEAD:gate2-4-sparkle-gold-lilac
+          fi
