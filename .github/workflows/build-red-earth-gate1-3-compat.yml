@@ -50,7 +50,15 @@ jobs:
         run: |
           curl -fsSL --retry 3 https://raw.githubusercontent.com/bryanthaboi/gen1recomp/e2114f7c85795d52903ea98deab493a4f181bace/tools/cartkit.py -o /tmp/cartkit.py
           python tools/verify_gate_pins.py /tmp/cartkit.py
-          for cart in site/data/carts/DuskPromised@gate_0*/*.g1rcart cart_source/gate_1_irregular_test; do
+          for name in gate_0a_pristine gate_0b_wilds; do
+            dir="/tmp/gate0-validation/$name"
+            mkdir -p "$dir"
+            cp "cart_source/$name/cart.json" "$dir/cart.json"
+            cp "site/data/carts/DuskPromised@$name/label.png" "$dir/label.png"
+            python /tmp/cartkit.py pack "$dir" -o "/tmp/$name.g1rcart"
+            cmp "/tmp/$name.g1rcart" "site/data/carts/DuskPromised@$name/$name-0.0.1.g1rcart"
+          done
+          for cart in /tmp/gate0-validation/* cart_source/gate_1_irregular_test; do
             python /tmp/cartkit.py validate "$cart" --online --strict
           done
           python /tmp/cartkit.py pack cart_source/gate_1_irregular_test -o site/data/carts/DuskPromised@gate_1_irregular_test/gate_1_irregular_test-0.1.3.g1rcart --online
