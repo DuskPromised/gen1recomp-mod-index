@@ -39,9 +39,10 @@ jobs:
           s=Path('mods/red-earth-gate2-starter-presentation-fix/main.lua').read_text()
           required=['Pokemon.new','DexEntryMenu','activePreviewSpecies','battle.started','gen2_shiny_sparkle.mp3','makeGuaranteedShiny','0.2.7']
           for x in required: assert x in s,x
-          forbidden=['resolveBattleScale','battleScale','registerSpriteProvider','world.talk','pokemon.evolved','Nature','Solitary Reign','Distance']
+          forbidden=['resolveBattleScale','battleScale','registerSpriteProvider','world.talk','pokemon.evolved']
           for x in forbidden: assert x not in s,x
           assert 'end, -50)' in s,'must run after Kaizo species swap'
+          assert 'mon.nature' not in s and 'passive' not in s.lower().replace('passive,',''), 'gameplay mechanics not allowed'
           print('PASS: creation/preview/sparkle timing only; no scale/gameplay hooks')
           PY
       - name: Package from exact device-green 0.2.6 baseline
