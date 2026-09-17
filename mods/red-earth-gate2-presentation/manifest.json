@@ -1,0 +1,23 @@
+{
+  "id": "red_earth_gate2_presentation",
+  "name": "Red Earth \u2014 Gate 2 Presentation Compatibility",
+  "version": "0.2.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GRAPHICS",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 450,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "red_earth_irregular_shiny@0.2.0",
+    "red_earth_irregular_potato_compat@0.1.3",
+    "potato_voxel@1.9.6",
+    "crystal_animated_sprites_with_shiny_visuals@2.0.3"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "Separate compatibility for authored shiny back sizes and standard Crystal player send-out sparkle and sound."
+}

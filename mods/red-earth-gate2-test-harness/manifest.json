@@ -1,0 +1,23 @@
+{
+  "id": "red_earth_gate2_test_harness",
+  "name": "Red Earth \u2014 Gate 2 Test Harness",
+  "version": "0.2.0",
+  "api": 2,
+  "entry": "main.lua",
+  "profile": "content",
+  "category": "GAMEPLAY",
+  "game_version": ">=0.2.24 <2.0.0",
+  "priority": 500,
+  "author": "Adam M. Aguilera",
+  "dependencies": [
+    "red_earth_irregular_shiny@0.2.0"
+  ],
+  "permissions": [
+    "engine_internals"
+  ],
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "description": "QA-only shiny Psydren/Vesperis/Solipsdion, normal Psydren control and evolution candies.",
+  "conflicts": [
+    "red_earth_gate1_test_harness"
+  ]
+}

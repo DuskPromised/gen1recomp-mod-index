@@ -1,0 +1,127 @@
+{
+  "folder": "DuskPromised@gate_2_irregular_shiny_test",
+  "id": "gate_2_irregular_shiny_test",
+  "title": "Gate 2 \u2014 Irregular Shiny Test",
+  "author": "Adam M. Aguilera",
+  "version": "0.2.0",
+  "summary": "Gate 2 QA: authored shiny art/state, player sparkle, three shiny gifts and a normal control on accepted Gate 1.",
+  "base": "red",
+  "seal": "sealed+",
+  "speeds": [
+    1
+  ],
+  "shell": "#24162B",
+  "finish": "holo",
+  "tags": [
+    "gate 2",
+    "red earth",
+    "qa",
+    "shiny",
+    "development"
+  ],
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "automatic_version_check": false,
+  "game_version": ">=0.2.24 <2.0.0",
+  "mods": [
+    {
+      "id": "gen1_kaizo",
+      "source": "github",
+      "repo": "AyeBathingApe/gen1recomp-allgen-kaizo",
+      "version": "0.8.3",
+      "sha256": "99fff33b12764496e185bc5e0c5397f0c6670f439830e54e866fd8fa82813ad2"
+    },
+    {
+      "id": "potato_voxel",
+      "source": "github",
+      "repo": "ShaneMcGovernIE/potato_voxel",
+      "version": "1.9.6",
+      "sha256": "f57c83e24fd8252fdc936bc7420ea2bc0439ec253d8a0f9ba11ffa9a06ea9846",
+      "options": {
+        "renderScale": 100,
+        "water": "full",
+        "aa": 2,
+        "curve": 1,
+        "grid": true,
+        "battles": true,
+        "battleBack": true,
+        "atmos": true,
+        "weather": true,
+        "shadows": true,
+        "shadowQuality": 0
+      }
+    },
+    {
+      "id": "crystal_animated_sprites_with_shiny_visuals",
+      "source": "github",
+      "repo": "distilledorion-sketch/crystal_animated_sprites_with_shiny_visuals",
+      "version": "2.0.3",
+      "sha256": "3d2874917f03a42cbf96d0d7e1b5c19bde09a5405fe12559ac241af017155689"
+    },
+    {
+      "id": "red_earth_irregular_core",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "0.1.2",
+      "sha256": "287f761dc2826b67fb8d1b3ef8364c0333dd3170d6fa4846f5b35df8e8b097b0"
+    },
+    {
+      "id": "red_earth_irregular_potato_compat",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "0.1.3",
+      "sha256": "3fcafd38926ca2f37cfde091cbbaa9ee5d43c6d60b8001cd7ad0557e68f6a9ba"
+    },
+    {
+      "id": "performance_monitor",
+      "source": "github",
+      "repo": "notquiteog/performance_monitor",
+      "version": "1.4.1",
+      "sha256": "34688ca51894ab68e4f6dad51e5ce3a0bc8c17913a45eb3d0ddb318560412379"
+    },
+    {
+      "id": "red_earth_irregular_shiny",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "0.2.0",
+      "sha256": "b7c13ee684dc5406f69322f226a132428d8352fa018764e84ece96e5321d3318"
+    },
+    {
+      "id": "red_earth_gate2_presentation",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "0.2.0",
+      "sha256": "0d09c9d0e382ceed5d28080807b84dd2b6010185f7b63fd174886e5bec910479"
+    },
+    {
+      "id": "red_earth_gate2_test_harness",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "0.2.0",
+      "sha256": "7e7cdddc67fb10e2d0f0588c1064621b4ffc708925a90ea22e21c8cc3ffcc6f9"
+    }
+  ],
+  "load_order": [
+    "gen1_kaizo",
+    "potato_voxel",
+    "crystal_animated_sprites_with_shiny_visuals",
+    "red_earth_irregular_core",
+    "red_earth_irregular_shiny",
+    "red_earth_irregular_potato_compat",
+    "red_earth_gate2_presentation",
+    "red_earth_gate2_test_harness",
+    "performance_monitor"
+  ],
+  "update_check": "ok",
+  "latest": {
+    "version": "0.2.0",
+    "name": "0.2.0",
+    "prerelease": true,
+    "zip": {
+      "name": "gate_2_irregular_shiny_test-0.2.0.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.0.g1rcart",
+      "size": 4446,
+      "sha256": "077ad6b493e45f6b7bb7f61c6f47c58d9a3ce3becad8f1658b018837f4d11f5d"
+    }
+  },
+  "thumbnail": "data/carts/DuskPromised@gate_2_irregular_shiny_test/label.png"
+}

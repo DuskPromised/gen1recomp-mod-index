@@ -1,0 +1,94 @@
+name: Build Red Earth Gate 2 Shiny
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate2-shiny-build"]
+    paths:
+      - "mods/red-earth-irregular-shiny/**"
+      - "mods/red-earth-gate2-presentation/**"
+      - "mods/red-earth-gate2-test-harness/**"
+      - "tools/build_gate2.py"
+      - "tools/test_gate2.*"
+      - ".github/workflows/build-red-earth-gate2.yml"
+permissions:
+  contents: write
+concurrency:
+  group: gate2-shiny-build
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Test state, authored routing, QA harness and presentation composition
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          python -m pip install --quiet pillow
+          for src in mods/red-earth-irregular-shiny/main.lua mods/red-earth-gate2-presentation/main.lua mods/red-earth-gate2-test-harness/main.lua; do luac -p "$src"; done
+          python tools/test_gate2.py engine-reference
+      - name: Package three independent modules and prepare cart
+        run: python tools/build_gate2.py package
+      - name: Publish immutable standalone prerelease modules
+        run: |
+          if ! gh release view v0.2.0 >/dev/null 2>&1; then
+            gh release create v0.2.0 --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2 shiny QA" --notes "Gate 1 passed live testing. Gate 2 has separate authored shiny/state, presentation compatibility and QA harness modules. No consolidation. Awaiting Gate 2 device retest."
+          fi
+          mkdir -p /tmp/gate2-existing
+          for mid in red_earth_irregular_shiny red_earth_gate2_presentation red_earth_gate2_test_harness; do
+            name="$mid-0.2.0.zip"
+            path="site/data/mods/DuskPromised@$mid/$name"
+            if gh release download v0.2.0 --pattern "$name" --dir /tmp/gate2-existing; then
+              cmp "$path" "/tmp/gate2-existing/$name"
+            else
+              gh release upload v0.2.0 "$path"
+            fi
+          done
+      - name: Online byte verification and strict sealed cart validation
+        run: |
+          python tools/verify_gate_pins.py engine-reference/tools/cartkit.py
+          for name in gate_0a_pristine gate_0b_wilds; do
+            dir="/tmp/gate0-validation/$name"
+            mkdir -p "$dir"
+            cp "cart_source/$name/cart.json" "$dir/cart.json"
+            cp "site/data/carts/DuskPromised@$name/label.png" "$dir/label.png"
+            python engine-reference/tools/cartkit.py pack "$dir" -o "/tmp/$name.g1rcart"
+            cmp "/tmp/$name.g1rcart" "site/data/carts/DuskPromised@$name/$name-0.0.1.g1rcart"
+          done
+          for cart in /tmp/gate0-validation/* cart_source/gate_1_irregular_test cart_source/gate_2_irregular_shiny_test; do
+            python engine-reference/tools/cartkit.py validate "$cart" --online --strict
+          done
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.0.g1rcart --online
+          python tools/build_gate2.py metadata
+      - name: Attach verified cart and checksums
+        run: |
+          for path in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.0.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+            name=$(basename "$path")
+            if gh release download v0.2.0 --pattern "$name" --dir /tmp/gate2-existing; then
+              cmp "$path" "/tmp/gate2-existing/$name"
+            else
+              gh release upload v0.2.0 "$path"
+            fi
+          done
+      - name: Commit verified modules, cart and feed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/red-earth-irregular-shiny/assets cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
+          for mid in red_earth_irregular_shiny red_earth_gate2_presentation red_earth_gate2_test_harness; do
+            git add "custom_mods/$mid.index.json" "custom_mods/$mid.sha256"
+            git add -f "site/data/mods/DuskPromised@$mid/$mid-0.2.0.zip"
+          done
+          git add -f site/data/carts/DuskPromised@gate_2_irregular_shiny_test
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish separate Gate 2 shiny modules and verified QA cart"
+            git push origin HEAD:gate2-shiny-build
+          fi
