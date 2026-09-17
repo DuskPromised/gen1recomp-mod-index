@@ -3,7 +3,7 @@
   "id": "gate_2_irregular_shiny_test",
   "title": "Gate 2 \u2014 Irregular Shiny Test",
   "author": "Adam M. Aguilera",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "summary": "Gate 2 QA: authored shiny art/state, player sparkle, three shiny gifts and a normal control on accepted Gate 1.",
   "base": "red",
   "seal": "sealed+",
@@ -117,8 +117,15 @@
       "id": "red_earth_gate2_starter_shiny_state_icons",
       "source": "github",
       "repo": "DuskPromised/gen1recomp-mod-index",
-      "version": "0.2.6",
-      "sha256": "ab63b75c27800a9dea1fa938dfc6f724b3e40ab2f840f1aa5d9af3a805c6f8ee"
+      "version": "0.2.10",
+      "sha256": "f90791245a42f0d45b557200a9c00b05f84de279060a4c16bca2c22bc280d179"
+    },
+    {
+      "id": "red_earth_gate2_starter_shiny_fx",
+      "source": "github",
+      "repo": "DuskPromised/gen1recomp-mod-index",
+      "version": "0.2.10",
+      "sha256": "d2608aa2c4252de8703eab11c72492d3d6a6030fd13f05bc99d8aae35cf539f8"
     }
   ],
   "load_order": [
@@ -133,18 +140,19 @@
     "performance_monitor",
     "red_earth_solipsdion_shiny_back_fix",
     "red_earth_gate2_sparkle_gold_lilac",
-    "red_earth_gate2_starter_shiny_state_icons"
+    "red_earth_gate2_starter_shiny_state_icons",
+    "red_earth_gate2_starter_shiny_fx"
   ],
   "update_check": "ok",
   "latest": {
-    "version": "0.2.9",
-    "name": "0.2.9-nickname-timing-rebuild",
+    "version": "0.2.10",
+    "name": "0.2.10-fennekin-contract-fx",
     "prerelease": true,
     "zip": {
-      "name": "gate_2_irregular_shiny_test-0.2.9.g1rcart",
-      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.9.g1rcart",
-      "size": 5413,
-      "sha256": "b6bd40e32fb2373a8de685c01cf020c79df752eb62a0332f939ef4cd2ea95b7c"
+      "name": "gate_2_irregular_shiny_test-0.2.10.g1rcart",
+      "url": "https://duskpromised.github.io/gen1recomp-mod-index/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.10.g1rcart",
+      "size": 5729,
+      "sha256": "b33cb635006e96ebd721a23277c6a7ee769ba2e1c6edaafcb0ddcaacafb65ff3"
     }
   },
   "thumbnail": "data/carts/DuskPromised@gate_2_irregular_shiny_test/label.png"
