@@ -1,0 +1,38 @@
+{
+  "folder": "DuskPromised@red_earth_gate2_sparkle_gold_lilac",
+  "id": "red_earth_gate2_sparkle_gold_lilac",
+  "title": "Red Earth \u2014 Gate 2 Gold-Lilac Shiny Sparkle",
+  "author": "Adam M. Aguilera",
+  "version": "0.2.4",
+  "categories": [
+    "GRAPHICS",
+    "DEVELOPMENT"
+  ],
+  "tags": [
+    "red earth",
+    "gate 2",
+    "standalone"
+  ],
+  "api": 2,
+  "profile": "content",
+  "game_version": ">=0.2.24 <2.0.0",
+  "permissions": [
+    "engine_internals"
+  ],
+  "dependencies": [
+    "red_earth_gate2_presentation@0.2.0",
+    "red_earth_irregular_shiny@0.2.0",
+    "crystal_animated_sprites_with_shiny_visuals@2.0.3"
+  ],
+  "conflicts": [],
+  "experimental": true,
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "license": "MIT",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_gate2_sparkle_gold_lilac/red_earth_gate2_sparkle_gold_lilac-0.2.4.zip",
+  "source_zip": "red_earth_gate2_sparkle_gold_lilac-0.2.4.zip",
+  "summary": "Gate 2-only presentation overlay that covers Crystal's black player send-out sparkle with a warm gold sparkle and restrained lilac glint. No shiny state, art routing, scale, evolution, starter, nature, passive, or audio logic changes.",
+  "source_scope": "DuskPromised standalone Gate 2 module",
+  "update_check": "off",
+  "sha256": "a53b7e965a5eedad476eb87cb2f72317e30cb81b1d2bfddfaabb835673fd7c52"
+}
