@@ -1,0 +1,129 @@
+name: Build Red Earth Gate 2.5 Replacement 0.2.6 From Green 0.2.4
+on:
+  workflow_dispatch:
+  push:
+    branches: ["gate2-6-rebuild-from-024"]
+    paths:
+      - "mods/red-earth-gate2-starter-shiny-state-icons/**"
+      - "tools/build_gate2_6_from_024.py"
+      - ".github/workflows/build-red-earth-gate2-6-from-024.yml"
+permissions:
+  contents: write
+concurrency:
+  group: gate2-6-rebuild-from-024
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Install validation tooling
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lua5.4
+          python -m pip install --disable-pip-version-check pillow
+      - name: Audit rebuilt module scope
+        run: |
+          luac -p mods/red-earth-gate2-starter-shiny-state-icons/main.lua
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('mods/red-earth-gate2-starter-shiny-state-icons/main.lua').read_text()
+          for required in ['script.command','pokemon.sprite','pokemon.icon','PartyMenu.drawIcon','FENNEKIN','TREECKO','ROWLET']:
+              assert required in s, required
+          for forbidden in ['registerSpriteProvider','resolveBattleScale','battleScale','SpriteRenderer','world.talk']:
+              assert forbidden not in s, forbidden
+          assert 'return next(chosen, ctx)' in s
+          assert 'mon.redEarthGate25StarterShiny' in s
+          assert 'mod.exports.version = "0.2.6"' in s
+          print('PASS: narrow Gate 2.5 replacement scope')
+          PY
+      - name: Build from exact accepted 0.2.4 baseline
+        run: python tools/build_gate2_6_from_024.py package engine-reference/tools/cartkit.py
+      - name: Validate packaged visual assets
+        run: |
+          python - <<'PY'
+          import io, zipfile
+          from pathlib import Path
+          from PIL import Image
+          zpath=Path('site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.6.zip')
+          dex=[1,2,3,152,153,154,252,253,254,387,388,389,495,496,497,650,651,652,653,654,655,722,723,724]
+          with zipfile.ZipFile(zpath) as z:
+              names=set(z.namelist())
+              for d in dex:
+                  p=f'{d:03d}'
+                  for rel in [f'assets/battlers/{p}_front_shiny.png',f'assets/battlers/{p}_back_shiny.png',f'assets/icons/{p}_shiny.png']:
+                      name='red_earth_gate2_starter_shiny_state_icons/'+rel
+                      assert name in names, name
+                      im=Image.open(io.BytesIO(z.read(name))).convert('RGBA')
+                      assert im.getchannel('A').getbbox(), name
+          print('PASS: all required shiny battle/menu assets are present and nonblank')
+          PY
+      - name: Publish 0.2.6 module release
+        run: |
+          tag="v0.2.6"
+          asset="site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons/red_earth_gate2_starter_shiny_state_icons-0.2.6.zip"
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" --target "$GITHUB_SHA" --prerelease --title "Red Earth Gate 2.5 replacement — 0.2.6" --notes "Updater-safe replacement for failed 0.2.5, rebuilt directly from device-green 0.2.4."
+          fi
+          name=$(basename "$asset")
+          mkdir -p /tmp/g26
+          if gh release download "$tag" --pattern "$name" --dir /tmp/g26 >/dev/null 2>&1; then
+            cmp "$asset" "/tmp/g26/$name"
+          else
+            gh release upload "$tag" "$asset"
+          fi
+      - name: Pack and strict-validate 0.2.6 cart
+        run: |
+          python engine-reference/tools/cartkit.py pack cart_source/gate_2_irregular_shiny_test -o site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.6.g1rcart --online
+          python engine-reference/tools/cartkit.py validate cart_source/gate_2_irregular_shiny_test --online --strict
+          python tools/build_gate2_6_from_024.py metadata engine-reference/tools/cartkit.py
+      - name: Verify accepted 0.2.4 modules remain byte-identical
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          root=Path('.')
+          cart=json.loads((root/'cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
+          assert cart['version']=='0.2.6'
+          assert cart['mods'][-1]['id']=='red_earth_gate2_starter_shiny_state_icons'
+          assert cart['mods'][-1]['version']=='0.2.6'
+          for p in cart['mods'][:-1]:
+              if not p['id'].startswith('red_earth_'): continue
+              z=root/f"site/data/mods/DuskPromised@{p['id']}/{p['id']}-{p['version']}.zip"
+              assert hashlib.sha256(z.read_bytes()).hexdigest()==p['sha256'], p['id']
+          print('PASS: accepted 0.2.4 Red Earth module bytes unchanged')
+          PY
+      - name: Attach 0.2.6 cart and checksums
+        run: |
+          tag="v0.2.6"
+          for asset in site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.6.g1rcart cart_source/gate_2_irregular_shiny_test/gate-2-sha256sums.txt; do
+            name=$(basename "$asset")
+            mkdir -p /tmp/g26-cart
+            if gh release download "$tag" --pattern "$name" --dir /tmp/g26-cart >/dev/null 2>&1; then
+              cmp "$asset" "/tmp/g26-cart/$name"
+            else
+              gh release upload "$tag" "$asset"
+            fi
+          done
+      - name: Commit verified 0.2.6 outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mods/red-earth-gate2-starter-shiny-state-icons tools/build_gate2_6_from_024.py
+          git add cart_source/gate_2_irregular_shiny_test carts/gate_2_irregular_shiny_test.index.json site/data/index.json
+          git add custom_mods/red_earth_gate2_starter_shiny_state_icons.index.json custom_mods/red_earth_gate2_starter_shiny_state_icons.sha256
+          git add -f site/data/mods/DuskPromised@red_earth_gate2_starter_shiny_state_icons site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.6.g1rcart
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish Gate 2.5 replacement as updater-visible 0.2.6"
+            git push origin HEAD:gate2-6-rebuild-from-024
+          fi
