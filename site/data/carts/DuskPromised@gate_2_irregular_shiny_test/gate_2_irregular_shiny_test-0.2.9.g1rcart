@@ -18,7 +18,6 @@ return {
       [10] = "red_earth_solipsdion_shiny_back_fix",
       [11] = "red_earth_gate2_sparkle_gold_lilac",
       [12] = "red_earth_gate2_starter_shiny_state_icons",
-      [13] = "red_earth_gate2_starter_preview_sparkle_fix",
     },
     mods = {
       [1] = {
@@ -93,9 +92,9 @@ return {
       [9] = {
         id = "red_earth_gate2_test_harness",
         repo = "DuskPromised/gen1recomp-mod-index",
-        sha256 = "7e7cdddc67fb10e2d0f0588c1064621b4ffc708925a90ea22e21c8cc3ffcc6f9",
+        sha256 = "07bf3357b47e5e4d957dae1b40779ae404defbaf95584db2280b5db9f4d91981",
         source = "github",
-        version = "0.2.0",
+        version = "0.2.9",
       },
       [10] = {
         id = "red_earth_solipsdion_shiny_back_fix",
@@ -118,13 +117,6 @@ return {
         source = "github",
         version = "0.2.6",
       },
-      [13] = {
-        id = "red_earth_gate2_starter_preview_sparkle_fix",
-        repo = "DuskPromised/gen1recomp-mod-index",
-        sha256 = "e1d5fb948df7044b2378302295a60ea13c7e6e7da49c5d96e7b3bdcec2543930",
-        source = "github",
-        version = "0.2.8",
-      },
     },
     repo = "DuskPromised/gen1recomp-mod-index",
     seal = "sealed+",
@@ -134,7 +126,7 @@ return {
     },
     summary = "Gate 2 QA: authored shiny art/state, player sparkle, three shiny gifts and a normal control on accepted Gate 1.",
     title = "Gate 2 — Irregular Shiny Test",
-    version = "0.2.8",
+    version = "0.2.9",
   },
   format = "g1rcart",
   formatVersion = 1,
