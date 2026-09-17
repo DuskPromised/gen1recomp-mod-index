@@ -85,6 +85,6 @@ return function(mod)
     },{npc=target,onDone=function() active=nil;target.frozen=false end,
        source={modId=mod.id,strict=true,mapId="OAKS_LAB",hook="world.talk"}})
   end,50)
-  mod.exports.version="0.2.0"
+  mod.exports.version="0.2.2"
   mod.exports.testOnly=true
 end

@@ -51,3 +51,17 @@ shiny module and Gate 2 cart, restoring 54 body pixels from the master. All
 existing opaque pixels, other eleven shiny images, normal core, sizing/alpha
 compatibility modules and QA harness remain unchanged. Gate 2 is still open
 until the corrected back sprite and remaining persistence checks pass.
+
+### Gate 2.1 packaging regression — corrected in cart 0.2.2
+
+The user reported the QA gifts were absent and the balls went straight to
+Kaizo region selection. Both unchanged 0.2.0 support manifests required shiny
+0.2.0 exactly, while cart 0.2.1 pinned shiny 0.2.1. Native Loader blocks both
+modules for that mismatch. Previous tests invoked module code directly and
+cartkit validated pins without checking this manifest compatibility.
+
+Harness and Presentation now have separate 0.2.2 packages requiring shiny
+0.2.1. The shiny ZIP and all artwork remain byte-identical. Native Loader
+dependency enforcement now reproduces both prior failures and requires all
+current Red Earth modules to survive dependency resolution before publishing.
+Gate 2.1 must not be used for testing; use cart 0.2.2.

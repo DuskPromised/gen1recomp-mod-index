@@ -9,7 +9,7 @@ from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE='https://duskpromised.github.io/gen1recomp-mod-index/'
-VERSION='0.2.1'
+VERSION='0.2.2'
 MODULES=['red-earth-irregular-shiny','red-earth-gate2-presentation','red-earth-gate2-test-harness']
 CID='gate_2_irregular_shiny_test'
 def read(p):return json.loads((ROOT/p).read_text())
@@ -42,7 +42,7 @@ if sys.argv[1]=='package':
     for folder in MODULES:
         src=ROOT/'mods'/folder;manifest=read(src/'manifest.json');mid=manifest['id']
         ver=manifest['version']
-        assert ver==('0.2.1' if folder=='red-earth-irregular-shiny' else '0.2.0')
+        assert ver==('0.2.1' if folder=='red-earth-irregular-shiny' else '0.2.2')
         out=ROOT/f'site/data/mods/DuskPromised@{mid}/{mid}-{ver}.zip'
         out.parent.mkdir(parents=True,exist_ok=True)
         with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
@@ -52,8 +52,7 @@ if sys.argv[1]=='package':
                 z.writestr(info,path.read_bytes())
         with zipfile.ZipFile(out) as z:assert z.testzip() is None
         digest=sha(out)
-        unchanged={'red_earth_gate2_presentation':'0d09c9d0e382ceed5d28080807b84dd2b6010185f7b63fd174886e5bec910479',
-            'red_earth_gate2_test_harness':'7e7cdddc67fb10e2d0f0588c1064621b4ffc708925a90ea22e21c8cc3ffcc6f9'}
+        unchanged={'red_earth_irregular_shiny':'e935d866720b95fde89730397f1ea9cc614e97e846313e1c04aa5f1c2c6ffef1'}
         if mid in unchanged:assert digest==unchanged[mid], 'unchanged module drift'
         idx={'folder':f'DuskPromised@{mid}','id':mid,'title':manifest['name'],
             'author':manifest['author'],'version':ver,'categories':[manifest['category'],'DEVELOPMENT'],

@@ -7,6 +7,7 @@ import re
 import subprocess
 import sys
 import tempfile
+import zipfile
 
 root=Path(__file__).resolve().parents[1]
 engine=Path(sys.argv[1]).resolve()
@@ -15,7 +16,23 @@ names=set(re.findall(r'function Commands\.(\w+)\(',commands))
 names.update(['label','jump'])
 source='ENGINE='+json.dumps(str(engine))+'\nROOT='+json.dumps(str(root))+'\n'
 source+='COMMANDS={'+','.join('['+json.dumps(x)+']=true' for x in sorted(names))+'}\n'
-source+=(root/'tools/test_gate2.lua').read_text()
+if '--dependencies' in sys.argv:
+    cart=json.loads((root/'cart_source/gate_2_irregular_shiny_test/cart.json').read_text())
+    manifests=[]
+    for pin in cart['mods']:
+        if pin['id'].startswith('red_earth_'):
+            path=root/f"site/data/mods/DuskPromised@{pin['id']}/{pin['id']}-{pin['version']}.zip"
+            with zipfile.ZipFile(path) as z:
+                manifest=json.loads(z.read(pin['id']+'/manifest.json'))
+            assert manifest['version']==pin['version']
+            manifests.append(manifest)
+        else:
+            # Accepted upstream pin records: only Red Earth manifests are under test.
+            manifests.append(dict(id=pin['id'],name=pin['id'],version=pin['version'],entry='main.lua'))
+    source+='MANIFEST_JSON='+json.dumps(json.dumps(manifests))+'\n'
+    source+=(root/'tools/test_gate2_dependencies.lua').read_text()
+else:
+    source+=(root/'tools/test_gate2.lua').read_text()
 with tempfile.TemporaryDirectory() as td:
     p=Path(td)/'test.lua';p.write_text(source)
     lib=ctypes.util.find_library('lua5.4')
