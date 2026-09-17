@@ -1,6 +1,6 @@
 {
   "id": "red_earth_gate2_starter_shiny_state_icons",
-  "name": "Red Earth — Gate 2.5 Starter Shiny State + Icons",
+  "name": "Red Earth — Gate 2.5 Starter Shiny Contract",
   "version": "0.2.5",
   "api": 2,
   "entry": "main.lua",
@@ -17,5 +17,5 @@
     "engine_internals"
   ],
   "github": "DuskPromised/gen1recomp-mod-index",
-  "description": "Gate 2.5 rebuild from the accepted 0.2.4 baseline. Makes only Oak-gift Fennekin and selectable Grass starters genuine shinies, preserves that state through evolution/save flow, and supplies their shiny party/menu icons. Does not alter Irregular art, battle scaling, starter selection, sparkle/audio, Nature, or passives."
+  "description": "Gate 2.5 rebuilt cleanly from accepted 0.2.4. Makes Oak-gift Fennekin and approved Grass starters genuine shinies, preserves shiny identity through evolution/save, and routes dedicated shiny battle plus party/menu art through native render paths. Does not alter Irregular art, battle scale/grounding, starter selection, followers, sparkle/audio, Nature, or passives."
 }
