@@ -1,0 +1,66 @@
+name: Publish reviewed Gate 2.11 device candidate
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/publish-red-earth-gate2-11-reviewed.yml"
+      - "site/data/mods/DuskPromised@red_earth_gate2_fennekin_recovery/red_earth_gate2_fennekin_recovery-0.2.11.zip"
+      - "site/data/mods/DuskPromised@red_earth_gate2_fennekin_fx/red_earth_gate2_fennekin_fx-0.2.11.zip"
+      - "site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.11.g1rcart"
+permissions:
+  contents: write
+concurrency:
+  group: gate2-11-reviewed-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify reviewed bytes without rebuilding
+        run: |
+          sha256sum -c <<'HASHES'
+          72a25cdc016b8e798569efcaa3a1e24f055aa3bb3f86f943b53726b1903afd4b  site/data/mods/DuskPromised@red_earth_gate2_fennekin_recovery/red_earth_gate2_fennekin_recovery-0.2.11.zip
+          7073593224d51a128853186651cf9824dd660ffd8c962a36eeddb16c02e600c6  site/data/mods/DuskPromised@red_earth_gate2_fennekin_fx/red_earth_gate2_fennekin_fx-0.2.11.zip
+          6c2d94de67a142406c5ee0cc00f48a8dd6f744093086712380471c6aa5970d85  site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.11.g1rcart
+          HASHES
+      - name: Publish immutable device-testing prerelease assets
+        run: |
+          if ! gh release view v0.2.11 >/dev/null 2>&1; then
+            gh release create v0.2.11 --target "$GITHUB_SHA" --prerelease --latest=false \
+              --title "Red Earth Gate 2.11 — device testing only" \
+              --notes-file docs/gate2-0.2.11-device-testing.md
+          fi
+          mkdir -p /tmp/gate211-existing
+          for path in \
+            site/data/mods/DuskPromised@red_earth_gate2_fennekin_recovery/red_earth_gate2_fennekin_recovery-0.2.11.zip \
+            site/data/mods/DuskPromised@red_earth_gate2_fennekin_fx/red_earth_gate2_fennekin_fx-0.2.11.zip \
+            site/data/carts/DuskPromised@gate_2_irregular_shiny_test/gate_2_irregular_shiny_test-0.2.11.g1rcart; do
+            name=$(basename "$path")
+            if gh release download v0.2.11 --pattern "$name" --dir /tmp/gate211-existing; then
+              cmp "$path" "/tmp/gate211-existing/$name"
+            else
+              gh release upload v0.2.11 "$path"
+            fi
+          done
+      - uses: actions/checkout@v4
+        with:
+          repository: bryanthaboi/gen1recomp
+          ref: e2114f7c85795d52903ea98deab493a4f181bace
+          path: engine-reference
+      - name: Strict online validation of published cart pins
+        run: python engine-reference/tools/cartkit.py validate cart_source/gate_2_irregular_shiny_test --online --strict
+      - name: Verify downloaded release bytes
+        run: |
+          mkdir -p /tmp/gate211-verified
+          gh release download v0.2.11 --dir /tmp/gate211-verified
+          cd /tmp/gate211-verified
+          sha256sum -c <<'HASHES'
+          72a25cdc016b8e798569efcaa3a1e24f055aa3bb3f86f943b53726b1903afd4b  red_earth_gate2_fennekin_recovery-0.2.11.zip
+          7073593224d51a128853186651cf9824dd660ffd8c962a36eeddb16c02e600c6  red_earth_gate2_fennekin_fx-0.2.11.zip
+          6c2d94de67a142406c5ee0cc00f48a8dd6f744093086712380471c6aa5970d85  gate_2_irregular_shiny_test-0.2.11.g1rcart
+          HASHES

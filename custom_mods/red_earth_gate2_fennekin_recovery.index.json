@@ -1,0 +1,36 @@
+{
+  "folder": "DuskPromised@red_earth_gate2_fennekin_recovery",
+  "id": "red_earth_gate2_fennekin_recovery",
+  "title": "Red Earth \u2014 Gate 2 Fennekin recovery",
+  "author": "Adam M. Aguilera",
+  "version": "0.2.11",
+  "categories": [
+    "GRAPHICS",
+    "DEVELOPMENT"
+  ],
+  "tags": [
+    "red earth",
+    "gate 2",
+    "device testing"
+  ],
+  "api": 2,
+  "profile": "content",
+  "game_version": ">=0.2.24 <2.0.0",
+  "permissions": [
+    "engine_internals"
+  ],
+  "dependencies": [
+    "gen1_kaizo@0.8.3",
+    "red_earth_gate2_starter_shiny_state_icons@0.2.6"
+  ],
+  "conflicts": [],
+  "experimental": true,
+  "repo": "https://github.com/DuskPromised/gen1recomp-mod-index",
+  "github": "DuskPromised/gen1recomp-mod-index",
+  "downloadURL": "https://duskpromised.github.io/gen1recomp-mod-index/data/mods/DuskPromised@red_earth_gate2_fennekin_recovery/red_earth_gate2_fennekin_recovery-0.2.11.zip",
+  "source_zip": "red_earth_gate2_fennekin_recovery-0.2.11.zip",
+  "sha256": "72a25cdc016b8e798569efcaa3a1e24f055aa3bb3f86f943b53726b1903afd4b",
+  "summary": "Scoped pre-insertion Fennekin shiny identity and instance-only Oak preview. Native acquisition/nickname flow and baseline assets unchanged.",
+  "source_scope": "Reviewed immutable Gate 2.11 device-testing candidate",
+  "update_check": "off"
+}
