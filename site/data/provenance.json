@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-22T14:51:24.709442+00:00",
+  "generated_at": "2026-09-23T14:59:55.288873+00:00",
   "source_repository": "https://github.com/FAFF0x/gen1recomp",
   "source_commit": "b1adda349f8410a2eb4ceff16e46143ca563d605",
   "community_source": "https://raw.githubusercontent.com/bryanthaboi/gen1recomp-mod-index/main/site/data/index.json",
-  "community_source_generated_at": "2026-09-22T11:13:05.926Z",
+  "community_source_generated_at": "2026-09-23T11:04:58.257Z",
   "source_zip_count": 45,
-  "community_imported": 189,
+  "community_imported": 192,
   "community_gen2_only_excluded": 4,
-  "entry_count": 264,
+  "entry_count": 267,
   "cart_count": 4,
   "policy": "No ROMs or mirrored mod binaries are stored in this repository."
 }
