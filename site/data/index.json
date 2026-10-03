@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-02T16:15:59.704682+00:00",
+  "generated_at": "2026-10-03T14:43:58.096227+00:00",
   "categories": [
     "ART",
     "AUDIO",
@@ -61,10 +61,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 665,
-        "recent": 277,
-        "window_days": 23,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 687,
+        "recent": 299,
+        "window_days": 24,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -109,10 +109,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 404,
-        "recent": 121,
+        "total": 414,
+        "recent": 129,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -155,10 +155,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8278,
-        "recent": 1143,
+        "total": 8316,
+        "recent": 1132,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -200,10 +200,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 811,
-        "recent": 173,
+        "total": 820,
+        "recent": 174,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -279,10 +279,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 569,
-        "recent": 373,
-        "window_days": 23,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 587,
+        "recent": 391,
+        "window_days": 24,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -340,10 +340,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 693,
-        "recent": 238,
+        "total": 707,
+        "recent": 236,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -456,10 +456,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1342,
-        "recent": 280,
+        "total": 1358,
+        "recent": 283,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -470,30 +470,49 @@
       "id": "autobreeder",
       "title": "Auto Breeder",
       "author": "CapnJames95",
-      "version": "1.0.3",
+      "version": "1.1.3",
       "categories": [
-        "TOOL"
+        "GAMEPLAY",
+        "TOOL",
+        "OTHER"
       ],
-      "repo": "https://github.com/CapnJames95/gen1recomp-mod-releases",
-      "summary": "Search engine-generated eggs for selected IVs, shininess and other traits.",
+      "repo": "https://github.com/CapnJames95/gen1recomp-auto-breeder",
+      "summary": "Search native eggs for IVs, shininess and other traits.",
       "tags": [
+        "emerald",
         "firered",
-        "leafgreen"
+        "leafgreen",
+        "gen3",
+        "capnjames95"
       ],
-      "downloadURL": "https://github.com/CapnJames95/gen1recomp-mod-releases/releases/download/v1.0.0/autobreeder-1.0.3.zip",
-      "game_version": ">=0.3.21 <0.4.0",
+      "github": "CapnJames95/gen1recomp-auto-breeder",
       "permissions": [
         "engine_internals"
       ],
       "api": 2,
       "profile": "overhaul",
       "experimental": true,
-      "automatic_version_check": false,
-      "thumbnail": null,
+      "thumbnail": "data/mods/CapnJames95@autobreeder/thumbnail.png",
       "description_url": "data/mods/CapnJames95@autobreeder/description.md",
-      "latest": null,
-      "update_check": "off",
-      "downloads": null,
+      "latest": {
+        "version": "1.1.3",
+        "tag": "v1.1.3",
+        "name": "Auto Breeder 1.1.3",
+        "prerelease": false,
+        "published_at": "2026-10-01T23:11:57Z",
+        "zip": {
+          "name": "autobreeder-1.1.3.zip",
+          "url": "https://github.com/CapnJames95/gen1recomp-auto-breeder/releases/download/v1.1.3/autobreeder-1.1.3.zip",
+          "size": 66229
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 24,
+        "recent": 15,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
@@ -571,10 +590,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 471,
-        "recent": 136,
+        "total": 481,
+        "recent": 143,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -627,10 +646,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1074,
-        "recent": 204,
+        "total": 1085,
+        "recent": 200,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -779,10 +798,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 21735,
-        "recent": 6065,
+        "total": 21865,
+        "recent": 5726,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -834,10 +853,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 272,
-        "recent": 262,
-        "window_days": 23,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 284,
+        "recent": 274,
+        "window_days": 24,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -897,10 +916,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1152,
-        "recent": 405,
+        "total": 1167,
+        "recent": 384,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -947,10 +966,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 7444,
-        "recent": 843,
+        "total": 7456,
+        "recent": 799,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1006,10 +1025,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 222,
-        "recent": 118,
+        "total": 231,
+        "recent": 123,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1061,10 +1080,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4623,
-        "recent": 999,
+        "total": 4662,
+        "recent": 974,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1118,10 +1137,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 642,
-        "recent": 153,
+        "total": 653,
+        "recent": 154,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1160,23 +1179,23 @@
       "thumbnail": "data/mods/Code-Grub@bills_pc_plus/thumbnail.png",
       "description_url": "data/mods/Code-Grub@bills_pc_plus/description.md",
       "latest": {
-        "version": "0.18.1",
-        "tag": "v0.18.1",
-        "name": "Bill's PC Plus 0.18.1",
+        "version": "0.18.2",
+        "tag": "v0.18.2",
+        "name": "Bill's PC Plus 0.18.2",
         "prerelease": false,
-        "published_at": "2026-10-01T04:53:18Z",
+        "published_at": "2026-10-03T06:55:21Z",
         "zip": {
-          "name": "bills_pc_plus-0.18.1.zip",
-          "url": "https://github.com/Code-Grub/bills-pc-plus/releases/download/v0.18.1/bills_pc_plus-0.18.1.zip",
-          "size": 64784
+          "name": "bills_pc_plus-0.18.2.zip",
+          "url": "https://github.com/Code-Grub/bills-pc-plus/releases/download/v0.18.2/bills_pc_plus-0.18.2.zip",
+          "size": 64932
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1206,
-        "recent": 1075,
+        "total": 1244,
+        "recent": 1071,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1234,10 +1253,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3238,
-        "recent": 392,
+        "total": 3251,
+        "recent": 377,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1279,10 +1298,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 566,
-        "recent": 276,
+        "total": 594,
+        "recent": 293,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1328,10 +1347,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4219,
-        "recent": 456,
+        "total": 4235,
+        "recent": 442,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1372,10 +1391,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1379,
-        "recent": 236,
+        "total": 1389,
+        "recent": 237,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1418,10 +1437,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 643,
-        "recent": 166,
+        "total": 657,
+        "recent": 173,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1522,10 +1541,10 @@
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
-        "total": 1089,
-        "recent": 646,
+        "total": 1108,
+        "recent": 633,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1576,10 +1595,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 801,
+        "total": 812,
         "recent": 213,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1625,10 +1644,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6358,
-        "recent": 836,
+        "total": 6382,
+        "recent": 822,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1683,10 +1702,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 229,
-        "recent": 200,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 240,
+        "recent": 211,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1731,10 +1750,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6471,
-        "recent": 831,
+        "total": 6493,
+        "recent": 806,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1782,10 +1801,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1501,
-        "recent": 276,
+        "total": 1511,
+        "recent": 278,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1818,6 +1837,68 @@
       "experimental": false,
       "update_check": "off",
       "source_scope": "Optional external integration"
+    },
+    {
+      "folder": "Code-Grub@crystal_animated_sprites",
+      "id": "crystal_animated_sprites",
+      "title": "Crystal Animated Sprites",
+      "author": "Code-Grub",
+      "version": "0.4.4",
+      "categories": [
+        "ART"
+      ],
+      "repo": "https://github.com/Code-Grub/crystal-animated-sprites",
+      "summary": "Crystal's animated front sprites in Red, Blue and Yellow, decoded from your own Pokemon Crystal ROM. No artwork is included.",
+      "tags": [
+        "sprites",
+        "animation",
+        "crystal",
+        "pokedex",
+        "party icons"
+      ],
+      "github": "Code-Grub/crystal-animated-sprites",
+      "automatic_version_check": true,
+      "api": 2,
+      "game_version": ">=0.0.0-0 <2.0.0",
+      "games": [
+        "gen1"
+      ],
+      "profile": "content",
+      "permissions": [
+        "engine_internals"
+      ],
+      "conflicts": [
+        "crystal_animated_sprites_with_shiny_visuals",
+        "gen2_shiny_visuals",
+        "shiny_visuals",
+        "CRYSTAL_251"
+      ],
+      "license": "MIT",
+      "thumbnail": "data/mods/Code-Grub@crystal_animated_sprites/thumbnail.png",
+      "description_url": "data/mods/Code-Grub@crystal_animated_sprites/description.md",
+      "latest": {
+        "version": "0.4.6",
+        "tag": "v0.4.6",
+        "name": "Crystal Animated Sprites 0.4.6",
+        "prerelease": false,
+        "published_at": "2026-10-02T03:39:18Z",
+        "zip": {
+          "name": "crystal_animated_sprites-0.4.6.zip",
+          "url": "https://github.com/Code-Grub/crystal-animated-sprites/releases/download/v0.4.6/crystal_animated_sprites-0.4.6.zip",
+          "size": 47245
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 51,
+        "recent": 16,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
+      "source_scope": "Community catalog",
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "dependencies": []
     },
     {
       "folder": "distilledorion-sketch@crystal_animated_sprites_with_shiny_visuals",
@@ -1932,10 +2013,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 375,
-        "recent": 98,
+        "total": 384,
+        "recent": 105,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -1989,10 +2070,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2738,
-        "recent": 569,
+        "total": 2751,
+        "recent": 554,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2076,10 +2157,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 864,
-        "recent": 139,
+        "total": 874,
+        "recent": 141,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2130,10 +2211,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1119,
-        "recent": 173,
+        "total": 1133,
+        "recent": 179,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2184,10 +2265,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2284,
-        "recent": 286,
+        "total": 2297,
+        "recent": 283,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2238,10 +2319,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 242,
-        "recent": 95,
+        "total": 252,
+        "recent": 104,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2365,10 +2446,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1764,
-        "recent": 372,
+        "total": 1779,
+        "recent": 366,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2479,14 +2560,70 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6588,
-        "recent": 1108,
+        "total": 6629,
+        "recent": 1077,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": []
+    },
+    {
+      "folder": "GawdMode@pewter_dungeon_dev",
+      "id": "pewter_dungeon_dev",
+      "title": "Dungeon Delvers",
+      "author": "Gawd Mode",
+      "version": "1.1.0",
+      "categories": [
+        "GAMEPLAY",
+        "CONTENT"
+      ],
+      "repo": "https://github.com/GawdMode/Dungeon-Delvers",
+      "summary": "Explore a randomized dungeon beneath Pewter Museum solo or online, excavate fossils, overcome hazards, and revive Ancient Pokémon.",
+      "tags": [
+        "dungeon",
+        "fossils",
+        "excavation",
+        "multiplayer",
+        "ancient pokemon",
+        "pewter",
+        "roguelike",
+        "pokemon crystal"
+      ],
+      "github": "GawdMode/Dungeon-Delvers",
+      "game_version": ">=0.3.8 <1.0.0",
+      "permissions": [
+        "network"
+      ],
+      "api": 2,
+      "profile": "content",
+      "thumbnail": "data/mods/GawdMode@pewter_dungeon_dev/thumbnail.png",
+      "description_url": "data/mods/GawdMode@pewter_dungeon_dev/description.md",
+      "latest": {
+        "version": "1.1.1",
+        "tag": "v1.1.1",
+        "name": "⛏️ Dungeon Delvers — 1.1.1 General Tweaks",
+        "prerelease": false,
+        "published_at": "2026-09-30T22:09:23Z",
+        "zip": {
+          "name": "Dungeon-Delvers-v1.1.1.zip",
+          "url": "https://github.com/GawdMode/Dungeon-Delvers/releases/download/v1.1.1/Dungeon-Delvers-v1.1.1.zip",
+          "size": 1190154
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 88,
+        "recent": 11,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
+      "source_scope": "Community catalog",
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "dependencies": [],
+      "conflicts": []
     },
     {
       "folder": "BartInTheField@translation-nl",
@@ -2524,10 +2661,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 303,
-        "recent": 92,
+        "total": 312,
+        "recent": 100,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2598,10 +2735,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 416,
+        "total": 426,
         "recent": 159,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2678,10 +2815,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6938,
-        "recent": 1185,
+        "total": 6969,
+        "recent": 1175,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2694,30 +2831,49 @@
       "id": "encounter_reset",
       "title": "Encounter Reset",
       "author": "CapnJames95",
-      "version": "0.2.0",
+      "version": "0.4.1",
       "categories": [
-        "TOOL"
+        "GAMEPLAY",
+        "TOOL",
+        "OTHER"
       ],
-      "repo": "https://github.com/CapnJames95/gen1recomp-mod-releases",
-      "summary": "Reset individual encounters, gifts, fossils, NPC trades or your roaming beast.",
+      "repo": "https://github.com/CapnJames95/gen1recomp-encounter-reset",
+      "summary": "Repeat supported encounters and gifts without a story reset.",
       "tags": [
+        "emerald",
         "firered",
-        "leafgreen"
+        "leafgreen",
+        "gen3",
+        "capnjames95"
       ],
-      "downloadURL": "https://github.com/CapnJames95/gen1recomp-mod-releases/releases/download/v1.0.0/encounter-reset-0.2.0.zip",
-      "game_version": ">=0.3.21 <2.0.0",
+      "github": "CapnJames95/gen1recomp-encounter-reset",
       "permissions": [
         "engine_internals"
       ],
       "api": 2,
       "profile": "overhaul",
       "experimental": true,
-      "automatic_version_check": false,
-      "thumbnail": null,
+      "thumbnail": "data/mods/CapnJames95@encounter_reset/thumbnail.png",
       "description_url": "data/mods/CapnJames95@encounter_reset/description.md",
-      "latest": null,
-      "update_check": "off",
-      "downloads": null,
+      "latest": {
+        "version": "0.4.1",
+        "tag": "v0.4.1",
+        "name": "Encounter Reset 0.4.1",
+        "prerelease": false,
+        "published_at": "2026-10-01T23:12:31Z",
+        "zip": {
+          "name": "encounter_reset-0.4.1.zip",
+          "url": "https://github.com/CapnJames95/gen1recomp-encounter-reset/releases/download/v0.4.1/encounter_reset-0.4.1.zip",
+          "size": 67463
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 22,
+        "recent": 13,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
@@ -2729,30 +2885,49 @@
       "id": "encounter_tour",
       "title": "Encounter Tour",
       "author": "CapnJames95",
-      "version": "0.1.3",
+      "version": "0.3.1",
       "categories": [
-        "TOOL"
+        "GAMEPLAY",
+        "TOOL",
+        "OTHER"
       ],
-      "repo": "https://github.com/CapnJames95/gen1recomp-mod-releases",
-      "summary": "Teleport to static encounters, gifts and other destinations, individually or on a tour.",
+      "repo": "https://github.com/CapnJames95/gen1recomp-encounter-tour",
+      "summary": "Visit static encounters, gifts, fossils and NPC trades.",
       "tags": [
+        "emerald",
         "firered",
-        "leafgreen"
+        "leafgreen",
+        "gen3",
+        "capnjames95"
       ],
-      "downloadURL": "https://github.com/CapnJames95/gen1recomp-mod-releases/releases/download/v1.0.0/encounter-tour-0.1.3.zip",
-      "game_version": ">=0.3.21 <2.0.0",
+      "github": "CapnJames95/gen1recomp-encounter-tour",
       "permissions": [
         "engine_internals"
       ],
       "api": 2,
       "profile": "overhaul",
       "experimental": true,
-      "automatic_version_check": false,
-      "thumbnail": null,
+      "thumbnail": "data/mods/CapnJames95@encounter_tour/thumbnail.png",
       "description_url": "data/mods/CapnJames95@encounter_tour/description.md",
-      "latest": null,
-      "update_check": "off",
-      "downloads": null,
+      "latest": {
+        "version": "0.3.1",
+        "tag": "v0.3.1",
+        "name": "Encounter Tour 0.3.1",
+        "prerelease": false,
+        "published_at": "2026-10-01T23:12:07Z",
+        "zip": {
+          "name": "encounter_tour-0.3.1.zip",
+          "url": "https://github.com/CapnJames95/gen1recomp-encounter-tour/releases/download/v0.3.1/encounter_tour-0.3.1.zip",
+          "size": 74063
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 21,
+        "recent": 12,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
@@ -2802,10 +2977,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 609,
-        "recent": 190,
+        "total": 621,
+        "recent": 194,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2818,30 +2993,49 @@
       "id": "event-distributor",
       "title": "Event Distributions",
       "author": "CapnJames95",
-      "version": "1.2.0",
+      "version": "1.4.2",
       "categories": [
-        "TOOL"
+        "CONTENT",
+        "TOOL",
+        "OTHER"
       ],
-      "repo": "https://github.com/CapnJames95/gen1recomp-mod-releases",
-      "summary": "Browse and recreate supported event Pokémon, eggs and island tickets.",
+      "repo": "https://github.com/CapnJames95/gen1recomp-event-distributions",
+      "summary": "Recreate supported event Pokemon, eggs and ticket journeys.",
       "tags": [
+        "emerald",
         "firered",
-        "leafgreen"
+        "leafgreen",
+        "gen3",
+        "capnjames95"
       ],
-      "downloadURL": "https://github.com/CapnJames95/gen1recomp-mod-releases/releases/download/v1.0.0/event-distributor-1.2.0.zip",
-      "game_version": ">=0.0.0-0 <2.0.0",
+      "github": "CapnJames95/gen1recomp-event-distributions",
       "permissions": [
         "engine_internals"
       ],
       "api": 2,
       "profile": "overhaul",
       "experimental": true,
-      "automatic_version_check": false,
-      "thumbnail": null,
+      "thumbnail": "data/mods/CapnJames95@event-distributor/thumbnail.png",
       "description_url": "data/mods/CapnJames95@event-distributor/description.md",
-      "latest": null,
-      "update_check": "off",
-      "downloads": null,
+      "latest": {
+        "version": "1.4.2",
+        "tag": "v1.4.2",
+        "name": "Event Distributions 1.4.2",
+        "prerelease": false,
+        "published_at": "2026-10-01T23:11:37Z",
+        "zip": {
+          "name": "event-distributor-1.4.2.zip",
+          "url": "https://github.com/CapnJames95/gen1recomp-event-distributions/releases/download/v1.4.2/event-distributor-1.4.2.zip",
+          "size": 1208919
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 31,
+        "recent": 20,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
@@ -2888,10 +3082,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 30537,
-        "recent": 4589,
+        "total": 30664,
+        "recent": 4425,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -2974,10 +3168,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 247,
-        "recent": 160,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 258,
+        "recent": 171,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3061,10 +3255,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 389,
-        "recent": 126,
+        "total": 398,
+        "recent": 129,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3138,10 +3332,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 559,
-        "recent": 456,
+        "total": 582,
+        "recent": 453,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3175,10 +3369,10 @@
       "latest": null,
       "update_check": "no installable release",
       "downloads": {
-        "total": 1054,
-        "recent": 638,
+        "total": 1072,
+        "recent": 621,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3294,10 +3488,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 13992,
-        "recent": 1678,
+        "total": 14039,
+        "recent": 1638,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3348,10 +3542,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 10167,
-        "recent": 2123,
+        "total": 10209,
+        "recent": 2043,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3411,45 +3605,6 @@
       "source_zip": "free_rare_candy_v1.0.0.zip",
       "source_scope": "FAFF0x collection",
       "update_check": "off"
-    },
-    {
-      "folder": "CapnJames95@frlg_dual_screen",
-      "id": "frlg_dual_screen",
-      "title": "FRLG Dual Screen",
-      "author": "CapnJames95",
-      "version": "0.3.16",
-      "categories": [
-        "UI"
-      ],
-      "repo": "https://github.com/CapnJames95/gen1recomp-mod-releases",
-      "summary": "A Kanto Gear-based companion screen that connects mod shortcuts, editors, encounters and QoL controls.",
-      "tags": [
-        "firered",
-        "leafgreen"
-      ],
-      "downloadURL": "https://github.com/CapnJames95/gen1recomp-mod-releases/releases/download/v1.0.0/frlg-dual-screen-0.3.16.zip",
-      "game_version": "0.0.0-dev || >=0.3.20 <2.0.0",
-      "conflicts": [
-        "kanto_gear",
-        "gen1recomp_ds"
-      ],
-      "permissions": [
-        "network",
-        "engine_internals"
-      ],
-      "api": 2,
-      "profile": "content",
-      "experimental": true,
-      "automatic_version_check": false,
-      "thumbnail": null,
-      "description_url": "data/mods/CapnJames95@frlg_dual_screen/description.md",
-      "latest": null,
-      "update_check": "off",
-      "downloads": null,
-      "source_scope": "Community catalog",
-      "optional_dependencies": [],
-      "optional_integrations": [],
-      "dependencies": []
     },
     {
       "folder": "CapnJames95@frlg_scrollable_start",
@@ -3528,10 +3683,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1242,
-        "recent": 780,
+        "total": 1257,
+        "recent": 782,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3586,10 +3741,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8605,
-        "recent": 3374,
+        "total": 8663,
+        "recent": 3295,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3642,10 +3797,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 291,
-        "recent": 281,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 301,
+        "recent": 291,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3698,10 +3853,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 37494,
-        "recent": 6410,
+        "total": 37676,
+        "recent": 5858,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3754,10 +3909,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3556,
-        "recent": 783,
+        "total": 3576,
+        "recent": 685,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3877,10 +4032,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 595,
-        "recent": 529,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 619,
+        "recent": 553,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3935,10 +4090,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1381,
-        "recent": 923,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 1407,
+        "recent": 949,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -3990,10 +4145,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 256,
-        "recent": 199,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 267,
+        "recent": 210,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4050,10 +4205,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 794,
-        "recent": 545,
+        "total": 838,
+        "recent": 549,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4108,10 +4263,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 371,
-        "recent": 298,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 386,
+        "recent": 313,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4164,10 +4319,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2768,
-        "recent": 1063,
+        "total": 2792,
+        "recent": 981,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4226,10 +4381,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 312,
-        "recent": 232,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 324,
+        "recent": 244,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4291,10 +4446,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 415,
-        "recent": 311,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 428,
+        "recent": 324,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4351,10 +4506,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 755,
-        "recent": 592,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 791,
+        "recent": 628,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4409,10 +4564,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 418,
-        "recent": 299,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 452,
+        "recent": 333,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4465,10 +4620,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 899,
-        "recent": 204,
+        "total": 915,
+        "recent": 208,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4529,10 +4684,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 505,
-        "recent": 353,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 518,
+        "recent": 366,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4589,10 +4744,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 382,
-        "recent": 325,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 423,
+        "recent": 366,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4634,10 +4789,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 16943,
-        "recent": 1419,
+        "total": 16980,
+        "recent": 1394,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4697,10 +4852,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 337,
-        "recent": 253,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 349,
+        "recent": 265,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4746,10 +4901,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3282,
-        "recent": 926,
+        "total": 3327,
+        "recent": 918,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4807,10 +4962,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 214,
-        "recent": 178,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 225,
+        "recent": 189,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4867,10 +5022,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 322,
-        "recent": 259,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 354,
+        "recent": 291,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4926,10 +5081,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 290,
-        "recent": 239,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 326,
+        "recent": 275,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -4989,10 +5144,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3337,
-        "recent": 2817,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 3408,
+        "recent": 2888,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5051,16 +5206,76 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3481,
-        "recent": 2930,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 3564,
+        "recent": 3013,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
       "dependencies": [],
       "conflicts": []
+    },
+    {
+      "folder": "CapnJames95@frlg_dual_screen",
+      "id": "frlg_dual_screen",
+      "title": "Gen3DualScreen",
+      "author": "CapnJames95",
+      "version": "0.4.15",
+      "categories": [
+        "UI",
+        "QOL",
+        "TOOL",
+        "OTHER"
+      ],
+      "repo": "https://github.com/CapnJames95/gen1recomp-gen3dualscreen",
+      "summary": "A companion display that brings the collection together.",
+      "tags": [
+        "emerald",
+        "firered",
+        "leafgreen",
+        "gen3",
+        "capnjames95"
+      ],
+      "github": "CapnJames95/gen1recomp-gen3dualscreen",
+      "license": "MIT",
+      "conflicts": [
+        "kanto_gear",
+        "gen1recomp_ds"
+      ],
+      "permissions": [
+        "network",
+        "engine_internals"
+      ],
+      "api": 2,
+      "profile": "content",
+      "experimental": true,
+      "thumbnail": "data/mods/CapnJames95@frlg_dual_screen/thumbnail.png",
+      "description_url": "data/mods/CapnJames95@frlg_dual_screen/description.md",
+      "latest": {
+        "version": "0.4.15",
+        "tag": "v0.4.15",
+        "name": "Gen3DualScreen 0.4.15",
+        "prerelease": false,
+        "published_at": "2026-10-01T23:12:20Z",
+        "zip": {
+          "name": "frlg_dual_screen-0.4.15.zip",
+          "url": "https://github.com/CapnJames95/gen1recomp-gen3dualscreen/releases/download/v0.4.15/frlg_dual_screen-0.4.15.zip",
+          "size": 8849220
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 21,
+        "recent": 12,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
+      "source_scope": "Community catalog",
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "dependencies": []
     },
     {
       "folder": "ElFuego@gender_display",
@@ -5094,10 +5309,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 228,
-        "recent": 164,
+        "total": 239,
+        "recent": 163,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5141,10 +5356,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 373,
-        "recent": 132,
+        "total": 383,
+        "recent": 141,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5199,10 +5414,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 126,
-        "recent": 101,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 136,
+        "recent": 111,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5254,10 +5469,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5191,
-        "recent": 588,
+        "total": 5209,
+        "recent": 577,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5340,10 +5555,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 343,
-        "recent": 138,
+        "total": 353,
+        "recent": 144,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5389,10 +5604,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1838,
-        "recent": 256,
+        "total": 1848,
+        "recent": 253,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5592,10 +5807,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 152,
-        "recent": 136,
-        "window_days": 10,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 165,
+        "recent": 149,
+        "window_days": 11,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5648,10 +5863,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 226,
-        "recent": 154,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 237,
+        "recent": 165,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5690,10 +5905,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 221,
-        "recent": 210,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 234,
+        "recent": 223,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5732,10 +5947,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 221,
-        "recent": 187,
-        "window_days": 23,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 234,
+        "recent": 200,
+        "window_days": 24,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5843,10 +6058,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 302,
-        "recent": 133,
+        "total": 314,
+        "recent": 141,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -5921,10 +6136,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 385,
-        "recent": 86,
+        "total": 395,
+        "recent": 95,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6014,10 +6229,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1274,
-        "recent": 960,
+        "total": 1293,
+        "recent": 949,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6056,10 +6271,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2119,
-        "recent": 204,
+        "total": 2130,
+        "recent": 196,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6117,10 +6332,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1046,
-        "recent": 571,
+        "total": 1064,
+        "recent": 560,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6170,10 +6385,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3424,
-        "recent": 816,
+        "total": 3458,
+        "recent": 808,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6235,10 +6450,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 21365,
-        "recent": 8450,
+        "total": 21504,
+        "recent": 7662,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6279,23 +6494,23 @@
       "thumbnail": null,
       "description_url": "data/mods/jtfresh90@kanto_life/description.md",
       "latest": {
-        "version": "1.2.36",
-        "tag": "1.2.36",
-        "name": "1.2.36",
+        "version": "1.3.2",
+        "tag": "1.3.2",
+        "name": "1.3.2",
         "prerelease": false,
-        "published_at": "2026-10-01T18:43:47Z",
+        "published_at": "2026-10-02T23:16:47Z",
         "zip": {
-          "name": "Kanto-Life-Unified-1.2.36-README-Updated.zip",
-          "url": "https://github.com/jtfresh90/Kanto-Life-Mod/releases/download/1.2.36/Kanto-Life-Unified-1.2.36-README-Updated.zip",
-          "size": 155752
+          "name": "Kanto-Life-Unified-1.3.2.zip",
+          "url": "https://github.com/jtfresh90/Kanto-Life-Mod/releases/download/1.3.2/Kanto-Life-Unified-1.3.2.zip",
+          "size": 157072
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3159,
-        "recent": 796,
+        "total": 3238,
+        "recent": 828,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6358,10 +6573,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 7380,
-        "recent": 1408,
-        "window_days": 17,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 7408,
+        "recent": 1436,
+        "window_days": 18,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6407,30 +6622,49 @@
       "id": "legalmon",
       "title": "LegalMon",
       "author": "CapnJames95",
-      "version": "0.17.1",
+      "version": "0.18.2",
       "categories": [
-        "TOOL"
+        "GAMEPLAY",
+        "TOOL",
+        "OTHER"
       ],
-      "repo": "https://github.com/CapnJames95/gen1recomp-mod-releases",
-      "summary": "Configure Pokémon, validate supported acquisition constraints and deliver them to party or PC.",
+      "repo": "https://github.com/CapnJames95/gen1recomp-legalmon",
+      "summary": "Build Pokemon with acquisition-specific legality checks.",
       "tags": [
+        "emerald",
         "firered",
-        "leafgreen"
+        "leafgreen",
+        "gen3",
+        "capnjames95"
       ],
-      "downloadURL": "https://github.com/CapnJames95/gen1recomp-mod-releases/releases/download/v1.0.0/legalmon-0.17.1.zip",
-      "game_version": ">=0.0.0-0 <2.0.0",
+      "github": "CapnJames95/gen1recomp-legalmon",
       "permissions": [
         "engine_internals"
       ],
       "api": 2,
       "profile": "overhaul",
       "experimental": true,
-      "automatic_version_check": false,
-      "thumbnail": null,
+      "thumbnail": "data/mods/CapnJames95@legalmon/thumbnail.png",
       "description_url": "data/mods/CapnJames95@legalmon/description.md",
-      "latest": null,
-      "update_check": "off",
-      "downloads": null,
+      "latest": {
+        "version": "0.18.2",
+        "tag": "v0.18.2",
+        "name": "LegalMon 0.18.2",
+        "prerelease": false,
+        "published_at": "2026-10-01T23:11:26Z",
+        "zip": {
+          "name": "legalmon-0.18.2.zip",
+          "url": "https://github.com/CapnJames95/gen1recomp-legalmon/releases/download/v0.18.2/legalmon-0.18.2.zip",
+          "size": 279423
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 23,
+        "recent": 14,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
@@ -6484,10 +6718,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 132,
-        "recent": 125,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 143,
+        "recent": 136,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6535,10 +6769,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1705,
-        "recent": 593,
+        "total": 1727,
+        "recent": 578,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6592,10 +6826,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1205,
-        "recent": 253,
+        "total": 1217,
+        "recent": 252,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6685,10 +6919,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2823,
-        "recent": 1087,
+        "total": 2848,
+        "recent": 946,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6778,10 +7012,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1727,
-        "recent": 391,
+        "total": 1742,
+        "recent": 388,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6821,23 +7055,23 @@
       "thumbnail": "data/mods/rogazrok@surf_without_hm_red/thumbnail.jpg",
       "description_url": "data/mods/rogazrok@surf_without_hm_red/description.md",
       "latest": {
-        "version": "1.1.2",
-        "tag": "v1.1.2",
-        "name": "Modern Field Moves v1.1.2",
+        "version": "1.2.0",
+        "tag": "v1.2.0",
+        "name": "Modern Field Moves v1.2.0",
         "prerelease": false,
-        "published_at": "2026-09-22T20:05:17Z",
+        "published_at": "2026-10-03T09:54:08Z",
         "zip": {
-          "name": "modern_field_moves-v1.1.2.zip",
-          "url": "https://github.com/rogazrok/modern-field-moves/releases/download/v1.1.2/modern_field_moves-v1.1.2.zip",
-          "size": 14453
+          "name": "modern_field_moves-v1.2.0.zip",
+          "url": "https://github.com/rogazrok/modern-field-moves/releases/download/v1.2.0/modern_field_moves-v1.2.0.zip",
+          "size": 30985
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 154,
-        "recent": 150,
-        "window_days": 10,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 169,
+        "recent": 165,
+        "window_days": 11,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6889,10 +7123,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1039,
-        "recent": 339,
+        "total": 1058,
+        "recent": 333,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -6945,10 +7179,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 15256,
-        "recent": 2057,
+        "total": 15303,
+        "recent": 1999,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7009,10 +7243,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6391,
-        "recent": 2024,
+        "total": 6422,
+        "recent": 1819,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7071,10 +7305,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2676,
-        "recent": 1429,
+        "total": 2698,
+        "recent": 1347,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7100,9 +7334,9 @@
       "update_check": "no installable release",
       "downloads": {
         "total": 84,
-        "recent": 19,
+        "recent": 18,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7185,10 +7419,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1100,
-        "recent": 173,
+        "total": 1111,
+        "recent": 178,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7247,10 +7481,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 103,
-        "recent": 95,
-        "window_days": 23,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 113,
+        "recent": 105,
+        "window_days": 24,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7300,10 +7534,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1037,
-        "recent": 350,
+        "total": 1050,
+        "recent": 345,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7410,10 +7644,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5901,
-        "recent": 1526,
+        "total": 5952,
+        "recent": 1515,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7524,10 +7758,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1803,
+        "total": 1817,
         "recent": 260,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7574,10 +7808,63 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 287,
-        "recent": 237,
-        "window_days": 23,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 305,
+        "recent": 255,
+        "window_days": 24,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
+      "source_scope": "Community catalog",
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "dependencies": [],
+      "conflicts": []
+    },
+    {
+      "folder": "GawdMode@babycare_prototype",
+      "id": "babycare_prototype",
+      "title": "Neo Nursery",
+      "author": "Gawd Mode",
+      "version": "1.0.1",
+      "categories": [
+        "GAMEPLAY",
+        "CONTENT"
+      ],
+      "repo": "https://github.com/GawdMode/Neo-Nursery",
+      "summary": "Raise Baby Pokémon in a Tamagotchi-style nursery with persistent needs, Friendship, minigames, conditions, unlockable babies, and adoption.",
+      "tags": [
+        "nursery",
+        "baby pokemon",
+        "tamagotchi",
+        "virtual pet",
+        "minigames",
+        "friendship",
+        "breeding",
+        "pokemon crystal"
+      ],
+      "github": "GawdMode/Neo-Nursery",
+      "game_version": ">=0.3.8 <1.0.0",
+      "api": 2,
+      "profile": "content",
+      "thumbnail": "data/mods/GawdMode@babycare_prototype/thumbnail.png",
+      "description_url": "data/mods/GawdMode@babycare_prototype/description.md",
+      "latest": {
+        "version": "1.0.1",
+        "tag": "v1.0.1",
+        "name": "🍼 Neo Nursery — 1.0.1 Minor Tweaks",
+        "prerelease": false,
+        "published_at": "2026-09-28T21:25:59Z",
+        "zip": {
+          "name": "Neo-Nursery-v1.0.1.zip",
+          "url": "https://github.com/GawdMode/Neo-Nursery/releases/download/v1.0.1/Neo-Nursery-v1.0.1.zip",
+          "size": 1125265
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 59,
+        "recent": 10,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7770,10 +8057,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 213,
-        "recent": 92,
+        "total": 222,
+        "recent": 99,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7817,10 +8104,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 101,
-        "recent": 88,
-        "window_days": 10,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 111,
+        "recent": 98,
+        "window_days": 11,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7874,10 +8161,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 5767,
-        "recent": 941,
+        "total": 5797,
+        "recent": 896,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7921,10 +8208,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2632,
-        "recent": 866,
+        "total": 2663,
+        "recent": 855,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -7983,10 +8270,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 917,
-        "recent": 307,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 941,
+        "recent": 331,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8019,7 +8306,7 @@
         "total": 0,
         "recent": 0,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8210,10 +8497,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 114,
-        "recent": 67,
-        "window_days": 7,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 125,
+        "recent": 78,
+        "window_days": 8,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8305,10 +8592,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 290,
-        "recent": 149,
+        "total": 301,
+        "recent": 150,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8360,10 +8647,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1297,
-        "recent": 207,
+        "total": 1309,
+        "recent": 213,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8450,10 +8737,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2931,
-        "recent": 1210,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 2951,
+        "recent": 1230,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8540,10 +8827,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1055,
-        "recent": 218,
+        "total": 1067,
+        "recent": 221,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8590,10 +8877,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1198,
-        "recent": 534,
+        "total": 1214,
+        "recent": 529,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8642,10 +8929,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3379,
-        "recent": 387,
+        "total": 3402,
+        "recent": 399,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8697,10 +8984,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 324,
-        "recent": 300,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 343,
+        "recent": 319,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8775,23 +9062,23 @@
       "thumbnail": "data/mods/Code-Grub@pokegear_menu/thumbnail.png",
       "description_url": "data/mods/Code-Grub@pokegear_menu/description.md",
       "latest": {
-        "version": "0.3.1",
-        "tag": "v0.3.1",
-        "name": "PokéGear Menu 0.3.1",
+        "version": "0.3.2",
+        "tag": "v0.3.2",
+        "name": "PokéGear Menu 0.3.2",
         "prerelease": false,
-        "published_at": "2026-09-19T01:51:02Z",
+        "published_at": "2026-10-03T06:56:37Z",
         "zip": {
-          "name": "pokegear_menu-0.3.1.zip",
-          "url": "https://github.com/Code-Grub/pokegear-menu/releases/download/v0.3.1/pokegear_menu-0.3.1.zip",
-          "size": 36633
+          "name": "pokegear_menu-0.3.2.zip",
+          "url": "https://github.com/Code-Grub/pokegear-menu/releases/download/v0.3.2/pokegear_menu-0.3.2.zip",
+          "size": 36906
         }
       },
       "update_check": "ok",
       "downloads": {
-        "total": 711,
-        "recent": 655,
+        "total": 735,
+        "recent": 663,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8824,7 +9111,7 @@
         "total": 0,
         "recent": 0,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8872,10 +9159,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3219,
-        "recent": 2892,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 3260,
+        "recent": 2933,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8933,10 +9220,98 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 22791,
-        "recent": 6070,
+        "total": 22936,
+        "recent": 5783,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
+      "source_scope": "Community catalog",
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "dependencies": []
+    },
+    {
+      "folder": "CapnJames95@frlg-qol-suite",
+      "id": "frlg-qol-suite",
+      "title": "QoL Suite",
+      "author": "CapnJames95",
+      "version": "0.3.10",
+      "categories": [
+        "UI",
+        "QOL",
+        "TOOL",
+        "OTHER"
+      ],
+      "repo": "https://github.com/CapnJames95/gen1recomp-qol-suite",
+      "summary": "32 configurable components in one download; 31 per game.",
+      "tags": [
+        "emerald",
+        "firered",
+        "leafgreen",
+        "gen3",
+        "capnjames95"
+      ],
+      "github": "CapnJames95/gen1recomp-qol-suite",
+      "conflicts": [
+        "capture-assistant",
+        "daycare-viewer",
+        "disable-lr-help",
+        "fly-teleport",
+        "frlg_qol_auto_surf",
+        "frlg_qol_bag_sort",
+        "frlg_qol_ball_shortcut",
+        "frlg_qol_battle_pacing",
+        "frlg_qol_berry_restock",
+        "frlg_qol_dex_companion",
+        "frlg_qol_fast_healing",
+        "frlg_qol_hm_field_kit",
+        "frlg_qol_hoenn_tools",
+        "frlg_qol_hold_fast_forward",
+        "frlg_qol_instant_text",
+        "frlg_qol_key_item_help",
+        "frlg_qol_map_services",
+        "frlg_qol_party_items",
+        "frlg_qol_party_nickname",
+        "frlg_qol_party_reminder",
+        "frlg_qol_quick_save_prompt",
+        "frlg_qol_quiet_exp",
+        "frlg_qol_repel_reuse",
+        "frlg_qol_reusable_tms",
+        "frlg_qol_running_start",
+        "frlg_qol_shop_count",
+        "frlg_qol_summary_info",
+        "frlg_qol_vs_seeker_status",
+        "frlg_scrollable_start",
+        "pokemon-services",
+        "quick-heal-party",
+        "summary-ivs"
+      ],
+      "permissions": [
+        "engine_internals"
+      ],
+      "api": 2,
+      "profile": "overhaul",
+      "experimental": true,
+      "thumbnail": "data/mods/CapnJames95@frlg-qol-suite/thumbnail.png",
+      "description_url": "data/mods/CapnJames95@frlg-qol-suite/description.md",
+      "latest": {
+        "version": "0.3.10",
+        "tag": "v0.3.10",
+        "name": "QoL Suite 0.3.10",
+        "prerelease": false,
+        "published_at": "2026-10-01T23:12:41Z",
+        "zip": {
+          "name": "frlg-qol-suite-0.3.10.zip",
+          "url": "https://github.com/CapnJames95/gen1recomp-qol-suite/releases/download/v0.3.10/frlg-qol-suite-0.3.10.zip",
+          "size": 611623
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 35,
+        "recent": 23,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -8983,10 +9358,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 20116,
-        "recent": 3108,
+        "total": 20173,
+        "recent": 2987,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9031,10 +9406,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 63585,
-        "recent": 7235,
+        "total": 63770,
+        "recent": 7023,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9077,10 +9452,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1366,
-        "recent": 347,
+        "total": 1381,
+        "recent": 340,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9207,10 +9582,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 438,
-        "recent": 144,
+        "total": 450,
+        "recent": 148,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9338,10 +9713,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 185,
-        "recent": 100,
+        "total": 194,
+        "recent": 105,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9385,10 +9760,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6247,
-        "recent": 722,
+        "total": 6284,
+        "recent": 725,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9441,10 +9816,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 745,
-        "recent": 193,
+        "total": 754,
+        "recent": 192,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9502,10 +9877,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 6570,
-        "recent": 1483,
+        "total": 6603,
+        "recent": 1415,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9541,10 +9916,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 247,
-        "recent": 95,
+        "total": 257,
+        "recent": 103,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -9601,10 +9976,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1541,
-        "recent": 713,
+        "total": 1571,
+        "recent": 707,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10768,10 +11143,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 468,
-        "recent": 209,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 479,
+        "recent": 220,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10859,10 +11234,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1063,
-        "recent": 538,
+        "total": 1076,
+        "recent": 529,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10909,10 +11284,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8855,
-        "recent": 844,
+        "total": 8877,
+        "recent": 815,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -10997,10 +11372,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 21240,
-        "recent": 5091,
+        "total": 21327,
+        "recent": 4690,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11053,10 +11428,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 279,
-        "recent": 225,
-        "window_days": 23,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 295,
+        "recent": 241,
+        "window_days": 24,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11110,10 +11485,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 500,
-        "recent": 157,
+        "total": 511,
+        "recent": 158,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11166,10 +11541,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 571,
-        "recent": 138,
+        "total": 582,
+        "recent": 147,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11226,10 +11601,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 262,
-        "recent": 129,
+        "total": 272,
+        "recent": 135,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11289,68 +11664,14 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 175,
-        "recent": 98,
+        "total": 185,
+        "recent": 105,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
-      "conflicts": []
-    },
-    {
-      "folder": "Satori7Kensho@shiny_starters_gifts",
-      "id": "shiny_starters_gifts",
-      "title": "Shiny Gifts & Starters",
-      "author": "Satori7Kensho",
-      "version": "1.1.0",
-      "categories": [
-        "ART",
-        "UI",
-        "QOL"
-      ],
-      "repo": "https://github.com/Satori7Kensho/gen1recomp-shiny-starters-gifts",
-      "tags": [
-        "qol",
-        "shiny",
-        "gift",
-        "shiny starters",
-        "shiny gifts"
-      ],
-      "github": "Satori7Kensho/gen1recomp-shiny-starters-gifts",
-      "license": "MIT",
-      "permissions": [
-        "engine_internals"
-      ],
-      "api": 2,
-      "profile": "content",
-      "thumbnail": null,
-      "description_url": "data/mods/Satori7Kensho@shiny_starters_gifts/description.md",
-      "summary": "Force shiny starters and optionally all story gifts in Gen1Recomp. Must activate before receiving Pokémon for shiny.",
-      "latest": {
-        "version": "1.4.0",
-        "tag": "v1.4.0",
-        "name": "Shiny Starters, Gifts, NPC Trades & Day Care Eggs v1.4.0",
-        "prerelease": false,
-        "published_at": "2026-10-01T03:45:36Z",
-        "zip": {
-          "name": "shiny_starters_gifts-1.4.0.zip",
-          "url": "https://github.com/Satori7Kensho/gen1recomp-shiny-starters-gifts/releases/download/v1.4.0/shiny_starters_gifts-1.4.0.zip",
-          "size": 9933
-        }
-      },
-      "update_check": "ok",
-      "downloads": {
-        "total": 1998,
-        "recent": 461,
-        "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
-      },
-      "source_scope": "Community catalog",
-      "optional_dependencies": [],
-      "optional_integrations": [],
-      "dependencies": [],
       "conflicts": []
     },
     {
@@ -11358,30 +11679,49 @@
       "id": "shiny_hunter",
       "title": "Shiny Hunter",
       "author": "CapnJames95",
-      "version": "0.1.5",
+      "version": "0.2.2",
       "categories": [
-        "TOOL"
+        "GAMEPLAY",
+        "TOOL",
+        "OTHER"
       ],
-      "repo": "https://github.com/CapnJames95/gen1recomp-mod-releases",
-      "summary": "Automate encounter attempts and stop for shinies or other selected targets.",
+      "repo": "https://github.com/CapnJames95/gen1recomp-shiny-hunter",
+      "summary": "Automate encounters and stop for shinies or chosen targets.",
       "tags": [
+        "emerald",
         "firered",
-        "leafgreen"
+        "leafgreen",
+        "gen3",
+        "capnjames95"
       ],
-      "downloadURL": "https://github.com/CapnJames95/gen1recomp-mod-releases/releases/download/v1.0.0/shiny-hunter-0.1.5.zip",
-      "game_version": ">=0.3.21 <2.0.0",
+      "github": "CapnJames95/gen1recomp-shiny-hunter",
       "permissions": [
         "engine_internals"
       ],
       "api": 2,
       "profile": "overhaul",
       "experimental": true,
-      "automatic_version_check": false,
-      "thumbnail": null,
+      "thumbnail": "data/mods/CapnJames95@shiny_hunter/thumbnail.png",
       "description_url": "data/mods/CapnJames95@shiny_hunter/description.md",
-      "latest": null,
-      "update_check": "off",
-      "downloads": null,
+      "latest": {
+        "version": "0.2.2",
+        "tag": "v0.2.2",
+        "name": "Shiny Hunter 0.2.2",
+        "prerelease": false,
+        "published_at": "2026-10-01T23:11:47Z",
+        "zip": {
+          "name": "shiny_hunter-0.2.2.zip",
+          "url": "https://github.com/CapnJames95/gen1recomp-shiny-hunter/releases/download/v0.2.2/shiny_hunter-0.2.2.zip",
+          "size": 70524
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 24,
+        "recent": 16,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
       "optional_integrations": [],
@@ -11427,10 +11767,67 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 17287,
-        "recent": 2440,
+        "total": 17358,
+        "recent": 2390,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
+      "source_scope": "Community catalog",
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "dependencies": [],
+      "conflicts": []
+    },
+    {
+      "folder": "Satori7Kensho@shiny_starters_gifts",
+      "id": "shiny_starters_gifts",
+      "title": "Shiny Starters, Gifts, NPC Trades & Day Care Eggs",
+      "author": "Satori7Kensho",
+      "version": "1.4.0",
+      "categories": [
+        "ART",
+        "UI",
+        "QOL"
+      ],
+      "repo": "https://github.com/Satori7Kensho/gen1recomp-shiny-starters-gifts",
+      "tags": [
+        "qol",
+        "shiny",
+        "shiny starters",
+        "shiny gifts",
+        "shiny trades",
+        "shiny eggs",
+        "day care",
+        "emerald"
+      ],
+      "github": "Satori7Kensho/gen1recomp-shiny-starters-gifts",
+      "license": "MIT",
+      "permissions": [
+        "engine_internals"
+      ],
+      "api": 2,
+      "profile": "content",
+      "thumbnail": null,
+      "description_url": "data/mods/Satori7Kensho@shiny_starters_gifts/description.md",
+      "summary": "Shiny Starters, Gifts, NPC Trades & Day Care Eggs makes newly received starters, scripted gifts, in-game NPC trades, and bred Day Care eggs shiny in Gen1Recomp.",
+      "latest": {
+        "version": "1.4.0",
+        "tag": "v1.4.0",
+        "name": "Shiny Starters, Gifts, NPC Trades & Day Care Eggs v1.4.0",
+        "prerelease": false,
+        "published_at": "2026-10-01T03:45:36Z",
+        "zip": {
+          "name": "shiny_starters_gifts-1.4.0.zip",
+          "url": "https://github.com/Satori7Kensho/gen1recomp-shiny-starters-gifts/releases/download/v1.4.0/shiny_starters_gifts-1.4.0.zip",
+          "size": 9933
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 2035,
+        "recent": 481,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11515,10 +11912,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1211,
+        "total": 1239,
         "recent": 673,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11567,10 +11964,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 648,
-        "recent": 218,
+        "total": 657,
+        "recent": 210,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11616,10 +12013,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 347,
-        "recent": 105,
+        "total": 356,
+        "recent": 113,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11662,7 +12059,7 @@
         "total": 0,
         "recent": 0,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11753,10 +12150,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 258,
-        "recent": 148,
+        "total": 269,
+        "recent": 149,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11798,10 +12195,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 268,
-        "recent": 202,
+        "total": 280,
+        "recent": 203,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11858,10 +12255,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 855,
-        "recent": 346,
+        "total": 870,
+        "recent": 340,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -11910,10 +12307,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 11329,
-        "recent": 1961,
+        "total": 11370,
+        "recent": 1883,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12031,10 +12428,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 682,
-        "recent": 120,
+        "total": 691,
+        "recent": 124,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12162,10 +12559,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 10878,
-        "recent": 2751,
+        "total": 10901,
+        "recent": 2611,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12442,10 +12839,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 398,
-        "recent": 139,
+        "total": 414,
+        "recent": 150,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12487,10 +12884,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 378,
-        "recent": 319,
-        "window_days": 27,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 390,
+        "recent": 331,
+        "window_days": 28,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12544,10 +12941,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1909,
-        "recent": 496,
-        "window_days": 30,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 1924,
+        "recent": 511,
+        "window_days": 31,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12656,10 +13053,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 463,
-        "recent": 216,
+        "total": 476,
+        "recent": 225,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12710,10 +13107,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1479,
-        "recent": 694,
+        "total": 1508,
+        "recent": 693,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12758,10 +13155,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 230,
-        "recent": 105,
+        "total": 240,
+        "recent": 113,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12825,10 +13222,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 164,
-        "recent": 126,
+        "total": 176,
+        "recent": 134,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12874,10 +13271,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 10612,
-        "recent": 2428,
+        "total": 10661,
+        "recent": 2343,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12920,10 +13317,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 524,
-        "recent": 469,
+        "total": 543,
+        "recent": 459,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -12968,10 +13365,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1460,
-        "recent": 716,
+        "total": 1488,
+        "recent": 703,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13032,10 +13429,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3053,
-        "recent": 612,
+        "total": 3075,
+        "recent": 561,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13082,10 +13479,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 17064,
-        "recent": 2603,
+        "total": 17126,
+        "recent": 2491,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13125,58 +13522,6 @@
       "source_scope": "FAFF0x collection",
       "update_check": "off",
       "game_version": ">=0.1.38 <2.0.0"
-    },
-    {
-      "folder": "goldenroddeptstore@untamed_advanced",
-      "id": "untamed_advanced",
-      "title": "Untamed Advanced",
-      "author": "goldenroddeptstore",
-      "version": "1.0.0-beta.4",
-      "categories": [
-        "GAMEPLAY"
-      ],
-      "repo": "https://github.com/goldenroddeptstore/Untamed-Advanced",
-      "summary": "Adds Pokémon followers, visible wild encounters, and encounter chaining to FireRed and LeafGreen.",
-      "tags": [
-        "firered",
-        "leafgreen",
-        "followers",
-        "encounters",
-        "chaining"
-      ],
-      "github": "goldenroddeptstore/Untamed-Advanced",
-      "permissions": [
-        "engine_internals"
-      ],
-      "api": 2,
-      "affects_link": true,
-      "profile": "overhaul",
-      "thumbnail": null,
-      "description_url": "data/mods/goldenroddeptstore@untamed_advanced/description.md",
-      "latest": {
-        "version": "1.0.0",
-        "tag": "v1.0.0-beta.6",
-        "name": "1.0 Beta 6",
-        "prerelease": true,
-        "published_at": "2026-10-01T00:41:23Z",
-        "zip": {
-          "name": "untamed_advanced-1.0.0-beta.6.zip",
-          "url": "https://github.com/goldenroddeptstore/Untamed-Advanced/releases/download/v1.0.0-beta.6/untamed_advanced-1.0.0-beta.6.zip",
-          "size": 1663445
-        }
-      },
-      "update_check": "ok",
-      "downloads": {
-        "total": 682,
-        "recent": 429,
-        "window_days": 3,
-        "as_of": "2026-10-02T12:08:51.858Z"
-      },
-      "source_scope": "Community catalog",
-      "optional_dependencies": [],
-      "optional_integrations": [],
-      "dependencies": [],
-      "conflicts": []
     },
     {
       "folder": "goldenroddeptstore@overworldmons",
@@ -13223,10 +13568,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 399,
-        "recent": 50,
-        "window_days": 3,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "total": 422,
+        "recent": 73,
+        "window_days": 4,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13274,10 +13619,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 21581,
-        "recent": 4190,
+        "total": 21665,
+        "recent": 4032,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13325,10 +13670,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 8587,
-        "recent": 883,
+        "total": 8614,
+        "recent": 863,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13378,10 +13723,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 3433,
-        "recent": 1109,
+        "total": 3455,
+        "recent": 1051,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13429,10 +13774,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 10576,
-        "recent": 1205,
+        "total": 10608,
+        "recent": 1183,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13486,10 +13831,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 419,
-        "recent": 317,
+        "total": 431,
+        "recent": 318,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13533,10 +13878,63 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 4562,
-        "recent": 420,
+        "total": 4576,
+        "recent": 417,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
+      },
+      "source_scope": "Community catalog",
+      "optional_dependencies": [],
+      "optional_integrations": [],
+      "dependencies": [],
+      "conflicts": []
+    },
+    {
+      "folder": "GawdMode@viridian_forest_revitalization_dev57",
+      "id": "viridian_forest_revitalization_dev57",
+      "title": "Viridian Vivarium",
+      "author": "Gawd Mode",
+      "version": "1.0.0",
+      "categories": [
+        "GAMEPLAY",
+        "CONTENT"
+      ],
+      "repo": "https://github.com/GawdMode/Viridian-Vivarium",
+      "summary": "Restore Viridian Forest through Field Net hunting, conservation donations, Vivarium care, cultivation, milestone rewards, and rare Pokémon hunting.",
+      "tags": [
+        "viridian forest",
+        "vivarium",
+        "bug catching",
+        "conservation",
+        "terrarium",
+        "shiny hunting",
+        "prime pokemon",
+        "pokemon crystal"
+      ],
+      "github": "GawdMode/Viridian-Vivarium",
+      "game_version": ">=0.3.8 <1.0.0",
+      "api": 2,
+      "profile": "content",
+      "thumbnail": "data/mods/GawdMode@viridian_forest_revitalization_dev57/thumbnail.png",
+      "description_url": "data/mods/GawdMode@viridian_forest_revitalization_dev57/description.md",
+      "latest": {
+        "version": "1.0.0",
+        "tag": "v1.0.0",
+        "name": "🦗 Viridian Vivarium v1.0.0",
+        "prerelease": false,
+        "published_at": "2026-09-22T15:05:19Z",
+        "zip": {
+          "name": "Viridian-Vivarium-v1.0.0-GitHubUpdater.zip",
+          "url": "https://github.com/GawdMode/Viridian-Vivarium/releases/download/v1.0.0/Viridian-Vivarium-v1.0.0-GitHubUpdater.zip",
+          "size": 2179759
+        }
+      },
+      "update_check": "ok",
+      "downloads": {
+        "total": 45,
+        "recent": 7,
+        "window_days": 1,
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13592,10 +13990,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 2599,
-        "recent": 681,
+        "total": 2635,
+        "recent": 685,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13660,10 +14058,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 9328,
-        "recent": 6129,
+        "total": 9440,
+        "recent": 6100,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13751,10 +14149,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 189,
-        "recent": 94,
+        "total": 198,
+        "recent": 102,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13838,10 +14236,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 1762,
+        "total": 1772,
         "recent": 195,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13888,10 +14286,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 14232,
-        "recent": 2190,
+        "total": 14281,
+        "recent": 2066,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -13943,10 +14341,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 13630,
-        "recent": 2514,
+        "total": 13680,
+        "recent": 2456,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -14000,10 +14398,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 81040,
-        "recent": 8677,
+        "total": 81265,
+        "recent": 8368,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
@@ -14051,10 +14449,10 @@
       },
       "update_check": "ok",
       "downloads": {
-        "total": 7627,
-        "recent": 1239,
+        "total": 7668,
+        "recent": 1224,
         "window_days": 31,
-        "as_of": "2026-10-02T12:08:51.858Z"
+        "as_of": "2026-10-03T11:19:30.730Z"
       },
       "source_scope": "Community catalog",
       "optional_dependencies": [],
