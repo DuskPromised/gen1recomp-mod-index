@@ -6,11 +6,11 @@ FAFF0x commit: `b1adda349f8410a2eb4ceff16e46143ca563d605`
 
 FAFF0x ZIPs inspected: **45**
 
-Community entries imported: **229**
+Community entries imported: **228**
 
 Explicit Gen-2-only community entries excluded: **8**
 
-Combined feed entries: **304**
+Combined feed entries: **303**
 
 Published carts: **4**
 
